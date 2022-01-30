@@ -1,0 +1,13 @@
+param=1=1
+param=2=5
+param=3=0
+param=4=0
+param=5=0
+param=6=0
+param=7=0
+param=9=true
+codebase=http://127.0.0.1/
+applet_minwidth=765
+applet_minheight=503
+applet_maxwidth=5760
+applet_maxheight=2160
