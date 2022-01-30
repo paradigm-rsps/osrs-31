@@ -8,6 +8,7 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import osrs.classic.Applet;
 
 @Implements("Client")
 @ObfuscatedName("client")
@@ -1842,7 +1843,8 @@ public final class Client extends GameEngine {
          gameState = 1000;
       } else if (js5Errors >= 4) {
          if (gameState <= 5) {
-            this.method1533("js5connect");
+            //this.method1533("js5connect");
+            System.out.println("Server unavailable: " + Applet.INSTANCE.getCodeBase());
             gameState = 1000;
          } else {
             field544 = 3000;
