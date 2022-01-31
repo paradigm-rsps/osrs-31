@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf
 import osrs.classic.server.net.Message
 import osrs.classic.server.net.Protocol
 import osrs.classic.server.net.Session
+import osrs.classic.server.net.StatusResponse
 import osrs.classic.server.service.ServiceManager
 import osrs.classic.server.service.login.LoginService
 
@@ -29,6 +30,6 @@ class LoginProtocol(session: Session) : Protocol(session) {
         /*
          * Queue the login request for processing.
          */
-        loginService.queueLoginRequest(message)
+        session.writeAndFlush(StatusResponse.NORMAL)
     }
 }

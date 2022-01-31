@@ -343,7 +343,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("bj")
    @Export("method2656")
-   public void method2656(byte[] var1, int var2, int var3) {
+   public void readBytes(byte[] var1, int var2, int var3) {
       for(int var4 = var2; var4 < var3 + var2; ++var4) {
          var1[var4] = this.array[++this.offset - 1];
       }
@@ -440,7 +440,7 @@ public class Buffer extends Node {
       int var3 = this.offset;
       this.offset = 0;
       byte[] var4 = new byte[var3];
-      this.method2656(var4, 0, var3);
+      this.readBytes(var4, 0, var3);
       BigInteger var5 = new BigInteger(var4);
       BigInteger var6 = var5.modPow(var1, var2);
       byte[] var7 = var6.toByteArray();

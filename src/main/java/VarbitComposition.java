@@ -98,7 +98,7 @@ public class VarbitComposition extends DualNode {
                         var7.writeByte(4);
                         var7.writeByte(NetCache.field2536);
                         var7.writeShort(0);
-                        NetCache.NetCache_socket.method1474(var7.array, 0, 4);
+                        NetCache.NetCache_socket.flush(var7.array, 0, 4);
                      } catch (IOException var5) {
                         try {
                            NetCache.NetCache_socket.method1471();

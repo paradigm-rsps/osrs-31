@@ -570,7 +570,7 @@ public final class TileItem extends Renderable {
    @ObfuscatedName("v")
    static final void loggedOutCycle() {
       try {
-         if (Client.field574 == 0) {
+         if (Client.loginStep == 0) {
             if (GraphicsObject.World_request != null) {
                GraphicsObject.World_request.method1471();
                GraphicsObject.World_request = null;
@@ -579,12 +579,12 @@ public final class TileItem extends Renderable {
             StudioGame.field2087 = null;
             Client.field530 = false;
             Client.field512 = 0;
-            Client.field574 = 1;
+            Client.loginStep = 1;
          }
 
-         if (Client.field574 == 1) {
+         if (Client.loginStep == 1) {
             if (StudioGame.field2087 == null) {
-               StudioGame.field2087 = ItemContainer.taskHandler.method1612(SoundSystem.worldHost, class82.currentPort);
+               StudioGame.field2087 = ItemContainer.taskHandler.createSocket(SoundSystem.worldHost, class82.currentPort);
             }
 
             if (StudioGame.field2087.status == 2) {
@@ -594,20 +594,20 @@ public final class TileItem extends Renderable {
             if (StudioGame.field2087.status == 1) {
                GraphicsObject.World_request = new IterableNodeHashTableIterator((Socket)StudioGame.field2087.result, ItemContainer.taskHandler);
                StudioGame.field2087 = null;
-               Client.field574 = 2;
+               Client.loginStep = 2;
             }
          }
 
-         if (Client.field574 == 2) {
-            Client.field519.offset = 0;
-            Client.field519.writeByte(14);
-            GraphicsObject.World_request.method1474(Client.field519.array, 0, 1);
+         if (Client.loginStep == 2) {
+            Client.rsaBuf.offset = 0;
+            Client.rsaBuf.writeByte(14);
+            GraphicsObject.World_request.flush(Client.rsaBuf.array, 0, 1);
             Client.field521.offset = 0;
-            Client.field574 = 3;
+            Client.loginStep = 3;
          }
 
-         int var0;
-         if (Client.field574 == 3) {
+         int responseState;
+         if (Client.loginStep == 3) {
             if (Client.pcmPlayer0 != null) {
                Client.pcmPlayer0.method1228();
             }
@@ -616,7 +616,7 @@ public final class TileItem extends Renderable {
                class27.pcmPlayer1.method1228();
             }
 
-            var0 = GraphicsObject.World_request.method1472();
+            responseState = GraphicsObject.World_request.readByte();
             if (Client.pcmPlayer0 != null) {
                Client.pcmPlayer0.method1228();
             }
@@ -625,43 +625,43 @@ public final class TileItem extends Renderable {
                class27.pcmPlayer1.method1228();
             }
 
-            if (var0 != 0) {
-               method183(var0);
+            if (responseState != 0) {
+               loginError(responseState);
                return;
             }
 
             Client.field521.offset = 0;
-            Client.field574 = 5;
+            Client.loginStep = 5;
          }
 
          int var1;
          int var2;
-         if (Client.field574 == 5) {
-            int[] var7 = new int[]{(int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D)};
-            Client.field519.offset = 0;
-            Client.field519.writeByte(10);
-            Client.field519.writeInt(var7[0]);
-            Client.field519.writeInt(var7[1]);
-            Client.field519.writeInt(var7[2]);
-            Client.field519.writeInt(var7[3]);
-            Client.field519.writeLong(0L);
-            Client.field519.writeString(Login.field339);
-            Client.field519.encryptRSA(class5.modulus, class5.exponent);
-            Client.field520.offset = 0;
+         if (Client.loginStep == 5) {
+            int[] randomKeys = new int[]{(int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D)};
+            Client.rsaBuf.offset = 0;
+            Client.rsaBuf.writeByte(10);
+            Client.rsaBuf.writeInt(randomKeys[0]);
+            Client.rsaBuf.writeInt(randomKeys[1]);
+            Client.rsaBuf.writeInt(randomKeys[2]);
+            Client.rsaBuf.writeInt(randomKeys[3]);
+            Client.rsaBuf.writeLong(0L);
+            Client.rsaBuf.writeString(Login.field339);
+            Client.rsaBuf.encryptRSA(class5.modulus, class5.exponent);
+            Client.loginBuf.offset = 0;
             if (Client.gameState == 40) {
-               Client.field520.writeByte(18);
+               Client.loginBuf.writeByte(18);
             } else {
-               Client.field520.writeByte(16);
+               Client.loginBuf.writeByte(16);
             }
 
-            Client.field520.writeShort(0);
-            var1 = Client.field520.offset;
-            Client.field520.writeInt(31);
-            Client.field520.writeBytes(Client.field519.array, 0, Client.field519.offset);
-            var2 = Client.field520.offset;
-            Client.field520.writeString(Login.field338);
-            Client.field520.writeByte(Client.isLowDetail ? 1 : 0);
-            PacketBuffer var3 = Client.field520;
+            Client.loginBuf.writeShort(0);
+            var1 = Client.loginBuf.offset;
+            Client.loginBuf.writeInt(31);
+            Client.loginBuf.writeBytes(Client.rsaBuf.array, 0, Client.rsaBuf.offset);
+            var2 = Client.loginBuf.offset;
+            Client.loginBuf.writeString(Login.field338);
+            Client.loginBuf.writeByte(Client.isLowDetail ? 1 : 0);
+            PacketBuffer xteaBuf2 = Client.loginBuf;
             byte[] var4 = new byte[24];
 
             int var5;
@@ -682,8 +682,8 @@ public final class TileItem extends Renderable {
                }
             }
 
-            var3.writeBytes(var4, 0, 24);
-           /* Buffer var15 = new Buffer(class68.field1274.method3182());
+            xteaBuf2.writeBytes(var4, 0, 24);
+/*            Buffer var15 = new Buffer(class68.field1274.method3182());
             class68.field1274.writePlatformInfo(var15);
             Client.field520.writeBytes(var15.array, 0, var15.array.length);
             Client.field520.writeInt(MusicPatchNode.archive1.hash);
@@ -702,28 +702,28 @@ public final class TileItem extends Renderable {
             Client.field520.writeInt(class17.archive13.hash);
             Client.field520.writeInt(KeyHandler.archive14.hash);
             Client.field520.writeInt(Tiles.archive15.hash);*/
-            Client.field520.encryptXtea(var7, var2, Client.field520.offset);
-            Client.field520.writeSmartShort(Client.field520.offset - var1);
-            GraphicsObject.World_request.method1474(Client.field520.array, 0, Client.field520.offset);
-            Client.field519.initIsaacRandom(var7);
+            Client.loginBuf.encryptXtea(randomKeys, var2, Client.loginBuf.offset);
+            Client.loginBuf.writeSmartShort(Client.loginBuf.offset - var1);
+            GraphicsObject.World_request.flush(Client.loginBuf.array, 0, Client.loginBuf.offset);
+            Client.rsaBuf.initIsaacRandom(randomKeys);
 
             for(var5 = 0; var5 < 4; ++var5) {
-               var7[var5] += 50;
+               randomKeys[var5] += 50;
             }
 
-            Client.field521.initIsaacRandom(var7);
-            Client.field574 = 6;
+            Client.field521.initIsaacRandom(randomKeys);
+            Client.loginStep = 6;
          }
 
-         if (Client.field574 == 6 && GraphicsObject.World_request.method1473() > 0) {
-            var0 = GraphicsObject.World_request.method1472();
-            if (var0 == 21 && Client.gameState == 20) {
-               Client.field574 = 7;
-            } else if (var0 == 2) {
-               Client.field574 = 9;
+         if (Client.loginStep == 6 && GraphicsObject.World_request.method1473() > 0) {
+            responseState = GraphicsObject.World_request.readByte();
+            if (responseState == 21 && Client.gameState == 20) {
+               Client.loginStep = 7;
+            } else if (responseState == 2) {
+               Client.loginStep = 9;
             } else {
-               if (var0 == 15 && Client.gameState == 40) {
-                  Client.field519.offset = 0;
+               if (responseState == 15 && Client.gameState == 40) {
+                  Client.rsaBuf.offset = 0;
                   Client.field521.offset = 0;
                   Client.field523 = -1;
                   Client.field527 = -1;
@@ -759,36 +759,36 @@ public final class TileItem extends Renderable {
                   return;
                }
 
-               if (var0 != 23 || Client.field513 >= 1) {
-                  method183(var0);
+               if (responseState != 23 || Client.field513 >= 1) {
+                  loginError(responseState);
                   return;
                }
 
                ++Client.field513;
-               Client.field574 = 0;
+               Client.loginStep = 0;
             }
          }
 
-         if (Client.field574 == 7 && GraphicsObject.World_request.method1473() > 0) {
-            Client.field514 = (GraphicsObject.World_request.method1472() + 3) * 60;
-            Client.field574 = 8;
+         if (Client.loginStep == 7 && GraphicsObject.World_request.method1473() > 0) {
+            Client.field514 = (GraphicsObject.World_request.readByte() + 3) * 60;
+            Client.loginStep = 8;
          }
 
-         if (Client.field574 == 8) {
+         if (Client.loginStep == 8) {
             Client.field512 = 0;
             BufferedFile.method624("You have only just left another world.", "Your profile will be transferred in:", Client.field514 / 60 + " seconds.");
             if (--Client.field514 <= 0) {
-               Client.field574 = 0;
+               Client.loginStep = 0;
             }
 
          } else {
-            if (Client.field574 == 9 && GraphicsObject.World_request.method1473() >= 8) {
-               Client.field563 = GraphicsObject.World_request.method1472();
-               Client.field566 = GraphicsObject.World_request.method1472() == 1;
-               Client.field617 = GraphicsObject.World_request.method1472();
+            if (Client.loginStep == 9 && GraphicsObject.World_request.method1473() >= 8) {
+               Client.field563 = GraphicsObject.World_request.readByte();
+               Client.field566 = GraphicsObject.World_request.readByte() == 1;
+               Client.field617 = GraphicsObject.World_request.readByte();
                Client.field617 <<= 8;
-               Client.field617 += GraphicsObject.World_request.method1472();
-               Client.field610 = GraphicsObject.World_request.method1472();
+               Client.field617 += GraphicsObject.World_request.readByte();
+               Client.field610 = GraphicsObject.World_request.readByte();
                GraphicsObject.World_request.method1496(Client.field521.array, 0, 1);
                Client.field521.offset = 0;
                Client.field523 = Client.field521.method2513();
@@ -812,10 +812,10 @@ public final class TileItem extends Renderable {
                   }
                }
 
-               Client.field574 = 10;
+               Client.loginStep = 10;
             }
 
-            if (Client.field574 != 10) {
+            if (Client.loginStep != 10) {
                ++Client.field512;
                if (Client.field512 > 2000) {
                   if (Client.field513 < 1) {
@@ -826,9 +826,9 @@ public final class TileItem extends Renderable {
                      }
 
                      ++Client.field513;
-                     Client.field574 = 0;
+                     Client.loginStep = 0;
                   } else {
-                     method183(-3);
+                     loginError(-3);
                   }
                }
             } else {
@@ -842,7 +842,7 @@ public final class TileItem extends Renderable {
                   Client.field613 = true;
                   Client.field707 = -1L;
                   class10.method135();
-                  Client.field519.offset = 0;
+                  Client.rsaBuf.offset = 0;
                   Client.field521.offset = 0;
                   Client.field523 = -1;
                   Client.field527 = -1;
@@ -856,8 +856,8 @@ public final class TileItem extends Renderable {
                   Client.isMenuOpen = false;
                   MouseHandler.MouseHandler_idleCycles = 0;
 
-                  for(var0 = 0; var0 < 100; ++var0) {
-                     Client.field697[var0] = null;
+                  for(responseState = 0; responseState < 100; ++responseState) {
+                     Client.field697[responseState] = null;
                   }
 
                   Client.field580 = 0;
@@ -877,23 +877,23 @@ public final class TileItem extends Renderable {
                   Client.field604 = 0;
                   Client.npcCount = 0;
 
-                  for(var0 = 0; var0 < 2048; ++var0) {
-                     Client.players[var0] = null;
-                     Client.field608[var0] = null;
+                  for(responseState = 0; responseState < 2048; ++responseState) {
+                     Client.players[responseState] = null;
+                     Client.field608[responseState] = null;
                   }
 
-                  for(var0 = 0; var0 < 32768; ++var0) {
-                     Client.npcs[var0] = null;
+                  for(responseState = 0; responseState < 32768; ++responseState) {
+                     Client.npcs[responseState] = null;
                   }
 
                   Tiles.localPlayer = Client.players[2047] = new Player();
                   Client.field619.method3527();
                   Client.field620.method3527();
 
-                  for(var0 = 0; var0 < 4; ++var0) {
+                  for(responseState = 0; responseState < 4; ++responseState) {
                      for(var1 = 0; var1 < 104; ++var1) {
                         for(var2 = 0; var2 < 104; ++var2) {
-                           Client.groundItems[var0][var1][var2] = null;
+                           Client.groundItems[responseState][var1][var2] = null;
                         }
                      }
                   }
@@ -903,29 +903,29 @@ public final class TileItem extends Renderable {
                   Client.field736 = 0;
                   Client.field534 = 0;
 
-                  for(var0 = 0; var0 < VarpDefinition.field1039; ++var0) {
-                     VarpDefinition var9 = GameBuild.method2854(var0);
+                  for(responseState = 0; responseState < VarpDefinition.field1039; ++responseState) {
+                     VarpDefinition var9 = GameBuild.method2854(responseState);
                      if (var9 != null && var9.type == 0) {
-                        Varps.Varps_temp[var0] = 0;
-                        Varps.Varps_main[var0] = 0;
+                        Varps.Varps_temp[responseState] = 0;
+                        Varps.Varps_main[responseState] = 0;
                      }
                   }
 
-                  for(var0 = 0; var0 < Client.field677.length; ++var0) {
-                     Client.field677[var0] = -1;
+                  for(responseState = 0; responseState < Client.field677.length; ++responseState) {
+                     Client.field677[responseState] = -1;
                   }
 
                   if (Client.field643 != -1) {
-                     var0 = Client.field643;
-                     if (var0 != -1 && Widget.Widget_loadedInterfaces[var0]) {
-                        Widget.Widget_archive.method3216(var0);
-                        if (Widget.Widget_interfaceComponents[var0] != null) {
+                     responseState = Client.field643;
+                     if (responseState != -1 && Widget.Widget_loadedInterfaces[responseState]) {
+                        Widget.Widget_archive.method3216(responseState);
+                        if (Widget.Widget_interfaceComponents[responseState] != null) {
                            boolean var14 = true;
 
-                           for(var2 = 0; var2 < Widget.Widget_interfaceComponents[var0].length; ++var2) {
-                              if (Widget.Widget_interfaceComponents[var0][var2] != null) {
-                                 if (Widget.Widget_interfaceComponents[var0][var2].type != 2) {
-                                    Widget.Widget_interfaceComponents[var0][var2] = null;
+                           for(var2 = 0; var2 < Widget.Widget_interfaceComponents[responseState].length; ++var2) {
+                              if (Widget.Widget_interfaceComponents[responseState][var2] != null) {
+                                 if (Widget.Widget_interfaceComponents[responseState][var2].type != 2) {
+                                    Widget.Widget_interfaceComponents[responseState][var2] = null;
                                  } else {
                                     var14 = false;
                                  }
@@ -933,10 +933,10 @@ public final class TileItem extends Renderable {
                            }
 
                            if (var14) {
-                              Widget.Widget_interfaceComponents[var0] = null;
+                              Widget.Widget_interfaceComponents[responseState] = null;
                            }
 
-                           Widget.Widget_loadedInterfaces[var0] = false;
+                           Widget.Widget_loadedInterfaces[responseState] = false;
                         }
                      }
                   }
@@ -952,16 +952,16 @@ public final class TileItem extends Renderable {
                   Client.menuOptionsCount = 0;
                   Client.playerAppearance.method3424((int[])null, new int[]{0, 0, 0, 0, 0}, false, -1);
 
-                  for(var0 = 0; var0 < 8; ++var0) {
-                     Client.playerMenuActions[var0] = null;
-                     Client.playerOptionsPriorities[var0] = false;
+                  for(responseState = 0; responseState < 8; ++responseState) {
+                     Client.playerMenuActions[responseState] = null;
+                     Client.playerOptionsPriorities[responseState] = false;
                   }
 
                   ItemContainer.itemContainers = new NodeHashTable(32);
                   Client.field489 = true;
 
-                  for(var0 = 0; var0 < 100; ++var0) {
-                     Client.field686[var0] = true;
+                  for(responseState = 0; responseState < 100; ++responseState) {
+                     Client.field686[responseState] = true;
                   }
 
                   Client.field660 = null;
@@ -983,16 +983,16 @@ public final class TileItem extends Renderable {
             }
 
             ++Client.field513;
-            Client.field574 = 0;
+            Client.loginStep = 0;
          } else {
-            method183(-2);
+            loginError(-2);
          }
       }
    }
 
    @ObfuscatedName("j")
    @Export("method183")
-   static void method183(int var0) {
+   static void loginError(int var0) {
       if (var0 == -3) {
          BufferedFile.method624("Connection timed out.", "Please try using a different world.", "");
       } else if (var0 == -2) {

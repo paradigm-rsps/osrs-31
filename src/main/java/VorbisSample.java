@@ -133,7 +133,7 @@ public class VorbisSample extends Node {
          } while(var6 >= 255);
 
          byte[] var7 = new byte[var5];
-         var2.method2656(var7, 0, var5);
+         var2.readBytes(var7, 0, var5);
          this.field1152[var4] = var7;
       }
 

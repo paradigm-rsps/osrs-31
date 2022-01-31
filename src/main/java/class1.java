@@ -133,7 +133,7 @@ public class class1 {
          var3 = Client.field521.method2670();
          byte[] var4 = new byte[var3];
          Buffer var5 = new Buffer(var4);
-         Client.field521.method2656(var4, 0, var3);
+         Client.field521.readBytes(var4, 0, var3);
          Client.field608[var0] = var5;
          var1.method17(var5);
       }
@@ -152,7 +152,7 @@ public class class1 {
 
             if (!var7 && Client.xPadding == 0) {
                Client.field535.offset = 0;
-               Client.field521.method2656(Client.field535.array, 0, var15);
+               Client.field521.readBytes(Client.field535.array, 0, var15);
                Client.field535.offset = 0;
                Buffer var9 = Client.field535;
 
@@ -307,11 +307,11 @@ public class class1 {
 
    @ObfuscatedName("dd")
    static final void method5(String var0, int var1) {
-      Client.field519.method2512(173);
-      PacketBuffer var2 = Client.field519;
+      Client.rsaBuf.method2512(173);
+      PacketBuffer var2 = Client.rsaBuf;
       int var3 = var0.length() + 1;
       var2.writeByte(var3 + 1);
-      Client.field519.writeString(var0);
-      Client.field519.method2667(var1);
+      Client.rsaBuf.writeString(var0);
+      Client.rsaBuf.method2667(var1);
    }
 }

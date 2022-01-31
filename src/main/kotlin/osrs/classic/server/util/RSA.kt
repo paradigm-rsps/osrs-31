@@ -1,10 +1,10 @@
-package osrs.classic.server.net.util
+package osrs.classic.server.util
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.bouncycastle.util.io.pem.PemObject
 import org.bouncycastle.util.io.pem.PemReader
 import org.bouncycastle.util.io.pem.PemWriter
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import java.io.File
 import java.math.BigInteger
 import java.nio.file.Files

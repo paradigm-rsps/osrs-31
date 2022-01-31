@@ -1,6 +1,6 @@
 package osrs.classic.server.task
 
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import osrs.classic.server.task.condition.*
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext

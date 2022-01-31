@@ -1,4 +1,4 @@
-package osrs.classic.server.net.util.logger
+package osrs.classic.server.util.logger
 
 class Message internal constructor(var message: String) {
     fun add(ansiColor: String?, text: String): Message {

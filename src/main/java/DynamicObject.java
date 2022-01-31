@@ -179,17 +179,17 @@ public class DynamicObject extends Renderable {
                int var10 = Tiles.localPlayer.y - var8 >> 7;
                boolean var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var9, var10, true, 0, 0, 0, 0, 0, 1);
                if (var11) {
-                  Client.field519.writeByte(var2);
-                  Client.field519.writeByte(var3);
-                  Client.field519.writeShort(Client.field569);
-                  Client.field519.writeByte(57);
-                  Client.field519.writeByte(Client.field554);
-                  Client.field519.writeByte(Client.field556);
-                  Client.field519.writeByte(89);
-                  Client.field519.writeShort(Tiles.localPlayer.x);
-                  Client.field519.writeShort(Tiles.localPlayer.y);
-                  Client.field519.writeByte(Client.field738);
-                  Client.field519.writeByte(63);
+                  Client.rsaBuf.writeByte(var2);
+                  Client.rsaBuf.writeByte(var3);
+                  Client.rsaBuf.writeShort(Client.field569);
+                  Client.rsaBuf.writeByte(57);
+                  Client.rsaBuf.writeByte(Client.field554);
+                  Client.rsaBuf.writeByte(Client.field556);
+                  Client.rsaBuf.writeByte(89);
+                  Client.rsaBuf.writeShort(Tiles.localPlayer.x);
+                  Client.rsaBuf.writeShort(Tiles.localPlayer.y);
+                  Client.rsaBuf.writeByte(Client.field738);
+                  Client.rsaBuf.writeByte(63);
                }
             }
          }

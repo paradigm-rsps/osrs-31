@@ -1,6 +1,6 @@
 package osrs.classic.server.event
 
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 
 
 class EventHandler<out E : Event>(

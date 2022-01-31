@@ -221,7 +221,7 @@ public class class23 {
 
    @ObfuscatedName("dk")
    static final void method251() {
-      Client.field519.method2512(8);
-      Client.field519.writeByte(0);
+      Client.rsaBuf.method2512(8);
+      Client.rsaBuf.writeByte(0);
    }
 }

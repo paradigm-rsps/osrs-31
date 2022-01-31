@@ -78,7 +78,7 @@ public class WorldMapCacheName {
          }
 
          if (Client.gameState == 30) {
-            MilliClock.method1433(Client.field519, 87);
+            MilliClock.method1433(Client.rsaBuf, 87);
             Object var16 = BoundaryObject.field1625.lock;
             int var1;
             int var2;
@@ -92,12 +92,12 @@ public class WorldMapCacheName {
                if (!Client.ViewportMouse_isInViewport) {
                   BoundaryObject.field1625.index = 0;
                } else if (MouseHandler.PacketBufferNode_packetBufferNodeCount != 0 || BoundaryObject.field1625.index >= 40) {
-                  Client.field519.method2512(220);
-                  Client.field519.writeByte(0);
-                  var1 = Client.field519.offset;
+                  Client.rsaBuf.method2512(220);
+                  Client.rsaBuf.writeByte(0);
+                  var1 = Client.rsaBuf.offset;
                   var2 = 0;
 
-                  for(var3 = 0; var3 < BoundaryObject.field1625.index && Client.field519.offset - var1 < 240; ++var3) {
+                  for(var3 = 0; var3 < BoundaryObject.field1625.index && Client.rsaBuf.offset - var1 < 240; ++var3) {
                      ++var2;
                      var4 = BoundaryObject.field1625.ys[var3];
                      if (var4 < 0) {
@@ -132,19 +132,19 @@ public class WorldMapCacheName {
                         if (Client.field494 < 8 && var7 >= -32 && var7 <= 31 && var8 >= -32 && var8 <= 31) {
                            var7 += 32;
                            var8 += 32;
-                           Client.field519.writeShort(var8 + (Client.field494 << 12) + (var7 << 6));
+                           Client.rsaBuf.writeShort(var8 + (Client.field494 << 12) + (var7 << 6));
                            Client.field494 = 0;
                         } else if (Client.field494 < 8) {
-                           Client.field519.writeMedium((Client.field494 << 19) + var6 + 8388608);
+                           Client.rsaBuf.writeMedium((Client.field494 << 19) + var6 + 8388608);
                            Client.field494 = 0;
                         } else {
-                           Client.field519.writeInt((Client.field494 << 19) + var6 + -1073741824);
+                           Client.rsaBuf.writeInt((Client.field494 << 19) + var6 + -1073741824);
                            Client.field494 = 0;
                         }
                      }
                   }
 
-                  Client.field519.method2642(Client.field519.offset - var1);
+                  Client.rsaBuf.method2642(Client.rsaBuf.offset - var1);
                   if (var2 >= BoundaryObject.field1625.index) {
                      BoundaryObject.field1625.index = 0;
                   } else {
@@ -186,14 +186,14 @@ public class WorldMapCacheName {
                }
 
                var6 = (int)var17;
-               Client.field519.method2512(205);
-               Client.field519.writeInt((var6 << 20) + var4 + (var35 << 19));
+               Client.rsaBuf.method2512(205);
+               Client.rsaBuf.writeInt((var6 << 20) + var4 + (var35 << 19));
             }
 
             if (KeyHandler.field1364 > 0) {
-               Client.field519.method2512(111);
-               Client.field519.writeShort(0);
-               var0 = Client.field519.offset;
+               Client.rsaBuf.method2512(111);
+               Client.rsaBuf.writeShort(0);
+               var0 = Client.rsaBuf.offset;
                long var19 = ClientPreferences.method148();
 
                for(var3 = 0; var3 < KeyHandler.field1364; ++var3) {
@@ -203,11 +203,11 @@ public class WorldMapCacheName {
                   }
 
                   Client.field707 = var19;
-                  Client.field519.method2675((int)var21);
-                  Client.field519.method2667(KeyHandler.field1348[var3]);
+                  Client.rsaBuf.method2675((int)var21);
+                  Client.rsaBuf.method2667(KeyHandler.field1348[var3]);
                }
 
-               Client.field519.writeSmartShort(Client.field519.offset - var0);
+               Client.rsaBuf.writeSmartShort(Client.rsaBuf.offset - var0);
             }
 
             if (Client.field573 > 0) {
@@ -221,21 +221,21 @@ public class WorldMapCacheName {
             if (Client.field599 && Client.field573 <= 0) {
                Client.field573 = 20;
                Client.field599 = false;
-               Client.field519.method2512(97);
-               Client.field519.writeShort(Client.field516);
-               Client.field519.method2673(Client.field569);
+               Client.rsaBuf.method2512(97);
+               Client.rsaBuf.writeShort(Client.field516);
+               Client.rsaBuf.method2673(Client.field569);
             }
 
             if (class23.hasFocus && !Client.field613) {
                Client.field613 = true;
-               Client.field519.method2512(116);
-               Client.field519.writeByte(1);
+               Client.rsaBuf.method2512(116);
+               Client.rsaBuf.writeByte(1);
             }
 
             if (!class23.hasFocus && Client.field613) {
                Client.field613 = false;
-               Client.field519.method2512(116);
-               Client.field519.writeByte(0);
+               Client.rsaBuf.method2512(116);
+               Client.rsaBuf.writeByte(0);
             }
 
             int var10;
@@ -536,11 +536,11 @@ public class WorldMapCacheName {
                                  var38.method3340(Client.field655, Client.field596);
                               }
 
-                              Client.field519.method2512(42);
-                              Client.field519.method2682(SequenceDefinition.field887.id);
-                              Client.field519.method2674(Client.field596);
-                              Client.field519.writeByte(var33);
-                              Client.field519.method2768(Client.field655);
+                              Client.rsaBuf.method2512(42);
+                              Client.rsaBuf.method2682(SequenceDefinition.field887.id);
+                              Client.rsaBuf.method2674(Client.field596);
+                              Client.rsaBuf.writeByte(var33);
+                              Client.rsaBuf.method2768(Client.field655);
                            }
                         } else if ((Client.leftClickOpensMenu == 1 || PlatformInfo.method3190(Client.menuOptionsCount - 1)) && Client.menuOptionsCount > 2) {
                            class1.method9();
@@ -731,7 +731,7 @@ public class WorldMapCacheName {
                                              if (var2 > 15000 && var3 > 15000) {
                                                 Client.logoutTimer = 250;
                                                 MouseHandler.MouseHandler_idleCycles = 14500;
-                                                Client.field519.method2512(224);
+                                                Client.rsaBuf.method2512(224);
                                              }
 
                                              ++Client.field553;
@@ -820,13 +820,13 @@ public class WorldMapCacheName {
 
                                              ++Client.field669;
                                              if (Client.field669 > 50) {
-                                                Client.field519.method2512(217);
+                                                Client.rsaBuf.method2512(217);
                                              }
 
                                              try {
-                                                if (GraphicsObject.World_request != null && Client.field519.offset > 0) {
-                                                   GraphicsObject.World_request.method1474(Client.field519.array, 0, Client.field519.offset);
-                                                   Client.field519.offset = 0;
+                                                if (GraphicsObject.World_request != null && Client.rsaBuf.offset > 0) {
+                                                   GraphicsObject.World_request.flush(Client.rsaBuf.array, 0, Client.rsaBuf.offset);
+                                                   Client.rsaBuf.offset = 0;
                                                    Client.field669 = 0;
                                                 }
                                              } catch (IOException var30) {

@@ -518,7 +518,7 @@ public final class Client extends GameEngine {
    @Export("js5Errors")
    static int js5Errors = 0;
    @ObfuscatedName("bp")
-   static int field574 = 0;
+   static int loginStep = 0;
    @ObfuscatedName("bb")
    static int field512 = 0;
    @ObfuscatedName("bc")
@@ -543,12 +543,12 @@ public final class Client extends GameEngine {
    @ObfuscatedSignature(
       descriptor = "Lclass115;"
    )
-   static PacketBuffer field519 = new PacketBuffer(5000);
+   static PacketBuffer rsaBuf = new PacketBuffer(5000);
    @ObfuscatedName("ca")
    @ObfuscatedSignature(
       descriptor = "Lclass115;"
    )
-   static PacketBuffer field520 = new PacketBuffer(5000);
+   static PacketBuffer loginBuf = new PacketBuffer(5000);
    @ObfuscatedName("ck")
    @ObfuscatedSignature(
       descriptor = "Lclass115;"
@@ -1285,8 +1285,8 @@ public final class Client extends GameEngine {
                      class7.method54();
                      ObjectComposition.ObjectDefinition_cachedModelData.method3482();
                      if (ObjectSound.field87 != null) {
-                        field519.method2512(93);
-                        field519.writeInt(1057001181);
+                        rsaBuf.method2512(93);
+                        rsaBuf.writeInt(1057001181);
                      }
 
                      if (!tapToDrop) {
@@ -1319,7 +1319,7 @@ public final class Client extends GameEngine {
                      EnumComposition.Tiles_lightness = null;
                      class1.Tiles_hueMultiplier = null;
                      Skills.field2053 = null;
-                     field519.method2512(157);
+                     rsaBuf.method2512(157);
                      class22.field376.vmethod1698();
 
                      for(var26 = 0; var26 < 32; ++var26) {
@@ -1551,7 +1551,7 @@ public final class Client extends GameEngine {
                      var6 = new Buffer(4);
                      var6.writeByte(1);
                      var6.writeMedium((int)var5.key);
-                     NetCache.NetCache_socket.method1474(var6.array, 0, 4);
+                     NetCache.NetCache_socket.flush(var6.array, 0, 4);
                      NetCache.NetCache_pendingPriorityResponses.method3517(var5, var5.key);
                      --NetCache.NetCache_pendingPriorityWritesCount;
                      ++NetCache.NetCache_pendingPriorityResponsesCount;
@@ -1562,7 +1562,7 @@ public final class Client extends GameEngine {
                      var6 = new Buffer(4);
                      var6.writeByte(0);
                      var6.writeMedium((int)var5.key);
-                     NetCache.NetCache_socket.method1474(var6.array, 0, 4);
+                     NetCache.NetCache_socket.flush(var6.array, 0, 4);
                      var5.method3509();
                      NetCache.NetCache_pendingResponses.method3517(var5, var5.key);
                      --NetCache.NetCache_pendingWritesCount;
@@ -1761,7 +1761,7 @@ public final class Client extends GameEngine {
          if (--field544 + 1 <= 0) {
             try {
                if (js5ConnectState == 0) {
-                  Canvas.js5SocketTask = ItemContainer.taskHandler.method1612(SoundSystem.worldHost, class82.currentPort);
+                  Canvas.js5SocketTask = ItemContainer.taskHandler.createSocket(SoundSystem.worldHost, class82.currentPort);
                   ++js5ConnectState;
                }
 
@@ -1781,7 +1781,7 @@ public final class Client extends GameEngine {
                   Buffer var1 = new Buffer(5);
                   var1.writeByte(15);
                   var1.writeInt(31);
-                  Decimator.js5Socket.method1474(var1.array, 0, 5);
+                  Decimator.js5Socket.flush(var1.array, 0, 5);
                   ++js5ConnectState;
                   ItemContainer.field289 = ClientPreferences.method148();
                }
@@ -1793,7 +1793,7 @@ public final class Client extends GameEngine {
                         return;
                      }
                   } else {
-                     int var2 = Decimator.js5Socket.method1472();
+                     int var2 = Decimator.js5Socket.readByte();
                      if (var2 != 0) {
                         this.method308(var2);
                         return;
@@ -2104,8 +2104,8 @@ public final class Client extends GameEngine {
          }
 
          if (var1 == 326) {
-            field519.method2512(115);
-            playerAppearance.method3405(field519);
+            rsaBuf.method2512(115);
+            playerAppearance.method3405(rsaBuf);
             return true;
          } else {
             return false;

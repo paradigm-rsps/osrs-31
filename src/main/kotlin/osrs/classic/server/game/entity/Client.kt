@@ -2,7 +2,7 @@ package osrs.classic.server.game.entity
 
 import osrs.classic.server.net.Session
 import osrs.classic.server.net.game.Packet
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import java.util.*
 
 class Client(val session: Session) {

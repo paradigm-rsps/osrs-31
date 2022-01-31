@@ -6,8 +6,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import osrs.classic.server.net.Session
 import osrs.classic.server.net.StatusResponse
-import osrs.classic.server.net.util.RSA
-import osrs.classic.server.net.util.Xtea
+import osrs.classic.server.util.RSA
+import osrs.classic.server.util.Xtea
 import java.math.BigInteger
 
 class LoginDecoder(private val session: Session) {
@@ -44,11 +44,6 @@ class LoginDecoder(private val session: Session) {
     }
 
     private fun decodeHeader(buf: ByteBuf, out: MutableList<Any>) {
-        if(buf.readableBytes() < Short.SIZE_BYTES) {
-            retry()
-            return
-        }
-
         payloadLength = buf.readUnsignedShort()
 
         if(payloadLength == 0) {
@@ -70,14 +65,8 @@ class LoginDecoder(private val session: Session) {
             throw LoginError(StatusResponse.OUT_OF_DATE)
         }
 
-/*
-        buf.skipBytes(Int.SIZE_BYTES)
-        val clientType = buf.readUnsignedByte().toInt()
-        buf.skipBytes(Byte.SIZE_BYTES)
-*/
-
         val rsaBuf = run {
-            val length = buf.readUnsignedShort()
+            val length = buf.readUnsignedShort()//skip 2 bytes cuz fuck you, thats why.
             buf.decryptRSA(rsa.privateExponent, rsa.privateModulus, length)
         }
 
@@ -95,39 +84,12 @@ class LoginDecoder(private val session: Session) {
 
         val xteas = IntArray(4) { rsaBuf.readInt() }
         val seed = rsaBuf.readLong()
-
-        if(seed != session.seed) {
+        if(seed != 0L) {
             throw LoginError(StatusResponse.COULD_NOT_COMPLETE_LOGIN)
         }
 
-        val authCode: Int?
-        val password: String?
-        var reconnectXteas: IntArray? = null
-
-        if(loginType == LoginType.RECONNECT) {
-            reconnectXteas = IntArray(4) { rsaBuf.readInt() }
-            authCode = null
-            password = null
-            throw LoginError(StatusResponse.ACCOUNT_LOCKED)
-        } else {
-            authCode = when (rsaBuf.readByte().toInt()) {
-                2 -> {
-                    rsaBuf.skipBytes(Int.SIZE_BYTES)
-                    -1
-                }
-
-                1, 3 -> {
-                    val code = rsaBuf.readUnsignedMedium()
-                    rsaBuf.skipBytes(Byte.SIZE_BYTES)
-                    code
-                }
-
-                else -> rsaBuf.readInt()
-            }
-
-            rsaBuf.skipBytes(Byte.SIZE_BYTES)
-            password = rsaBuf.readStringCP1252()
-        }
+        val password: String = rsaBuf.readStringCP1252()
+        println(password)
 
         /*
          * ======== XTEA BUFFER DECODE =======
@@ -141,51 +103,17 @@ class LoginDecoder(private val session: Session) {
         ) {
             throw LoginError(StatusResponse.INVALID_CREDENTIALS)
         }
-
-        val flags = xteaBuf.readByte().toInt()
-        val resizableMode = (flags shr 1) == 1
-        val clientWidth = xteaBuf.readUnsignedShort()
-        val clientHeight = xteaBuf.readUnsignedShort()
-
+        val isLowDetail = xteaBuf.readByte()
         ByteArray(24) { xteaBuf.readByte() }
-
-        xteaBuf.readStringCP1252()
-        xteaBuf.readInt()
-
-        /*
-         * Platform information
-         */
-        xteaBuf.skipBytes(Byte.SIZE_BYTES * 18)
-        xteaBuf.readString0CP1252()
-        xteaBuf.readString0CP1252()
-        xteaBuf.readString0CP1252()
-        xteaBuf.readString0CP1252()
-        xteaBuf.skipBytes(Byte.SIZE_BYTES * 3)
-        xteaBuf.readString0CP1252()
-        xteaBuf.readString0CP1252()
-        xteaBuf.skipBytes(Byte.SIZE_BYTES * 2)
-        repeat(3) { xteaBuf.skipBytes(Int.SIZE_BYTES) }
-        xteaBuf.skipBytes(Int.SIZE_BYTES)
-        xteaBuf.readString0CP1252()
-        xteaBuf.skipBytes(Byte.SIZE_BYTES * 5)
-
-        repeat(21) {
-            xteaBuf.skipBytes(Int.SIZE_BYTES)
-        }
 
         val request = LoginRequest(
             session,
             loginType,
             0,
             xteas,
-            reconnectXteas,
             seed,
-            authCode,
             password,
             username,
-            resizableMode,
-            clientWidth,
-            clientHeight
         )
         out.add(request)
     }

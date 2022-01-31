@@ -19,7 +19,6 @@ class HandshakeProtocol(session: osrs.classic.server.net.Session) : osrs.classic
         if(message !is HandshakeResponse) return
 
         out.writeByte(message.status.opcode)
-        out.writeLong(message.seed)
     }
 
     override fun handle(message: osrs.classic.server.net.Message) {

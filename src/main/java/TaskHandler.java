@@ -120,7 +120,7 @@ public class TaskHandler implements Runnable {
    @ObfuscatedSignature(
       descriptor = "(Ljava/lang/String;I)Lclass78;"
    )
-   public final Task method1612(String var1, int var2) {
+   public final Task createSocket(String var1, int var2) {
       return this.method1610(1, var2, 0, var1);
    }
 

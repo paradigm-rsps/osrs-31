@@ -9,7 +9,7 @@ public class class5 {
    @ObfuscatedName("i")
    static final BigInteger modulus = new BigInteger("10001", 16);
    @ObfuscatedName("w")
-   static final BigInteger exponent = new BigInteger("8ddbafeca265b877e36d97b0162e12de723996ddffeea125ae62289206e4df60a0057bd688e4bde1148f090f541d3e06d14fc8d00b6ddf6d82454859d3ea71ff", 16);
+   static final BigInteger exponent = new BigInteger("d1b7a2b187c81341fde6dbe64541f50a9ad191209faa1e17cf5b02b78dcffca3a16a0492dc2e30f940b7c30159477bc769a574d3849a5e31a2a228dd351a0334602e483471301a5165b91586267196c2eaebbfb9cb9d349f57ba22ed0407185caf02e181efa69eb5b683ff9af0c72c99f2ce12ec4221e7fdec7718abc39a53f12ca59dae94d84b2ca34efd5094d3819a2d74605c82fd533b38dc5f7312e40d559b89d405aaa6c79939ed704b4ff042c240507ddc251646c3a5aac4ba05bfa4fd86094ec2e1673f6e7b175ac3905895e2092e0434057fb1b92707fea8222e5de4443b2f4716bf037863451b0579f85ed7bdf1fbc6c1f9fa9f603d504044a6bc8b", 16);
    @ObfuscatedName("r")
    @ObfuscatedSignature(
       descriptor = "Lclass185;"
@@ -175,11 +175,11 @@ public class class5 {
    @ObfuscatedName("dy")
    static final void method40(String var0) {
       if (ItemComposition.field1026 != null) {
-         Client.field519.method2512(209);
-         PacketBuffer var1 = Client.field519;
+         Client.rsaBuf.method2512(209);
+         PacketBuffer var1 = Client.rsaBuf;
          int var2 = var0.length() + 1;
          var1.writeByte(var2);
-         Client.field519.writeString(var0);
+         Client.rsaBuf.writeString(var0);
       }
    }
 }

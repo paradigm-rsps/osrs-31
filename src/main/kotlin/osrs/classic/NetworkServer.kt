@@ -5,7 +5,7 @@ import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import osrs.classic.server.net.pipeline.GameChannelInitializer
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import java.net.InetSocketAddress
 import kotlin.system.exitProcess
 

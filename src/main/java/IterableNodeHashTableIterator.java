@@ -80,7 +80,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
    }
 
    @ObfuscatedName("t")
-   public int method1472() throws IOException {
+   public int readByte() throws IOException {
       return this.field1291 ? 0 : this.field1292.read();
    }
 
@@ -106,7 +106,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
    }
 
    @ObfuscatedName("k")
-   public void method1474(byte[] var1, int var2, int var3) throws IOException {
+   public void flush(byte[] var1, int var2, int var3) throws IOException {
       if (!this.field1291) {
          if (this.field1289) {
             this.field1289 = false;

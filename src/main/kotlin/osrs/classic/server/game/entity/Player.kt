@@ -20,8 +20,8 @@ import osrs.classic.server.net.game.GameProtocol
 import osrs.classic.server.net.login.LoginRequest
 import osrs.classic.server.net.login.LoginResponse
 import osrs.classic.server.net.packet.server.RunClientScript
-import osrs.classic.server.net.util.SHA256
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.SHA256
+import osrs.classic.server.util.logger.Logger
 
 
 class Player(val client: Client) : LivingEntity() {
@@ -135,10 +135,6 @@ class Player(val client: Client) : LivingEntity() {
             passwordHash = SHA256.hash(request.password)
         }
 
-        client.resizableMode = request.resizableMode
-        client.width = request.clientWidth
-        client.height = request.clientHeight
-
         /*
          * Set the player tile to the default home tile.
          */
@@ -157,7 +153,7 @@ class Player(val client: Client) : LivingEntity() {
         client.session.client = client
         client.session.seed = request.seed
         client.session.xteas = request.xteas
-        client.session.reconnectXteas = request.reconnectXteas
+/*        client.session.reconnectXteas = request.reconnectXteas*/
 
         client.session.encoderIsaac.init(IntArray(4) { request.xteas[it] + 50 })
         client.session.decoderIsaac.init(request.xteas)

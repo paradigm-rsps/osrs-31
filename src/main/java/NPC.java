@@ -128,7 +128,7 @@ public final class NPC extends Actor {
          }
 
          if (var0 == 20 || var0 == 40) {
-            Client.field574 = 0;
+            Client.loginStep = 0;
             Client.field512 = 0;
             Client.field513 = 0;
          }
@@ -453,11 +453,11 @@ public final class NPC extends Actor {
                if (Projectile.method125(Tiles.localPlayer.field35, class5.field75).equals(var1)) {
                   Login.method239(0, "", "You can't add yourself to your own friend list");
                } else {
-                  Client.field519.method2512(10);
-                  PacketBuffer var6 = Client.field519;
+                  Client.rsaBuf.method2512(10);
+                  PacketBuffer var6 = Client.rsaBuf;
                   int var3 = var0.length() + 1;
                   var6.writeByte(var3);
-                  Client.field519.writeString(var0);
+                  Client.rsaBuf.writeString(var0);
                }
             }
          } else {
@@ -483,11 +483,11 @@ public final class NPC extends Actor {
                   }
 
                   Client.field674 = Client.field681;
-                  Client.field519.method2512(197);
-                  PacketBuffer var8 = Client.field519;
+                  Client.rsaBuf.method2512(197);
+                  PacketBuffer var8 = Client.rsaBuf;
                   int var7 = var0.length() + 1;
                   var8.writeByte(var7);
-                  Client.field519.writeString(var0);
+                  Client.rsaBuf.writeString(var0);
                   break;
                }
             }

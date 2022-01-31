@@ -527,11 +527,11 @@ public final class Projectile extends Renderable {
                   }
 
                   if (var11 != null) {
-                     Client.field519.method2512(79);
-                     Client.field519.method2674(Client.field658.childIndex);
-                     Client.field519.method2673(Client.clickedWidget.childIndex);
-                     Client.field519.method2683(Client.clickedWidget.id);
-                     Client.field519.method2682(Client.field658.id);
+                     Client.rsaBuf.method2512(79);
+                     Client.rsaBuf.method2674(Client.field658.childIndex);
+                     Client.rsaBuf.method2673(Client.clickedWidget.childIndex);
+                     Client.rsaBuf.method2683(Client.clickedWidget.id);
+                     Client.rsaBuf.method2682(Client.field658.id);
                   }
                }
             } else if ((Client.leftClickOpensMenu == 1 || PlatformInfo.method3190(Client.menuOptionsCount - 1)) && Client.menuOptionsCount > 2) {

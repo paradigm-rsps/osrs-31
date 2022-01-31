@@ -1,4 +1,4 @@
-package osrs.classic.server.net.util.logger
+package osrs.classic.server.util.logger
 
 import java.lang.Exception
 import java.lang.StringBuilder

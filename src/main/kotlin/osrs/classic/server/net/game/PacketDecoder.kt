@@ -1,7 +1,7 @@
 package osrs.classic.server.net.game
 
 import io.netty.buffer.ByteBuf
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 
 class PacketDecoder(private val protocol: GameProtocol) {
 

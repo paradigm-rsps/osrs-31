@@ -386,7 +386,7 @@ public class SequenceDefinition extends DualNode {
                      for(int var10 = 0; var10 < var7; ++var10) {
                         var11 = var0.method2650();
                         var12[var10] = new byte[var11];
-                        var0.method2656(var12[var10], 0, var11);
+                        var0.readBytes(var12[var10], 0, var11);
                      }
                   }
 

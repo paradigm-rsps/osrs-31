@@ -13,7 +13,7 @@ public class class149 {
             Buffer var1 = new Buffer(4);
             var1.writeByte(var0 ? 2 : 3);
             var1.writeMedium(0);
-            NetCache.NetCache_socket.method1474(var1.array, 0, 4);
+            NetCache.NetCache_socket.flush(var1.array, 0, 4);
          } catch (IOException var4) {
             try {
                NetCache.NetCache_socket.method1471();

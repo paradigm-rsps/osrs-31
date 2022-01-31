@@ -5,8 +5,8 @@ import osrs.classic.server.game.entity.Client
 import osrs.classic.server.net.game.GameProtocol
 import osrs.classic.server.net.game.Packet
 import osrs.classic.server.net.handshake.HandshakeProtocol
-import osrs.classic.server.net.util.IsaacRandom
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.IsaacRandom
+import osrs.classic.server.util.logger.Logger
 import java.util.concurrent.atomic.AtomicReference
 import kotlin.random.Random
 import kotlin.random.nextLong

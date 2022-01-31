@@ -62,11 +62,11 @@ public abstract class class65 {
       if (Client.field669 >= 50 || var0) {
          Client.field669 = 0;
          if (!Client.field530 && GraphicsObject.World_request != null) {
-            Client.field519.method2512(217);
+            Client.rsaBuf.method2512(217);
 
             try {
-               GraphicsObject.World_request.method1474(Client.field519.array, 0, Client.field519.offset);
-               Client.field519.offset = 0;
+               GraphicsObject.World_request.flush(Client.rsaBuf.array, 0, Client.rsaBuf.offset);
+               Client.rsaBuf.offset = 0;
             } catch (IOException var2) {
                Client.field530 = true;
             }

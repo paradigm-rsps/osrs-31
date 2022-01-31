@@ -17,7 +17,7 @@ import osrs.classic.server.game.map.Chunk
 import osrs.classic.server.game.map.Region
 import osrs.classic.server.game.map.Tile
 import osrs.classic.server.game.map.WorldChunk
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import osrs.classic.server.task.Task
 import osrs.classic.server.task.TaskSubject
 import osrs.classic.server.task.TaskType

@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder
 import osrs.classic.server.ServerConfig
 import osrs.classic.server.game.entity.Client
 import osrs.classic.server.net.login.LoginRequest
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import osrs.classic.server.service.Service
 import java.util.concurrent.Executors
 import java.util.concurrent.LinkedBlockingQueue

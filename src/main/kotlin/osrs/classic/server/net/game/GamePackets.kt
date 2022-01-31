@@ -3,7 +3,7 @@
 package osrs.classic.server.net.game
 
 import io.github.classgraph.ClassGraph
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import kotlin.reflect.KClass
 import kotlin.reflect.full.companionObjectInstance
 

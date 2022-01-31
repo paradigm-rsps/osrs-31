@@ -2,7 +2,7 @@ package osrs.classic.server
 
 import com.uchuhimo.konf.Config
 import com.uchuhimo.konf.toValue
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import java.io.File
 import kotlin.system.exitProcess
 

@@ -269,18 +269,18 @@ public class FileSystem {
          int var30 = Client.field666[var16];
          var23 = Client.field546[var16];
          if (var10 == 0) {
-            Client.field519.method2512(166);
-            Client.field519.writeByte(var18 + var18 + 3);
+            Client.rsaBuf.method2512(166);
+            Client.rsaBuf.writeByte(var18 + var18 + 3);
          }
 
          if (var10 == 1) {
-            Client.field519.method2512(76);
-            Client.field519.writeByte(var18 + var18 + 3 + 14);
+            Client.rsaBuf.method2512(76);
+            Client.rsaBuf.writeByte(var18 + var18 + 3 + 14);
          }
 
          if (var10 == 2) {
-            Client.field519.method2512(117);
-            Client.field519.writeByte(var18 + var18 + 3);
+            Client.rsaBuf.method2512(117);
+            Client.rsaBuf.writeByte(var18 + var18 + 3);
          }
 
          Client.field715 = Client.field666[0];
@@ -288,13 +288,13 @@ public class FileSystem {
 
          for(var24 = 1; var24 < var18; ++var24) {
             --var16;
-            Client.field519.method2645(Client.field666[var16] - var30);
-            Client.field519.method2667(Client.field546[var16] - var23);
+            Client.rsaBuf.method2645(Client.field666[var16] - var30);
+            Client.rsaBuf.method2667(Client.field546[var16] - var23);
          }
 
-         Client.field519.method2674(var23 + Frames.baseY);
-         Client.field519.method2667(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-         Client.field519.writeShort(var30 + FaceNormal.baseX);
+         Client.rsaBuf.method2674(var23 + Frames.baseY);
+         Client.rsaBuf.method2667(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+         Client.rsaBuf.writeShort(var30 + FaceNormal.baseX);
          return true;
       }
    }

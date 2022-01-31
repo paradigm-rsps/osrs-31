@@ -1,6 +1,6 @@
 package osrs.classic.server.service
 
-import osrs.classic.server.net.util.logger.Logger
+import osrs.classic.server.util.logger.Logger
 import osrs.classic.server.service.login.LoginService
 import kotlin.reflect.KClass
 

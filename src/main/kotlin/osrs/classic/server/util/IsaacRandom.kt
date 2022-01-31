@@ -1,4 +1,4 @@
-package osrs.classic.server.net.util
+package osrs.classic.server.util
 
 /**
  *
