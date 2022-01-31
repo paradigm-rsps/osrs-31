@@ -85,7 +85,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
    }
 
    @ObfuscatedName("d")
-   public int method1473() throws IOException {
+   public int available() throws IOException {
       return this.field1291 ? 0 : this.field1292.available();
    }
 
@@ -259,7 +259,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
          var4 = (var2 & 7) + GraphicsObject.field307;
          byte var5 = Client.field521.method2671();
          byte var6 = Client.field521.method2646();
-         var7 = Client.field521.method2676();
+         var7 = Client.field521.readUnsignedShort();
          var8 = Client.field521.method2668();
          var9 = var8 >> 2;
          var10 = var8 & 3;
@@ -329,7 +329,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
       int var37;
       if (Client.field523 == 182) {
          var0 = Client.field521.method2677();
-         var35 = Client.field521.method2670();
+         var35 = Client.field521.readUnsignedByteSub();
          var2 = var35 >> 2;
          var3 = var35 & 3;
          var4 = Client.field541[var2];
@@ -393,7 +393,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
          var35 = (var0 >> 4 & 7) + Actor.field478;
          var2 = (var0 & 7) + GraphicsObject.field307;
          var3 = Client.field521.method2786();
-         var4 = Client.field521.method2676();
+         var4 = Client.field521.readUnsignedShort();
          var36 = Client.field521.method2786();
          if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104 && var3 != Client.field617) {
             TileItem var40 = new TileItem();
@@ -482,7 +482,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
                   var4 = Client.field521.method2665();
                   var36 = (var4 >> 4 & 7) + Actor.field478;
                   var37 = (var4 & 7) + GraphicsObject.field307;
-                  var7 = Client.field521.method2676();
+                  var7 = Client.field521.readUnsignedShort();
                   if (var36 >= 0 && var37 >= 0 && var36 < 104 && var37 < 104) {
                      class1.method14(class22.Client_plane, var36, var37, var3, var7, var35, var2, 0, -1);
                   }

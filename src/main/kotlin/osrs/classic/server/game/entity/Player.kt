@@ -76,14 +76,9 @@ class Player(val client: Client) : LivingEntity() {
     val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
     val npcs = NpcManager(this)
-    private val varpManager = VarpManager(this)
 
     override val updateFlags = sortedSetOf<PlayerUpdateFlag>()
 
-    /**
-     * A map of varps by their ID for this player.
-     */
-    val varps: Map<Int, Int> get() = varpManager.varps.toMap()
 /*
     *//**
      * Runs a client script with ID for this player.
@@ -95,25 +90,6 @@ class Player(val client: Client) : LivingEntity() {
         client.write(RunClientScript(id, *params))
     }
 
-    /**
-     * Updates a varp's bit value for this player.
-     *
-     * @param id Int
-     * @param value Int
-     */
-    fun updateVarbit(id: Int, value: Int) {
-        varpManager.updateVarbit(id, value)
-    }
-
-    /**
-     * Updates a Varp's value for this player.
-     *
-     * @param id Int
-     * @param value Int
-     */
-    fun updateVarp(id: Int, value: Int) {
-        varpManager.updateVarp(id, value)
-    }
 
 /*
     fun sendGameMessage(message: String, type: MessageType = MessageType.GAME) {
@@ -162,7 +138,7 @@ class Player(val client: Client) : LivingEntity() {
         client.session.writeAndFlush(response).addListener {
             if(it.isSuccess) {
                 client.session.protocol.set(GameProtocol(client.session))
-                this.initialize()
+                //this.initialize()
             }
         }
 
@@ -180,7 +156,6 @@ class Player(val client: Client) : LivingEntity() {
     }
 
     internal fun synchronize() {
-        varpManager.synchronize()
         scene.synchronize()
         gpi.synchronize()
         npcs.synchronize()
@@ -190,7 +165,6 @@ class Player(val client: Client) : LivingEntity() {
     override fun postProcess() {
         super.postProcess()
         EventBus.dispatch(PlayerCycleEvent(this))
-        varpManager.postProcess()
         scene.postProcess()
     }
 

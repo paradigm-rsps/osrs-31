@@ -13,6 +13,8 @@ class ServerMain {
             ServiceManager.initialize()
             RSA.load()
             NetworkServer.bind(InetSocketAddress("127.0.0.1", 43594))
+            Thread.sleep(2000)
+            ClientMain.main(null)
         }
     }
 }

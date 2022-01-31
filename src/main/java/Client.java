@@ -591,7 +591,7 @@ public final class Client extends GameEngine {
    static int field537 = 0;
    @ObfuscatedName("dx")
    @Export("tapToDrop")
-   static boolean tapToDrop = false;
+   static boolean isInInstance = false;
    @ObfuscatedName("dc")
    static int[][][] field540 = new int[4][13][13];
    @ObfuscatedName("dv")
@@ -1034,7 +1034,7 @@ public final class Client extends GameEngine {
                      if (var3 != null) {
                         var26 = (class149.field2463[var25] >> 8) * 64 - FaceNormal.baseX;
                         var5 = (class149.field2463[var25] & 255) * 64 - Frames.baseY;
-                        if (tapToDrop) {
+                        if (isInInstance) {
                            var26 = 10;
                            var5 = 10;
                         }
@@ -1093,7 +1093,7 @@ public final class Client extends GameEngine {
                      int var12;
                      int var13;
                      int var28;
-                     if (!tapToDrop) {
+                     if (!isInInstance) {
                         byte[] var6;
                         for(var27 = 0; var27 < var25; ++var27) {
                            var26 = (class149.field2463[var27] >> 8) * 64 - FaceNormal.baseX;
@@ -1174,7 +1174,7 @@ public final class Client extends GameEngine {
                      int var29;
                      int var30;
                      int var31;
-                     if (tapToDrop) {
+                     if (isInInstance) {
                         var27 = 0;
 
                         label435:
@@ -1289,7 +1289,7 @@ public final class Client extends GameEngine {
                         rsaBuf.writeInt(1057001181);
                      }
 
-                     if (!tapToDrop) {
+                     if (!isInInstance) {
                         var26 = (field746 - 6) / 8;
                         var5 = (field746 + 6) / 8;
                         var28 = (field739 - 6) / 8;
@@ -1570,7 +1570,7 @@ public final class Client extends GameEngine {
                   }
 
                   for(int var17 = 0; var17 < 100; ++var17) {
-                     int var18 = NetCache.NetCache_socket.method1473();
+                     int var18 = NetCache.NetCache_socket.available();
                      if (var18 < 0) {
                         throw new IOException();
                      }
@@ -1787,7 +1787,7 @@ public final class Client extends GameEngine {
                }
 
                if (js5ConnectState == 3) {
-                  if (gameState > 5 && Decimator.js5Socket.method1473() <= 0) {
+                  if (gameState > 5 && Decimator.js5Socket.available() <= 0) {
                      if (ClientPreferences.method148() - ItemContainer.field289 > 30000L) {
                         this.method308(-2);
                         return;

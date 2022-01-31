@@ -40,7 +40,7 @@ class Session(val ctx: ChannelHandlerContext) {
         }
     }
 
-    internal fun onMessage(message: osrs.classic.server.net.Message) {
+    internal fun onMessage(message: Message) {
         if(protocol.get() is GameProtocol && message is Packet) {
 /*            client.packetQueue.add(message)*/
         } else {
@@ -64,13 +64,13 @@ class Session(val ctx: ChannelHandlerContext) {
         }
     }
 
-    fun write(message: osrs.classic.server.net.Message) = ctx.write(message)
+    fun write(message: Message) = ctx.write(message)
 
-    fun writeAndFlush(message: osrs.classic.server.net.Message) = ctx.writeAndFlush(message)
+    fun writeAndFlush(message: Message) = ctx.writeAndFlush(message)
 
     fun flush() = ctx.flush()
 
-    fun writeAndClose(message: osrs.classic.server.net.Message) {
+    fun writeAndClose(message: Message) {
         writeAndFlush(message).addListener {
             if(it.isSuccess) {
                 this.disconnect()

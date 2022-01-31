@@ -715,7 +715,7 @@ public final class TileItem extends Renderable {
             Client.loginStep = 6;
          }
 
-         if (Client.loginStep == 6 && GraphicsObject.World_request.method1473() > 0) {
+         if (Client.loginStep == 6 && GraphicsObject.World_request.available() > 0) {
             responseState = GraphicsObject.World_request.readByte();
             if (responseState == 21 && Client.gameState == 20) {
                Client.loginStep = 7;
@@ -769,7 +769,7 @@ public final class TileItem extends Renderable {
             }
          }
 
-         if (Client.loginStep == 7 && GraphicsObject.World_request.method1473() > 0) {
+         if (Client.loginStep == 7 && GraphicsObject.World_request.available() > 0) {
             Client.field514 = (GraphicsObject.World_request.readByte() + 3) * 60;
             Client.loginStep = 8;
          }
@@ -782,7 +782,7 @@ public final class TileItem extends Renderable {
             }
 
          } else {
-            if (Client.loginStep == 9 && GraphicsObject.World_request.method1473() >= 8) {
+            if (Client.loginStep == 9 && GraphicsObject.World_request.available() >= 8) {
                Client.field563 = GraphicsObject.World_request.readByte();
                Client.field566 = GraphicsObject.World_request.readByte() == 1;
                Client.field617 = GraphicsObject.World_request.readByte();
@@ -816,6 +816,7 @@ public final class TileItem extends Renderable {
             }
 
             if (Client.loginStep != 10) {
+               System.out.println("Boom");
                ++Client.field512;
                if (Client.field512 > 2000) {
                   if (Client.field513 < 1) {
@@ -832,7 +833,7 @@ public final class TileItem extends Renderable {
                   }
                }
             } else {
-               if (GraphicsObject.World_request.method1473() >= Client.field611) {
+               if (GraphicsObject.World_request.available() >= Client.field611) {
                   Client.field521.offset = 0;
                   GraphicsObject.World_request.method1496(Client.field521.array, 0, Client.field611);
                   Client.field545 = -1L;
@@ -968,7 +969,7 @@ public final class TileItem extends Renderable {
                   SoundSystem.field1188 = 0;
                   ItemComposition.field1026 = null;
                   Client.field746 = -1;
-                  Login.method242(false);
+                  Login.loadRegions(false);
                   Client.field523 = -1;
                }
 

@@ -1,6 +1,7 @@
 package osrs.classic.server.net.login
 
 import io.netty.buffer.ByteBuf
+import osrs.classic.server.game.entity.Client
 import osrs.classic.server.net.Message
 import osrs.classic.server.net.Protocol
 import osrs.classic.server.net.Session
@@ -30,6 +31,9 @@ class LoginProtocol(session: Session) : Protocol(session) {
         /*
          * Queue the login request for processing.
          */
-        session.writeAndFlush(StatusResponse.NORMAL)
+        val client = Client(session)
+        val player = client.player
+
+        player.login(message)
     }
 }

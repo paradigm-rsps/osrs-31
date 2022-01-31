@@ -487,7 +487,7 @@ public class Buffer extends Node {
    }
 
    @ObfuscatedName("bq")
-   public int method2670() {
+   public int readUnsignedByteSub() {
       return 128 - this.array[++this.offset - 1] & 255;
    }
 
@@ -520,7 +520,7 @@ public class Buffer extends Node {
    }
 
    @ObfuscatedName("be")
-   public int method2676() {
+   public int readUnsignedShort() {
       this.offset += 2;
       return ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] & 255);
    }

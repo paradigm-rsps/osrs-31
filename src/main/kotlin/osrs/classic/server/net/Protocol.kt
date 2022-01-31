@@ -2,9 +2,9 @@ package osrs.classic.server.net
 
 import io.netty.buffer.ByteBuf
 
-abstract class Protocol(val session: osrs.classic.server.net.Session) {
+abstract class Protocol(val session: Session) {
 
-    open fun encode(message: osrs.classic.server.net.Message, out: ByteBuf) {
+    open fun encode(message: Message, out: ByteBuf) {
         throw UnsupportedOperationException()
     }
 
@@ -12,8 +12,7 @@ abstract class Protocol(val session: osrs.classic.server.net.Session) {
         throw UnsupportedOperationException()
     }
 
-    open fun handle(message: osrs.classic.server.net.Message) {
+    open fun handle(message: Message) {
         throw UnsupportedOperationException()
     }
-
 }

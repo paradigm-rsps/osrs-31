@@ -8,7 +8,7 @@ import javax.swing.WindowConstants.EXIT_ON_CLOSE
 class ClientMain {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String>?) {
             AppletConfiguration.init()
             Applet.init()
             val frame = JFrame("OSRS Classic")

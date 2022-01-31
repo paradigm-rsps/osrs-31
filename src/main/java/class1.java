@@ -112,15 +112,15 @@ public class class1 {
    )
    static final void method10(int var0, Player var1, int var2) {
       if ((var2 & 4) != 0) {
-         var1.field475 = Client.field521.method2676();
-         var1.field446 = Client.field521.method2676();
+         var1.field475 = Client.field521.readUnsignedShort();
+         var1.field446 = Client.field521.readUnsignedShort();
       }
 
       if ((var2 & 512) != 0) {
          var1.field460 = Client.field521.method2665();
          var1.field462 = Client.field521.method2665();
-         var1.field439 = Client.field521.method2670();
-         var1.field463 = Client.field521.method2670();
+         var1.field439 = Client.field521.readUnsignedByteSub();
+         var1.field463 = Client.field521.readUnsignedByteSub();
          var1.field456 = Client.field521.method2808() + Client.cycle;
          var1.field465 = Client.field521.method2786() + Client.cycle;
          var1.field466 = Client.field521.method2668();
@@ -130,7 +130,7 @@ public class class1 {
 
       int var3;
       if ((var2 & 1) != 0) {
-         var3 = Client.field521.method2670();
+         var3 = Client.field521.readUnsignedByteSub();
          byte[] var4 = new byte[var3];
          Buffer var5 = new Buffer(var4);
          Client.field521.readBytes(var4, 0, var3);
@@ -142,7 +142,7 @@ public class class1 {
       if ((var2 & 2) != 0) {
          var3 = Client.field521.method2808();
          var14 = Client.field521.method2665();
-         int var15 = Client.field521.method2670();
+         int var15 = Client.field521.readUnsignedByteSub();
          int var6 = Client.field521.offset;
          if (var1.field35 != null && var1.appearance != null) {
             boolean var7 = false;
@@ -221,11 +221,11 @@ public class class1 {
          var1.method277(var3, var14, Client.cycle);
          var1.field441 = Client.cycle + 300;
          var1.field431 = Client.field521.method2752();
-         var1.field425 = Client.field521.method2670();
+         var1.field425 = Client.field521.readUnsignedByteSub();
       }
 
       if ((var2 & 1024) != 0) {
-         var1.spotAnimation = Client.field521.method2676();
+         var1.spotAnimation = Client.field521.readUnsignedShort();
          var3 = Client.field521.method2650();
          var1.field430 = var3 >> 16;
          var1.field458 = (var3 & '\uffff') + Client.cycle;

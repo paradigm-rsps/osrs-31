@@ -10,10 +10,10 @@ import java.util.concurrent.atomic.AtomicReference
 @ChannelHandler.Sharable
 class GameChannelHandler : ChannelInboundHandlerAdapter() {
 
-    internal val session = AtomicReference<osrs.classic.server.net.Session>(null)
+    internal val session = AtomicReference<Session>(null)
 
     override fun channelActive(ctx: ChannelHandlerContext) {
-        val newSession = osrs.classic.server.net.Session(ctx)
+        val newSession = Session(ctx)
         newSession.onConnect()
         session.set(newSession)
     }
@@ -23,7 +23,7 @@ class GameChannelHandler : ChannelInboundHandlerAdapter() {
     }
 
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
-        if(msg !is osrs.classic.server.net.Message) return
+        if(msg !is Message) return
         session.get().onMessage(msg)
     }
 

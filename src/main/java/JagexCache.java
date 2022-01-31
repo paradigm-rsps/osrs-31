@@ -168,7 +168,7 @@ public class JagexCache {
          int var2;
          String var28;
          try {
-            int var0 = GraphicsObject.World_request.method1473();
+            int var0 = GraphicsObject.World_request.available();
             if (var0 == 0) {
                return false;
             }
@@ -338,7 +338,7 @@ public class JagexCache {
                   var84 = Client.npcs[var2];
                   var19 = Client.field521.method2665();
                   if ((var19 & 2) != 0) {
-                     var84.field475 = Client.field521.method2676();
+                     var84.field475 = Client.field521.readUnsignedShort();
                      var84.field446 = Client.field521.method2677();
                   }
 
@@ -379,7 +379,7 @@ public class JagexCache {
                   }
 
                   if ((var19 & 8) != 0) {
-                     var84.spotAnimation = Client.field521.method2676();
+                     var84.spotAnimation = Client.field521.readUnsignedShort();
                      var5 = Client.field521.method2650();
                      var84.field430 = var5 >> 16;
                      var84.field458 = (var5 & '\uffff') + Client.cycle;
@@ -400,7 +400,7 @@ public class JagexCache {
                         var5 = -1;
                      }
 
-                     var6 = Client.field521.method2670();
+                     var6 = Client.field521.readUnsignedByteSub();
                      if (var5 == var84.sequence && var5 != -1) {
                         var7 = class23.method250(var5).field901;
                         if (var7 == 1) {
@@ -476,7 +476,7 @@ public class JagexCache {
                }
 
                var3 = Client.field521.method2687();
-               var19 = Client.field521.method2676();
+               var19 = Client.field521.readUnsignedShort();
                if (var19 == 65535) {
                   var19 = -1;
                }
@@ -757,7 +757,7 @@ public class JagexCache {
             if (Client.field523 == 78) {
                var1 = Client.field521.method2808();
                var2 = Client.field521.method2629();
-               var3 = Client.field521.method2676();
+               var3 = Client.field521.readUnsignedShort();
                var4 = class130.method2851(var2);
                var4.field2601 = var1 + (var3 << 16);
                Client.field523 = -1;
@@ -895,7 +895,7 @@ public class JagexCache {
 
             if (Client.field523 == 188) {
                var1 = Client.field521.method2668();
-               var2 = Client.field521.method2670();
+               var2 = Client.field521.readUnsignedByteSub();
                var3 = Client.field521.method2665();
                class22.Client_plane = var1 >> 1;
                Tiles.localPlayer.method290(var3, var2, (var1 & 1) == 1);
@@ -920,7 +920,7 @@ public class JagexCache {
             }
 
             if (Client.field523 == 23) {
-               Login.method242(true);
+               Login.loadRegions(true);
                Client.field523 = -1;
                return true;
             }
@@ -966,7 +966,7 @@ public class JagexCache {
             }
 
             if (Client.field523 == 210) {
-               var1 = Client.field521.method2676();
+               var1 = Client.field521.readUnsignedShort();
                var2 = Client.field521.method2756();
                var70 = class130.method2851(var2);
                if (var70.modelType != 2 || var1 != var70.modelId) {
@@ -1114,7 +1114,7 @@ public class JagexCache {
 
             if (Client.field523 == 88) {
                var28 = Client.field521.method2653();
-               var2 = Client.field521.method2670();
+               var2 = Client.field521.readUnsignedByteSub();
                var3 = Client.field521.method2752();
                if (var2 >= 1 && var2 <= 8) {
                   if (var28.equalsIgnoreCase("null")) {
@@ -1336,7 +1336,7 @@ public class JagexCache {
 
             if (Client.field523 == 149) {
                byte var61 = Client.field521.method2672();
-               var2 = Client.field521.method2676();
+               var2 = Client.field521.readUnsignedShort();
                Varps.Varps_temp[var2] = var61;
                if (Varps.Varps_main[var2] != var61) {
                   Varps.Varps_main[var2] = var61;
@@ -1503,7 +1503,7 @@ public class JagexCache {
             }
 
             if (Client.field523 == 87) {
-               Login.method242(false);
+               Login.loadRegions(false);
                Client.field523 = -1;
                return true;
             }

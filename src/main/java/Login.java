@@ -310,8 +310,8 @@ public class Login {
 
    @ObfuscatedName("ad")
    @Export("method242")
-   static final void method242(boolean var0) {
-      Client.tapToDrop = var0;
+   static final void loadRegions(boolean var0) {
+      Client.isInInstance = var0;
       int var1;
       int var2;
       int var3;
@@ -321,9 +321,9 @@ public class Login {
       int var8;
       int var9;
       int var10;
-      if (!Client.tapToDrop) {
-         var1 = Client.field521.method2670();
-         var2 = Client.field521.method2676();
+      if (!Client.isInInstance) {
+         var1 = Client.field521.readUnsignedByteSub();
+         var2 = Client.field521.readUnsignedShort();
          var3 = (Client.field611 - Client.field521.offset) / 16;
          class161.field2709 = new int[var3][4];
 
@@ -333,7 +333,7 @@ public class Login {
             }
          }
 
-         var4 = Client.field521.method2676();
+         var4 = Client.field521.readUnsignedShort();
          var5 = Client.field521.method2808();
          var6 = Client.field521.method2677();
          class149.field2463 = new int[var3];
@@ -366,8 +366,8 @@ public class Login {
 
          class5.method42(var6, var2, var1, var4, var5);
       } else {
-         var1 = Client.field521.method2676();
-         var2 = Client.field521.method2670();
+         var1 = Client.field521.readUnsignedShort();
+         var2 = Client.field521.readUnsignedByteSub();
          Client.field521.method2531();
 
          for(var3 = 0; var3 < 4; ++var3) {
@@ -393,7 +393,7 @@ public class Login {
             }
          }
 
-         var4 = Client.field521.method2676();
+         var4 = Client.field521.readUnsignedShort();
          var5 = Client.field521.method2677();
          var6 = Client.field521.method2677();
          class149.field2463 = new int[var3];
