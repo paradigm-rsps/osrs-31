@@ -93,7 +93,7 @@ public class WorldMapCacheName {
                   BoundaryObject.field1625.index = 0;
                } else if (MouseHandler.PacketBufferNode_packetBufferNodeCount != 0 || BoundaryObject.field1625.index >= 40) {
                   Client.field519.method2512(220);
-                  Client.field519.method2631(0);
+                  Client.field519.writeByte(0);
                   var1 = Client.field519.offset;
                   var2 = 0;
 
@@ -132,13 +132,13 @@ public class WorldMapCacheName {
                         if (Client.field494 < 8 && var7 >= -32 && var7 <= 31 && var8 >= -32 && var8 <= 31) {
                            var7 += 32;
                            var8 += 32;
-                           Client.field519.method2778(var8 + (Client.field494 << 12) + (var7 << 6));
+                           Client.field519.writeShort(var8 + (Client.field494 << 12) + (var7 << 6));
                            Client.field494 = 0;
                         } else if (Client.field494 < 8) {
-                           Client.field519.method2720((Client.field494 << 19) + var6 + 8388608);
+                           Client.field519.writeMedium((Client.field494 << 19) + var6 + 8388608);
                            Client.field494 = 0;
                         } else {
-                           Client.field519.method2634((Client.field494 << 19) + var6 + -1073741824);
+                           Client.field519.writeInt((Client.field494 << 19) + var6 + -1073741824);
                            Client.field494 = 0;
                         }
                      }
@@ -187,12 +187,12 @@ public class WorldMapCacheName {
 
                var6 = (int)var17;
                Client.field519.method2512(205);
-               Client.field519.method2634((var6 << 20) + var4 + (var35 << 19));
+               Client.field519.writeInt((var6 << 20) + var4 + (var35 << 19));
             }
 
             if (KeyHandler.field1364 > 0) {
                Client.field519.method2512(111);
-               Client.field519.method2778(0);
+               Client.field519.writeShort(0);
                var0 = Client.field519.offset;
                long var19 = ClientPreferences.method148();
 
@@ -207,7 +207,7 @@ public class WorldMapCacheName {
                   Client.field519.method2667(KeyHandler.field1348[var3]);
                }
 
-               Client.field519.method2641(Client.field519.offset - var0);
+               Client.field519.writeSmartShort(Client.field519.offset - var0);
             }
 
             if (Client.field573 > 0) {
@@ -222,20 +222,20 @@ public class WorldMapCacheName {
                Client.field573 = 20;
                Client.field599 = false;
                Client.field519.method2512(97);
-               Client.field519.method2778(Client.field516);
+               Client.field519.writeShort(Client.field516);
                Client.field519.method2673(Client.field569);
             }
 
             if (class23.hasFocus && !Client.field613) {
                Client.field613 = true;
                Client.field519.method2512(116);
-               Client.field519.method2631(1);
+               Client.field519.writeByte(1);
             }
 
             if (!class23.hasFocus && Client.field613) {
                Client.field613 = false;
                Client.field519.method2512(116);
-               Client.field519.method2631(0);
+               Client.field519.writeByte(0);
             }
 
             int var10;
@@ -539,7 +539,7 @@ public class WorldMapCacheName {
                               Client.field519.method2512(42);
                               Client.field519.method2682(SequenceDefinition.field887.id);
                               Client.field519.method2674(Client.field596);
-                              Client.field519.method2631(var33);
+                              Client.field519.writeByte(var33);
                               Client.field519.method2768(Client.field655);
                            }
                         } else if ((Client.leftClickOpensMenu == 1 || PlatformInfo.method3190(Client.menuOptionsCount - 1)) && Client.menuOptionsCount > 2) {

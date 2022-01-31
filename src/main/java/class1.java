@@ -310,8 +310,8 @@ public class class1 {
       Client.field519.method2512(173);
       PacketBuffer var2 = Client.field519;
       int var3 = var0.length() + 1;
-      var2.method2631(var3 + 1);
-      Client.field519.method2636(var0);
+      var2.writeByte(var3 + 1);
+      Client.field519.writeString(var0);
       Client.field519.method2667(var1);
    }
 }

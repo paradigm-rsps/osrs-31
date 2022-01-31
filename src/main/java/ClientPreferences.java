@@ -69,9 +69,9 @@ public class ClientPreferences {
    )
    Buffer method139() {
       Buffer var1 = new Buffer(100);
-      var1.method2631(ClientPreferences_optionCount);
-      var1.method2631(this.roofsHidden ? 1 : 0);
-      var1.method2631(this.titleMusicDisabled ? 1 : 0);
+      var1.writeByte(ClientPreferences_optionCount);
+      var1.writeByte(this.roofsHidden ? 1 : 0);
+      var1.writeByte(this.titleMusicDisabled ? 1 : 0);
       return var1;
    }
 

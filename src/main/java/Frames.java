@@ -78,7 +78,7 @@ public class Frames extends DualNode {
                Client.field519.method2512(29);
                Client.field519.method2673(var1 + FaceNormal.baseX);
                Client.field519.method2673(var2 + baseY);
-               Client.field519.method2778(class82.selectedItemSlot);
+               Client.field519.writeShort(class82.selectedItemSlot);
                Client.field519.method2683(PcmPlayer.selectedItemWidget);
                Client.field519.method2674(DynamicObject.selectedItemId);
                Client.field519.method2768(var4 >> 14 & 32767);
@@ -86,10 +86,10 @@ public class Frames extends DualNode {
          } else if (var3 == 2) {
             if (Tile.method2298(var1, var2, var4)) {
                Client.field519.method2512(164);
-               Client.field519.method2778(var2 + baseY);
+               Client.field519.writeShort(var2 + baseY);
                Client.field519.method2673(var1 + FaceNormal.baseX);
                Client.field519.method2768(Client.selectedSpellChildIndex);
-               Client.field519.method2634(GraphicsObject.field308);
+               Client.field519.writeInt(GraphicsObject.field308);
                Client.field519.method2768(var4 >> 14 & 32767);
             }
          } else if (var3 == 3) {
@@ -97,7 +97,7 @@ public class Frames extends DualNode {
             Client.field519.method2512(119);
             Client.field519.method2674(var4 >> 14 & 32767);
             Client.field519.method2673(var2 + baseY);
-            Client.field519.method2778(var1 + FaceNormal.baseX);
+            Client.field519.writeShort(var1 + FaceNormal.baseX);
          } else if (var3 == 4) {
             Tile.method2298(var1, var2, var4);
             Client.field519.method2512(35);
@@ -109,13 +109,13 @@ public class Frames extends DualNode {
             Client.field519.method2512(53);
             Client.field519.method2673(var1 + FaceNormal.baseX);
             Client.field519.method2673(var4 >> 14 & 32767);
-            Client.field519.method2778(var2 + baseY);
+            Client.field519.writeShort(var2 + baseY);
          } else if (var3 == 6) {
             Tile.method2298(var1, var2, var4);
             Client.field519.method2512(47);
             Client.field519.method2674(var1 + FaceNormal.baseX);
             Client.field519.method2768(var2 + baseY);
-            Client.field519.method2778(var4 >> 14 & 32767);
+            Client.field519.writeShort(var4 >> 14 & 32767);
          } else {
             NPC var5;
             if (var3 == 7) {
@@ -129,7 +129,7 @@ public class Frames extends DualNode {
                   Client.field519.method2512(130);
                   Client.field519.method2768(var4);
                   Client.field519.method2768(DynamicObject.selectedItemId);
-                  Client.field519.method2778(class82.selectedItemSlot);
+                  Client.field519.writeShort(class82.selectedItemSlot);
                   Client.field519.method2684(PcmPlayer.selectedItemWidget);
                }
             } else if (var3 == 8) {
@@ -141,7 +141,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
                   Client.field519.method2512(101);
-                  Client.field519.method2634(GraphicsObject.field308);
+                  Client.field519.writeInt(GraphicsObject.field308);
                   Client.field519.method2768(var4);
                   Client.field519.method2673(Client.selectedSpellChildIndex);
                }
@@ -154,7 +154,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
                   Client.field519.method2512(24);
-                  Client.field519.method2778(var4);
+                  Client.field519.writeShort(var4);
                }
             } else if (var3 == 10) {
                var5 = Client.npcs[var4];
@@ -165,7 +165,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
                   Client.field519.method2512(31);
-                  Client.field519.method2778(var4);
+                  Client.field519.writeShort(var4);
                }
             } else if (var3 == 11) {
                var5 = Client.npcs[var4];
@@ -198,7 +198,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
                   Client.field519.method2512(235);
-                  Client.field519.method2778(var4);
+                  Client.field519.writeShort(var4);
                }
             } else {
                Player var16;
@@ -213,7 +213,7 @@ public class Frames extends DualNode {
                      Client.field519.method2512(251);
                      Client.field519.method2673(DynamicObject.selectedItemId);
                      Client.field519.method2673(var4);
-                     Client.field519.method2634(PcmPlayer.selectedItemWidget);
+                     Client.field519.writeInt(PcmPlayer.selectedItemWidget);
                      Client.field519.method2674(class82.selectedItemSlot);
                   }
                } else if (var3 == 15) {
@@ -225,7 +225,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
                      Client.field519.method2512(252);
-                     Client.field519.method2634(GraphicsObject.field308);
+                     Client.field519.writeInt(GraphicsObject.field308);
                      Client.field519.method2768(Client.selectedSpellChildIndex);
                      Client.field519.method2673(var4);
                   }
@@ -247,7 +247,7 @@ public class Frames extends DualNode {
                      Client.field519.method2768(var2 + baseY);
                      Client.field519.method2682(PcmPlayer.selectedItemWidget);
                      Client.field519.method2768(var4);
-                     Client.field519.method2778(var1 + FaceNormal.baseX);
+                     Client.field519.writeShort(var1 + FaceNormal.baseX);
                   } else if (var3 == 17) {
                      var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
@@ -259,8 +259,8 @@ public class Frames extends DualNode {
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
                      Client.field519.method2512(189);
-                     Client.field519.method2634(GraphicsObject.field308);
-                     Client.field519.method2778(var2 + baseY);
+                     Client.field519.writeInt(GraphicsObject.field308);
+                     Client.field519.writeShort(var2 + baseY);
                      Client.field519.method2673(var1 + FaceNormal.baseX);
                      Client.field519.method2674(var4);
                      Client.field519.method2768(Client.selectedSpellChildIndex);
@@ -277,7 +277,7 @@ public class Frames extends DualNode {
                      Client.field519.method2512(174);
                      Client.field519.method2673(var2 + baseY);
                      Client.field519.method2674(var1 + FaceNormal.baseX);
-                     Client.field519.method2778(var4);
+                     Client.field519.writeShort(var4);
                   } else if (var3 == 19) {
                      var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
@@ -303,7 +303,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
                      Client.field519.method2512(69);
-                     Client.field519.method2778(var4);
+                     Client.field519.writeShort(var4);
                      Client.field519.method2674(var1 + FaceNormal.baseX);
                      Client.field519.method2673(var2 + baseY);
                   } else if (var3 == 21) {
@@ -318,7 +318,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossState = 0;
                      Client.field519.method2512(120);
                      Client.field519.method2673(var1 + FaceNormal.baseX);
-                     Client.field519.method2778(var4);
+                     Client.field519.writeShort(var4);
                      Client.field519.method2768(var2 + baseY);
                   } else if (var3 == 22) {
                      var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
@@ -347,7 +347,7 @@ public class Frames extends DualNode {
 
                         if (var12) {
                            Client.field519.method2512(172);
-                           Client.field519.method2634(var2);
+                           Client.field519.writeInt(var2);
                         }
                      } else {
                         int var21;
@@ -400,7 +400,7 @@ public class Frames extends DualNode {
                            }
                         } else if (var3 == 28) {
                            Client.field519.method2512(172);
-                           Client.field519.method2634(var2);
+                           Client.field519.writeInt(var2);
                            var18 = class130.method2851(var2);
                            if (var18.cs1Instructions != null && var18.cs1Instructions[0][0] == 5) {
                               var21 = var18.cs1Instructions[0][1];
@@ -409,7 +409,7 @@ public class Frames extends DualNode {
                            }
                         } else if (var3 == 29) {
                            Client.field519.method2512(172);
-                           Client.field519.method2634(var2);
+                           Client.field519.writeInt(var2);
                            var18 = class130.method2851(var2);
                            if (var18.cs1Instructions != null && var18.cs1Instructions[0][0] == 5) {
                               var21 = var18.cs1Instructions[0][1];
@@ -421,15 +421,15 @@ public class Frames extends DualNode {
                         } else if (var3 == 30) {
                            if (Client.meslayerContinueWidget == null) {
                               Client.field519.method2512(50);
-                              Client.field519.method2634(var2);
-                              Client.field519.method2778(var1);
+                              Client.field519.writeInt(var2);
+                              Client.field519.writeShort(var1);
                               Client.meslayerContinueWidget = AbstractArchive.method3230(var2, var1);
                               class82.method1754(Client.meslayerContinueWidget);
                            }
                         } else if (var3 == 31) {
                            Client.field519.method2512(43);
                            Client.field519.method2682(PcmPlayer.selectedItemWidget);
-                           Client.field519.method2778(DynamicObject.selectedItemId);
+                           Client.field519.writeShort(DynamicObject.selectedItemId);
                            Client.field519.method2768(class82.selectedItemSlot);
                            Client.field519.method2673(var1);
                            Client.field519.method2682(var2);
@@ -439,7 +439,7 @@ public class Frames extends DualNode {
                            Client.field595 = var1;
                         } else if (var3 == 32) {
                            Client.field519.method2512(112);
-                           Client.field519.method2778(var1);
+                           Client.field519.writeShort(var1);
                            Client.field519.method2768(Client.selectedSpellChildIndex);
                            Client.field519.method2674(var4);
                            Client.field519.method2684(GraphicsObject.field308);
@@ -449,7 +449,7 @@ public class Frames extends DualNode {
                            Client.field595 = var1;
                         } else if (var3 == 33) {
                            Client.field519.method2512(74);
-                           Client.field519.method2778(var1);
+                           Client.field519.writeShort(var1);
                            Client.field519.method2684(var2);
                            Client.field519.method2768(var4);
                            Client.field533 = 0;
@@ -457,7 +457,7 @@ public class Frames extends DualNode {
                            Client.field595 = var1;
                         } else if (var3 == 34) {
                            Client.field519.method2512(226);
-                           Client.field519.method2778(var1);
+                           Client.field519.writeShort(var1);
                            Client.field519.method2684(var2);
                            Client.field519.method2768(var4);
                            Client.field533 = 0;
@@ -466,14 +466,14 @@ public class Frames extends DualNode {
                         } else if (var3 == 35) {
                            Client.field519.method2512(175);
                            Client.field519.method2768(var1);
-                           Client.field519.method2778(var4);
+                           Client.field519.writeShort(var4);
                            Client.field519.method2684(var2);
                            Client.field533 = 0;
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 36) {
                            Client.field519.method2512(213);
-                           Client.field519.method2778(var4);
+                           Client.field519.writeShort(var4);
                            Client.field519.method2768(var1);
                            Client.field519.method2684(var2);
                            Client.field533 = 0;
@@ -483,7 +483,7 @@ public class Frames extends DualNode {
                            Client.field519.method2512(184);
                            Client.field519.method2768(var4);
                            Client.field519.method2673(var1);
-                           Client.field519.method2634(var2);
+                           Client.field519.writeInt(var2);
                            Client.field533 = 0;
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
@@ -508,7 +508,7 @@ public class Frames extends DualNode {
                               Client.field519.method2512(105);
                               Client.field519.method2674(var1);
                               Client.field519.method2683(var2);
-                              Client.field519.method2778(var4);
+                              Client.field519.writeShort(var4);
                               Client.field533 = 0;
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
@@ -524,7 +524,7 @@ public class Frames extends DualNode {
                               Client.field519.method2512(94);
                               Client.field519.method2684(var2);
                               Client.field519.method2674(var1);
-                              Client.field519.method2778(var4);
+                              Client.field519.writeShort(var4);
                               Client.field533 = 0;
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
@@ -540,7 +540,7 @@ public class Frames extends DualNode {
                               Client.field519.method2512(44);
                               Client.field519.method2684(var2);
                               Client.field519.method2673(var4);
-                              Client.field519.method2778(var1);
+                              Client.field519.writeShort(var1);
                               Client.field533 = 0;
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
@@ -619,7 +619,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
                                  Client.field519.method2512(254);
-                                 Client.field519.method2778(var4);
+                                 Client.field519.writeShort(var4);
                               }
                            } else if (var3 == 51) {
                               var16 = Client.players[var4];
@@ -689,7 +689,7 @@ public class Frames extends DualNode {
                                        Client.mouseCrossColor = 2;
                                        Client.mouseCrossState = 0;
                                        Client.field519.method2512(128);
-                                       Client.field519.method2778(var4);
+                                       Client.field519.writeShort(var4);
                                        break label567;
                                     }
 
@@ -699,7 +699,7 @@ public class Frames extends DualNode {
                                           Login.method239(0, "", var18.itemQuantities[var1] + " x " + class27.method571(var4).name);
                                        } else {
                                           Client.field519.method2512(128);
-                                          Client.field519.method2778(var4);
+                                          Client.field519.writeShort(var4);
                                        }
 
                                        Client.field533 = 0;
@@ -737,62 +737,62 @@ public class Frames extends DualNode {
                                        if (var8) {
                                           if (var4 == 1) {
                                              Client.field519.method2512(147);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 2) {
                                              Client.field519.method2512(231);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 3) {
                                              Client.field519.method2512(187);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 4) {
                                              Client.field519.method2512(20);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 5) {
                                              Client.field519.method2512(236);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 6) {
                                              Client.field519.method2512(242);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 7) {
                                              Client.field519.method2512(6);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 8) {
                                              Client.field519.method2512(192);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 9) {
                                              Client.field519.method2512(171);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
 
                                           if (var4 == 10) {
                                              Client.field519.method2512(188);
-                                             Client.field519.method2634(var2);
-                                             Client.field519.method2778(var1);
+                                             Client.field519.writeInt(var2);
+                                             Client.field519.writeShort(var1);
                                           }
                                        }
                                     }

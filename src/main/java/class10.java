@@ -34,8 +34,8 @@ public class class10 {
       try {
          AccessFile var2 = new AccessFile(class183.JagexCache_locationFile, "rw", 10000L);
          Buffer var3 = new Buffer(500);
-         var3.method2631(3);
-         var3.method2631(var1 != null ? 1 : 0);
+         var3.writeByte(3);
+         var3.writeByte(var1 != null ? 1 : 0);
          var3.method2638(var0.getPath());
          if (var1 != null) {
             var3.method2638("");

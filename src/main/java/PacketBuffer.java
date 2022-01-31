@@ -24,7 +24,7 @@ public final class PacketBuffer extends Buffer {
 
    @ObfuscatedName("i")
    @Export("method2511")
-   public void method2511(int[] var1) {
+   public void initIsaacRandom(int[] var1) {
       this.isaacCipher = new IsaacCipher(var1);
    }
 

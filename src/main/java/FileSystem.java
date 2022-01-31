@@ -270,17 +270,17 @@ public class FileSystem {
          var23 = Client.field546[var16];
          if (var10 == 0) {
             Client.field519.method2512(166);
-            Client.field519.method2631(var18 + var18 + 3);
+            Client.field519.writeByte(var18 + var18 + 3);
          }
 
          if (var10 == 1) {
             Client.field519.method2512(76);
-            Client.field519.method2631(var18 + var18 + 3 + 14);
+            Client.field519.writeByte(var18 + var18 + 3 + 14);
          }
 
          if (var10 == 2) {
             Client.field519.method2512(117);
-            Client.field519.method2631(var18 + var18 + 3);
+            Client.field519.writeByte(var18 + var18 + 3);
          }
 
          Client.field715 = Client.field666[0];
@@ -294,7 +294,7 @@ public class FileSystem {
 
          Client.field519.method2674(var23 + Frames.baseY);
          Client.field519.method2667(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-         Client.field519.method2778(var30 + FaceNormal.baseX);
+         Client.field519.writeShort(var30 + FaceNormal.baseX);
          return true;
       }
    }

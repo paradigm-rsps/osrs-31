@@ -931,8 +931,8 @@ public final class Client extends GameEngine {
    }
 
    @ObfuscatedName("k")
-   @Export("vmethod1530")
-   protected final void vmethod1530() {
+   @Export("cycle")
+   protected final void cycle() {
       ++cycle;
       this.method521();
 
@@ -996,7 +996,7 @@ public final class Client extends GameEngine {
                ItemContainer.method188(this);
             } else if (gameState == 20) {
                ItemContainer.method188(this);
-               TileItem.method175();
+               TileItem.loggedOutCycle();
             } else if (gameState == 25) {
                class65.method1454(false);
                field509 = 0;
@@ -1286,7 +1286,7 @@ public final class Client extends GameEngine {
                      ObjectComposition.ObjectDefinition_cachedModelData.method3482();
                      if (ObjectSound.field87 != null) {
                         field519.method2512(93);
-                        field519.method2634(1057001181);
+                        field519.writeInt(1057001181);
                      }
 
                      if (!tapToDrop) {
@@ -1338,7 +1338,7 @@ public final class Client extends GameEngine {
             if (gameState == 30) {
                WorldMapCacheName.method3469();
             } else if (gameState == 40) {
-               TileItem.method175();
+               TileItem.loggedOutCycle();
             }
 
             return;
@@ -1549,8 +1549,8 @@ public final class Client extends GameEngine {
                   while(NetCache.NetCache_pendingPriorityResponsesCount < 20 && NetCache.NetCache_pendingPriorityWritesCount > 0) {
                      var5 = (NetFileRequest)NetCache.NetCache_pendingPriorityWrites.method3515();
                      var6 = new Buffer(4);
-                     var6.method2631(1);
-                     var6.method2720((int)var5.key);
+                     var6.writeByte(1);
+                     var6.writeMedium((int)var5.key);
                      NetCache.NetCache_socket.method1474(var6.array, 0, 4);
                      NetCache.NetCache_pendingPriorityResponses.method3517(var5, var5.key);
                      --NetCache.NetCache_pendingPriorityWritesCount;
@@ -1560,8 +1560,8 @@ public final class Client extends GameEngine {
                   while(NetCache.NetCache_pendingResponsesCount < 20 && NetCache.NetCache_pendingWritesCount > 0) {
                      var5 = (NetFileRequest)NetCache.NetCache_pendingWritesQueue.method3488();
                      var6 = new Buffer(4);
-                     var6.method2631(0);
-                     var6.method2720((int)var5.key);
+                     var6.writeByte(0);
+                     var6.writeMedium((int)var5.key);
                      NetCache.NetCache_socket.method1474(var6.array, 0, 4);
                      var5.method3509();
                      NetCache.NetCache_pendingResponses.method3517(var5, var5.key);
@@ -1630,8 +1630,8 @@ public final class Client extends GameEngine {
                            int var16 = var11 == 0 ? 5 : 9;
                            MusicPatchPcmStream.NetCache_currentResponse = var15;
                            class68.NetCache_responseArchiveBuffer = new Buffer(var12 + var16 + MusicPatchPcmStream.NetCache_currentResponse.padding);
-                           class68.NetCache_responseArchiveBuffer.method2631(var11);
-                           class68.NetCache_responseArchiveBuffer.method2634(var12);
+                           class68.NetCache_responseArchiveBuffer.writeByte(var11);
+                           class68.NetCache_responseArchiveBuffer.writeInt(var12);
                            NetCache.field2533 = 8;
                            NetCache.NetCache_responseHeaderBuffer.offset = 0;
                         } else if (NetCache.field2533 == 0) {
@@ -1779,8 +1779,8 @@ public final class Client extends GameEngine {
                if (js5ConnectState == 2) {
                   Decimator.js5Socket = new IterableNodeHashTableIterator((Socket)Canvas.js5SocketTask.result, ItemContainer.taskHandler);
                   Buffer var1 = new Buffer(5);
-                  var1.method2631(15);
-                  var1.method2634(31);
+                  var1.writeByte(15);
+                  var1.writeInt(31);
                   Decimator.js5Socket.method1474(var1.array, 0, 5);
                   ++js5ConnectState;
                   ItemContainer.field289 = ClientPreferences.method148();
@@ -1845,7 +1845,7 @@ public final class Client extends GameEngine {
          if (gameState <= 5) {
             //this.method1533("js5connect");
             System.out.println("Server unavailable: " + Applet.INSTANCE.getCodeBase());
-            gameState = 1000;
+            System.exit(-1);
          } else {
             field544 = 3000;
          }

@@ -55,20 +55,20 @@ public class Buffer extends Node {
 
    @ObfuscatedName("ah")
    @Export("method2631")
-   public void method2631(int var1) {
+   public void writeByte(int var1) {
       this.array[++this.offset - 1] = (byte)var1;
    }
 
    @ObfuscatedName("aw")
    @Export("method2778")
-   public void method2778(int var1) {
+   public void writeShort(int var1) {
       this.array[++this.offset - 1] = (byte)(var1 >> 8);
       this.array[++this.offset - 1] = (byte)var1;
    }
 
    @ObfuscatedName("an")
    @Export("method2720")
-   public void method2720(int var1) {
+   public void writeMedium(int var1) {
       this.array[++this.offset - 1] = (byte)(var1 >> 16);
       this.array[++this.offset - 1] = (byte)(var1 >> 8);
       this.array[++this.offset - 1] = (byte)var1;
@@ -76,7 +76,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("av")
    @Export("method2634")
-   public void method2634(int var1) {
+   public void writeInt(int var1) {
       this.array[++this.offset - 1] = (byte)(var1 >> 24);
       this.array[++this.offset - 1] = (byte)(var1 >> 16);
       this.array[++this.offset - 1] = (byte)(var1 >> 8);
@@ -85,7 +85,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("ak")
    @Export("method2635")
-   public void method2635(long var1) {
+   public void writeLong(long var1) {
       this.array[++this.offset - 1] = (byte)((int)(var1 >> 56));
       this.array[++this.offset - 1] = (byte)((int)(var1 >> 48));
       this.array[++this.offset - 1] = (byte)((int)(var1 >> 40));
@@ -98,7 +98,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("ax")
    @Export("method2636")
-   public void method2636(String var1) {
+   public void writeString(String var1) {
       int var2 = var1.indexOf(0);
       if (var2 >= 0) {
          throw new IllegalArgumentException("");
@@ -110,7 +110,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("af")
    @Export("method2637")
-   public void method2637(String var1) {
+   public void writeJagexString(String var1) {
       int var2 = var1.indexOf(0);
       if (var2 >= 0) {
          throw new IllegalArgumentException("");
@@ -167,16 +167,16 @@ public class Buffer extends Node {
 
    @ObfuscatedName("at")
    @Export("method2802")
-   public void method2802(byte[] var1, int var2, int var3) {
-      for(int var4 = var2; var4 < var3 + var2; ++var4) {
-         this.array[++this.offset - 1] = var1[var4];
+   public void writeBytes(byte[] data, int start, int length) {
+      for(int i = start; i < length + start; ++i) {
+         this.array[++this.offset - 1] = data[i];
       }
 
    }
 
    @ObfuscatedName("aq")
    @Export("method2748")
-   public void method2748(int var1) {
+   public void writeSmartInt(int var1) {
       this.array[this.offset - var1 - 4] = (byte)(var1 >> 24);
       this.array[this.offset - var1 - 3] = (byte)(var1 >> 16);
       this.array[this.offset - var1 - 2] = (byte)(var1 >> 8);
@@ -184,7 +184,7 @@ public class Buffer extends Node {
    }
 
    @ObfuscatedName("ac")
-   public void method2641(int var1) {
+   public void writeSmartShort(int var1) {
       this.array[this.offset - var1 - 2] = (byte)(var1 >> 8);
       this.array[this.offset - var1 - 1] = (byte)var1;
    }
@@ -198,9 +198,9 @@ public class Buffer extends Node {
    @Export("method2643")
    public void method2643(int var1) {
       if (var1 >= 0 && var1 < 128) {
-         this.method2631(var1);
+         this.writeByte(var1);
       } else if (var1 >= 0 && var1 < 32768) {
-         this.method2778(var1 + '耀');
+         this.writeShort(var1 + '耀');
       } else {
          throw new IllegalArgumentException();
       }
@@ -213,19 +213,19 @@ public class Buffer extends Node {
          if ((var1 & -16384) != 0) {
             if ((var1 & -2097152) != 0) {
                if ((var1 & -268435456) != 0) {
-                  this.method2631(var1 >>> 28 | 128);
+                  this.writeByte(var1 >>> 28 | 128);
                }
 
-               this.method2631(var1 >>> 21 | 128);
+               this.writeByte(var1 >>> 21 | 128);
             }
 
-            this.method2631(var1 >>> 14 | 128);
+            this.writeByte(var1 >>> 14 | 128);
          }
 
-         this.method2631(var1 >>> 7 | 128);
+         this.writeByte(var1 >>> 7 | 128);
       }
 
-      this.method2631(var1 & 127);
+      this.writeByte(var1 & 127);
    }
 
    @ObfuscatedName("am")
@@ -384,7 +384,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("bg")
    @Export("method2777")
-   public void method2777(int[] var1, int var2, int var3) {
+   public void encryptXtea(int[] var1, int var2, int var3) {
       int var4 = this.offset;
       this.offset = var2;
       int var5 = (var3 - var2) / 8;
@@ -401,8 +401,8 @@ public class Buffer extends Node {
          }
 
          this.offset -= 8;
-         this.method2634(var7);
-         this.method2634(var8);
+         this.writeInt(var7);
+         this.writeInt(var8);
       }
 
       this.offset = var4;
@@ -427,8 +427,8 @@ public class Buffer extends Node {
          }
 
          this.offset -= 8;
-         this.method2634(var7);
-         this.method2634(var8);
+         this.writeInt(var7);
+         this.writeInt(var8);
       }
 
       this.offset = var4;
@@ -436,7 +436,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("bb")
    @Export("method2712")
-   public void method2712(BigInteger var1, BigInteger var2) {
+   public void encryptRSA(BigInteger var1, BigInteger var2) {
       int var3 = this.offset;
       this.offset = 0;
       byte[] var4 = new byte[var3];
@@ -445,15 +445,15 @@ public class Buffer extends Node {
       BigInteger var6 = var5.modPow(var1, var2);
       byte[] var7 = var6.toByteArray();
       this.offset = 0;
-      this.method2778(var7.length);
-      this.method2802(var7, 0, var7.length);
+      this.writeShort(var7.length);
+      this.writeBytes(var7, 0, var7.length);
    }
 
    @ObfuscatedName("bc")
    @Export("method2664")
    public int method2664(int var1) {
       int var2 = class40.method913(this.array, var1, this.offset);
-      this.method2634(var2);
+      this.writeInt(var2);
       return var2;
    }
 

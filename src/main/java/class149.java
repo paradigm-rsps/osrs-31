@@ -11,8 +11,8 @@ public class class149 {
       if (NetCache.NetCache_socket != null) {
          try {
             Buffer var1 = new Buffer(4);
-            var1.method2631(var0 ? 2 : 3);
-            var1.method2720(0);
+            var1.writeByte(var0 ? 2 : 3);
+            var1.writeMedium(0);
             NetCache.NetCache_socket.method1474(var1.array, 0, 4);
          } catch (IOException var4) {
             try {

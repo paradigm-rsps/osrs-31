@@ -110,13 +110,13 @@ public class MilliClock extends Clock {
          }
 
          var0.method2512(var1);
-         var0.method2631(0);
+         var0.writeByte(0);
          int var3 = var0.offset;
-         var0.method2634(var2.id);
+         var0.writeInt(var2.id);
 
          for(int var4 = 0; var4 < var2.size; ++var4) {
             if (var2.creationErrors[var4] != 0) {
-               var0.method2631(var2.creationErrors[var4]);
+               var0.writeByte(var2.creationErrors[var4]);
             } else {
                try {
                   int var5 = var2.operations[var4];
@@ -125,17 +125,17 @@ public class MilliClock extends Clock {
                   if (var5 == 0) {
                      var6 = var2.fields[var4];
                      var7 = Reflection.getInt(var6, (Object)null);
-                     var0.method2631(0);
-                     var0.method2634(var7);
+                     var0.writeByte(0);
+                     var0.writeInt(var7);
                   } else if (var5 == 1) {
                      var6 = var2.fields[var4];
                      Reflection.setInt(var6, (Object)null, var2.intReplaceValues[var4]);
-                     var0.method2631(0);
+                     var0.writeByte(0);
                   } else if (var5 == 2) {
                      var6 = var2.fields[var4];
                      var7 = var6.getModifiers();
-                     var0.method2631(0);
-                     var0.method2634(var7);
+                     var0.writeByte(0);
+                     var0.writeInt(var7);
                   }
 
                   Method var26;
@@ -143,8 +143,8 @@ public class MilliClock extends Clock {
                      if (var5 == 4) {
                         var26 = var2.methods[var4];
                         var7 = var26.getModifiers();
-                        var0.method2631(0);
-                        var0.method2634(var7);
+                        var0.writeByte(0);
+                        var0.writeInt(var7);
                      }
                   } else {
                      var26 = var2.methods[var4];
@@ -158,41 +158,41 @@ public class MilliClock extends Clock {
 
                      Object var12 = Reflection.invoke(var26, (Object)null, var8);
                      if (var12 == null) {
-                        var0.method2631(0);
+                        var0.writeByte(0);
                      } else if (var12 instanceof Number) {
-                        var0.method2631(1);
-                        var0.method2635(((Number)var12).longValue());
+                        var0.writeByte(1);
+                        var0.writeLong(((Number)var12).longValue());
                      } else if (var12 instanceof String) {
-                        var0.method2631(2);
-                        var0.method2636((String)var12);
+                        var0.writeByte(2);
+                        var0.writeString((String)var12);
                      } else {
-                        var0.method2631(4);
+                        var0.writeByte(4);
                      }
                   }
                } catch (ClassNotFoundException var14) {
-                  var0.method2631(-10);
+                  var0.writeByte(-10);
                } catch (InvalidClassException var15) {
-                  var0.method2631(-11);
+                  var0.writeByte(-11);
                } catch (StreamCorruptedException var16) {
-                  var0.method2631(-12);
+                  var0.writeByte(-12);
                } catch (OptionalDataException var17) {
-                  var0.method2631(-13);
+                  var0.writeByte(-13);
                } catch (IllegalAccessException var18) {
-                  var0.method2631(-14);
+                  var0.writeByte(-14);
                } catch (IllegalArgumentException var19) {
-                  var0.method2631(-15);
+                  var0.writeByte(-15);
                } catch (InvocationTargetException var20) {
-                  var0.method2631(-16);
+                  var0.writeByte(-16);
                } catch (SecurityException var21) {
-                  var0.method2631(-17);
+                  var0.writeByte(-17);
                } catch (IOException var22) {
-                  var0.method2631(-18);
+                  var0.writeByte(-18);
                } catch (NullPointerException var23) {
-                  var0.method2631(-19);
+                  var0.writeByte(-19);
                } catch (Exception var24) {
-                  var0.method2631(-20);
+                  var0.writeByte(-20);
                } catch (Throwable var25) {
-                  var0.method2631(-21);
+                  var0.writeByte(-21);
                }
             }
          }

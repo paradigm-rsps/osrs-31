@@ -228,7 +228,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
          class23.hasFocus = volatileFocus;
       }
 
-      this.vmethod1530();
+      this.cycle();
    }
 
    @ObfuscatedName("ni")
@@ -266,7 +266,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
    @ObfuscatedName("k")
    @Export("vmethod1530")
-   protected abstract void vmethod1530();
+   protected abstract void cycle();
 
    @ObfuscatedName("r")
    protected abstract void vmethod1586();

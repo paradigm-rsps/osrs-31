@@ -254,36 +254,36 @@ public class PlatformInfo extends Node {
    @ObfuscatedSignature(
       descriptor = "(Lclass126;)V"
    )
-   public void method3181(Buffer var1) {
-      var1.method2631(6);
-      var1.method2631(this.field2489);
-      var1.method2631(this.field2488 ? 1 : 0);
-      var1.method2631(this.field2486);
-      var1.method2631(this.field2476);
-      var1.method2631(this.field2479);
-      var1.method2631(this.field2480);
-      var1.method2631(this.field2481);
-      var1.method2631(this.field2482 ? 1 : 0);
-      var1.method2778(this.field2485);
-      var1.method2631(this.field2484);
-      var1.method2720(this.field2468);
-      var1.method2778(this.field2474);
-      var1.method2637(this.field2487);
-      var1.method2637(this.field2464);
-      var1.method2637(this.field2477);
-      var1.method2637(this.field2490);
-      var1.method2631(this.field2492);
-      var1.method2778(this.field2491);
-      var1.method2637(this.field2483);
-      var1.method2637(this.field2496);
-      var1.method2631(this.field2493);
-      var1.method2631(this.field2494);
+   public void writePlatformInfo(Buffer var1) {
+      var1.writeByte(6);
+      var1.writeByte(this.field2489);
+      var1.writeByte(this.field2488 ? 1 : 0);
+      var1.writeByte(this.field2486);
+      var1.writeByte(this.field2476);
+      var1.writeByte(this.field2479);
+      var1.writeByte(this.field2480);
+      var1.writeByte(this.field2481);
+      var1.writeByte(this.field2482 ? 1 : 0);
+      var1.writeShort(this.field2485);
+      var1.writeByte(this.field2484);
+      var1.writeMedium(this.field2468);
+      var1.writeShort(this.field2474);
+      var1.writeJagexString(this.field2487);
+      var1.writeJagexString(this.field2464);
+      var1.writeJagexString(this.field2477);
+      var1.writeJagexString(this.field2490);
+      var1.writeByte(this.field2492);
+      var1.writeShort(this.field2491);
+      var1.writeJagexString(this.field2483);
+      var1.writeJagexString(this.field2496);
+      var1.writeByte(this.field2493);
+      var1.writeByte(this.field2494);
 
       for(int var2 = 0; var2 < this.field2497.length; ++var2) {
-         var1.method2634(this.field2497[var2]);
+         var1.writeInt(this.field2497[var2]);
       }
 
-      var1.method2634(this.field2498);
+      var1.writeInt(this.field2498);
    }
 
    @ObfuscatedName("f")

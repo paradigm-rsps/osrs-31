@@ -4,7 +4,6 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import netscape.javascript.JSObject;
 
 @ObfuscatedName("o")
 @Implements("TileItem")
@@ -569,7 +568,7 @@ public final class TileItem extends Renderable {
    }
 
    @ObfuscatedName("v")
-   static final void method175() {
+   static final void loggedOutCycle() {
       try {
          if (Client.field574 == 0) {
             if (GraphicsObject.World_request != null) {
@@ -601,7 +600,7 @@ public final class TileItem extends Renderable {
 
          if (Client.field574 == 2) {
             Client.field519.offset = 0;
-            Client.field519.method2631(14);
+            Client.field519.writeByte(14);
             GraphicsObject.World_request.method1474(Client.field519.array, 0, 1);
             Client.field521.offset = 0;
             Client.field574 = 3;
@@ -640,28 +639,28 @@ public final class TileItem extends Renderable {
          if (Client.field574 == 5) {
             int[] var7 = new int[]{(int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D)};
             Client.field519.offset = 0;
-            Client.field519.method2631(10);
-            Client.field519.method2634(var7[0]);
-            Client.field519.method2634(var7[1]);
-            Client.field519.method2634(var7[2]);
-            Client.field519.method2634(var7[3]);
-            Client.field519.method2635(0L);
-            Client.field519.method2636(Login.field339);
-            Client.field519.method2712(class5.field76, class5.field72);
+            Client.field519.writeByte(10);
+            Client.field519.writeInt(var7[0]);
+            Client.field519.writeInt(var7[1]);
+            Client.field519.writeInt(var7[2]);
+            Client.field519.writeInt(var7[3]);
+            Client.field519.writeLong(0L);
+            Client.field519.writeString(Login.field339);
+            Client.field519.encryptRSA(class5.modulus, class5.exponent);
             Client.field520.offset = 0;
             if (Client.gameState == 40) {
-               Client.field520.method2631(18);
+               Client.field520.writeByte(18);
             } else {
-               Client.field520.method2631(16);
+               Client.field520.writeByte(16);
             }
 
-            Client.field520.method2778(0);
+            Client.field520.writeShort(0);
             var1 = Client.field520.offset;
-            Client.field520.method2634(31);
-            Client.field520.method2802(Client.field519.array, 0, Client.field519.offset);
+            Client.field520.writeInt(31);
+            Client.field520.writeBytes(Client.field519.array, 0, Client.field519.offset);
             var2 = Client.field520.offset;
-            Client.field520.method2636(Login.field338);
-            Client.field520.method2631(Client.isLowDetail ? 1 : 0);
+            Client.field520.writeString(Login.field338);
+            Client.field520.writeByte(Client.isLowDetail ? 1 : 0);
             PacketBuffer var3 = Client.field520;
             byte[] var4 = new byte[24];
 
@@ -683,36 +682,36 @@ public final class TileItem extends Renderable {
                }
             }
 
-            var3.method2802(var4, 0, 24);
-            Buffer var15 = new Buffer(class68.field1274.method3182());
-            class68.field1274.method3181(var15);
-            Client.field520.method2802(var15.array, 0, var15.array.length);
-            Client.field520.method2634(MusicPatchNode.archive1.hash);
-            Client.field520.method2634(class7.archive3.hash);
-            Client.field520.method2634(ClientPreferences.archive2.hash);
-            Client.field520.method2634(class83.archive4.hash);
-            Client.field520.method2634(class7.field102.hash);
-            Client.field520.method2634(class146.archive5.hash);
-            Client.field520.method2634(class40.archive6.hash);
-            Client.field520.method2634(InterfaceParent.archive7.hash);
-            Client.field520.method2634(MouseRecorder.archive8.hash);
-            Client.field520.method2634(class10.archive9.hash);
-            Client.field520.method2634(DynamicObject.archive10.hash);
-            Client.field520.method2634(World.archive11.hash);
-            Client.field520.method2634(AbstractByteArrayCopier.archive12.hash);
-            Client.field520.method2634(class17.archive13.hash);
-            Client.field520.method2634(KeyHandler.archive14.hash);
-            Client.field520.method2634(Tiles.archive15.hash);
-            Client.field520.method2777(var7, var2, Client.field520.offset);
-            Client.field520.method2641(Client.field520.offset - var1);
+            var3.writeBytes(var4, 0, 24);
+           /* Buffer var15 = new Buffer(class68.field1274.method3182());
+            class68.field1274.writePlatformInfo(var15);
+            Client.field520.writeBytes(var15.array, 0, var15.array.length);
+            Client.field520.writeInt(MusicPatchNode.archive1.hash);
+            Client.field520.writeInt(class7.archive3.hash);
+            Client.field520.writeInt(ClientPreferences.archive2.hash);
+            Client.field520.writeInt(class83.archive4.hash);
+            Client.field520.writeInt(class7.field102.hash);
+            Client.field520.writeInt(class146.archive5.hash);
+            Client.field520.writeInt(class40.archive6.hash);
+            Client.field520.writeInt(InterfaceParent.archive7.hash);
+            Client.field520.writeInt(MouseRecorder.archive8.hash);
+            Client.field520.writeInt(class10.archive9.hash);
+            Client.field520.writeInt(DynamicObject.archive10.hash);
+            Client.field520.writeInt(World.archive11.hash);
+            Client.field520.writeInt(AbstractByteArrayCopier.archive12.hash);
+            Client.field520.writeInt(class17.archive13.hash);
+            Client.field520.writeInt(KeyHandler.archive14.hash);
+            Client.field520.writeInt(Tiles.archive15.hash);*/
+            Client.field520.encryptXtea(var7, var2, Client.field520.offset);
+            Client.field520.writeSmartShort(Client.field520.offset - var1);
             GraphicsObject.World_request.method1474(Client.field520.array, 0, Client.field520.offset);
-            Client.field519.method2511(var7);
+            Client.field519.initIsaacRandom(var7);
 
             for(var5 = 0; var5 < 4; ++var5) {
                var7[var5] += 50;
             }
 
-            Client.field521.method2511(var7);
+            Client.field521.initIsaacRandom(var7);
             Client.field574 = 6;
          }
 

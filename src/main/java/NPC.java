@@ -456,8 +456,8 @@ public final class NPC extends Actor {
                   Client.field519.method2512(10);
                   PacketBuffer var6 = Client.field519;
                   int var3 = var0.length() + 1;
-                  var6.method2631(var3);
-                  Client.field519.method2636(var0);
+                  var6.writeByte(var3);
+                  Client.field519.writeString(var0);
                }
             }
          } else {
@@ -486,8 +486,8 @@ public final class NPC extends Actor {
                   Client.field519.method2512(197);
                   PacketBuffer var8 = Client.field519;
                   int var7 = var0.length() + 1;
-                  var8.method2631(var7);
-                  Client.field519.method2636(var0);
+                  var8.writeByte(var7);
+                  Client.field519.writeString(var0);
                   break;
                }
             }

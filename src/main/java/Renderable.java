@@ -1101,7 +1101,7 @@ public abstract class Renderable extends DualNode {
                                     }
 
                                     Client.field519.method2512(163);
-                                    Client.field519.method2634(var39);
+                                    Client.field519.writeInt(var39);
                                     continue;
                                  }
 
@@ -1109,8 +1109,8 @@ public abstract class Renderable extends DualNode {
                                     --var5;
                                     var97 = Interpreter.Interpreter_stringStack[var5];
                                     Client.field519.method2512(104);
-                                    Client.field519.method2631(var97.length() + 1);
-                                    Client.field519.method2636(var97);
+                                    Client.field519.writeByte(var97.length() + 1);
+                                    Client.field519.writeString(var97);
                                     continue;
                                  }
 
@@ -1118,8 +1118,8 @@ public abstract class Renderable extends DualNode {
                                     --var5;
                                     var97 = Interpreter.Interpreter_stringStack[var5];
                                     Client.field519.method2512(180);
-                                    Client.field519.method2631(var97.length() + 1);
-                                    Client.field519.method2636(var97);
+                                    Client.field519.writeByte(var97.length() + 1);
+                                    Client.field519.writeString(var97);
                                     continue;
                                  }
 
@@ -1145,7 +1145,7 @@ public abstract class Renderable extends DualNode {
                                              Client.field519.method2674(Client.field524[var33]);
                                           } else if (var14 == ScriptOpcodes.IF_ICMPNE) {
                                              Client.field519.method2512(254);
-                                             Client.field519.method2778(Client.field524[var33]);
+                                             Client.field519.writeShort(Client.field524[var33]);
                                           }
 
                                           var83 = true;
@@ -1570,8 +1570,8 @@ public abstract class Renderable extends DualNode {
                                              Client.field519.method2512(63);
                                              PacketBuffer var55 = Client.field519;
                                              var33 = var97.length() + 1;
-                                             var55.method2631(var33);
-                                             Client.field519.method2636(var97);
+                                             var55.writeByte(var33);
+                                             Client.field519.writeString(var97);
                                           }
                                           continue;
                                        }
@@ -1613,8 +1613,8 @@ public abstract class Renderable extends DualNode {
                                              Client.field519.method2512(250);
                                              PacketBuffer var38 = Client.field519;
                                              var21 = var97.length() + 1;
-                                             var38.method2631(var21);
-                                             Client.field519.method2636(var97);
+                                             var38.writeByte(var21);
+                                             Client.field519.writeString(var97);
                                              continue label3012;
                                           }
 
@@ -1711,8 +1711,8 @@ public abstract class Renderable extends DualNode {
                                           Client.field519.method2512(8);
                                           PacketBuffer var48 = Client.field519;
                                           var35 = var97.length() + 1;
-                                          var48.method2631(var35);
-                                          Client.field519.method2636(var97);
+                                          var48.writeByte(var35);
+                                          Client.field519.writeString(var97);
                                        }
                                        continue;
                                     }
@@ -2418,9 +2418,9 @@ public abstract class Renderable extends DualNode {
 
                                        Client.field748 = Interpreter.Interpreter_intStack[var4 + 2];
                                        Client.field519.method2512(91);
-                                       Client.field519.method2631(Client.field700);
-                                       Client.field519.method2631(ByteArrayPool.field1945.value);
-                                       Client.field519.method2631(Client.field748);
+                                       Client.field519.writeByte(Client.field700);
+                                       Client.field519.writeByte(ByteArrayPool.field1945.value);
+                                       Client.field519.writeByte(Client.field748);
                                        continue;
                                     }
 
@@ -2433,10 +2433,10 @@ public abstract class Renderable extends DualNode {
                                        Client.field519.method2512(193);
                                        PacketBuffer var62 = Client.field519;
                                        var18 = var97.length() + 1;
-                                       var62.method2631(var18 + 2);
-                                       Client.field519.method2636(var97);
-                                       Client.field519.method2631(var39 - 1);
-                                       Client.field519.method2631(var35);
+                                       var62.writeByte(var18 + 2);
+                                       Client.field519.writeString(var97);
+                                       Client.field519.writeByte(var39 - 1);
+                                       Client.field519.writeByte(var35);
                                        continue;
                                     }
 
@@ -2524,8 +2524,8 @@ public abstract class Renderable extends DualNode {
                                           }
 
                                           Client.field519.method2512(210);
-                                          Client.field519.method2631(var97.length() - 1);
-                                          Client.field519.method2636(var97.substring(2));
+                                          Client.field519.writeByte(var97.length() - 1);
+                                          Client.field519.writeString(var97.substring(2));
                                           continue;
                                        }
 
@@ -2589,10 +2589,10 @@ public abstract class Renderable extends DualNode {
                                        }
 
                                        Client.field519.method2512(46);
-                                       Client.field519.method2631(0);
+                                       Client.field519.writeByte(0);
                                        var18 = Client.field519.offset;
-                                       Client.field519.method2631(var96);
-                                       Client.field519.method2631(var94);
+                                       Client.field519.writeByte(var96);
+                                       Client.field519.writeByte(var94);
                                        MouseRecorder.method167(Client.field519, var97);
                                        Client.field519.method2642(Client.field519.offset - var18);
                                        continue;
@@ -2603,11 +2603,11 @@ public abstract class Renderable extends DualNode {
                                        var97 = Interpreter.Interpreter_stringStack[var5];
                                        var15 = Interpreter.Interpreter_stringStack[var5 + 1];
                                        Client.field519.method2512(215);
-                                       Client.field519.method2778(0);
+                                       Client.field519.writeShort(0);
                                        var35 = Client.field519.offset;
-                                       Client.field519.method2636(var97);
+                                       Client.field519.writeString(var97);
                                        MouseRecorder.method167(Client.field519, var15);
-                                       Client.field519.method2641(Client.field519.offset - var35);
+                                       Client.field519.writeSmartShort(Client.field519.offset - var35);
                                        continue;
                                     }
 
