@@ -269,17 +269,17 @@ public class FileSystem {
          int var30 = Client.field666[var16];
          var23 = Client.field546[var16];
          if (var10 == 0) {
-            Client.rsaBuf.method2512(166);
+            Client.rsaBuf.writeByteOpcode(166);
             Client.rsaBuf.writeByte(var18 + var18 + 3);
          }
 
          if (var10 == 1) {
-            Client.rsaBuf.method2512(76);
+            Client.rsaBuf.writeByteOpcode(76);
             Client.rsaBuf.writeByte(var18 + var18 + 3 + 14);
          }
 
          if (var10 == 2) {
-            Client.rsaBuf.method2512(117);
+            Client.rsaBuf.writeByteOpcode(117);
             Client.rsaBuf.writeByte(var18 + var18 + 3);
          }
 

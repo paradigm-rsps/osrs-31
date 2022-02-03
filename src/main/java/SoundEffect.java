@@ -32,8 +32,8 @@ public class SoundEffect {
          }
       }
 
-      this.start = var1.method2808();
-      this.end = var1.method2808();
+      this.start = var1.readUnsignedShort();
+      this.end = var1.readUnsignedShort();
    }
 
    @ObfuscatedName("w")

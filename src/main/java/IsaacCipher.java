@@ -37,7 +37,7 @@ public final class IsaacCipher {
 
    @ObfuscatedName("i")
    @Export("method2539")
-   final int method2539() {
+   final int nextInt() {
       if (0 == --this.valuesRemaining + 1) {
          this.method2540();
          this.valuesRemaining = 255;

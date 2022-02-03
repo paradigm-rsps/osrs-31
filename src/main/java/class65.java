@@ -26,18 +26,18 @@ public abstract class class65 {
    @ObfuscatedSignature(
       descriptor = "(I)Lclass35;"
    )
-   public static KitDefinition method1455(int var0) {
-      KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.method3474((long)var0);
+   public static KitDefinition readAppearanceStyle(int id) {
+      KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.method3474((long)id);
       if (var1 != null) {
          return var1;
       } else {
-         byte[] var2 = KitDefinition.KitDefinition_archive.method3204(3, var0);
+         byte[] var2 = KitDefinition.KitDefinition_archive.method3204(3, id);
          var1 = new KitDefinition();
          if (var2 != null) {
             var1.method777(new Buffer(var2));
          }
 
-         KitDefinition.KitDefinition_cached.method3473(var1, (long)var0);
+         KitDefinition.KitDefinition_cached.method3473(var1, (long)id);
          return var1;
       }
    }
@@ -61,11 +61,11 @@ public abstract class class65 {
       ++Client.field669;
       if (Client.field669 >= 50 || var0) {
          Client.field669 = 0;
-         if (!Client.field530 && GraphicsObject.World_request != null) {
-            Client.rsaBuf.method2512(217);
+         if (!Client.field530 && GraphicsObject.gameSocket != null) {
+            Client.rsaBuf.writeByteOpcode(217);
 
             try {
-               GraphicsObject.World_request.flush(Client.rsaBuf.array, 0, Client.rsaBuf.offset);
+               GraphicsObject.gameSocket.flush(Client.rsaBuf.array, 0, Client.rsaBuf.offset);
                Client.rsaBuf.offset = 0;
             } catch (IOException var2) {
                Client.field530 = true;

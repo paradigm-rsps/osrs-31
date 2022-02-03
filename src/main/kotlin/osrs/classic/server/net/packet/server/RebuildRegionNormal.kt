@@ -16,10 +16,6 @@ class RebuildRegionNormal(
 ) : Packet {
     companion object : Codec<RebuildRegionNormal> {
         override fun encode(session: Session, packet: RebuildRegionNormal, buf: ByteBuf) {
-            if(packet.gpi) {
-               packet.player.gpi.encode(buf)
-            }
-
             buf.writeShortAdd(packet.player.scene.currentChunk.y)
             buf.writeShortLE(packet.player.scene.currentChunk.x)
 

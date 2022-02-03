@@ -112,38 +112,38 @@ public class class1 {
    )
    static final void method10(int var0, Player var1, int var2) {
       if ((var2 & 4) != 0) {
-         var1.field475 = Client.field521.readUnsignedShort();
-         var1.field446 = Client.field521.readUnsignedShort();
+         var1.field475 = Client.serverPacketBuf.readUnsignedShortLE();
+         var1.field446 = Client.serverPacketBuf.readUnsignedShortLE();
       }
 
       if ((var2 & 512) != 0) {
-         var1.field460 = Client.field521.method2665();
-         var1.field462 = Client.field521.method2665();
-         var1.field439 = Client.field521.readUnsignedByteSub();
-         var1.field463 = Client.field521.readUnsignedByteSub();
-         var1.field456 = Client.field521.method2808() + Client.cycle;
-         var1.field465 = Client.field521.method2786() + Client.cycle;
-         var1.field466 = Client.field521.method2668();
+         var1.field460 = Client.serverPacketBuf.method2665();
+         var1.field462 = Client.serverPacketBuf.method2665();
+         var1.field439 = Client.serverPacketBuf.readUnsignedByteSub();
+         var1.field463 = Client.serverPacketBuf.readUnsignedByteSub();
+         var1.field456 = Client.serverPacketBuf.readUnsignedShort() + Client.cycle;
+         var1.field465 = Client.serverPacketBuf.method2786() + Client.cycle;
+         var1.field466 = Client.serverPacketBuf.readUnsignedByteAdd();
          var1.pathLength = 1;
          var1.field472 = 0;
       }
 
       int var3;
       if ((var2 & 1) != 0) {
-         var3 = Client.field521.readUnsignedByteSub();
+         var3 = Client.serverPacketBuf.readUnsignedByteSub();
          byte[] var4 = new byte[var3];
          Buffer var5 = new Buffer(var4);
-         Client.field521.readBytes(var4, 0, var3);
+         Client.serverPacketBuf.readBytes(var4, 0, var3);
          Client.field608[var0] = var5;
          var1.method17(var5);
       }
 
       int var14;
       if ((var2 & 2) != 0) {
-         var3 = Client.field521.method2808();
-         var14 = Client.field521.method2665();
-         int var15 = Client.field521.readUnsignedByteSub();
-         int var6 = Client.field521.offset;
+         var3 = Client.serverPacketBuf.readUnsignedShort();
+         var14 = Client.serverPacketBuf.method2665();
+         int var15 = Client.serverPacketBuf.readUnsignedByteSub();
+         int var6 = Client.serverPacketBuf.offset;
          if (var1.field35 != null && var1.appearance != null) {
             boolean var7 = false;
             if (var14 <= 1 && ObjectSound.method45(var1.field35)) {
@@ -152,7 +152,7 @@ public class class1 {
 
             if (!var7 && Client.xPadding == 0) {
                Client.field535.offset = 0;
-               Client.field521.readBytes(Client.field535.array, 0, var15);
+               Client.serverPacketBuf.readBytes(Client.field535.array, 0, var15);
                Client.field535.offset = 0;
                Buffer var9 = Client.field535;
 
@@ -188,21 +188,21 @@ public class class1 {
             }
          }
 
-         Client.field521.offset = var6 + var15;
+         Client.serverPacketBuf.offset = var6 + var15;
       }
 
       if ((var2 & 16) != 0) {
-         var3 = Client.field521.method2808();
+         var3 = Client.serverPacketBuf.readUnsignedShort();
          if (var3 == 65535) {
             var3 = -1;
          }
 
-         var14 = Client.field521.method2665();
+         var14 = Client.serverPacketBuf.method2665();
          SpotAnimationDefinition.method770(var1, var3, var14);
       }
 
       if ((var2 & 64) != 0) {
-         var1.field434 = Client.field521.method2653();
+         var1.field434 = Client.serverPacketBuf.method2653();
          if (var1.field434.charAt(0) == '~') {
             var1.field434 = var1.field434.substring(1);
             Login.method239(2, var1.field35, var1.field434);
@@ -216,17 +216,17 @@ public class class1 {
       }
 
       if ((var2 & 8) != 0) {
-         var3 = Client.field521.method2665();
-         var14 = Client.field521.method2665();
+         var3 = Client.serverPacketBuf.method2665();
+         var14 = Client.serverPacketBuf.method2665();
          var1.method277(var3, var14, Client.cycle);
          var1.field441 = Client.cycle + 300;
-         var1.field431 = Client.field521.method2752();
-         var1.field425 = Client.field521.readUnsignedByteSub();
+         var1.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
+         var1.field425 = Client.serverPacketBuf.readUnsignedByteSub();
       }
 
       if ((var2 & 1024) != 0) {
-         var1.spotAnimation = Client.field521.readUnsignedShort();
-         var3 = Client.field521.method2650();
+         var1.spotAnimation = Client.serverPacketBuf.readUnsignedShortLE();
+         var3 = Client.serverPacketBuf.method2650();
          var1.field430 = var3 >> 16;
          var1.field458 = (var3 & '\uffff') + Client.cycle;
          var1.spotAnimationFrame = 0;
@@ -241,16 +241,16 @@ public class class1 {
       }
 
       if ((var2 & 256) != 0) {
-         var3 = Client.field521.method2752();
-         var14 = Client.field521.method2668();
+         var3 = Client.serverPacketBuf.readUnsignedByteNeg();
+         var14 = Client.serverPacketBuf.readUnsignedByteAdd();
          var1.method277(var3, var14, Client.cycle);
          var1.field441 = Client.cycle + 300;
-         var1.field431 = Client.field521.method2752();
-         var1.field425 = Client.field521.method2665();
+         var1.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
+         var1.field425 = Client.serverPacketBuf.method2665();
       }
 
       if ((var2 & 128) != 0) {
-         var1.field444 = Client.field521.method2677();
+         var1.field444 = Client.serverPacketBuf.method2677();
          if (var1.field444 == 65535) {
             var1.field444 = -1;
          }
@@ -307,7 +307,7 @@ public class class1 {
 
    @ObfuscatedName("dd")
    static final void method5(String var0, int var1) {
-      Client.rsaBuf.method2512(173);
+      Client.rsaBuf.writeByteOpcode(173);
       PacketBuffer var2 = Client.rsaBuf;
       int var3 = var0.length() + 1;
       var2.writeByte(var3 + 1);

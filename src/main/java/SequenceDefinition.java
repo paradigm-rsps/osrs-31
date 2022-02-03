@@ -105,24 +105,24 @@ public class SequenceDefinition extends DualNode {
       int var3;
       int var4;
       if (var2 == 1) {
-         var3 = var1.method2808();
+         var3 = var1.readUnsignedShort();
          this.frameLengths = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.frameLengths[var4] = var1.method2808();
+            this.frameLengths[var4] = var1.readUnsignedShort();
          }
 
          this.frameIds = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.frameIds[var4] = var1.method2808();
+            this.frameIds[var4] = var1.readUnsignedShort();
          }
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.frameIds[var4] += var1.method2808() << 16;
+            this.frameIds[var4] += var1.readUnsignedShort() << 16;
          }
       } else if (var2 == 2) {
-         this.frameCount = var1.method2808();
+         this.frameCount = var1.readUnsignedShort();
       } else if (var2 == 3) {
          var3 = var1.method2665();
          this.field883 = new int[var3 + 1];
@@ -137,9 +137,9 @@ public class SequenceDefinition extends DualNode {
       } else if (var2 == 5) {
          this.field895 = var1.method2665();
       } else if (var2 == 6) {
-         this.shield = var1.method2808();
+         this.shield = var1.readUnsignedShort();
       } else if (var2 == 7) {
-         this.weapon = var1.method2808();
+         this.weapon = var1.readUnsignedShort();
       } else if (var2 == 8) {
          this.field898 = var1.method2665();
       } else if (var2 == 9) {
@@ -153,11 +153,11 @@ public class SequenceDefinition extends DualNode {
          this.chatFrameIds = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.chatFrameIds[var4] = var1.method2808();
+            this.chatFrameIds[var4] = var1.readUnsignedShort();
          }
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.chatFrameIds[var4] += var1.method2808() << 16;
+            this.chatFrameIds[var4] += var1.readUnsignedShort() << 16;
          }
       } else if (var2 == 13) {
          var3 = var1.method2665();

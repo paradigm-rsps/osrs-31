@@ -134,7 +134,7 @@ public final class Client extends GameEngine {
    @Export("isDraggingWidget")
    static boolean isDraggingWidget;
    @ObfuscatedName("jn")
-   static int field563;
+   static int privilegeLevel;
    @ObfuscatedName("mv")
    @Export("currentTrackGroupId")
    static int currentTrackGroupId;
@@ -152,14 +152,14 @@ public final class Client extends GameEngine {
    @Export("widgetClickX")
    static int widgetClickX;
    @ObfuscatedName("jx")
-   static boolean field566;
+   static boolean isModerator;
    @ObfuscatedName("jo")
    @Export("widgetClickY")
    static int widgetClickY;
    @ObfuscatedName("jw")
    static int field624;
    @ObfuscatedName("hp")
-   static int field617;
+   static int localPlayerIndex;
    @ObfuscatedName("hk")
    static int field623;
    @ObfuscatedName("jh")
@@ -179,7 +179,7 @@ public final class Client extends GameEngine {
    @ObfuscatedName("ki")
    static int field676;
    @ObfuscatedName("hg")
-   static int field610;
+   static int isMember;
    @ObfuscatedName("hq")
    static int[] field485;
    @ObfuscatedName("oi")
@@ -437,7 +437,7 @@ public final class Client extends GameEngine {
    @ObfuscatedSignature(
       descriptor = "Lclient;"
    )
-   static Client field480;
+   static Client instance;
    @ObfuscatedName("e")
    @Export("ViewportMouse_isInViewport")
    static boolean ViewportMouse_isInViewport = true;
@@ -520,13 +520,13 @@ public final class Client extends GameEngine {
    @ObfuscatedName("bp")
    static int loginStep = 0;
    @ObfuscatedName("bb")
-   static int field512 = 0;
+   static int socketIdleCycles = 0;
    @ObfuscatedName("bc")
-   static int field513 = 0;
+   static int connectedState = 0;
    @ObfuscatedName("by")
    static int field514 = 0;
    @ObfuscatedName("bz")
-   static int field515;
+   static int somePortIncrement;
    @ObfuscatedName("bs")
    @Export("npcs")
    @ObfuscatedSignature(
@@ -553,11 +553,11 @@ public final class Client extends GameEngine {
    @ObfuscatedSignature(
       descriptor = "Lclass115;"
    )
-   static PacketBuffer field521 = new PacketBuffer(5000);
+   static PacketBuffer serverPacketBuf = new PacketBuffer(5000);
    @ObfuscatedName("cq")
-   static int field611 = 0;
+   static int serverPacketLength = 0;
    @ObfuscatedName("cg")
-   static int field523 = 0;
+   static int serverPacketOpcode = 0;
    @ObfuscatedName("ct")
    static int field565 = 0;
    @ObfuscatedName("cc")
@@ -729,8 +729,8 @@ public final class Client extends GameEngine {
       Players_count = 0;
       Players_indices = new int[2048];
       field608 = new Buffer[2048];
-      field617 = -1;
-      field610 = 0;
+      localPlayerIndex = -1;
+      isMember = 0;
       field623 = 0;
       field485 = new int[1000];
       playerMenuOpcodes = new int[]{44, 45, 46, 47, 48, 49, 50, 51};
@@ -770,8 +770,8 @@ public final class Client extends GameEngine {
       meslayerContinueWidget = null;
       field648 = 0;
       field558 = 0;
-      field563 = 0;
-      field566 = false;
+      privilegeLevel = 0;
+      isModerator = false;
       field652 = false;
       field511 = false;
       clickedWidget = null;
@@ -872,9 +872,9 @@ public final class Client extends GameEngine {
 
    @ObfuscatedName("p")
    protected final void vmethod1529() {
-      MouseRecorder.field259 = ViewportMouse_y == 0 ? 'ꩊ' : ViewportMouse_x + '鱀';
-      field515 = ViewportMouse_y == 0 ? 443 : ViewportMouse_x + '썐';
-      class82.currentPort = MouseRecorder.field259;
+      MouseRecorder.OSRS_PORT = ViewportMouse_y == 0 ? 'ꩊ' : ViewportMouse_x + '鱀';
+      somePortIncrement = ViewportMouse_y == 0 ? 443 : ViewportMouse_x + '썐';
+      class82.currentPort = MouseRecorder.OSRS_PORT;
       PlayerComposition.field2718 = class160.field2703;
       Skeleton.field1792 = class160.field2704;
       PlayerComposition.field2716 = class160.field2708;
@@ -1285,7 +1285,7 @@ public final class Client extends GameEngine {
                      class7.method54();
                      ObjectComposition.ObjectDefinition_cachedModelData.method3482();
                      if (ObjectSound.field87 != null) {
-                        rsaBuf.method2512(93);
+                        rsaBuf.writeByteOpcode(93);
                         rsaBuf.writeInt(1057001181);
                      }
 
@@ -1319,7 +1319,7 @@ public final class Client extends GameEngine {
                      EnumComposition.Tiles_lightness = null;
                      class1.Tiles_hueMultiplier = null;
                      Skills.field2053 = null;
-                     rsaBuf.method2512(157);
+                     rsaBuf.writeByteOpcode(157);
                      class22.field376.vmethod1698();
 
                      for(var26 = 0; var26 < 32; ++var26) {
@@ -1496,9 +1496,9 @@ public final class Client extends GameEngine {
       }
 
       BoundaryObject.field1625 = null;
-      if (GraphicsObject.World_request != null) {
-         GraphicsObject.World_request.method1471();
-         GraphicsObject.World_request = null;
+      if (GraphicsObject.gameSocket != null) {
+         GraphicsObject.gameSocket.method1471();
+         GraphicsObject.gameSocket = null;
       }
 
       class17.method184();
@@ -1597,7 +1597,7 @@ public final class Client extends GameEngine {
                            var8 = var18;
                         }
 
-                        NetCache.NetCache_socket.method1496(NetCache.NetCache_responseHeaderBuffer.array, NetCache.NetCache_responseHeaderBuffer.offset, var8);
+                        NetCache.NetCache_socket.read(NetCache.NetCache_responseHeaderBuffer.array, NetCache.NetCache_responseHeaderBuffer.offset, var8);
                         if (NetCache.field2536 != 0) {
                            for(var9 = 0; var9 < var8; ++var9) {
                               NetCache.NetCache_responseHeaderBuffer.array[NetCache.NetCache_responseHeaderBuffer.offset + var9] ^= NetCache.field2536;
@@ -1612,7 +1612,7 @@ public final class Client extends GameEngine {
                         if (MusicPatchPcmStream.NetCache_currentResponse == null) {
                            NetCache.NetCache_responseHeaderBuffer.offset = 0;
                            var9 = NetCache.NetCache_responseHeaderBuffer.method2665();
-                           var10 = NetCache.NetCache_responseHeaderBuffer.method2808();
+                           var10 = NetCache.NetCache_responseHeaderBuffer.readUnsignedShort();
                            int var11 = NetCache.NetCache_responseHeaderBuffer.method2665();
                            var12 = NetCache.NetCache_responseHeaderBuffer.method2650();
                            long var13 = (long)(var10 + (var9 << 16));
@@ -1653,7 +1653,7 @@ public final class Client extends GameEngine {
                            var9 = var18;
                         }
 
-                        NetCache.NetCache_socket.method1496(class68.NetCache_responseArchiveBuffer.array, class68.NetCache_responseArchiveBuffer.offset, var9);
+                        NetCache.NetCache_socket.read(class68.NetCache_responseArchiveBuffer.array, class68.NetCache_responseArchiveBuffer.offset, var9);
                         if (NetCache.field2536 != 0) {
                            for(var10 = 0; var10 < var9; ++var10) {
                               class68.NetCache_responseArchiveBuffer.array[var10 + class68.NetCache_responseArchiveBuffer.offset] ^= NetCache.field2536;
@@ -1824,10 +1824,10 @@ public final class Client extends GameEngine {
       Canvas.js5SocketTask = null;
       Decimator.js5Socket = null;
       js5ConnectState = 0;
-      if (MouseRecorder.field259 == class82.currentPort) {
-         class82.currentPort = field515;
+      if (MouseRecorder.OSRS_PORT == class82.currentPort) {
+         class82.currentPort = somePortIncrement;
       } else {
-         class82.currentPort = MouseRecorder.field259;
+         class82.currentPort = MouseRecorder.OSRS_PORT;
       }
 
       ++js5Errors;
@@ -1958,7 +1958,7 @@ public final class Client extends GameEngine {
                ScriptEvent.method3((String)null, var16);
             }
 
-            field480 = this;
+            instance = this;
             this.method1519(765, 503, 31);
          }
       } catch (RuntimeException var17) {
@@ -2104,7 +2104,7 @@ public final class Client extends GameEngine {
          }
 
          if (var1 == 326) {
-            rsaBuf.method2512(115);
+            rsaBuf.writeByteOpcode(115);
             playerAppearance.method3405(rsaBuf);
             return true;
          } else {

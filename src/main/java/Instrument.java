@@ -402,8 +402,8 @@ public class Instrument {
 
       this.delayTime = var1.method2658();
       this.delayDecay = var1.method2658();
-      this.duration = var1.method2808();
-      this.offset = var1.method2808();
+      this.duration = var1.readUnsignedShort();
+      this.offset = var1.readUnsignedShort();
       this.filter = new AudioFilter();
       this.filterEnvelope = new SoundEnvelope();
       this.filter.method1420(var1, this.filterEnvelope);

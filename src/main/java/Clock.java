@@ -54,8 +54,8 @@ public abstract class Clock {
          Canvas.method1655();
       } else {
          NPC.method260(40);
-         EnumComposition.field978 = GraphicsObject.World_request;
-         GraphicsObject.World_request = null;
+         EnumComposition.field978 = GraphicsObject.gameSocket;
+         GraphicsObject.gameSocket = null;
       }
    }
 }

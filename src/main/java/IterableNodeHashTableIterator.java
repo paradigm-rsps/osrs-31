@@ -90,7 +90,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
    }
 
    @ObfuscatedName("p")
-   public void method1496(byte[] var1, int var2, int var3) throws IOException {
+   public void read(byte[] var1, int var2, int var3) throws IOException {
       if (!this.field1291) {
          while(var3 > 0) {
             int var4 = this.field1292.read(var1, var2, var3);
@@ -251,24 +251,24 @@ public final class IterableNodeHashTableIterator implements Runnable {
       int var9;
       int var10;
       int var11;
-      if (Client.field523 == 220) {
-         var0 = Client.field521.method2786();
-         byte var1 = Client.field521.method2646();
-         var2 = Client.field521.method2665();
+      if (Client.serverPacketOpcode == 220) {
+         var0 = Client.serverPacketBuf.method2786();
+         byte var1 = Client.serverPacketBuf.method2646();
+         var2 = Client.serverPacketBuf.method2665();
          var3 = (var2 >> 4 & 7) + Actor.field478;
          var4 = (var2 & 7) + GraphicsObject.field307;
-         byte var5 = Client.field521.method2671();
-         byte var6 = Client.field521.method2646();
-         var7 = Client.field521.readUnsignedShort();
-         var8 = Client.field521.method2668();
+         byte var5 = Client.serverPacketBuf.method2671();
+         byte var6 = Client.serverPacketBuf.method2646();
+         var7 = Client.serverPacketBuf.readUnsignedShortLE();
+         var8 = Client.serverPacketBuf.readUnsignedByteAdd();
          var9 = var8 >> 2;
          var10 = var8 & 3;
          var11 = Client.field541[var9];
-         byte var12 = Client.field521.method2671();
-         int var13 = Client.field521.method2808();
-         int var14 = Client.field521.method2677();
+         byte var12 = Client.serverPacketBuf.method2671();
+         int var13 = Client.serverPacketBuf.readUnsignedShort();
+         int var14 = Client.serverPacketBuf.method2677();
          Player var15;
-         if (var7 == Client.field617) {
+         if (var7 == Client.localPlayerIndex) {
             var15 = Tiles.localPlayer;
          } else {
             var15 = Client.players[var7];
@@ -327,13 +327,13 @@ public final class IterableNodeHashTableIterator implements Runnable {
       int var35;
       int var36;
       int var37;
-      if (Client.field523 == 182) {
-         var0 = Client.field521.method2677();
-         var35 = Client.field521.readUnsignedByteSub();
+      if (Client.serverPacketOpcode == 182) {
+         var0 = Client.serverPacketBuf.method2677();
+         var35 = Client.serverPacketBuf.readUnsignedByteSub();
          var2 = var35 >> 2;
          var3 = var35 & 3;
          var4 = Client.field541[var2];
-         var36 = Client.field521.method2668();
+         var36 = Client.serverPacketBuf.readUnsignedByteAdd();
          var37 = (var36 >> 4 & 7) + Actor.field478;
          var7 = (var36 & 7) + GraphicsObject.field307;
          if (var37 >= 0 && var7 >= 0 && var37 < 103 && var7 < 103) {
@@ -388,14 +388,14 @@ public final class IterableNodeHashTableIterator implements Runnable {
             }
          }
 
-      } else if (Client.field523 == 64) {
-         var0 = Client.field521.method2668();
+      } else if (Client.serverPacketOpcode == 64) {
+         var0 = Client.serverPacketBuf.readUnsignedByteAdd();
          var35 = (var0 >> 4 & 7) + Actor.field478;
          var2 = (var0 & 7) + GraphicsObject.field307;
-         var3 = Client.field521.method2786();
-         var4 = Client.field521.readUnsignedShort();
-         var36 = Client.field521.method2786();
-         if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104 && var3 != Client.field617) {
+         var3 = Client.serverPacketBuf.method2786();
+         var4 = Client.serverPacketBuf.readUnsignedShortLE();
+         var36 = Client.serverPacketBuf.method2786();
+         if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104 && var3 != Client.localPlayerIndex) {
             TileItem var40 = new TileItem();
             var40.id = var36;
             var40.quantity = var4;
@@ -409,9 +409,9 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
       } else {
          TileItem var32;
-         if (Client.field523 == 89) {
-            var0 = Client.field521.method2786();
-            var35 = Client.field521.method2665();
+         if (Client.serverPacketOpcode == 89) {
+            var0 = Client.serverPacketBuf.method2786();
+            var35 = Client.serverPacketBuf.method2665();
             var2 = (var35 >> 4 & 7) + Actor.field478;
             var3 = (var35 & 7) + GraphicsObject.field307;
             if (var2 >= 0 && var3 >= 0 && var2 < 104 && var3 < 104) {
@@ -433,15 +433,15 @@ public final class IterableNodeHashTableIterator implements Runnable {
             }
 
          } else {
-            if (Client.field523 == 111) {
-               var0 = Client.field521.method2665();
+            if (Client.serverPacketOpcode == 111) {
+               var0 = Client.serverPacketBuf.method2665();
                var35 = (var0 >> 4 & 7) + Actor.field478;
                var2 = (var0 & 7) + GraphicsObject.field307;
-               var3 = Client.field521.method2808();
-               var4 = Client.field521.method2665();
+               var3 = Client.serverPacketBuf.readUnsignedShort();
+               var4 = Client.serverPacketBuf.method2665();
                var36 = var4 >> 4 & 15;
                var37 = var4 & 7;
-               var7 = Client.field521.method2665();
+               var7 = Client.serverPacketBuf.method2665();
                if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                   var8 = var36 + 1;
                   if (Tiles.localPlayer.hitSplatTypes2[0] >= var35 - var8 && Tiles.localPlayer.hitSplatTypes2[0] <= var8 + var35 && Tiles.localPlayer.hitSplatValues2[0] >= var2 - var8 && Tiles.localPlayer.hitSplatValues2[0] <= var2 + var8 && Client.field538 != 0 && var37 > 0 && Client.soundEffectCount < 50) {
@@ -455,12 +455,12 @@ public final class IterableNodeHashTableIterator implements Runnable {
                }
             }
 
-            if (Client.field523 == 70) {
-               var0 = Client.field521.method2677();
-               var35 = Client.field521.method2668();
+            if (Client.serverPacketOpcode == 70) {
+               var0 = Client.serverPacketBuf.method2677();
+               var35 = Client.serverPacketBuf.readUnsignedByteAdd();
                var2 = (var35 >> 4 & 7) + Actor.field478;
                var3 = (var35 & 7) + GraphicsObject.field307;
-               var4 = Client.field521.method2808();
+               var4 = Client.serverPacketBuf.readUnsignedShort();
                if (var2 >= 0 && var3 >= 0 && var2 < 104 && var3 < 104) {
                   var32 = new TileItem();
                   var32.id = var4;
@@ -473,25 +473,25 @@ public final class IterableNodeHashTableIterator implements Runnable {
                   GameObject.method2205(var2, var3);
                }
 
-            } else if (Client.field523 != 103) {
-               if (Client.field523 == 65) {
-                  var0 = Client.field521.method2668();
+            } else if (Client.serverPacketOpcode != 103) {
+               if (Client.serverPacketOpcode == 65) {
+                  var0 = Client.serverPacketBuf.readUnsignedByteAdd();
                   var35 = var0 >> 2;
                   var2 = var0 & 3;
                   var3 = Client.field541[var35];
-                  var4 = Client.field521.method2665();
+                  var4 = Client.serverPacketBuf.method2665();
                   var36 = (var4 >> 4 & 7) + Actor.field478;
                   var37 = (var4 & 7) + GraphicsObject.field307;
-                  var7 = Client.field521.readUnsignedShort();
+                  var7 = Client.serverPacketBuf.readUnsignedShortLE();
                   if (var36 >= 0 && var37 >= 0 && var36 < 104 && var37 < 104) {
                      class1.method14(class22.Client_plane, var36, var37, var3, var7, var35, var2, 0, -1);
                   }
 
-               } else if (Client.field523 == 13) {
-                  var0 = Client.field521.method2668();
+               } else if (Client.serverPacketOpcode == 13) {
+                  var0 = Client.serverPacketBuf.readUnsignedByteAdd();
                   var35 = (var0 >> 4 & 7) + Actor.field478;
                   var2 = (var0 & 7) + GraphicsObject.field307;
-                  var3 = Client.field521.method2668();
+                  var3 = Client.serverPacketBuf.readUnsignedByteAdd();
                   var4 = var3 >> 2;
                   var36 = var3 & 3;
                   var37 = Client.field541[var4];
@@ -499,20 +499,20 @@ public final class IterableNodeHashTableIterator implements Runnable {
                      class1.method14(class22.Client_plane, var35, var2, var37, -1, var4, var36, 0, -1);
                   }
 
-               } else if (Client.field523 == 238) {
-                  var0 = Client.field521.method2665();
+               } else if (Client.serverPacketOpcode == 238) {
+                  var0 = Client.serverPacketBuf.method2665();
                   var35 = (var0 >> 4 & 7) + Actor.field478;
                   var2 = (var0 & 7) + GraphicsObject.field307;
-                  var3 = var35 + Client.field521.method2646();
-                  var4 = var2 + Client.field521.method2646();
-                  var36 = Client.field521.method2648();
-                  var37 = Client.field521.method2808();
-                  var7 = Client.field521.method2665() * 4;
-                  var8 = Client.field521.method2665() * 4;
-                  var9 = Client.field521.method2808();
-                  var10 = Client.field521.method2808();
-                  var11 = Client.field521.method2665();
-                  int var38 = Client.field521.method2665();
+                  var3 = var35 + Client.serverPacketBuf.method2646();
+                  var4 = var2 + Client.serverPacketBuf.method2646();
+                  var36 = Client.serverPacketBuf.method2648();
+                  var37 = Client.serverPacketBuf.readUnsignedShort();
+                  var7 = Client.serverPacketBuf.method2665() * 4;
+                  var8 = Client.serverPacketBuf.method2665() * 4;
+                  var9 = Client.serverPacketBuf.readUnsignedShort();
+                  var10 = Client.serverPacketBuf.readUnsignedShort();
+                  var11 = Client.serverPacketBuf.method2665();
+                  int var38 = Client.serverPacketBuf.method2665();
                   if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104 && var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104 && var37 != 65535) {
                      var35 = var35 * 128 + 64;
                      var2 = var2 * 128 + 64;
@@ -523,13 +523,13 @@ public final class IterableNodeHashTableIterator implements Runnable {
                      Client.field619.method3528(var30);
                   }
 
-               } else if (Client.field523 == 41) {
-                  var0 = Client.field521.method2665();
+               } else if (Client.serverPacketOpcode == 41) {
+                  var0 = Client.serverPacketBuf.method2665();
                   var35 = (var0 >> 4 & 7) + Actor.field478;
                   var2 = (var0 & 7) + GraphicsObject.field307;
-                  var3 = Client.field521.method2808();
-                  var4 = Client.field521.method2665();
-                  var36 = Client.field521.method2808();
+                  var3 = Client.serverPacketBuf.readUnsignedShort();
+                  var4 = Client.serverPacketBuf.method2665();
+                  var36 = Client.serverPacketBuf.readUnsignedShort();
                   if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                      var35 = var35 * 128 + 64;
                      var2 = var2 * 128 + 64;
@@ -539,12 +539,12 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
                }
             } else {
-               var0 = Client.field521.method2665();
+               var0 = Client.serverPacketBuf.method2665();
                var35 = (var0 >> 4 & 7) + Actor.field478;
                var2 = (var0 & 7) + GraphicsObject.field307;
-               var3 = Client.field521.method2808();
-               var4 = Client.field521.method2808();
-               var36 = Client.field521.method2808();
+               var3 = Client.serverPacketBuf.readUnsignedShort();
+               var4 = Client.serverPacketBuf.readUnsignedShort();
+               var36 = Client.serverPacketBuf.readUnsignedShort();
                if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                   NodeDeque var29 = Client.groundItems[class22.Client_plane][var35][var2];
                   if (var29 != null) {

@@ -75,7 +75,7 @@ public class Frames extends DualNode {
 
          if (var3 == 1) {
             if (Tile.method2298(var1, var2, var4)) {
-               Client.rsaBuf.method2512(29);
+               Client.rsaBuf.writeByteOpcode(29);
                Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
                Client.rsaBuf.method2673(var2 + baseY);
                Client.rsaBuf.writeShort(class82.selectedItemSlot);
@@ -85,7 +85,7 @@ public class Frames extends DualNode {
             }
          } else if (var3 == 2) {
             if (Tile.method2298(var1, var2, var4)) {
-               Client.rsaBuf.method2512(164);
+               Client.rsaBuf.writeByteOpcode(164);
                Client.rsaBuf.writeShort(var2 + baseY);
                Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
                Client.rsaBuf.method2768(Client.selectedSpellChildIndex);
@@ -94,25 +94,25 @@ public class Frames extends DualNode {
             }
          } else if (var3 == 3) {
             Tile.method2298(var1, var2, var4);
-            Client.rsaBuf.method2512(119);
+            Client.rsaBuf.writeByteOpcode(119);
             Client.rsaBuf.method2674(var4 >> 14 & 32767);
             Client.rsaBuf.method2673(var2 + baseY);
             Client.rsaBuf.writeShort(var1 + FaceNormal.baseX);
          } else if (var3 == 4) {
             Tile.method2298(var1, var2, var4);
-            Client.rsaBuf.method2512(35);
+            Client.rsaBuf.writeByteOpcode(35);
             Client.rsaBuf.method2768(var2 + baseY);
             Client.rsaBuf.method2768(var1 + FaceNormal.baseX);
             Client.rsaBuf.method2673(var4 >> 14 & 32767);
          } else if (var3 == 5) {
             Tile.method2298(var1, var2, var4);
-            Client.rsaBuf.method2512(53);
+            Client.rsaBuf.writeByteOpcode(53);
             Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
             Client.rsaBuf.method2673(var4 >> 14 & 32767);
             Client.rsaBuf.writeShort(var2 + baseY);
          } else if (var3 == 6) {
             Tile.method2298(var1, var2, var4);
-            Client.rsaBuf.method2512(47);
+            Client.rsaBuf.writeByteOpcode(47);
             Client.rsaBuf.method2674(var1 + FaceNormal.baseX);
             Client.rsaBuf.method2768(var2 + baseY);
             Client.rsaBuf.writeShort(var4 >> 14 & 32767);
@@ -126,7 +126,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(130);
+                  Client.rsaBuf.writeByteOpcode(130);
                   Client.rsaBuf.method2768(var4);
                   Client.rsaBuf.method2768(DynamicObject.selectedItemId);
                   Client.rsaBuf.writeShort(class82.selectedItemSlot);
@@ -140,7 +140,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(101);
+                  Client.rsaBuf.writeByteOpcode(101);
                   Client.rsaBuf.writeInt(GraphicsObject.field308);
                   Client.rsaBuf.method2768(var4);
                   Client.rsaBuf.method2673(Client.selectedSpellChildIndex);
@@ -153,7 +153,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(24);
+                  Client.rsaBuf.writeByteOpcode(24);
                   Client.rsaBuf.writeShort(var4);
                }
             } else if (var3 == 10) {
@@ -164,7 +164,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(31);
+                  Client.rsaBuf.writeByteOpcode(31);
                   Client.rsaBuf.writeShort(var4);
                }
             } else if (var3 == 11) {
@@ -175,7 +175,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(169);
+                  Client.rsaBuf.writeByteOpcode(169);
                   Client.rsaBuf.method2673(var4);
                }
             } else if (var3 == 12) {
@@ -186,7 +186,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(106);
+                  Client.rsaBuf.writeByteOpcode(106);
                   Client.rsaBuf.method2673(var4);
                }
             } else if (var3 == 13) {
@@ -197,7 +197,7 @@ public class Frames extends DualNode {
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
                   Client.mouseCrossState = 0;
-                  Client.rsaBuf.method2512(235);
+                  Client.rsaBuf.writeByteOpcode(235);
                   Client.rsaBuf.writeShort(var4);
                }
             } else {
@@ -210,7 +210,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(251);
+                     Client.rsaBuf.writeByteOpcode(251);
                      Client.rsaBuf.method2673(DynamicObject.selectedItemId);
                      Client.rsaBuf.method2673(var4);
                      Client.rsaBuf.writeInt(PcmPlayer.selectedItemWidget);
@@ -224,7 +224,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(252);
+                     Client.rsaBuf.writeByteOpcode(252);
                      Client.rsaBuf.writeInt(GraphicsObject.field308);
                      Client.rsaBuf.method2768(Client.selectedSpellChildIndex);
                      Client.rsaBuf.method2673(var4);
@@ -241,7 +241,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(78);
+                     Client.rsaBuf.writeByteOpcode(78);
                      Client.rsaBuf.method2768(DynamicObject.selectedItemId);
                      Client.rsaBuf.method2768(class82.selectedItemSlot);
                      Client.rsaBuf.method2768(var2 + baseY);
@@ -258,7 +258,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(189);
+                     Client.rsaBuf.writeByteOpcode(189);
                      Client.rsaBuf.writeInt(GraphicsObject.field308);
                      Client.rsaBuf.writeShort(var2 + baseY);
                      Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
@@ -274,7 +274,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(174);
+                     Client.rsaBuf.writeByteOpcode(174);
                      Client.rsaBuf.method2673(var2 + baseY);
                      Client.rsaBuf.method2674(var1 + FaceNormal.baseX);
                      Client.rsaBuf.writeShort(var4);
@@ -288,7 +288,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(162);
+                     Client.rsaBuf.writeByteOpcode(162);
                      Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
                      Client.rsaBuf.method2768(var4);
                      Client.rsaBuf.method2674(var2 + baseY);
@@ -302,7 +302,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(69);
+                     Client.rsaBuf.writeByteOpcode(69);
                      Client.rsaBuf.writeShort(var4);
                      Client.rsaBuf.method2674(var1 + FaceNormal.baseX);
                      Client.rsaBuf.method2673(var2 + baseY);
@@ -316,7 +316,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(120);
+                     Client.rsaBuf.writeByteOpcode(120);
                      Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
                      Client.rsaBuf.writeShort(var4);
                      Client.rsaBuf.method2768(var2 + baseY);
@@ -330,7 +330,7 @@ public class Frames extends DualNode {
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
                      Client.mouseCrossState = 0;
-                     Client.rsaBuf.method2512(223);
+                     Client.rsaBuf.writeByteOpcode(223);
                      Client.rsaBuf.method2673(var1 + FaceNormal.baseX);
                      Client.rsaBuf.method2674(var2 + baseY);
                      Client.rsaBuf.method2768(var4);
@@ -346,7 +346,7 @@ public class Frames extends DualNode {
                         }
 
                         if (var12) {
-                           Client.rsaBuf.method2512(172);
+                           Client.rsaBuf.writeByteOpcode(172);
                            Client.rsaBuf.writeInt(var2);
                         }
                      } else {
@@ -386,7 +386,7 @@ public class Frames extends DualNode {
                         }
 
                         if (var3 == 26) {
-                           Client.rsaBuf.method2512(255);
+                           Client.rsaBuf.writeByteOpcode(255);
 
                            for(InterfaceParent var19 = (InterfaceParent)Client.interfaceParents.method3515(); var19 != null; var19 = (InterfaceParent)Client.interfaceParents.method3516()) {
                               if (var19.field56 == 0 || var19.field56 == 3) {
@@ -399,7 +399,7 @@ public class Frames extends DualNode {
                               Client.meslayerContinueWidget = null;
                            }
                         } else if (var3 == 28) {
-                           Client.rsaBuf.method2512(172);
+                           Client.rsaBuf.writeByteOpcode(172);
                            Client.rsaBuf.writeInt(var2);
                            var18 = class130.method2851(var2);
                            if (var18.cs1Instructions != null && var18.cs1Instructions[0][0] == 5) {
@@ -408,7 +408,7 @@ public class Frames extends DualNode {
                               PendingSpawn.method243(var21);
                            }
                         } else if (var3 == 29) {
-                           Client.rsaBuf.method2512(172);
+                           Client.rsaBuf.writeByteOpcode(172);
                            Client.rsaBuf.writeInt(var2);
                            var18 = class130.method2851(var2);
                            if (var18.cs1Instructions != null && var18.cs1Instructions[0][0] == 5) {
@@ -420,14 +420,14 @@ public class Frames extends DualNode {
                            }
                         } else if (var3 == 30) {
                            if (Client.meslayerContinueWidget == null) {
-                              Client.rsaBuf.method2512(50);
+                              Client.rsaBuf.writeByteOpcode(50);
                               Client.rsaBuf.writeInt(var2);
                               Client.rsaBuf.writeShort(var1);
                               Client.meslayerContinueWidget = AbstractArchive.method3230(var2, var1);
                               class82.method1754(Client.meslayerContinueWidget);
                            }
                         } else if (var3 == 31) {
-                           Client.rsaBuf.method2512(43);
+                           Client.rsaBuf.writeByteOpcode(43);
                            Client.rsaBuf.method2682(PcmPlayer.selectedItemWidget);
                            Client.rsaBuf.writeShort(DynamicObject.selectedItemId);
                            Client.rsaBuf.method2768(class82.selectedItemSlot);
@@ -438,7 +438,7 @@ public class Frames extends DualNode {
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 32) {
-                           Client.rsaBuf.method2512(112);
+                           Client.rsaBuf.writeByteOpcode(112);
                            Client.rsaBuf.writeShort(var1);
                            Client.rsaBuf.method2768(Client.selectedSpellChildIndex);
                            Client.rsaBuf.method2674(var4);
@@ -448,7 +448,7 @@ public class Frames extends DualNode {
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 33) {
-                           Client.rsaBuf.method2512(74);
+                           Client.rsaBuf.writeByteOpcode(74);
                            Client.rsaBuf.writeShort(var1);
                            Client.rsaBuf.method2684(var2);
                            Client.rsaBuf.method2768(var4);
@@ -456,7 +456,7 @@ public class Frames extends DualNode {
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 34) {
-                           Client.rsaBuf.method2512(226);
+                           Client.rsaBuf.writeByteOpcode(226);
                            Client.rsaBuf.writeShort(var1);
                            Client.rsaBuf.method2684(var2);
                            Client.rsaBuf.method2768(var4);
@@ -464,7 +464,7 @@ public class Frames extends DualNode {
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 35) {
-                           Client.rsaBuf.method2512(175);
+                           Client.rsaBuf.writeByteOpcode(175);
                            Client.rsaBuf.method2768(var1);
                            Client.rsaBuf.writeShort(var4);
                            Client.rsaBuf.method2684(var2);
@@ -472,7 +472,7 @@ public class Frames extends DualNode {
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 36) {
-                           Client.rsaBuf.method2512(213);
+                           Client.rsaBuf.writeByteOpcode(213);
                            Client.rsaBuf.writeShort(var4);
                            Client.rsaBuf.method2768(var1);
                            Client.rsaBuf.method2684(var2);
@@ -480,7 +480,7 @@ public class Frames extends DualNode {
                            Projectile.field161 = class130.method2851(var2);
                            Client.field595 = var1;
                         } else if (var3 == 37) {
-                           Client.rsaBuf.method2512(184);
+                           Client.rsaBuf.writeByteOpcode(184);
                            Client.rsaBuf.method2768(var4);
                            Client.rsaBuf.method2673(var1);
                            Client.rsaBuf.writeInt(var2);
@@ -505,7 +505,7 @@ public class Frames extends DualNode {
                            }
 
                            if (var3 == 39) {
-                              Client.rsaBuf.method2512(105);
+                              Client.rsaBuf.writeByteOpcode(105);
                               Client.rsaBuf.method2674(var1);
                               Client.rsaBuf.method2683(var2);
                               Client.rsaBuf.writeShort(var4);
@@ -513,7 +513,7 @@ public class Frames extends DualNode {
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
                            } else if (var3 == 40) {
-                              Client.rsaBuf.method2512(45);
+                              Client.rsaBuf.writeByteOpcode(45);
                               Client.rsaBuf.method2674(var1);
                               Client.rsaBuf.method2684(var2);
                               Client.rsaBuf.method2674(var4);
@@ -521,7 +521,7 @@ public class Frames extends DualNode {
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
                            } else if (var3 == 41) {
-                              Client.rsaBuf.method2512(94);
+                              Client.rsaBuf.writeByteOpcode(94);
                               Client.rsaBuf.method2684(var2);
                               Client.rsaBuf.method2674(var1);
                               Client.rsaBuf.writeShort(var4);
@@ -529,7 +529,7 @@ public class Frames extends DualNode {
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
                            } else if (var3 == 42) {
-                              Client.rsaBuf.method2512(131);
+                              Client.rsaBuf.writeByteOpcode(131);
                               Client.rsaBuf.method2673(var4);
                               Client.rsaBuf.method2673(var1);
                               Client.rsaBuf.method2682(var2);
@@ -537,7 +537,7 @@ public class Frames extends DualNode {
                               Projectile.field161 = class130.method2851(var2);
                               Client.field595 = var1;
                            } else if (var3 == 43) {
-                              Client.rsaBuf.method2512(44);
+                              Client.rsaBuf.writeByteOpcode(44);
                               Client.rsaBuf.method2684(var2);
                               Client.rsaBuf.method2673(var4);
                               Client.rsaBuf.writeShort(var1);
@@ -552,7 +552,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(2);
+                                 Client.rsaBuf.writeByteOpcode(2);
                                  Client.rsaBuf.method2768(var4);
                               }
                            } else if (var3 == 45) {
@@ -563,7 +563,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(177);
+                                 Client.rsaBuf.writeByteOpcode(177);
                                  Client.rsaBuf.method2674(var4);
                               }
                            } else if (var3 == 46) {
@@ -574,7 +574,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(152);
+                                 Client.rsaBuf.writeByteOpcode(152);
                                  Client.rsaBuf.method2768(var4);
                               }
                            } else if (var3 == 47) {
@@ -585,7 +585,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(142);
+                                 Client.rsaBuf.writeByteOpcode(142);
                                  Client.rsaBuf.method2768(var4);
                               }
                            } else if (var3 == 48) {
@@ -596,7 +596,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(0);
+                                 Client.rsaBuf.writeByteOpcode(0);
                                  Client.rsaBuf.method2674(var4);
                               }
                            } else if (var3 == 49) {
@@ -607,7 +607,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(198);
+                                 Client.rsaBuf.writeByteOpcode(198);
                                  Client.rsaBuf.method2674(var4);
                               }
                            } else if (var3 == 50) {
@@ -618,7 +618,7 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(254);
+                                 Client.rsaBuf.writeByteOpcode(254);
                                  Client.rsaBuf.writeShort(var4);
                               }
                            } else if (var3 == 51) {
@@ -629,14 +629,14 @@ public class Frames extends DualNode {
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
                                  Client.mouseCrossState = 0;
-                                 Client.rsaBuf.method2512(98);
+                                 Client.rsaBuf.writeByteOpcode(98);
                                  Client.rsaBuf.method2673(var4);
                               }
                            } else {
                               label567: {
                                  if (var3 != 57) {
                                     if (var3 == 58) {
-                                       Client.rsaBuf.method2512(150);
+                                       Client.rsaBuf.writeByteOpcode(150);
                                        Client.rsaBuf.method2673(var1);
                                        Client.rsaBuf.method2674(Client.selectedSpellChildIndex);
                                        Client.rsaBuf.method2682(GraphicsObject.field308);
@@ -646,7 +646,7 @@ public class Frames extends DualNode {
 
                                     if (var3 == 1001) {
                                        Tile.method2298(var1, var2, var4);
-                                       Client.rsaBuf.method2512(38);
+                                       Client.rsaBuf.writeByteOpcode(38);
                                        Client.rsaBuf.method2674(var1 + FaceNormal.baseX);
                                        Client.rsaBuf.method2674(var4 >> 14 & 32767);
                                        Client.rsaBuf.method2674(var2 + baseY);
@@ -658,7 +658,7 @@ public class Frames extends DualNode {
                                        Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                        Client.mouseCrossColor = 2;
                                        Client.mouseCrossState = 0;
-                                       Client.rsaBuf.method2512(84);
+                                       Client.rsaBuf.writeByteOpcode(84);
                                        Client.rsaBuf.method2768(var4 >> 14 & 32767);
                                        break label567;
                                     }
@@ -676,7 +676,7 @@ public class Frames extends DualNode {
                                           }
 
                                           if (var15 != null) {
-                                             Client.rsaBuf.method2512(75);
+                                             Client.rsaBuf.writeByteOpcode(75);
                                              Client.rsaBuf.method2674(var15.id);
                                           }
                                        }
@@ -688,7 +688,7 @@ public class Frames extends DualNode {
                                        Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                        Client.mouseCrossColor = 2;
                                        Client.mouseCrossState = 0;
-                                       Client.rsaBuf.method2512(128);
+                                       Client.rsaBuf.writeByteOpcode(128);
                                        Client.rsaBuf.writeShort(var4);
                                        break label567;
                                     }
@@ -698,7 +698,7 @@ public class Frames extends DualNode {
                                        if (var18 != null && var18.itemQuantities[var1] >= 100000) {
                                           Login.method239(0, "", var18.itemQuantities[var1] + " x " + class27.method571(var4).name);
                                        } else {
-                                          Client.rsaBuf.method2512(128);
+                                          Client.rsaBuf.writeByteOpcode(128);
                                           Client.rsaBuf.writeShort(var4);
                                        }
 
@@ -736,61 +736,61 @@ public class Frames extends DualNode {
                                        boolean var8 = (var9 >> var10 + 1 & 1) != 0;
                                        if (var8) {
                                           if (var4 == 1) {
-                                             Client.rsaBuf.method2512(147);
+                                             Client.rsaBuf.writeByteOpcode(147);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 2) {
-                                             Client.rsaBuf.method2512(231);
+                                             Client.rsaBuf.writeByteOpcode(231);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 3) {
-                                             Client.rsaBuf.method2512(187);
+                                             Client.rsaBuf.writeByteOpcode(187);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 4) {
-                                             Client.rsaBuf.method2512(20);
+                                             Client.rsaBuf.writeByteOpcode(20);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 5) {
-                                             Client.rsaBuf.method2512(236);
+                                             Client.rsaBuf.writeByteOpcode(236);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 6) {
-                                             Client.rsaBuf.method2512(242);
+                                             Client.rsaBuf.writeByteOpcode(242);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 7) {
-                                             Client.rsaBuf.method2512(6);
+                                             Client.rsaBuf.writeByteOpcode(6);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 8) {
-                                             Client.rsaBuf.method2512(192);
+                                             Client.rsaBuf.writeByteOpcode(192);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 9) {
-                                             Client.rsaBuf.method2512(171);
+                                             Client.rsaBuf.writeByteOpcode(171);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }
 
                                           if (var4 == 10) {
-                                             Client.rsaBuf.method2512(188);
+                                             Client.rsaBuf.writeByteOpcode(188);
                                              Client.rsaBuf.writeInt(var2);
                                              Client.rsaBuf.writeShort(var1);
                                           }

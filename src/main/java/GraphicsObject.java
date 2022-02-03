@@ -18,7 +18,7 @@ public final class GraphicsObject extends Renderable {
    @ObfuscatedSignature(
       descriptor = "Lclass69;"
    )
-   static IterableNodeHashTableIterator World_request;
+   static IterableNodeHashTableIterator gameSocket;
    @ObfuscatedName("dl")
    static int field307;
    @ObfuscatedName("i")

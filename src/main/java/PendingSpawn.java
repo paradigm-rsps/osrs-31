@@ -49,32 +49,32 @@ public final class PendingSpawn extends Node {
    static void method245(byte[] var0) {
       Buffer var1 = new Buffer(var0);
       var1.offset = var0.length - 2;
-      class83.SpriteBuffer_spriteCount = var1.method2808();
+      class83.SpriteBuffer_spriteCount = var1.readUnsignedShort();
       class83.SpriteBuffer_xOffsets = new int[class83.SpriteBuffer_spriteCount];
       class165.SpriteBuffer_yOffsets = new int[class83.SpriteBuffer_spriteCount];
       class112.SpriteBuffer_spriteWidths = new int[class83.SpriteBuffer_spriteCount];
       class83.SpriteBuffer_spriteHeights = new int[class83.SpriteBuffer_spriteCount];
       class145.SpriteBuffer_pixels = new byte[class83.SpriteBuffer_spriteCount][];
       var1.offset = var0.length - 7 - class83.SpriteBuffer_spriteCount * 8;
-      class83.SpriteBuffer_spriteWidth = var1.method2808();
-      class83.SpriteBuffer_spriteHeight = var1.method2808();
+      class83.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+      class83.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
       int var2 = (var1.method2665() & 255) + 1;
 
       int var3;
       for(var3 = 0; var3 < class83.SpriteBuffer_spriteCount; ++var3) {
-         class83.SpriteBuffer_xOffsets[var3] = var1.method2808();
+         class83.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
       }
 
       for(var3 = 0; var3 < class83.SpriteBuffer_spriteCount; ++var3) {
-         class165.SpriteBuffer_yOffsets[var3] = var1.method2808();
+         class165.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
       }
 
       for(var3 = 0; var3 < class83.SpriteBuffer_spriteCount; ++var3) {
-         class112.SpriteBuffer_spriteWidths[var3] = var1.method2808();
+         class112.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
       }
 
       for(var3 = 0; var3 < class83.SpriteBuffer_spriteCount; ++var3) {
-         class83.SpriteBuffer_spriteHeights[var3] = var1.method2808();
+         class83.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
       }
 
       var1.offset = var0.length - 7 - class83.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;

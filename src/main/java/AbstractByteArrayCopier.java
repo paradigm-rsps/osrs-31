@@ -96,7 +96,7 @@ public abstract class AbstractByteArrayCopier {
 
          if (var0.field444 >= 32768) {
             var2 = var0.field444 - '耀';
-            if (var2 == Client.field617) {
+            if (var2 == Client.localPlayerIndex) {
                var2 = 2047;
             }
 

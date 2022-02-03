@@ -153,7 +153,7 @@ public class Interpreter {
                if (var4.targetIndex < 0) {
                   var6 = -var4.targetIndex - 1;
                   Player var44;
-                  if (var6 == Client.field617) {
+                  if (var6 == Client.localPlayerIndex) {
                      var44 = Tiles.localPlayer;
                   } else {
                      var44 = Client.players[var6];

@@ -227,7 +227,7 @@ public class ObjectComposition extends DualNode {
                this.modelIds = new int[var3];
 
                for(var4 = 0; var4 < var3; ++var4) {
-                  this.modelIds[var4] = var1.method2808();
+                  this.modelIds[var4] = var1.readUnsignedShort();
                   this.models[var4] = var1.method2665();
                }
             }
@@ -244,7 +244,7 @@ public class ObjectComposition extends DualNode {
                this.modelIds = new int[var3];
 
                for(var4 = 0; var4 < var3; ++var4) {
-                  this.modelIds[var4] = var1.method2808();
+                  this.modelIds[var4] = var1.readUnsignedShort();
                }
             }
          }
@@ -266,7 +266,7 @@ public class ObjectComposition extends DualNode {
       } else if (var2 == 23) {
          this.modelClipped = true;
       } else if (var2 == 24) {
-         this.animationId = var1.method2808();
+         this.animationId = var1.readUnsignedShort();
          if (this.animationId == 65535) {
             this.animationId = -1;
          }
@@ -289,8 +289,8 @@ public class ObjectComposition extends DualNode {
          this.recolorTo = new short[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.recolorFrom[var4] = (short)var1.method2808();
-            this.recolorTo[var4] = (short)var1.method2808();
+            this.recolorFrom[var4] = (short)var1.readUnsignedShort();
+            this.recolorTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 41) {
          var3 = var1.method2665();
@@ -298,23 +298,23 @@ public class ObjectComposition extends DualNode {
          this.retextureTo = new short[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.retextureFrom[var4] = (short)var1.method2808();
-            this.retextureTo[var4] = (short)var1.method2808();
+            this.retextureFrom[var4] = (short)var1.readUnsignedShort();
+            this.retextureTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 60) {
-         this.field848 = var1.method2808();
+         this.field848 = var1.readUnsignedShort();
       } else if (var2 == 62) {
          this.isRotated = true;
       } else if (var2 == 64) {
          this.clipped = false;
       } else if (var2 == 65) {
-         this.modelSizeX = var1.method2808();
+         this.modelSizeX = var1.readUnsignedShort();
       } else if (var2 == 66) {
-         this.modelHeight = var1.method2808();
+         this.modelHeight = var1.readUnsignedShort();
       } else if (var2 == 67) {
-         this.modelSizeY = var1.method2808();
+         this.modelSizeY = var1.readUnsignedShort();
       } else if (var2 == 68) {
-         this.mapSceneId = var1.method2808();
+         this.mapSceneId = var1.readUnsignedShort();
       } else if (var2 == 69) {
          this.field858 = var1.method2665();
       } else if (var2 == 70) {
@@ -330,12 +330,12 @@ public class ObjectComposition extends DualNode {
       } else if (var2 == 75) {
          this.int3 = var1.method2665();
       } else if (var2 == 77) {
-         this.transformVarbit = var1.method2808();
+         this.transformVarbit = var1.readUnsignedShort();
          if (this.transformVarbit == 65535) {
             this.transformVarbit = -1;
          }
 
-         this.transformVarp = var1.method2808();
+         this.transformVarp = var1.readUnsignedShort();
          if (this.transformVarp == 65535) {
             this.transformVarp = -1;
          }
@@ -344,23 +344,23 @@ public class ObjectComposition extends DualNode {
          this.transforms = new int[var3 + 1];
 
          for(var4 = 0; var4 <= var3; ++var4) {
-            this.transforms[var4] = var1.method2808();
+            this.transforms[var4] = var1.readUnsignedShort();
             if (this.transforms[var4] == 65535) {
                this.transforms[var4] = -1;
             }
          }
       } else if (var2 == 78) {
-         this.ambientSoundId = var1.method2808();
+         this.ambientSoundId = var1.readUnsignedShort();
          this.field841 = var1.method2665();
       } else if (var2 == 79) {
-         this.int5 = var1.method2808();
-         this.int7 = var1.method2808();
+         this.int5 = var1.readUnsignedShort();
+         this.int7 = var1.readUnsignedShort();
          this.field841 = var1.method2665();
          var3 = var1.method2665();
          this.soundEffectIds = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.soundEffectIds[var4] = var1.method2808();
+            this.soundEffectIds[var4] = var1.readUnsignedShort();
          }
       } else if (var2 == 81) {
          this.clipType = var1.method2665() * 256;

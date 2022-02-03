@@ -571,14 +571,14 @@ public final class TileItem extends Renderable {
    static final void loggedOutCycle() {
       try {
          if (Client.loginStep == 0) {
-            if (GraphicsObject.World_request != null) {
-               GraphicsObject.World_request.method1471();
-               GraphicsObject.World_request = null;
+            if (GraphicsObject.gameSocket != null) {
+               GraphicsObject.gameSocket.method1471();
+               GraphicsObject.gameSocket = null;
             }
 
             StudioGame.field2087 = null;
             Client.field530 = false;
-            Client.field512 = 0;
+            Client.socketIdleCycles = 0;
             Client.loginStep = 1;
          }
 
@@ -592,7 +592,7 @@ public final class TileItem extends Renderable {
             }
 
             if (StudioGame.field2087.status == 1) {
-               GraphicsObject.World_request = new IterableNodeHashTableIterator((Socket)StudioGame.field2087.result, ItemContainer.taskHandler);
+               GraphicsObject.gameSocket = new IterableNodeHashTableIterator((Socket)StudioGame.field2087.result, ItemContainer.taskHandler);
                StudioGame.field2087 = null;
                Client.loginStep = 2;
             }
@@ -601,8 +601,8 @@ public final class TileItem extends Renderable {
          if (Client.loginStep == 2) {
             Client.rsaBuf.offset = 0;
             Client.rsaBuf.writeByte(14);
-            GraphicsObject.World_request.flush(Client.rsaBuf.array, 0, 1);
-            Client.field521.offset = 0;
+            GraphicsObject.gameSocket.flush(Client.rsaBuf.array, 0, 1);
+            Client.serverPacketBuf.offset = 0;
             Client.loginStep = 3;
          }
 
@@ -616,7 +616,7 @@ public final class TileItem extends Renderable {
                class27.pcmPlayer1.method1228();
             }
 
-            responseState = GraphicsObject.World_request.readByte();
+            responseState = GraphicsObject.gameSocket.readByte();
             if (Client.pcmPlayer0 != null) {
                Client.pcmPlayer0.method1228();
             }
@@ -630,7 +630,7 @@ public final class TileItem extends Renderable {
                return;
             }
 
-            Client.field521.offset = 0;
+            Client.serverPacketBuf.offset = 0;
             Client.loginStep = 5;
          }
 
@@ -704,19 +704,19 @@ public final class TileItem extends Renderable {
             Client.field520.writeInt(Tiles.archive15.hash);*/
             Client.loginBuf.encryptXtea(randomKeys, var2, Client.loginBuf.offset);
             Client.loginBuf.writeSmartShort(Client.loginBuf.offset - var1);
-            GraphicsObject.World_request.flush(Client.loginBuf.array, 0, Client.loginBuf.offset);
-            Client.rsaBuf.initIsaacRandom(randomKeys);
+            GraphicsObject.gameSocket.flush(Client.loginBuf.array, 0, Client.loginBuf.offset);
+            Client.rsaBuf.setIsaacRandomSeed(randomKeys);
 
             for(var5 = 0; var5 < 4; ++var5) {
                randomKeys[var5] += 50;
             }
 
-            Client.field521.initIsaacRandom(randomKeys);
+            Client.serverPacketBuf.setIsaacRandomSeed(randomKeys);
             Client.loginStep = 6;
          }
 
-         if (Client.loginStep == 6 && GraphicsObject.World_request.available() > 0) {
-            responseState = GraphicsObject.World_request.readByte();
+         if (Client.loginStep == 6 && GraphicsObject.gameSocket.available() > 0) {
+            responseState = GraphicsObject.gameSocket.readByte();
             if (responseState == 21 && Client.gameState == 20) {
                Client.loginStep = 7;
             } else if (responseState == 2) {
@@ -724,12 +724,12 @@ public final class TileItem extends Renderable {
             } else {
                if (responseState == 15 && Client.gameState == 40) {
                   Client.rsaBuf.offset = 0;
-                  Client.field521.offset = 0;
-                  Client.field523 = -1;
+                  Client.serverPacketBuf.offset = 0;
+                  Client.serverPacketOpcode = -1;
                   Client.field527 = -1;
                   Client.field728 = -1;
                   Client.field488 = -1;
-                  Client.field611 = 0;
+                  Client.serverPacketLength = 0;
                   Client.field565 = 0;
                   Client.field585 = 0;
                   Client.menuOptionsCount = 0;
@@ -759,53 +759,64 @@ public final class TileItem extends Renderable {
                   return;
                }
 
-               if (responseState != 23 || Client.field513 >= 1) {
+               if (responseState != 23 || Client.connectedState >= 1) {
                   loginError(responseState);
                   return;
                }
 
-               ++Client.field513;
+               ++Client.connectedState;
                Client.loginStep = 0;
             }
          }
 
-         if (Client.loginStep == 7 && GraphicsObject.World_request.available() > 0) {
-            Client.field514 = (GraphicsObject.World_request.readByte() + 3) * 60;
+         if (Client.loginStep == 7 && GraphicsObject.gameSocket.available() > 0) {
+            Client.field514 = (GraphicsObject.gameSocket.readByte() + 3) * 60;
             Client.loginStep = 8;
          }
 
          if (Client.loginStep == 8) {
-            Client.field512 = 0;
+            Client.socketIdleCycles = 0;
             BufferedFile.method624("You have only just left another world.", "Your profile will be transferred in:", Client.field514 / 60 + " seconds.");
             if (--Client.field514 <= 0) {
                Client.loginStep = 0;
             }
 
          } else {
-            if (Client.loginStep == 9 && GraphicsObject.World_request.available() >= 8) {
-               Client.field563 = GraphicsObject.World_request.readByte();
-               Client.field566 = GraphicsObject.World_request.readByte() == 1;
-               Client.field617 = GraphicsObject.World_request.readByte();
-               Client.field617 <<= 8;
-               Client.field617 += GraphicsObject.World_request.readByte();
-               Client.field610 = GraphicsObject.World_request.readByte();
-               GraphicsObject.World_request.method1496(Client.field521.array, 0, 1);
-               Client.field521.offset = 0;
-               Client.field523 = Client.field521.method2513();
-               GraphicsObject.World_request.method1496(Client.field521.array, 0, 2);
-               Client.field521.offset = 0;
-               Client.field611 = Client.field521.method2808();
+            if (Client.loginStep == 9 && GraphicsObject.gameSocket.available() >= 5) {
+
+               // START DECODE LOGIN RESPONSE
+               System.out.println("here");
+
+               Client.privilegeLevel = GraphicsObject.gameSocket.readByte();
+               System.out.println(Client.privilegeLevel);
+               Client.isModerator = GraphicsObject.gameSocket.readByte() == 1;
+               Client.localPlayerIndex = GraphicsObject.gameSocket.readByte();
+               Client.localPlayerIndex <<= 8;
+               Client.localPlayerIndex += GraphicsObject.gameSocket.readByte();
+               Client.isMember = GraphicsObject.gameSocket.readByte();
+               //GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 1);
+
+
+               // START DECODE INITIAL PACKET [LoadRegionNormal]
+               // Read the packet's opcode. This is a short as the line above calls 'socket.read()' passing length of 2 bytes.
+               // Jagex is fucking autistic and realized the max opcode isnt above 255 so they manually just read the bytes by
+               // calling readOpcode which just reads a byte and add isaacRandom.nextInt()
+               Client.serverPacketBuf.offset = 0;
+               Client.serverPacketOpcode = Client.serverPacketBuf.readOpcode();
+               GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 2);
+               Client.serverPacketBuf.offset = 0;
+               Client.serverPacketLength = Client.serverPacketBuf.readUnsignedShort();
                Client var16;
-               if (Client.field610 == 1) {
+               if (Client.isMember == 1) {
                   try {
-                     var16 = Client.field480;
+                     var16 = Client.instance;
                      //JSObject.getWindow(var16).call("zap", (Object[])null);
                   } catch (Throwable var11) {
                      ;
                   }
                } else {
                   try {
-                     var16 = Client.field480;
+                     var16 = Client.instance;
                      //JSObject.getWindow(var16).call("unzap", (Object[])null);
                   } catch (Throwable var10) {
                      ;
@@ -815,27 +826,30 @@ public final class TileItem extends Renderable {
                Client.loginStep = 10;
             }
 
+            // I think this just handles socket timeout during login but it does something which changing the port.
+            // The game is able to reconnect by incrementing the sockets client port on the system by one.
             if (Client.loginStep != 10) {
-               System.out.println("Boom");
-               ++Client.field512;
-               if (Client.field512 > 2000) {
-                  if (Client.field513 < 1) {
-                     if (class82.currentPort == MouseRecorder.field259) {
-                        class82.currentPort = Client.field515;
+               ++Client.socketIdleCycles;
+               if (Client.socketIdleCycles > 2000) {
+                  if (Client.connectedState < 1) {
+                     if (class82.currentPort == MouseRecorder.OSRS_PORT) {
+                        class82.currentPort = Client.somePortIncrement;
                      } else {
-                        class82.currentPort = MouseRecorder.field259;
+                        class82.currentPort = MouseRecorder.OSRS_PORT;
                      }
 
-                     ++Client.field513;
+                     ++Client.connectedState;
                      Client.loginStep = 0;
                   } else {
                      loginError(-3);
                   }
                }
             } else {
-               if (GraphicsObject.World_request.available() >= Client.field611) {
-                  Client.field521.offset = 0;
-                  GraphicsObject.World_request.method1496(Client.field521.array, 0, Client.field611);
+               if (GraphicsObject.gameSocket.available() >= Client.serverPacketLength) {
+                  Client.serverPacketBuf.offset = 0;
+
+                  // Reads the # of bytes the packet said it's length was off the packet buffer.
+                  GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, Client.serverPacketLength);
                   Client.field545 = -1L;
                   Client.field494 = -1;
                   BoundaryObject.field1625.index = 0;
@@ -844,8 +858,8 @@ public final class TileItem extends Renderable {
                   Client.field707 = -1L;
                   class10.method135();
                   Client.rsaBuf.offset = 0;
-                  Client.field521.offset = 0;
-                  Client.field523 = -1;
+                  Client.serverPacketBuf.offset = 0;
+                  Client.serverPacketOpcode = -1;
                   Client.field527 = -1;
                   Client.field728 = -1;
                   Client.field488 = -1;
@@ -951,7 +965,7 @@ public final class TileItem extends Renderable {
                   Client.meslayerContinueWidget = null;
                   Client.isMenuOpen = false;
                   Client.menuOptionsCount = 0;
-                  Client.playerAppearance.method3424((int[])null, new int[]{0, 0, 0, 0, 0}, false, -1);
+                  Client.playerAppearance.setPlayerAppearance((int[])null, new int[]{0, 0, 0, 0, 0}, false, -1);
 
                   for(responseState = 0; responseState < 8; ++responseState) {
                      Client.playerMenuActions[responseState] = null;
@@ -970,20 +984,20 @@ public final class TileItem extends Renderable {
                   ItemComposition.field1026 = null;
                   Client.field746 = -1;
                   Login.loadRegions(false);
-                  Client.field523 = -1;
+                  Client.serverPacketOpcode = -1;
                }
 
             }
          }
       } catch (IOException var13) {
-         if (Client.field513 < 1) {
-            if (class82.currentPort == MouseRecorder.field259) {
-               class82.currentPort = Client.field515;
+         if (Client.connectedState < 1) {
+            if (class82.currentPort == MouseRecorder.OSRS_PORT) {
+               class82.currentPort = Client.somePortIncrement;
             } else {
-               class82.currentPort = MouseRecorder.field259;
+               class82.currentPort = MouseRecorder.OSRS_PORT;
             }
 
-            ++Client.field513;
+            ++Client.connectedState;
             Client.loginStep = 0;
          } else {
             loginError(-2);

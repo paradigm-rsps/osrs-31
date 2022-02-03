@@ -86,7 +86,7 @@ public final class Player extends Actor {
             var7 = var1.method2665();
             var4[var5] = var7 + (var6 << 8);
             if (var5 == 0 && var4[0] == 65535) {
-               var3 = var1.method2808();
+               var3 = var1.readUnsignedShort();
                break;
             }
 
@@ -110,38 +110,38 @@ public final class Player extends Actor {
          var9[var6] = var7;
       }
 
-      super.idleSequence = var1.method2808();
+      super.idleSequence = var1.readUnsignedShort();
       if (super.idleSequence == 65535) {
          super.idleSequence = -1;
       }
 
-      super.turnLeftSequence = var1.method2808();
+      super.turnLeftSequence = var1.readUnsignedShort();
       if (super.turnLeftSequence == 65535) {
          super.turnLeftSequence = -1;
       }
 
       super.turnRightSequence = super.turnLeftSequence;
-      super.walkSequence = var1.method2808();
+      super.walkSequence = var1.readUnsignedShort();
       if (super.walkSequence == 65535) {
          super.walkSequence = -1;
       }
 
-      super.walkBackSequence = var1.method2808();
+      super.walkBackSequence = var1.readUnsignedShort();
       if (super.walkBackSequence == 65535) {
          super.walkBackSequence = -1;
       }
 
-      super.walkLeftSequence = var1.method2808();
+      super.walkLeftSequence = var1.readUnsignedShort();
       if (super.walkLeftSequence == 65535) {
          super.walkLeftSequence = -1;
       }
 
-      super.walkRightSequence = var1.method2808();
+      super.walkRightSequence = var1.readUnsignedShort();
       if (super.walkRightSequence == 65535) {
          super.walkRightSequence = -1;
       }
 
-      super.runSequence = var1.method2808();
+      super.runSequence = var1.readUnsignedShort();
       if (super.runSequence == 65535) {
          super.runSequence = -1;
       }
@@ -152,12 +152,12 @@ public final class Player extends Actor {
       }
 
       this.combatLevel = var1.method2665();
-      this.skillLevel = var1.method2808();
+      this.skillLevel = var1.readUnsignedShort();
       if (this.appearance == null) {
          this.appearance = new PlayerComposition();
       }
 
-      this.appearance.method3424(var4, var9, var2 == 1, var3);
+      this.appearance.setPlayerAppearance(var4, var9, var2 == 1, var3);
    }
 
    @ObfuscatedName("w")

@@ -215,48 +215,48 @@ public class class10 {
    static final void method130() {
       Client.field623 = 0;
       Client.Players_count = 0;
-      Client.field521.method2531();
-      int var0 = Client.field521.method2515(1);
+      Client.serverPacketBuf.switchBitMode();
+      int var0 = Client.serverPacketBuf.readBits(1);
       int var1;
       int var2;
       int var3;
       int var4;
       int var5;
       if (var0 != 0) {
-         var1 = Client.field521.method2515(2);
+         var1 = Client.serverPacketBuf.readBits(2);
          if (var1 == 0) {
             Client.Players_indices[++Client.Players_count - 1] = 2047;
          } else if (var1 == 1) {
-            var2 = Client.field521.method2515(3);
+            var2 = Client.serverPacketBuf.readBits(3);
             Tiles.localPlayer.method279(var2, false);
-            var3 = Client.field521.method2515(1);
+            var3 = Client.serverPacketBuf.readBits(1);
             if (var3 == 1) {
                Client.Players_indices[++Client.Players_count - 1] = 2047;
             }
          } else if (var1 == 2) {
-            var2 = Client.field521.method2515(3);
+            var2 = Client.serverPacketBuf.readBits(3);
             Tiles.localPlayer.method279(var2, true);
-            var3 = Client.field521.method2515(3);
+            var3 = Client.serverPacketBuf.readBits(3);
             Tiles.localPlayer.method279(var3, true);
-            var4 = Client.field521.method2515(1);
+            var4 = Client.serverPacketBuf.readBits(1);
             if (var4 == 1) {
                Client.Players_indices[++Client.Players_count - 1] = 2047;
             }
          } else if (var1 == 3) {
-            var2 = Client.field521.method2515(1);
-            class22.Client_plane = Client.field521.method2515(2);
-            var3 = Client.field521.method2515(1);
+            var2 = Client.serverPacketBuf.readBits(1);
+            class22.Client_plane = Client.serverPacketBuf.readBits(2);
+            var3 = Client.serverPacketBuf.readBits(1);
             if (var3 == 1) {
                Client.Players_indices[++Client.Players_count - 1] = 2047;
             }
 
-            var4 = Client.field521.method2515(7);
-            var5 = Client.field521.method2515(7);
+            var4 = Client.serverPacketBuf.readBits(7);
+            var5 = Client.serverPacketBuf.readBits(7);
             Tiles.localPlayer.method290(var5, var4, var2 == 1);
          }
       }
 
-      var0 = Client.field521.method2515(8);
+      var0 = Client.serverPacketBuf.readBits(8);
       if (var0 < Client.field604) {
          for(var1 = var0; var1 < Client.field604; ++var1) {
             Client.field485[++Client.field623 - 1] = Client.field524[var1];
@@ -273,12 +273,12 @@ public class class10 {
          for(var1 = 0; var1 < var0; ++var1) {
             var2 = Client.field524[var1];
             Player var10 = Client.players[var2];
-            var4 = Client.field521.method2515(1);
+            var4 = Client.serverPacketBuf.readBits(1);
             if (var4 == 0) {
                Client.field524[++Client.field604 - 1] = var2;
                var10.field467 = Client.cycle;
             } else {
-               var5 = Client.field521.method2515(2);
+               var5 = Client.serverPacketBuf.readBits(2);
                if (var5 == 0) {
                   Client.field524[++Client.field604 - 1] = var2;
                   var10.field467 = Client.cycle;
@@ -286,20 +286,20 @@ public class class10 {
                } else if (var5 == 1) {
                   Client.field524[++Client.field604 - 1] = var2;
                   var10.field467 = Client.cycle;
-                  var6 = Client.field521.method2515(3);
+                  var6 = Client.serverPacketBuf.readBits(3);
                   var10.method279(var6, false);
-                  var7 = Client.field521.method2515(1);
+                  var7 = Client.serverPacketBuf.readBits(1);
                   if (var7 == 1) {
                      Client.Players_indices[++Client.Players_count - 1] = var2;
                   }
                } else if (var5 == 2) {
                   Client.field524[++Client.field604 - 1] = var2;
                   var10.field467 = Client.cycle;
-                  var6 = Client.field521.method2515(3);
+                  var6 = Client.serverPacketBuf.readBits(3);
                   var10.method279(var6, true);
-                  var7 = Client.field521.method2515(3);
+                  var7 = Client.serverPacketBuf.readBits(3);
                   var10.method279(var7, true);
-                  int var8 = Client.field521.method2515(1);
+                  int var8 = Client.serverPacketBuf.readBits(1);
                   if (var8 == 1) {
                      Client.Players_indices[++Client.Players_count - 1] = var2;
                   }
@@ -310,8 +310,8 @@ public class class10 {
          }
 
          Player var9;
-         for(; Client.field521.method2514(Client.field611) >= 11; var9.method290(Tiles.localPlayer.hitSplatTypes2[0] + var7, Tiles.localPlayer.hitSplatValues2[0] + var6, var4 == 1)) {
-            var0 = Client.field521.method2515(11);
+         for(; Client.serverPacketBuf.method2514(Client.serverPacketLength) >= 11; var9.method290(Tiles.localPlayer.hitSplatTypes2[0] + var7, Tiles.localPlayer.hitSplatValues2[0] + var6, var4 == 1)) {
+            var0 = Client.serverPacketBuf.readBits(11);
             if (var0 == 2047) {
                break;
             }
@@ -329,29 +329,29 @@ public class class10 {
             Client.field524[++Client.field604 - 1] = var0;
             var9 = Client.players[var0];
             var9.field467 = Client.cycle;
-            var3 = Client.field642[Client.field521.method2515(3)];
+            var3 = Client.field642[Client.serverPacketBuf.readBits(3)];
             if (var11) {
                var9.orientation = var9.field432 = var3;
             }
 
-            var4 = Client.field521.method2515(1);
-            var5 = Client.field521.method2515(1);
+            var4 = Client.serverPacketBuf.readBits(1);
+            var5 = Client.serverPacketBuf.readBits(1);
             if (var5 == 1) {
                Client.Players_indices[++Client.Players_count - 1] = var0;
             }
 
-            var6 = Client.field521.method2515(5);
+            var6 = Client.serverPacketBuf.readBits(5);
             if (var6 > 15) {
                var6 -= 32;
             }
 
-            var7 = Client.field521.method2515(5);
+            var7 = Client.serverPacketBuf.readBits(5);
             if (var7 > 15) {
                var7 -= 32;
             }
          }
 
-         Client.field521.method2516();
+         Client.serverPacketBuf.switchToByteMode();
          class83.method1768();
 
          for(var0 = 0; var0 < Client.field623; ++var0) {
@@ -361,8 +361,8 @@ public class class10 {
             }
          }
 
-         if (Client.field611 != Client.field521.offset) {
-            throw new RuntimeException(Client.field521.offset + "," + Client.field611);
+         if (Client.serverPacketLength != Client.serverPacketBuf.offset) {
+            throw new RuntimeException(Client.serverPacketBuf.offset + "," + Client.serverPacketLength);
          } else {
             for(var0 = 0; var0 < Client.field604; ++var0) {
                if (Client.players[Client.field524[var0]] == null) {

@@ -32,9 +32,9 @@ public final class Canvas extends java.awt.Canvas {
 
    @ObfuscatedName("n")
    static final void method1655() {
-      if (GraphicsObject.World_request != null) {
-         GraphicsObject.World_request.method1471();
-         GraphicsObject.World_request = null;
+      if (GraphicsObject.gameSocket != null) {
+         GraphicsObject.gameSocket.method1471();
+         GraphicsObject.gameSocket = null;
       }
 
       Interpreter.method274();

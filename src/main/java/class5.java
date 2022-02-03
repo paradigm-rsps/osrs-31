@@ -175,7 +175,7 @@ public class class5 {
    @ObfuscatedName("dy")
    static final void method40(String var0) {
       if (ItemComposition.field1026 != null) {
-         Client.rsaBuf.method2512(209);
+         Client.rsaBuf.writeByteOpcode(209);
          PacketBuffer var1 = Client.rsaBuf;
          int var2 = var0.length() + 1;
          var1.writeByte(var2);

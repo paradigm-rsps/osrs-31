@@ -152,25 +152,25 @@ public class NPCComposition extends DualNode {
          this.models = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.models[var4] = var1.method2808();
+            this.models[var4] = var1.readUnsignedShort();
          }
       } else if (var2 == 2) {
          this.name = var1.method2653();
       } else if (var2 == 12) {
          this.size = var1.method2665();
       } else if (var2 == 13) {
-         this.field789 = var1.method2808();
+         this.field789 = var1.readUnsignedShort();
       } else if (var2 == 14) {
-         this.walkSequence = var1.method2808();
+         this.walkSequence = var1.readUnsignedShort();
       } else if (var2 == 15) {
-         this.textSize = var1.method2808();
+         this.textSize = var1.readUnsignedShort();
       } else if (var2 == 16) {
-         this.turnRightSequence = var1.method2808();
+         this.turnRightSequence = var1.readUnsignedShort();
       } else if (var2 == 17) {
-         this.walkSequence = var1.method2808();
-         this.walkBackSequence = var1.method2808();
-         this.walkLeftSequence = var1.method2808();
-         this.walkRightSequence = var1.method2808();
+         this.walkSequence = var1.readUnsignedShort();
+         this.walkBackSequence = var1.readUnsignedShort();
+         this.walkLeftSequence = var1.readUnsignedShort();
+         this.walkRightSequence = var1.readUnsignedShort();
       } else if (var2 >= 30 && var2 < 35) {
          this.actions[var2 - 30] = var1.method2653();
          if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) {
@@ -182,8 +182,8 @@ public class NPCComposition extends DualNode {
          this.recolorTo = new short[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.recolorFrom[var4] = (short)var1.method2808();
-            this.recolorTo[var4] = (short)var1.method2808();
+            this.recolorFrom[var4] = (short)var1.readUnsignedShort();
+            this.recolorTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 41) {
          var3 = var1.method2665();
@@ -191,24 +191,24 @@ public class NPCComposition extends DualNode {
          this.retextureTo = new short[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.retextureFrom[var4] = (short)var1.method2808();
-            this.retextureTo[var4] = (short)var1.method2808();
+            this.retextureFrom[var4] = (short)var1.readUnsignedShort();
+            this.retextureTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 60) {
          var3 = var1.method2665();
          this.field791 = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.field791[var4] = var1.method2808();
+            this.field791[var4] = var1.readUnsignedShort();
          }
       } else if (var2 == 93) {
          this.field804 = false;
       } else if (var2 == 95) {
-         this.category = var1.method2808();
+         this.category = var1.readUnsignedShort();
       } else if (var2 == 97) {
-         this.widthScale = var1.method2808();
+         this.widthScale = var1.readUnsignedShort();
       } else if (var2 == 98) {
-         this.heightScale = var1.method2808();
+         this.heightScale = var1.readUnsignedShort();
       } else if (var2 == 99) {
          this.field808 = true;
       } else if (var2 == 100) {
@@ -216,16 +216,16 @@ public class NPCComposition extends DualNode {
       } else if (var2 == 101) {
          this.field810 = var1.method2646() * 5;
       } else if (var2 == 102) {
-         this.field811 = var1.method2808();
+         this.field811 = var1.readUnsignedShort();
       } else if (var2 == 103) {
-         this.field800 = var1.method2808();
+         this.field800 = var1.readUnsignedShort();
       } else if (var2 == 106) {
-         this.transformVarbit = var1.method2808();
+         this.transformVarbit = var1.readUnsignedShort();
          if (this.transformVarbit == 65535) {
             this.transformVarbit = -1;
          }
 
-         this.transformVarp = var1.method2808();
+         this.transformVarp = var1.readUnsignedShort();
          if (this.transformVarp == 65535) {
             this.transformVarp = -1;
          }
@@ -234,7 +234,7 @@ public class NPCComposition extends DualNode {
          this.transforms = new int[var3 + 1];
 
          for(var4 = 0; var4 <= var3; ++var4) {
-            this.transforms[var4] = var1.method2808();
+            this.transforms[var4] = var1.readUnsignedShort();
             if (this.transforms[var4] == 65535) {
                this.transforms[var4] = -1;
             }

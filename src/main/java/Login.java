@@ -310,8 +310,8 @@ public class Login {
 
    @ObfuscatedName("ad")
    @Export("method242")
-   static final void loadRegions(boolean var0) {
-      Client.isInInstance = var0;
+   static final void loadRegions(boolean isInstance) {
+      Client.isInInstance = isInstance;
       int var1;
       int var2;
       int var3;
@@ -322,20 +322,20 @@ public class Login {
       int var9;
       int var10;
       if (!Client.isInInstance) {
-         var1 = Client.field521.readUnsignedByteSub();
-         var2 = Client.field521.readUnsignedShort();
-         var3 = (Client.field611 - Client.field521.offset) / 16;
+         var1 = Client.serverPacketBuf.readUnsignedByteSub();
+         var2 = Client.serverPacketBuf.readUnsignedShortLE();
+         var3 = (Client.serverPacketLength - Client.serverPacketBuf.offset) / 16;
          class161.field2709 = new int[var3][4];
 
          for(var4 = 0; var4 < var3; ++var4) {
             for(var5 = 0; var5 < 4; ++var5) {
-               class161.field2709[var4][var5] = Client.field521.method2687();
+               class161.field2709[var4][var5] = Client.serverPacketBuf.method2687();
             }
          }
 
-         var4 = Client.field521.readUnsignedShort();
-         var5 = Client.field521.method2808();
-         var6 = Client.field521.method2677();
+         var4 = Client.serverPacketBuf.readUnsignedShortLE();
+         var5 = Client.serverPacketBuf.readUnsignedShort();
+         var6 = Client.serverPacketBuf.method2677();
          class149.field2463 = new int[var3];
          ObjectSound.field93 = new int[var3];
          ScriptEvent.field0 = new int[var3];
@@ -366,16 +366,16 @@ public class Login {
 
          class5.method42(var6, var2, var1, var4, var5);
       } else {
-         var1 = Client.field521.readUnsignedShort();
-         var2 = Client.field521.readUnsignedByteSub();
-         Client.field521.method2531();
+         var1 = Client.serverPacketBuf.readUnsignedShortLE();
+         var2 = Client.serverPacketBuf.readUnsignedByteSub();
+         Client.serverPacketBuf.switchBitMode();
 
          for(var3 = 0; var3 < 4; ++var3) {
             for(var4 = 0; var4 < 13; ++var4) {
                for(var5 = 0; var5 < 13; ++var5) {
-                  var6 = Client.field521.method2515(1);
+                  var6 = Client.serverPacketBuf.readBits(1);
                   if (var6 == 1) {
-                     Client.field540[var3][var4][var5] = Client.field521.method2515(26);
+                     Client.field540[var3][var4][var5] = Client.serverPacketBuf.readBits(26);
                   } else {
                      Client.field540[var3][var4][var5] = -1;
                   }
@@ -383,19 +383,19 @@ public class Login {
             }
          }
 
-         Client.field521.method2516();
-         var3 = (Client.field611 - Client.field521.offset) / 16;
+         Client.serverPacketBuf.switchToByteMode();
+         var3 = (Client.serverPacketLength - Client.serverPacketBuf.offset) / 16;
          class161.field2709 = new int[var3][4];
 
          for(var4 = 0; var4 < var3; ++var4) {
             for(var5 = 0; var5 < 4; ++var5) {
-               class161.field2709[var4][var5] = Client.field521.method2687();
+               class161.field2709[var4][var5] = Client.serverPacketBuf.method2687();
             }
          }
 
-         var4 = Client.field521.readUnsignedShort();
-         var5 = Client.field521.method2677();
-         var6 = Client.field521.method2677();
+         var4 = Client.serverPacketBuf.readUnsignedShortLE();
+         var5 = Client.serverPacketBuf.method2677();
+         var6 = Client.serverPacketBuf.method2677();
          class149.field2463 = new int[var3];
          ObjectSound.field93 = new int[var3];
          ScriptEvent.field0 = new int[var3];

@@ -57,7 +57,7 @@ public class VarbitComposition extends DualNode {
    )
    void method831(Buffer var1, int var2) {
       if (var2 == 1) {
-         this.baseVar = var1.method2808();
+         this.baseVar = var1.readUnsignedShort();
          this.startBit = var1.method2665();
          this.endBit = var1.method2665();
       }

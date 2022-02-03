@@ -121,10 +121,10 @@ public final class Tile extends Node {
             Buffer var3 = new Buffer(var2);
             var3.offset = var3.array.length - 12;
             int var4 = var3.method2650();
-            var1.field64 = var3.method2808();
-            var1.field65 = var3.method2808();
-            var1.field66 = var3.method2808();
-            var1.field70 = var3.method2808();
+            var1.field64 = var3.readUnsignedShort();
+            var1.field65 = var3.readUnsignedShort();
+            var1.field66 = var3.readUnsignedShort();
+            var1.field70 = var3.readUnsignedShort();
             var3.offset = 0;
             var3.method2784();
             var1.field61 = new int[var4];
@@ -133,7 +133,7 @@ public final class Tile extends Node {
 
             int var6;
             for(int var5 = 0; var3.offset < var3.array.length - 12; var1.field61[var5++] = var6) {
-               var6 = var3.method2808();
+               var6 = var3.readUnsignedShort();
                if (var6 == 3) {
                   var1.field69[var5] = var3.method2653();
                } else if (var6 < 100 && var6 != 21 && var6 != 38 && var6 != 39) {

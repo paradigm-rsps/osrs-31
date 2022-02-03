@@ -21,10 +21,10 @@ public class PlayerComposition {
    public static EvictingDualNodeHashTable Widget_cachedSprites = new EvictingDualNodeHashTable(260);
    @ObfuscatedName("i")
    @Export("equipment")
-   int[] equipment;
+   int[] styles;
    @ObfuscatedName("w")
    @Export("bodyColors")
-   int[] bodyColors;
+   int[] colors;
    @ObfuscatedName("f")
    @Export("isFemale")
    public boolean isFemale;
@@ -39,25 +39,25 @@ public class PlayerComposition {
 
    @ObfuscatedName("i")
    @Export("method3424")
-   public void method3424(int[] var1, int[] var2, boolean var3, int var4) {
-      if (var1 == null) {
-         var1 = new int[12];
+   public void setPlayerAppearance(int[] styles, int[] colors, boolean isMale, int transmodNpcId) {
+      if (styles == null) {
+         styles = new int[12];
 
-         for(int var5 = 0; var5 < 7; ++var5) {
-            for(int var6 = 0; var6 < KitDefinition.KitDefinition_fileCount; ++var6) {
-               KitDefinition var7 = class65.method1455(var6);
-               if (var7 != null && !var7.nonSelectable && var7.bodypartID == var5 + (var3 ? 7 : 0)) {
-                  var1[equipmentIndices[var5]] = var6 + 256;
+         for(int i = 0; i < 7; ++i) {
+            for(int j = 0; j < KitDefinition.KitDefinition_fileCount; ++j) {
+               KitDefinition style = class65.readAppearanceStyle(j);
+               if (style != null && !style.nonSelectable && style.bodypartID == i + (isMale ? 7 : 0)) {
+                  styles[equipmentIndices[i]] = j + 256;
                   break;
                }
             }
          }
       }
 
-      this.equipment = var1;
-      this.bodyColors = var2;
-      this.isFemale = var3;
-      this.npcTransformId = var4;
+      this.styles = styles;
+      this.colors = colors;
+      this.isFemale = isMale;
+      this.npcTransformId = transmodNpcId;
       this.method3406();
    }
 
@@ -65,7 +65,7 @@ public class PlayerComposition {
    @Export("method3421")
    public void method3421(int var1, boolean var2) {
       if (var1 != 1 || !this.isFemale) {
-         int var3 = this.equipment[equipmentIndices[var1]];
+         int var3 = this.styles[equipmentIndices[var1]];
          if (var3 != 0) {
             var3 -= 256;
 
@@ -83,10 +83,10 @@ public class PlayerComposition {
                   }
                }
 
-               var4 = class65.method1455(var3);
+               var4 = class65.readAppearanceStyle(var3);
             } while(var4 == null || var4.nonSelectable || (this.isFemale ? 7 : 0) + var1 != var4.bodypartID);
 
-            this.equipment[equipmentIndices[var1]] = var3 + 256;
+            this.styles[equipmentIndices[var1]] = var3 + 256;
             this.method3406();
          }
       }
@@ -94,7 +94,7 @@ public class PlayerComposition {
 
    @ObfuscatedName("f")
    public void method3403(int var1, boolean var2) {
-      int var3 = this.bodyColors[var1];
+      int var3 = this.colors[var1];
       if (!var2) {
          --var3;
          if (var3 < 0) {
@@ -107,15 +107,15 @@ public class PlayerComposition {
          }
       }
 
-      this.bodyColors[var1] = var3;
+      this.colors[var1] = var3;
       this.method3406();
    }
 
    @ObfuscatedName("e")
    @Export("method3404")
-   public void method3404(boolean var1) {
-      if (this.isFemale != var1) {
-         this.method3424((int[])null, this.bodyColors, var1, -1);
+   public void method3404(boolean isMale) {
+      if (this.isFemale != isMale) {
+         this.setPlayerAppearance((int[])null, this.colors, isMale, -1);
       }
    }
 
@@ -129,7 +129,7 @@ public class PlayerComposition {
 
       int var2;
       for(var2 = 0; var2 < 7; ++var2) {
-         int var3 = this.equipment[equipmentIndices[var2]];
+         int var3 = this.styles[equipmentIndices[var2]];
          if (var3 == 0) {
             var1.writeByte(-1);
          } else {
@@ -138,7 +138,7 @@ public class PlayerComposition {
       }
 
       for(var2 = 0; var2 < 5; ++var2) {
-         var1.writeByte(this.bodyColors[var2]);
+         var1.writeByte(this.colors[var2]);
       }
 
    }
@@ -147,37 +147,37 @@ public class PlayerComposition {
    @Export("method3406")
    void method3406() {
       long var1 = this.hash;
-      int var3 = this.equipment[5];
-      int var4 = this.equipment[9];
-      this.equipment[5] = var4;
-      this.equipment[9] = var3;
+      int var3 = this.styles[5];
+      int var4 = this.styles[9];
+      this.styles[5] = var4;
+      this.styles[9] = var3;
       this.hash = 0L;
 
       int var5;
       for(var5 = 0; var5 < 12; ++var5) {
          this.hash <<= 4;
-         if (this.equipment[var5] >= 256) {
-            this.hash += (long)(this.equipment[var5] - 256);
+         if (this.styles[var5] >= 256) {
+            this.hash += (long)(this.styles[var5] - 256);
          }
       }
 
-      if (this.equipment[0] >= 256) {
-         this.hash += (long)(this.equipment[0] - 256 >> 4);
+      if (this.styles[0] >= 256) {
+         this.hash += (long)(this.styles[0] - 256 >> 4);
       }
 
-      if (this.equipment[1] >= 256) {
-         this.hash += (long)(this.equipment[1] - 256 >> 8);
+      if (this.styles[1] >= 256) {
+         this.hash += (long)(this.styles[1] - 256 >> 8);
       }
 
       for(var5 = 0; var5 < 5; ++var5) {
          this.hash <<= 3;
-         this.hash += (long)this.bodyColors[var5];
+         this.hash += (long)this.colors[var5];
       }
 
       this.hash <<= 1;
       this.hash += (long)(this.isFemale ? 1 : 0);
-      this.equipment[5] = var3;
-      this.equipment[9] = var4;
+      this.styles[5] = var3;
+      this.styles[9] = var4;
       if (0L != var1 && var1 != this.hash) {
          Widget_cachedSprites.method3475(var1);
       }
@@ -194,21 +194,21 @@ public class PlayerComposition {
          return class22.method247(this.npcTransformId).method643(var1, var2, var3, var4);
       } else {
          long var5 = this.hash;
-         int[] var7 = this.equipment;
+         int[] var7 = this.styles;
          if (var1 != null && (var1.shield >= 0 || var1.weapon >= 0)) {
             var7 = new int[12];
 
             for(int var8 = 0; var8 < 12; ++var8) {
-               var7[var8] = this.equipment[var8];
+               var7[var8] = this.styles[var8];
             }
 
             if (var1.shield >= 0) {
-               var5 += (long)(var1.shield - this.equipment[5] << 40);
+               var5 += (long)(var1.shield - this.styles[5] << 40);
                var7[5] = var1.shield;
             }
 
             if (var1.weapon >= 0) {
-               var5 += (long)(var1.weapon - this.equipment[3] << 48);
+               var5 += (long)(var1.weapon - this.styles[3] << 48);
                var7[3] = var1.weapon;
             }
          }
@@ -220,7 +220,7 @@ public class PlayerComposition {
             int var11;
             for(int var10 = 0; var10 < 12; ++var10) {
                var11 = var7[var10];
-               if (var11 >= 256 && var11 < 512 && !class65.method1455(var11 - 256).method779()) {
+               if (var11 >= 256 && var11 < 512 && !class65.readAppearanceStyle(var11 - 256).method779()) {
                   var9 = true;
                }
 
@@ -248,7 +248,7 @@ public class PlayerComposition {
                   var13 = var7[var12];
                   ModelData var14;
                   if (var13 >= 256 && var13 < 512) {
-                     var14 = class65.method1455(var13 - 256).method787();
+                     var14 = class65.readAppearanceStyle(var13 - 256).method787();
                      if (var14 != null) {
                         var16[var11++] = var14;
                      }
@@ -265,12 +265,12 @@ public class PlayerComposition {
                ModelData var17 = new ModelData(var16, var11);
 
                for(var13 = 0; var13 < 5; ++var13) {
-                  if (this.bodyColors[var13] < Skeleton.field1792[var13].length) {
-                     var17.method2234(field2718[var13], Skeleton.field1792[var13][this.bodyColors[var13]]);
+                  if (this.colors[var13] < Skeleton.field1792[var13].length) {
+                     var17.method2234(field2718[var13], Skeleton.field1792[var13][this.colors[var13]]);
                   }
 
-                  if (this.bodyColors[var13] < Script.field60[var13].length) {
-                     var17.method2234(field2716[var13], Script.field60[var13][this.bodyColors[var13]]);
+                  if (this.colors[var13] < Script.field60[var13].length) {
+                     var17.method2234(field2716[var13], Script.field60[var13][this.colors[var13]]);
                   }
                }
 
@@ -310,8 +310,8 @@ public class PlayerComposition {
 
          int var3;
          for(int var2 = 0; var2 < 12; ++var2) {
-            var3 = this.equipment[var2];
-            if (var3 >= 256 && var3 < 512 && !class65.method1455(var3 - 256).method784()) {
+            var3 = this.styles[var2];
+            if (var3 >= 256 && var3 < 512 && !class65.readAppearanceStyle(var3 - 256).method784()) {
                var1 = true;
             }
 
@@ -328,10 +328,10 @@ public class PlayerComposition {
 
             int var5;
             for(int var4 = 0; var4 < 12; ++var4) {
-               var5 = this.equipment[var4];
+               var5 = this.styles[var4];
                ModelData var6;
                if (var5 >= 256 && var5 < 512) {
-                  var6 = class65.method1455(var5 - 256).method780();
+                  var6 = class65.readAppearanceStyle(var5 - 256).method780();
                   if (var6 != null) {
                      var7[var3++] = var6;
                   }
@@ -348,12 +348,12 @@ public class PlayerComposition {
             ModelData var8 = new ModelData(var7, var3);
 
             for(var5 = 0; var5 < 5; ++var5) {
-               if (this.bodyColors[var5] < Skeleton.field1792[var5].length) {
-                  var8.method2234(field2718[var5], Skeleton.field1792[var5][this.bodyColors[var5]]);
+               if (this.colors[var5] < Skeleton.field1792[var5].length) {
+                  var8.method2234(field2718[var5], Skeleton.field1792[var5][this.colors[var5]]);
                }
 
-               if (this.bodyColors[var5] < Script.field60[var5].length) {
-                  var8.method2234(field2716[var5], Script.field60[var5][this.bodyColors[var5]]);
+               if (this.colors[var5] < Script.field60[var5].length) {
+                  var8.method2234(field2716[var5], Script.field60[var5][this.colors[var5]]);
                }
             }
 
@@ -365,6 +365,6 @@ public class PlayerComposition {
    @ObfuscatedName("r")
    @Export("method3401")
    public int method3401() {
-      return this.npcTransformId == -1 ? (this.equipment[0] << 15) + this.equipment[1] + (this.equipment[11] << 5) + (this.equipment[8] << 10) + (this.bodyColors[0] << 25) + (this.bodyColors[4] << 20) : 305419896 + class22.method247(this.npcTransformId).id;
+      return this.npcTransformId == -1 ? (this.styles[0] << 15) + this.styles[1] + (this.styles[11] << 5) + (this.styles[8] << 10) + (this.colors[0] << 25) + (this.colors[4] << 20) : 305419896 + class22.method247(this.npcTransformId).id;
    }
 }

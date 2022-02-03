@@ -45,8 +45,8 @@ public class MidiFileReader {
    void method3111(byte[] var1) {
       this.buffer.array = var1;
       this.buffer.offset = 10;
-      int var2 = this.buffer.method2808();
-      this.division = this.buffer.method2808();
+      int var2 = this.buffer.readUnsignedShort();
+      this.division = this.buffer.readUnsignedShort();
       this.field2414 = 500000;
       this.trackStarts = new int[var2];
 

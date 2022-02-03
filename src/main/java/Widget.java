@@ -341,20 +341,20 @@ public class Widget extends Node {
       this.isIf3 = false;
       this.type = var1.method2665();
       this.buttonType = var1.method2665();
-      this.contentType = var1.method2808();
+      this.contentType = var1.readUnsignedShort();
       this.field2623 = this.rawX = var1.method2648();
       this.field2584 = this.field2579 = var1.method2648();
-      this.width = var1.method2808();
-      this.height = var1.method2808();
+      this.width = var1.readUnsignedShort();
+      this.height = var1.readUnsignedShort();
       this.field2582 = var1.method2665();
-      this.parentId = var1.method2808();
+      this.parentId = var1.readUnsignedShort();
       if (this.parentId == 65535) {
          this.parentId = -1;
       } else {
          this.parentId += this.id & -65536;
       }
 
-      this.field2675 = var1.method2808();
+      this.field2675 = var1.readUnsignedShort();
       if (this.field2675 == 65535) {
          this.field2675 = -1;
       }
@@ -367,7 +367,7 @@ public class Widget extends Node {
 
          for(var3 = 0; var3 < var2; ++var3) {
             this.cs1Comparisons[var3] = var1.method2665();
-            this.cs1ComparisonValues[var3] = var1.method2808();
+            this.cs1ComparisonValues[var3] = var1.readUnsignedShort();
          }
       }
 
@@ -379,11 +379,11 @@ public class Widget extends Node {
          this.cs1Instructions = new int[var3][];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            var5 = var1.method2808();
+            var5 = var1.readUnsignedShort();
             this.cs1Instructions[var4] = new int[var5];
 
             for(var6 = 0; var6 < var5; ++var6) {
-               this.cs1Instructions[var4][var6] = var1.method2808();
+               this.cs1Instructions[var4][var6] = var1.readUnsignedShort();
                if (this.cs1Instructions[var4][var6] == 65535) {
                   this.cs1Instructions[var4][var6] = -1;
                }
@@ -392,12 +392,12 @@ public class Widget extends Node {
       }
 
       if (this.type == 0) {
-         this.field2592 = var1.method2808();
+         this.field2592 = var1.readUnsignedShort();
          this.field2588 = var1.method2665() == 1;
       }
 
       if (this.type == 1) {
-         var1.method2808();
+         var1.readUnsignedShort();
          var1.method2665();
       }
 
@@ -461,7 +461,7 @@ public class Widget extends Node {
          this.field2626 = var1.method2665();
          this.field2627 = var1.method2665();
          this.field2625 = var1.method2665();
-         this.fontId = var1.method2808();
+         this.fontId = var1.readUnsignedShort();
          if (this.fontId == 65535) {
             this.fontId = -1;
          }
@@ -491,37 +491,37 @@ public class Widget extends Node {
 
       if (this.type == 6) {
          this.modelType = 1;
-         this.modelId = var1.method2808();
+         this.modelId = var1.readUnsignedShort();
          if (this.modelId == 65535) {
             this.modelId = -1;
          }
 
          this.modelType2 = 1;
-         this.modelId2 = var1.method2808();
+         this.modelId2 = var1.readUnsignedShort();
          if (this.modelId2 == 65535) {
             this.modelId2 = -1;
          }
 
-         this.sequenceId = var1.method2808();
+         this.sequenceId = var1.readUnsignedShort();
          if (this.sequenceId == 65535) {
             this.sequenceId = -1;
          }
 
-         this.sequenceId2 = var1.method2808();
+         this.sequenceId2 = var1.readUnsignedShort();
          if (this.sequenceId2 == 65535) {
             this.sequenceId2 = -1;
          }
 
-         this.field2679 = var1.method2808();
-         this.modelAngleX = var1.method2808();
-         this.modelAngleY = var1.method2808();
+         this.field2679 = var1.readUnsignedShort();
+         this.modelAngleX = var1.readUnsignedShort();
+         this.modelAngleY = var1.readUnsignedShort();
       }
 
       if (this.type == 7) {
          this.itemIds = new int[this.height * this.width];
          this.itemQuantities = new int[this.height * this.width];
          this.field2626 = var1.method2665();
-         this.fontId = var1.method2808();
+         this.fontId = var1.readUnsignedShort();
          if (this.fontId == 65535) {
             this.fontId = -1;
          }
@@ -553,7 +553,7 @@ public class Widget extends Node {
       if (this.buttonType == 2 || this.type == 2) {
          this.spellActionName = var1.method2653();
          this.field2676 = var1.method2653();
-         var4 = var1.method2808() & 63;
+         var4 = var1.readUnsignedShort() & 63;
          this.field2644 |= var4 << 11;
       }
 
@@ -597,17 +597,17 @@ public class Widget extends Node {
       var1.method2665();
       this.isIf3 = true;
       this.type = var1.method2665();
-      this.contentType = var1.method2808();
+      this.contentType = var1.readUnsignedShort();
       this.field2623 = this.rawX = var1.method2648();
       this.field2584 = this.field2579 = var1.method2648();
-      this.width = var1.method2808();
+      this.width = var1.readUnsignedShort();
       if (this.type == 9) {
          this.height = var1.method2648();
       } else {
-         this.height = var1.method2808();
+         this.height = var1.readUnsignedShort();
       }
 
-      this.parentId = var1.method2808();
+      this.parentId = var1.readUnsignedShort();
       if (this.parentId == 65535) {
          this.parentId = -1;
       } else {
@@ -616,13 +616,13 @@ public class Widget extends Node {
 
       this.field2588 = var1.method2665() == 1;
       if (this.type == 0) {
-         this.field2576 = var1.method2808();
-         this.field2592 = var1.method2808();
+         this.field2576 = var1.readUnsignedShort();
+         this.field2592 = var1.readUnsignedShort();
       }
 
       if (this.type == 5) {
          this.spriteId2 = var1.method2650();
-         this.field2688 = var1.method2808();
+         this.field2688 = var1.readUnsignedShort();
          this.field2603 = var1.method2665() == 1;
          this.field2582 = var1.method2665();
          this.field2604 = var1.method2665();
@@ -633,18 +633,18 @@ public class Widget extends Node {
 
       if (this.type == 6) {
          this.modelType = 1;
-         this.modelId = var1.method2808();
+         this.modelId = var1.readUnsignedShort();
          if (this.modelId == 65535) {
             this.modelId = -1;
          }
 
          this.field2577 = var1.method2648();
          this.field2668 = var1.method2648();
-         this.modelAngleX = var1.method2808();
-         this.modelAngleY = var1.method2808();
-         this.field2614 = var1.method2808();
-         this.field2679 = var1.method2808();
-         this.sequenceId = var1.method2808();
+         this.modelAngleX = var1.readUnsignedShort();
+         this.modelAngleY = var1.readUnsignedShort();
+         this.field2614 = var1.readUnsignedShort();
+         this.field2679 = var1.readUnsignedShort();
+         this.sequenceId = var1.readUnsignedShort();
          if (this.sequenceId == 65535) {
             this.sequenceId = -1;
          }
@@ -653,7 +653,7 @@ public class Widget extends Node {
       }
 
       if (this.type == 4) {
-         this.fontId = var1.method2808();
+         this.fontId = var1.readUnsignedShort();
          if (this.fontId == 65535) {
             this.fontId = -1;
          }

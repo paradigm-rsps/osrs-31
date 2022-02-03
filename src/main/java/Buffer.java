@@ -242,7 +242,7 @@ public class Buffer extends Node {
 
    @ObfuscatedName("aj")
    @Export("method2808")
-   public int method2808() {
+   public int readUnsignedShort() {
       this.offset += 2;
       return (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8);
    }
@@ -354,19 +354,19 @@ public class Buffer extends Node {
    @Export("method2657")
    public int method2657() {
       int var1 = this.array[this.offset] & 255;
-      return var1 < 128 ? this.method2665() - 64 : this.method2808() - '쀀';
+      return var1 < 128 ? this.method2665() - 64 : this.readUnsignedShort() - '쀀';
    }
 
    @ObfuscatedName("br")
    @Export("method2658")
    public int method2658() {
       int var1 = this.array[this.offset] & 255;
-      return var1 < 128 ? this.method2665() : this.method2808() - '耀';
+      return var1 < 128 ? this.method2665() : this.readUnsignedShort() - '耀';
    }
 
    @ObfuscatedName("bd")
    public int method2680() {
-      return this.array[this.offset] < 0 ? this.method2650() & Integer.MAX_VALUE : this.method2808();
+      return this.array[this.offset] < 0 ? this.method2650() & Integer.MAX_VALUE : this.readUnsignedShort();
    }
 
    @ObfuscatedName("bf")
@@ -477,12 +477,12 @@ public class Buffer extends Node {
    }
 
    @ObfuscatedName("bz")
-   public int method2668() {
+   public int readUnsignedByteAdd() {
       return this.array[++this.offset - 1] - 128 & 255;
    }
 
    @ObfuscatedName("bv")
-   public int method2752() {
+   public int readUnsignedByteNeg() {
       return 0 - this.array[++this.offset - 1] & 255;
    }
 
@@ -520,7 +520,7 @@ public class Buffer extends Node {
    }
 
    @ObfuscatedName("be")
-   public int readUnsignedShort() {
+   public int readUnsignedShortLE() {
       this.offset += 2;
       return ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] & 255);
    }

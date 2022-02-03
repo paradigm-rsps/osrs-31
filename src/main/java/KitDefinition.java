@@ -84,7 +84,7 @@ public class KitDefinition extends DualNode {
             this.models2 = new int[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.models2[var4] = var1.method2808();
+               this.models2[var4] = var1.readUnsignedShort();
             }
          } else if (var2 == 3) {
             this.nonSelectable = true;
@@ -94,8 +94,8 @@ public class KitDefinition extends DualNode {
             this.recolorTo = new short[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.recolorFrom[var4] = (short)var1.method2808();
-               this.recolorTo[var4] = (short)var1.method2808();
+               this.recolorFrom[var4] = (short)var1.readUnsignedShort();
+               this.recolorTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 41) {
             var3 = var1.method2665();
@@ -103,11 +103,11 @@ public class KitDefinition extends DualNode {
             this.retextureTo = new short[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.retextureFrom[var4] = (short)var1.method2808();
-               this.retextureTo[var4] = (short)var1.method2808();
+               this.retextureFrom[var4] = (short)var1.readUnsignedShort();
+               this.retextureTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 >= 60 && var2 < 70) {
-            this.models[var2 - 60] = var1.method2808();
+            this.models[var2 - 60] = var1.readUnsignedShort();
          }
       }
 

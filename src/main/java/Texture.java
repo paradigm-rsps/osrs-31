@@ -40,7 +40,7 @@ public class Texture extends Node {
       descriptor = "(Lclass126;)V"
    )
    Texture(Buffer var1) {
-      this.averageRGB = var1.method2808();
+      this.averageRGB = var1.readUnsignedShort();
       this.field1494 = var1.method2665() == 1;
       int var2 = var1.method2665();
       if (var2 >= 1 && var2 <= 4) {
@@ -48,7 +48,7 @@ public class Texture extends Node {
 
          int var3;
          for(var3 = 0; var3 < var2; ++var3) {
-            this.fileIds[var3] = var1.method2808();
+            this.fileIds[var3] = var1.readUnsignedShort();
          }
 
          if (var2 > 1) {

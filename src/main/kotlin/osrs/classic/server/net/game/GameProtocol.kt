@@ -10,7 +10,7 @@ class GameProtocol(session: osrs.classic.server.net.Session) : osrs.classic.serv
     private val encoder = PacketEncoder(this)
     private val decoder = PacketDecoder(this)
 
-    override fun encode(message: osrs.classic.server.net.Message, out: ByteBuf) {
+    override fun encode(message: Message, out: ByteBuf) {
         if(message !is Packet) return
         encoder.encode(message, out)
     }
@@ -25,7 +25,7 @@ class GameProtocol(session: osrs.classic.server.net.Session) : osrs.classic.serv
         }
     }
 
-    override fun handle(message: osrs.classic.server.net.Message) {
+    override fun handle(message: Message) {
         if(message !is Packet) return
         message.handle(session)
     }

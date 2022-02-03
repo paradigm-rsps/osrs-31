@@ -527,7 +527,7 @@ public final class Projectile extends Renderable {
                   }
 
                   if (var11 != null) {
-                     Client.rsaBuf.method2512(79);
+                     Client.rsaBuf.writeByteOpcode(79);
                      Client.rsaBuf.method2674(Client.field658.childIndex);
                      Client.rsaBuf.method2673(Client.clickedWidget.childIndex);
                      Client.rsaBuf.method2683(Client.clickedWidget.id);

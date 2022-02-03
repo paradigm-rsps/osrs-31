@@ -82,7 +82,7 @@ public class EnumComposition extends DualNode {
       } else {
          int var3;
          if (var2 == 5) {
-            this.outputCount = var1.method2808();
+            this.outputCount = var1.readUnsignedShort();
             this.keys = new int[this.outputCount];
             this.strVals = new String[this.outputCount];
 
@@ -91,7 +91,7 @@ public class EnumComposition extends DualNode {
                this.strVals[var3] = var1.method2653();
             }
          } else if (var2 == 6) {
-            this.outputCount = var1.method2808();
+            this.outputCount = var1.readUnsignedShort();
             this.keys = new int[this.outputCount];
             this.intVals = new int[this.outputCount];
 
@@ -172,13 +172,13 @@ public class EnumComposition extends DualNode {
             byte[] var0 = Projectile.field171.method249();
             if (var0 != null) {
                Buffer var1 = new Buffer(var0);
-               Login.field334 = var1.method2808();
+               Login.field334 = var1.readUnsignedShort();
                Skills.field2058 = new World[Login.field334];
 
                World var3;
                for(int var2 = 0; var2 < Login.field334; var3.index = var2++) {
                   var3 = Skills.field2058[var2] = new World();
-                  int var4 = var1.method2808();
+                  int var4 = var1.readUnsignedShort();
                   var3.id = var4 & 16383;
                   var3.field197 = (var4 & '耀') != 0;
                   var3.field201 = (var4 & 16384) != 0;

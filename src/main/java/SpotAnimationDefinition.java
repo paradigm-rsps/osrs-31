@@ -90,15 +90,15 @@ public class SpotAnimationDefinition extends DualNode {
    )
    void method765(Buffer var1, int var2) {
       if (var2 == 1) {
-         this.archive = var1.method2808();
+         this.archive = var1.readUnsignedShort();
       } else if (var2 == 2) {
-         this.sequence = var1.method2808();
+         this.sequence = var1.readUnsignedShort();
       } else if (var2 == 4) {
-         this.widthScale = var1.method2808();
+         this.widthScale = var1.readUnsignedShort();
       } else if (var2 == 5) {
-         this.heightScale = var1.method2808();
+         this.heightScale = var1.readUnsignedShort();
       } else if (var2 == 6) {
-         this.orientation = var1.method2808();
+         this.orientation = var1.readUnsignedShort();
       } else if (var2 == 7) {
          this.ambient = var1.method2665();
       } else if (var2 == 8) {
@@ -112,8 +112,8 @@ public class SpotAnimationDefinition extends DualNode {
             this.recolorTo = new short[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.recolorFrom[var4] = (short)var1.method2808();
-               this.recolorTo[var4] = (short)var1.method2808();
+               this.recolorFrom[var4] = (short)var1.readUnsignedShort();
+               this.recolorTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 41) {
             var3 = var1.method2665();
@@ -121,8 +121,8 @@ public class SpotAnimationDefinition extends DualNode {
             this.retextureTo = new short[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.retextureFrom[var4] = (short)var1.method2808();
-               this.retextureTo[var4] = (short)var1.method2808();
+               this.retextureFrom[var4] = (short)var1.readUnsignedShort();
+               this.retextureTo[var4] = (short)var1.readUnsignedShort();
             }
          }
       }

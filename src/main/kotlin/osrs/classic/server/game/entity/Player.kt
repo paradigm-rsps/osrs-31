@@ -97,10 +97,10 @@ class Player(val client: Client) : LivingEntity() {
     }
 */
 
-    private fun initialize() {
-        gpi.initialize()
+    fun initialize() {
+        //gpi.initialize()
         scene.initialize()
-        interfaces.initialize()
+        //interfaces.initialize()
     }
 
     internal fun login(request: LoginRequest) {
@@ -136,15 +136,13 @@ class Player(val client: Client) : LivingEntity() {
 
         val response = LoginResponse(StatusResponse.NORMAL, this)
         client.session.writeAndFlush(response).addListener {
-            if(it.isSuccess) {
+            if (it.isSuccess) {
                 client.session.protocol.set(GameProtocol(client.session))
-                //this.initialize()
+                this.initialize()
+                EventBus.dispatch(PlayerLoginEvent(this))
+                Logger.info("[username: $username] has connected to the server.")
             }
         }
-
-        EventBus.dispatch(PlayerLoginEvent(this))
-
-        Logger.info("[username: $username] has connected to the server.")
     }
 
     internal fun logout() {

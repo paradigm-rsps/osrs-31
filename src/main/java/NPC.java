@@ -129,8 +129,8 @@ public final class NPC extends Actor {
 
          if (var0 == 20 || var0 == 40) {
             Client.loginStep = 0;
-            Client.field512 = 0;
-            Client.field513 = 0;
+            Client.socketIdleCycles = 0;
+            Client.connectedState = 0;
          }
 
          if (var0 != 20 && var0 != 40 && EnumComposition.field978 != null) {
@@ -252,7 +252,7 @@ public final class NPC extends Actor {
                Login.field339 = "";
                Login.worldSelectOpen = false;
                if (!Projectile.clientPreferences.titleMusicDisabled) {
-                  Script.method34(2, class40.archive6, "scape main", "", 255, false);
+                  //Script.method34(2, class40.archive6, "scape main", "", 255, false);
                } else {
                   Interpreter.method270(2);
                }
@@ -410,7 +410,7 @@ public final class NPC extends Actor {
    @ObfuscatedName("df")
    static final void method264(String var0) {
       if (var0 != null) {
-         if ((Client.field736 < 200 || Client.field610 == 1) && Client.field736 < 400) {
+         if ((Client.field736 < 200 || Client.isMember == 1) && Client.field736 < 400) {
             String var1 = Projectile.method125(var0, class5.field75);
             if (var1 != null) {
                int var2;
@@ -453,7 +453,7 @@ public final class NPC extends Actor {
                if (Projectile.method125(Tiles.localPlayer.field35, class5.field75).equals(var1)) {
                   Login.method239(0, "", "You can't add yourself to your own friend list");
                } else {
-                  Client.rsaBuf.method2512(10);
+                  Client.rsaBuf.writeByteOpcode(10);
                   PacketBuffer var6 = Client.rsaBuf;
                   int var3 = var0.length() + 1;
                   var6.writeByte(var3);
@@ -483,7 +483,7 @@ public final class NPC extends Actor {
                   }
 
                   Client.field674 = Client.field681;
-                  Client.rsaBuf.method2512(197);
+                  Client.rsaBuf.writeByteOpcode(197);
                   PacketBuffer var8 = Client.rsaBuf;
                   int var7 = var0.length() + 1;
                   var8.writeByte(var7);

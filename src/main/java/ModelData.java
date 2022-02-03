@@ -415,8 +415,8 @@ public class ModelData extends Renderable {
       Buffer var7 = new Buffer(var1);
       Buffer var8 = new Buffer(var1);
       var2.offset = var1.length - 23;
-      int var9 = var2.method2808();
-      int var10 = var2.method2808();
+      int var9 = var2.readUnsignedShort();
+      int var10 = var2.readUnsignedShort();
       int var11 = var2.method2665();
       int var12 = var2.method2665();
       int var13 = var2.method2665();
@@ -424,11 +424,11 @@ public class ModelData extends Renderable {
       int var15 = var2.method2665();
       int var16 = var2.method2665();
       int var17 = var2.method2665();
-      int var18 = var2.method2808();
-      int var19 = var2.method2808();
-      int var20 = var2.method2808();
-      int var21 = var2.method2808();
-      int var22 = var2.method2808();
+      int var18 = var2.readUnsignedShort();
+      int var19 = var2.readUnsignedShort();
+      int var20 = var2.readUnsignedShort();
+      int var21 = var2.readUnsignedShort();
+      int var22 = var2.readUnsignedShort();
       int var23 = 0;
       int var24 = 0;
       int var25 = 0;
@@ -619,7 +619,7 @@ public class ModelData extends Renderable {
       var8.offset = var36;
 
       for(var51 = 0; var51 < var10; ++var51) {
-         this.faceColors[var51] = (short)var2.method2808();
+         this.faceColors[var51] = (short)var2.readUnsignedShort();
          if (var12 == 1) {
             this.faceRenderTypes[var51] = var3.method2646();
          }
@@ -637,7 +637,7 @@ public class ModelData extends Renderable {
          }
 
          if (var16 == 1) {
-            this.faceTextures[var51] = (short)(var7.method2808() - 1);
+            this.faceTextures[var51] = (short)(var7.readUnsignedShort() - 1);
          }
 
          if (this.textureCoords != null && this.faceTextures[var51] != -1) {
@@ -705,46 +705,46 @@ public class ModelData extends Renderable {
       for(var55 = 0; var55 < var11; ++var55) {
          var56 = this.textureRenderTypes[var55] & 255;
          if (var56 == 0) {
-            this.texTriangleX[var55] = (short)var2.method2808();
-            this.texTriangleY[var55] = (short)var2.method2808();
-            this.texTriangleZ[var55] = (short)var2.method2808();
+            this.texTriangleX[var55] = (short)var2.readUnsignedShort();
+            this.texTriangleY[var55] = (short)var2.readUnsignedShort();
+            this.texTriangleZ[var55] = (short)var2.readUnsignedShort();
          }
 
          if (var56 == 1) {
-            this.texTriangleX[var55] = (short)var3.method2808();
-            this.texTriangleY[var55] = (short)var3.method2808();
-            this.texTriangleZ[var55] = (short)var3.method2808();
-            this.field1694[var55] = (short)var4.method2808();
-            this.field1707[var55] = (short)var4.method2808();
-            this.field1706[var55] = (short)var4.method2808();
-            this.field1709[var55] = (short)var5.method2808();
+            this.texTriangleX[var55] = (short)var3.readUnsignedShort();
+            this.texTriangleY[var55] = (short)var3.readUnsignedShort();
+            this.texTriangleZ[var55] = (short)var3.readUnsignedShort();
+            this.field1694[var55] = (short)var4.readUnsignedShort();
+            this.field1707[var55] = (short)var4.readUnsignedShort();
+            this.field1706[var55] = (short)var4.readUnsignedShort();
+            this.field1709[var55] = (short)var5.readUnsignedShort();
             this.field1712[var55] = var6.method2646();
-            this.field1731[var55] = (short)var7.method2808();
+            this.field1731[var55] = (short)var7.readUnsignedShort();
          }
 
          if (var56 == 2) {
-            this.texTriangleX[var55] = (short)var3.method2808();
-            this.texTriangleY[var55] = (short)var3.method2808();
-            this.texTriangleZ[var55] = (short)var3.method2808();
-            this.field1694[var55] = (short)var4.method2808();
-            this.field1707[var55] = (short)var4.method2808();
-            this.field1706[var55] = (short)var4.method2808();
-            this.field1709[var55] = (short)var5.method2808();
+            this.texTriangleX[var55] = (short)var3.readUnsignedShort();
+            this.texTriangleY[var55] = (short)var3.readUnsignedShort();
+            this.texTriangleZ[var55] = (short)var3.readUnsignedShort();
+            this.field1694[var55] = (short)var4.readUnsignedShort();
+            this.field1707[var55] = (short)var4.readUnsignedShort();
+            this.field1706[var55] = (short)var4.readUnsignedShort();
+            this.field1709[var55] = (short)var5.readUnsignedShort();
             this.field1712[var55] = var6.method2646();
-            this.field1731[var55] = (short)var7.method2808();
-            this.field1711[var55] = (short)var7.method2808();
+            this.field1731[var55] = (short)var7.readUnsignedShort();
+            this.field1711[var55] = (short)var7.readUnsignedShort();
          }
 
          if (var56 == 3) {
-            this.texTriangleX[var55] = (short)var3.method2808();
-            this.texTriangleY[var55] = (short)var3.method2808();
-            this.texTriangleZ[var55] = (short)var3.method2808();
-            this.field1694[var55] = (short)var4.method2808();
-            this.field1707[var55] = (short)var4.method2808();
-            this.field1706[var55] = (short)var4.method2808();
-            this.field1709[var55] = (short)var5.method2808();
+            this.texTriangleX[var55] = (short)var3.readUnsignedShort();
+            this.texTriangleY[var55] = (short)var3.readUnsignedShort();
+            this.texTriangleZ[var55] = (short)var3.readUnsignedShort();
+            this.field1694[var55] = (short)var4.readUnsignedShort();
+            this.field1707[var55] = (short)var4.readUnsignedShort();
+            this.field1706[var55] = (short)var4.readUnsignedShort();
+            this.field1709[var55] = (short)var5.readUnsignedShort();
             this.field1712[var55] = var6.method2646();
-            this.field1731[var55] = (short)var7.method2808();
+            this.field1731[var55] = (short)var7.readUnsignedShort();
          }
       }
 
@@ -752,9 +752,9 @@ public class ModelData extends Renderable {
       var55 = var2.method2665();
       if (var55 != 0) {
          new ModelData0();
-         var2.method2808();
-         var2.method2808();
-         var2.method2808();
+         var2.readUnsignedShort();
+         var2.readUnsignedShort();
+         var2.readUnsignedShort();
          var2.method2650();
       }
 
@@ -770,18 +770,18 @@ public class ModelData extends Renderable {
       Buffer var7 = new Buffer(var1);
       Buffer var8 = new Buffer(var1);
       var4.offset = var1.length - 18;
-      int var9 = var4.method2808();
-      int var10 = var4.method2808();
+      int var9 = var4.readUnsignedShort();
+      int var10 = var4.readUnsignedShort();
       int var11 = var4.method2665();
       int var12 = var4.method2665();
       int var13 = var4.method2665();
       int var14 = var4.method2665();
       int var15 = var4.method2665();
       int var16 = var4.method2665();
-      int var17 = var4.method2808();
-      int var18 = var4.method2808();
-      int var19 = var4.method2808();
-      int var20 = var4.method2808();
+      int var17 = var4.readUnsignedShort();
+      int var18 = var4.readUnsignedShort();
+      int var19 = var4.readUnsignedShort();
+      int var20 = var4.readUnsignedShort();
       byte var21 = 0;
       int var45 = var21 + var9;
       int var23 = var45;
@@ -912,7 +912,7 @@ public class ModelData extends Renderable {
       var8.offset = var25;
 
       for(var38 = 0; var38 < var10; ++var38) {
-         this.faceColors[var38] = (short)var4.method2808();
+         this.faceColors[var38] = (short)var4.readUnsignedShort();
          if (var12 == 1) {
             var39 = var5.method2665();
             if ((var39 & 1) == 1) {
@@ -1003,9 +1003,9 @@ public class ModelData extends Renderable {
 
       for(var42 = 0; var42 < var11; ++var42) {
          this.textureRenderTypes[var42] = 0;
-         this.texTriangleX[var42] = (short)var4.method2808();
-         this.texTriangleY[var42] = (short)var4.method2808();
-         this.texTriangleZ[var42] = (short)var4.method2808();
+         this.texTriangleX[var42] = (short)var4.readUnsignedShort();
+         this.texTriangleY[var42] = (short)var4.readUnsignedShort();
+         this.texTriangleZ[var42] = (short)var4.readUnsignedShort();
       }
 
       if (this.textureCoords != null) {

@@ -187,9 +187,9 @@ public class class23 {
 
             SoundSystem.worldHost = var5.field196;
             Client.ViewportMouse_x = var5.id;
-            MouseRecorder.field259 = Client.ViewportMouse_y == 0 ? 'ꩊ' : var5.id + '鱀';
-            Client.field515 = Client.ViewportMouse_y == 0 ? 443 : var5.id + '썐';
-            class82.currentPort = MouseRecorder.field259;
+            MouseRecorder.OSRS_PORT = Client.ViewportMouse_y == 0 ? 'ꩊ' : var5.id + '鱀';
+            Client.somePortIncrement = Client.ViewportMouse_y == 0 ? 443 : var5.id + '썐';
+            class82.currentPort = MouseRecorder.OSRS_PORT;
             Login.worldSelectOpen = false;
             Login.field317.method1835(0, 0);
             Login.field332.method1835(382, 0);
@@ -221,7 +221,7 @@ public class class23 {
 
    @ObfuscatedName("dk")
    static final void method251() {
-      Client.rsaBuf.method2512(8);
+      Client.rsaBuf.writeByteOpcode(8);
       Client.rsaBuf.writeByte(0);
    }
 }

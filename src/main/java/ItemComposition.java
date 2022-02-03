@@ -185,22 +185,22 @@ public class ItemComposition extends DualNode {
    )
    void method857(Buffer var1, int var2) {
       if (var2 == 1) {
-         this.model = var1.method2808();
+         this.model = var1.readUnsignedShort();
       } else if (var2 == 2) {
          this.name = var1.method2653();
       } else if (var2 == 4) {
-         this.zoom2d = var1.method2808();
+         this.zoom2d = var1.readUnsignedShort();
       } else if (var2 == 5) {
-         this.xan2d = var1.method2808();
+         this.xan2d = var1.readUnsignedShort();
       } else if (var2 == 6) {
-         this.yan2d = var1.method2808();
+         this.yan2d = var1.readUnsignedShort();
       } else if (var2 == 7) {
-         this.offsetX2d = var1.method2808();
+         this.offsetX2d = var1.readUnsignedShort();
          if (this.offsetX2d > 32767) {
             this.offsetX2d -= 65536;
          }
       } else if (var2 == 8) {
-         this.offsetY2d = var1.method2808();
+         this.offsetY2d = var1.readUnsignedShort();
          if (this.offsetY2d > 32767) {
             this.offsetY2d -= 65536;
          }
@@ -211,15 +211,15 @@ public class ItemComposition extends DualNode {
       } else if (var2 == 16) {
          this.isMembersOnly = true;
       } else if (var2 == 23) {
-         this.maleModel = var1.method2808();
+         this.maleModel = var1.readUnsignedShort();
          this.maleOffset = var1.method2665();
       } else if (var2 == 24) {
-         this.field991 = var1.method2808();
+         this.field991 = var1.readUnsignedShort();
       } else if (var2 == 25) {
-         this.femaleModel = var1.method2808();
+         this.femaleModel = var1.readUnsignedShort();
          this.femaleOffset = var1.method2665();
       } else if (var2 == 26) {
-         this.femaleModel1 = var1.method2808();
+         this.femaleModel1 = var1.readUnsignedShort();
       } else if (var2 >= 30 && var2 < 35) {
          this.groundActions[var2 - 30] = var1.method2653();
          if (this.groundActions[var2 - 30].equalsIgnoreCase("Hidden")) {
@@ -236,8 +236,8 @@ public class ItemComposition extends DualNode {
             this.recolorTo = new short[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.recolorFrom[var4] = (short)var1.method2808();
-               this.recolorTo[var4] = (short)var1.method2808();
+               this.recolorFrom[var4] = (short)var1.readUnsignedShort();
+               this.recolorTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 41) {
             var3 = var1.method2665();
@@ -245,41 +245,41 @@ public class ItemComposition extends DualNode {
             this.retextureTo = new short[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
-               this.retextureFrom[var4] = (short)var1.method2808();
-               this.retextureTo[var4] = (short)var1.method2808();
+               this.retextureFrom[var4] = (short)var1.readUnsignedShort();
+               this.retextureTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 78) {
-            this.field984 = var1.method2808();
+            this.field984 = var1.readUnsignedShort();
          } else if (var2 == 79) {
-            this.femaleModel2 = var1.method2808();
+            this.femaleModel2 = var1.readUnsignedShort();
          } else if (var2 == 90) {
-            this.maleHeadModel = var1.method2808();
+            this.maleHeadModel = var1.readUnsignedShort();
          } else if (var2 == 91) {
-            this.femaleHeadModel = var1.method2808();
+            this.femaleHeadModel = var1.readUnsignedShort();
          } else if (var2 == 92) {
-            this.field1013 = var1.method2808();
+            this.field1013 = var1.readUnsignedShort();
          } else if (var2 == 93) {
-            this.femaleHeadModel2 = var1.method2808();
+            this.femaleHeadModel2 = var1.readUnsignedShort();
          } else if (var2 == 95) {
-            this.zan2d = var1.method2808();
+            this.zan2d = var1.readUnsignedShort();
          } else if (var2 == 97) {
-            this.note = var1.method2808();
+            this.note = var1.readUnsignedShort();
          } else if (var2 == 98) {
-            this.noteTemplate = var1.method2808();
+            this.noteTemplate = var1.readUnsignedShort();
          } else if (var2 >= 100 && var2 < 110) {
             if (this.countobj == null) {
                this.countobj = new int[10];
                this.countco = new int[10];
             }
 
-            this.countobj[var2 - 100] = var1.method2808();
-            this.countco[var2 - 100] = var1.method2808();
+            this.countobj[var2 - 100] = var1.readUnsignedShort();
+            this.countco[var2 - 100] = var1.readUnsignedShort();
          } else if (var2 == 110) {
-            this.resizeX = var1.method2808();
+            this.resizeX = var1.readUnsignedShort();
          } else if (var2 == 111) {
-            this.resizeY = var1.method2808();
+            this.resizeY = var1.readUnsignedShort();
          } else if (var2 == 112) {
-            this.resizeZ = var1.method2808();
+            this.resizeZ = var1.readUnsignedShort();
          } else if (var2 == 113) {
             this.field1023 = var1.method2646();
          } else if (var2 == 114) {

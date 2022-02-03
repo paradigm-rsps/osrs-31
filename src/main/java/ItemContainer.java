@@ -56,7 +56,7 @@ public class ItemContainer extends Node {
             Projectile.clientPreferences.titleMusicDisabled = !Projectile.clientPreferences.titleMusicDisabled;
             class17.method185();
             if (!Projectile.clientPreferences.titleMusicDisabled) {
-               Player.method23(class40.archive6, "scape main", "", 255, false);
+               //Player.method23(class40.archive6, "scape main", "", 255, false);
             } else {
                class137.midiPcmStream.method2951();
                class137.musicPlayerStatus = 1;

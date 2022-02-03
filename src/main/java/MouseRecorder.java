@@ -24,7 +24,7 @@ public class MouseRecorder implements Runnable {
    )
    static Archive archive8;
    @ObfuscatedName("bm")
-   static int field259;
+   static int OSRS_PORT;
    @ObfuscatedName("ed")
    @Export("headIconPrayerSprites")
    @ObfuscatedSignature(

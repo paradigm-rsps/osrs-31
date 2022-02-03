@@ -109,7 +109,7 @@ public class MilliClock extends Clock {
             return;
          }
 
-         var0.method2512(var1);
+         var0.writeByteOpcode(var1);
          var0.writeByte(0);
          int var3 = var0.offset;
          var0.writeInt(var2.id);

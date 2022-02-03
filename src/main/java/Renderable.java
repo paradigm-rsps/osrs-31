@@ -1076,7 +1076,7 @@ public abstract class Renderable extends DualNode {
                                  }
 
                                  if (var46 == ScriptOpcodes.IF_CLOSE) {
-                                    Client.rsaBuf.method2512(255);
+                                    Client.rsaBuf.writeByteOpcode(255);
 
                                     for(InterfaceParent var98 = (InterfaceParent)Client.interfaceParents.method3515(); var98 != null; var98 = (InterfaceParent)Client.interfaceParents.method3516()) {
                                        if (var98.field56 == 0 || var98.field56 == 3) {
@@ -1100,7 +1100,7 @@ public abstract class Renderable extends DualNode {
                                        var39 = var35;
                                     }
 
-                                    Client.rsaBuf.method2512(163);
+                                    Client.rsaBuf.writeByteOpcode(163);
                                     Client.rsaBuf.writeInt(var39);
                                     continue;
                                  }
@@ -1108,7 +1108,7 @@ public abstract class Renderable extends DualNode {
                                  if (var46 == ScriptOpcodes.RESUME_NAMEDIALOG) {
                                     --var5;
                                     var97 = Interpreter.Interpreter_stringStack[var5];
-                                    Client.rsaBuf.method2512(104);
+                                    Client.rsaBuf.writeByteOpcode(104);
                                     Client.rsaBuf.writeByte(var97.length() + 1);
                                     Client.rsaBuf.writeString(var97);
                                     continue;
@@ -1117,7 +1117,7 @@ public abstract class Renderable extends DualNode {
                                  if (var46 == ScriptOpcodes.RESUME_STRINGDIALOG) {
                                     --var5;
                                     var97 = Interpreter.Interpreter_stringStack[var5];
-                                    Client.rsaBuf.method2512(180);
+                                    Client.rsaBuf.writeByteOpcode(180);
                                     Client.rsaBuf.writeByte(var97.length() + 1);
                                     Client.rsaBuf.writeString(var97);
                                     continue;
@@ -1135,16 +1135,16 @@ public abstract class Renderable extends DualNode {
                                        if (var37 != null && var37.field35 != null && var37.field35.equalsIgnoreCase(var15)) {
                                           FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var37.hitSplatTypes2[0], var37.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
                                           if (var14 == ScriptOpcodes.GET_VARP) {
-                                             Client.rsaBuf.method2512(2);
+                                             Client.rsaBuf.writeByteOpcode(2);
                                              Client.rsaBuf.method2768(Client.field524[var33]);
                                           } else if (var14 == 4) {
-                                             Client.rsaBuf.method2512(142);
+                                             Client.rsaBuf.writeByteOpcode(142);
                                              Client.rsaBuf.method2768(Client.field524[var33]);
                                           } else if (var14 == ScriptOpcodes.JUMP) {
-                                             Client.rsaBuf.method2512(198);
+                                             Client.rsaBuf.writeByteOpcode(198);
                                              Client.rsaBuf.method2674(Client.field524[var33]);
                                           } else if (var14 == ScriptOpcodes.IF_ICMPNE) {
-                                             Client.rsaBuf.method2512(254);
+                                             Client.rsaBuf.writeByteOpcode(254);
                                              Client.rsaBuf.writeShort(Client.field524[var33]);
                                           }
 
@@ -1344,8 +1344,8 @@ public abstract class Renderable extends DualNode {
                                  }
 
                                  if (var46 == ScriptOpcodes.STAFFMODLEVEL) {
-                                    if (Client.field563 >= 2) {
-                                       Interpreter.Interpreter_intStack[var4++] = Client.field563;
+                                    if (Client.privilegeLevel >= 2) {
+                                       Interpreter.Interpreter_intStack[var4++] = Client.privilegeLevel;
                                     } else {
                                        Interpreter.Interpreter_intStack[var4++] = 0;
                                     }
@@ -1373,7 +1373,7 @@ public abstract class Renderable extends DualNode {
                                  }
 
                                  if (var46 == ScriptOpcodes.PLAYERMOD) {
-                                    if (Client.field566) {
+                                    if (Client.isModerator) {
                                        Interpreter.Interpreter_intStack[var4++] = 1;
                                     } else {
                                        Interpreter.Interpreter_intStack[var4++] = 0;
@@ -1524,7 +1524,7 @@ public abstract class Renderable extends DualNode {
                                           continue;
                                        }
 
-                                       if ((Client.field534 < 100 || Client.field610 == 1) && Client.field534 < 400) {
+                                       if ((Client.field534 < 100 || Client.isMember == 1) && Client.field534 < 400) {
                                           var15 = Projectile.method125(var97, class5.field75);
                                           if (var15 == null) {
                                              continue;
@@ -1567,7 +1567,7 @@ public abstract class Renderable extends DualNode {
                                           if (Projectile.method125(Tiles.localPlayer.field35, class5.field75).equals(var15)) {
                                              Login.method239(0, "", "You can't add yourself to your own ignore list");
                                           } else {
-                                             Client.rsaBuf.method2512(63);
+                                             Client.rsaBuf.writeByteOpcode(63);
                                              PacketBuffer var55 = Client.rsaBuf;
                                              var33 = var97.length() + 1;
                                              var55.writeByte(var33);
@@ -1610,7 +1610,7 @@ public abstract class Renderable extends DualNode {
                                              }
 
                                              Client.field674 = Client.field681;
-                                             Client.rsaBuf.method2512(250);
+                                             Client.rsaBuf.writeByteOpcode(250);
                                              PacketBuffer var38 = Client.rsaBuf;
                                              var21 = var97.length() + 1;
                                              var38.writeByte(var21);
@@ -1708,7 +1708,7 @@ public abstract class Renderable extends DualNode {
                                        --var5;
                                        var97 = Interpreter.Interpreter_stringStack[var5];
                                        if (!var97.equals("")) {
-                                          Client.rsaBuf.method2512(8);
+                                          Client.rsaBuf.writeByteOpcode(8);
                                           PacketBuffer var48 = Client.rsaBuf;
                                           var35 = var97.length() + 1;
                                           var48.writeByte(var35);
@@ -2417,7 +2417,7 @@ public abstract class Renderable extends DualNode {
                                        }
 
                                        Client.field748 = Interpreter.Interpreter_intStack[var4 + 2];
-                                       Client.rsaBuf.method2512(91);
+                                       Client.rsaBuf.writeByteOpcode(91);
                                        Client.rsaBuf.writeByte(Client.field700);
                                        Client.rsaBuf.writeByte(ByteArrayPool.field1945.value);
                                        Client.rsaBuf.writeByte(Client.field748);
@@ -2430,7 +2430,7 @@ public abstract class Renderable extends DualNode {
                                        var4 -= 2;
                                        var39 = Interpreter.Interpreter_intStack[var4];
                                        var35 = Interpreter.Interpreter_intStack[var4 + 1];
-                                       Client.rsaBuf.method2512(193);
+                                       Client.rsaBuf.writeByteOpcode(193);
                                        PacketBuffer var62 = Client.rsaBuf;
                                        var18 = var97.length() + 1;
                                        var62.writeByte(var18 + 2);
@@ -2491,7 +2491,7 @@ public abstract class Renderable extends DualNode {
                                              }
                                           }
 
-                                          if (Client.field563 >= 2) {
+                                          if (Client.privilegeLevel >= 2) {
                                              if (var97.equalsIgnoreCase("::gc")) {
                                                 System.gc();
                                              }
@@ -2523,7 +2523,7 @@ public abstract class Renderable extends DualNode {
                                              }
                                           }
 
-                                          Client.rsaBuf.method2512(210);
+                                          Client.rsaBuf.writeByteOpcode(210);
                                           Client.rsaBuf.writeByte(var97.length() - 1);
                                           Client.rsaBuf.writeString(var97.substring(2));
                                           continue;
@@ -2588,7 +2588,7 @@ public abstract class Renderable extends DualNode {
                                           var97 = var97.substring("slide:".length());
                                        }
 
-                                       Client.rsaBuf.method2512(46);
+                                       Client.rsaBuf.writeByteOpcode(46);
                                        Client.rsaBuf.writeByte(0);
                                        var18 = Client.rsaBuf.offset;
                                        Client.rsaBuf.writeByte(var96);
@@ -2602,7 +2602,7 @@ public abstract class Renderable extends DualNode {
                                        var5 -= 2;
                                        var97 = Interpreter.Interpreter_stringStack[var5];
                                        var15 = Interpreter.Interpreter_stringStack[var5 + 1];
-                                       Client.rsaBuf.method2512(215);
+                                       Client.rsaBuf.writeByteOpcode(215);
                                        Client.rsaBuf.writeShort(0);
                                        var35 = Client.rsaBuf.offset;
                                        Client.rsaBuf.writeString(var97);

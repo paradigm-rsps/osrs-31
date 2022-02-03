@@ -52,7 +52,7 @@ public class class40 extends DualNode {
    )
    void method906(Buffer var1, int var2) {
       if (var2 == 2) {
-         this.field1032 = var1.method2808();
+         this.field1032 = var1.readUnsignedShort();
       }
 
    }
