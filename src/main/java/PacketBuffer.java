@@ -39,7 +39,7 @@ public final class PacketBuffer extends Buffer {
    public int readOpcode() {
       int i = super.array[++super.offset - 1];
       int j = this.isaacCipher.nextInt();
-      int l = i + j & 255;
+      int l = i - j & 255;
       System.out.println("Packet opcode: " + l);
       return i - j & 255;
    }

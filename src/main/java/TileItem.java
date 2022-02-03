@@ -782,7 +782,7 @@ public final class TileItem extends Renderable {
             }
 
          } else {
-            if (Client.loginStep == 9 && GraphicsObject.gameSocket.available() >= 5) {
+            if (Client.loginStep == 9 && GraphicsObject.gameSocket.available() >= 8) {
 
                // START DECODE LOGIN RESPONSE
                System.out.println("here");
@@ -794,7 +794,7 @@ public final class TileItem extends Renderable {
                Client.localPlayerIndex <<= 8;
                Client.localPlayerIndex += GraphicsObject.gameSocket.readByte();
                Client.isMember = GraphicsObject.gameSocket.readByte();
-               //GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 1);
+               GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 1);
 
 
                // START DECODE INITIAL PACKET [LoadRegionNormal]

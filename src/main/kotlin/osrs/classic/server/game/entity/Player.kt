@@ -136,7 +136,7 @@ class Player(val client: Client) : LivingEntity() {
 
         val response = LoginResponse(StatusResponse.NORMAL, this)
         client.session.writeAndFlush(response).addListener {
-            if (it.isSuccess) {
+            if(it.isSuccess) {
                 client.session.protocol.set(GameProtocol(client.session))
                 this.initialize()
                 EventBus.dispatch(PlayerLoginEvent(this))
@@ -155,8 +155,8 @@ class Player(val client: Client) : LivingEntity() {
 
     internal fun synchronize() {
         scene.synchronize()
-        gpi.synchronize()
-        npcs.synchronize()
+        //gpi.synchronize()
+        //npcs.synchronize()
         client.flush()
     }
 

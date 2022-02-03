@@ -26,7 +26,6 @@ object GamePackets {
         ClassGraph()
             .enableClassInfo()
             .enableAnnotationInfo()
-            .acceptPackages("dev.avernic.server.engine.net.packet.client")
             .scan()
             .use { result ->
                 result.getClassesWithAnnotation(ClientPacket::class.qualifiedName).forEach { classInfo ->
@@ -45,7 +44,6 @@ object GamePackets {
         ClassGraph()
             .enableClassInfo()
             .enableAnnotationInfo()
-            .acceptPackages("dev.avernic.server.engine.net.packet.server")
             .scan()
             .use { result ->
                 result.getClassesWithAnnotation(ServerPacket::class.qualifiedName).forEach { classInfo ->

@@ -1,5 +1,7 @@
 package osrs.classic.server.net.packet.server
 
+import io.guthix.buffer.writeByteAdd
+import io.guthix.buffer.writeByteSub
 import io.guthix.buffer.writeShortAdd
 import io.netty.buffer.ByteBuf
 import osrs.classic.server.game.entity.Player
@@ -16,7 +18,7 @@ class RebuildRegionNormal(
 ) : Packet {
     companion object : Codec<RebuildRegionNormal> {
         override fun encode(session: Session, packet: RebuildRegionNormal, buf: ByteBuf) {
-            buf.writeShortAdd(packet.player.scene.currentChunk.y)
+            buf.writeByteSub(packet.player.scene.currentChunk.y)
             buf.writeShortLE(packet.player.scene.currentChunk.x)
 
             val xteaKeys = packet.player.scene.getRegionXteaKeys()

@@ -25,7 +25,7 @@ class SceneManager(private val player: Player) {
         /*
          * Tell the client to rebuild the world regions with GPI data.
          */
-        player.client.write(RebuildRegionNormal(player, gpi = true))
+        player.client.session.ctx.writeAndFlush(RebuildRegionNormal(player, gpi = true))
     }
 
     fun shouldRebuild(chunk: Chunk): Boolean {
