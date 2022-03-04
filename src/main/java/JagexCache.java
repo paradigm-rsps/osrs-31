@@ -513,8 +513,9 @@ public class JagexCache {
                return true;
             }
 
+            //CAM_MOVETO
             if (Client.serverPacketOpcode == 37) {
-               Client.field730 = true;
+               Client.isCameraLocked = true;
                World.field209 = Client.serverPacketBuf.readUnsignedByte();
                Interpreter.field416 = Client.serverPacketBuf.readUnsignedByte();
                class5.field73 = Client.serverPacketBuf.readUnsignedShort();
@@ -523,7 +524,7 @@ public class JagexCache {
                if (SoundCache.field1206 >= 100) {
                   Login.cameraX = World.field209 * 128 + 64;
                   class17.cameraZ = Interpreter.field416 * 128 + 64;
-                  class22.cameraY = BufferedFile.method603(Login.cameraX, class17.cameraZ, class22.Client_plane) - class5.field73;
+                  class22.cameraY = BufferedFile.getTileHeight(Login.cameraX, class17.cameraZ, class22.Client_plane) - class5.field73;
                }
 
                Client.serverPacketOpcode = -1;
@@ -1401,7 +1402,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 135) {
-               Client.field730 = true;
+               Client.isCameraLocked = true;
                AccessFile.field757 = Client.serverPacketBuf.readUnsignedByte();
                class125.field2036 = Client.serverPacketBuf.readUnsignedByte();
                SceneTilePaint.field1681 = Client.serverPacketBuf.readUnsignedShort();
@@ -1410,7 +1411,7 @@ public class JagexCache {
                if (class65.field1268 >= 100) {
                   var1 = AccessFile.field757 * 128 + 64;
                   var2 = class125.field2036 * 128 + 64;
-                  var3 = BufferedFile.method603(var1, var2, class22.Client_plane) - SceneTilePaint.field1681;
+                  var3 = BufferedFile.getTileHeight(var1, var2, class22.Client_plane) - SceneTilePaint.field1681;
                   var19 = var1 - Login.cameraX;
                   var5 = var3 - class22.cameraY;
                   var6 = var2 - class17.cameraZ;
@@ -1710,7 +1711,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 123) {
-               Client.field730 = false;
+               Client.isCameraLocked = false;
 
                for(var1 = 0; var1 < 5; ++var1) {
                   Client.field731[var1] = false;

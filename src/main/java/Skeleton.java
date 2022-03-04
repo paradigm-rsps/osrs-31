@@ -472,7 +472,7 @@ public class Skeleton extends Node {
 
       int var2 = Client.field572 >> 7;
       int var3 = MouseHandler.field1402 >> 7;
-      int var4 = BufferedFile.method603(Client.field572, MouseHandler.field1402, class22.Client_plane);
+      int var4 = BufferedFile.getTileHeight(Client.field572, MouseHandler.field1402, class22.Client_plane);
       int var5 = 0;
       int var6;
       if (var2 > 3 && var3 > 3 && var2 < 100 && var3 < 100) {

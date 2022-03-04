@@ -173,7 +173,7 @@ public final class Client extends GameEngine {
    @ObfuscatedName("jc")
    static int field661;
    @ObfuscatedName("nv")
-   static boolean field730;
+   static boolean isCameraLocked;
    @ObfuscatedName("kf")
    static int field681;
    @ObfuscatedName("ki")
@@ -849,7 +849,7 @@ public final class Client extends GameEngine {
       field727 = new int[50];
       field589 = new int[50];
       field729 = new SoundEffect[50];
-      field730 = false;
+      isCameraLocked = false;
       field731 = new boolean[5];
       field575 = new int[5];
       field733 = new int[5];

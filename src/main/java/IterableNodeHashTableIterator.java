@@ -518,8 +518,8 @@ public final class IterableNodeHashTableIterator implements Runnable {
                      var2 = var2 * 128 + 64;
                      var3 = var3 * 128 + 64;
                      var4 = var4 * 128 + 64;
-                     Projectile var30 = new Projectile(var37, class22.Client_plane, var35, var2, BufferedFile.method603(var35, var2, class22.Client_plane) - playerIndex, id + Client.cycle, face + Client.cycle, var11, var38, var36, var8);
-                     var30.method114(var3, var4, BufferedFile.method603(var3, var4, class22.Client_plane) - var8, id + Client.cycle);
+                     Projectile var30 = new Projectile(var37, class22.Client_plane, var35, var2, BufferedFile.getTileHeight(var35, var2, class22.Client_plane) - playerIndex, id + Client.cycle, face + Client.cycle, var11, var38, var36, var8);
+                     var30.method114(var3, var4, BufferedFile.getTileHeight(var3, var4, class22.Client_plane) - var8, id + Client.cycle);
                      Client.field619.method3528(var30);
                   }
 
@@ -533,7 +533,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
                   if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                      var35 = var35 * 128 + 64;
                      var2 = var2 * 128 + 64;
-                     GraphicsObject var39 = new GraphicsObject(var3, class22.Client_plane, var35, var2, BufferedFile.method603(var35, var2, class22.Client_plane) - var4, var36, Client.cycle);
+                     GraphicsObject var39 = new GraphicsObject(var3, class22.Client_plane, var35, var2, BufferedFile.getTileHeight(var35, var2, class22.Client_plane) - var4, var36, Client.cycle);
                      Client.field620.method3528(var39);
                   }
 

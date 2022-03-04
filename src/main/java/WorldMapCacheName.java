@@ -718,7 +718,7 @@ public class WorldMapCacheName {
                                              }
 
                                              Skeleton.method2366();
-                                             if (Client.field730) {
+                                             if (Client.isCameraLocked) {
                                                 KeyHandler.method1649();
                                              }
 

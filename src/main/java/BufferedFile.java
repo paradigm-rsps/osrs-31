@@ -356,7 +356,7 @@ public class BufferedFile {
 
    @ObfuscatedName("ar")
    @Export("method603")
-   static final int method603(int var0, int var1, int var2) {
+   static final int getTileHeight(int var0, int var1, int var2) {
       int var3 = var0 >> 7;
       int var4 = var1 >> 7;
       if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {

@@ -271,7 +271,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
    static final void method1649() {
       int var0 = World.field209 * 128 + 64;
       int var1 = Interpreter.field416 * 128 + 64;
-      int var2 = BufferedFile.method603(var0, var1, class22.Client_plane) - class5.field73;
+      int var2 = BufferedFile.getTileHeight(var0, var1, class22.Client_plane) - class5.field73;
       if (Login.cameraX < var0) {
          Login.cameraX = (var0 - Login.cameraX) * SoundCache.field1206 / 1000 + Login.cameraX + ObjectSound.field78;
          if (Login.cameraX > var0) {
@@ -316,7 +316,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
 
       var0 = AccessFile.field757 * 128 + 64;
       var1 = class125.field2036 * 128 + 64;
-      var2 = BufferedFile.method603(var0, var1, class22.Client_plane) - SceneTilePaint.field1681;
+      var2 = BufferedFile.getTileHeight(var0, var1, class22.Client_plane) - SceneTilePaint.field1681;
       int var3 = var0 - Login.cameraX;
       int var4 = var2 - class22.cameraY;
       int var5 = var1 - class17.cameraZ;

@@ -165,7 +165,7 @@ public class class5 {
          }
 
          Client.soundEffectCount = 0;
-         Client.field730 = false;
+         Client.isCameraLocked = false;
          Client.field710 = -1;
          Client.field620.method3527();
          Client.field619.method3527();

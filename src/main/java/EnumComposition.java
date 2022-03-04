@@ -222,7 +222,7 @@ public class EnumComposition extends DualNode {
                   var3 -= Integer.MIN_VALUE;
                }
 
-               Interpreter.scene.method2094(class22.Client_plane, var2.x, var2.y, BufferedFile.method603(var2.field461 * 64 - 64 + var2.x, var2.field461 * 64 - 64 + var2.y, class22.Client_plane), var2.field461 * 64 - 64 + 60, var2, var2.field432, var3, var2.isWalking);
+               Interpreter.scene.method2094(class22.Client_plane, var2.x, var2.y, BufferedFile.getTileHeight(var2.field461 * 64 - 64 + var2.x, var2.field461 * 64 - 64 + var2.y, class22.Client_plane), var2.field461 * 64 - 64 + 60, var2, var2.field432, var3, var2.isWalking);
             }
          }
       }

@@ -50,7 +50,7 @@ public class class1 {
    @Export("method8")
    static final void method8(int var0, int var1, int var2) {
       if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-         int var3 = BufferedFile.method603(var0, var1, class22.Client_plane) - var2;
+         int var3 = BufferedFile.getTileHeight(var0, var1, class22.Client_plane) - var2;
          var0 -= Login.cameraX;
          var3 -= class22.cameraY;
          var1 -= class17.cameraZ;

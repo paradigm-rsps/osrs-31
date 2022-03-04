@@ -2951,7 +2951,7 @@ public abstract class Renderable extends DualNode {
       if (Projectile.clientPreferences.roofsHidden) {
          return class22.Client_plane;
       } else {
-         int var0 = BufferedFile.method603(Login.cameraX, class17.cameraZ, class22.Client_plane);
+         int var0 = BufferedFile.getTileHeight(Login.cameraX, class17.cameraZ, class22.Client_plane);
          return var0 - class22.cameraY < 800 && (Tiles.Tiles_renderFlags[class22.Client_plane][Login.cameraX >> 7][class17.cameraZ >> 7] & 4) != 0 ? class22.Client_plane : 3;
       }
    }

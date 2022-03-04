@@ -176,7 +176,7 @@ public final class GameObject {
             }
 
             int var9 = var0 + (var1 << 7) + 1610612736;
-            Interpreter.scene.method2169(class22.Client_plane, var0, var1, BufferedFile.method603(var0 * 128 + 64, var1 * 128 + 64, class22.Client_plane), var5, var9, var12, var8);
+            Interpreter.scene.method2169(class22.Client_plane, var0, var1, BufferedFile.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class22.Client_plane), var5, var9, var12, var8);
          }
       }
    }

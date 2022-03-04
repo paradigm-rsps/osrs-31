@@ -146,7 +146,7 @@ public class Interpreter {
                if (var4.targetIndex > 0) {
                   NPC var34 = Client.npcs[var4.targetIndex - 1];
                   if (var34 != null && var34.x >= 0 && var34.x < 13312 && var34.y >= 0 && var34.y < 13312) {
-                     var4.method114(var34.x, var34.y, BufferedFile.method603(var34.x, var34.y, var4.plane) - var4.endHeight, Client.cycle);
+                     var4.method114(var34.x, var34.y, BufferedFile.getTileHeight(var34.x, var34.y, var4.plane) - var4.endHeight, Client.cycle);
                   }
                }
 
@@ -160,7 +160,7 @@ public class Interpreter {
                   }
 
                   if (var44 != null && var44.x >= 0 && var44.x < 13312 && var44.y >= 0 && var44.y < 13312) {
-                     var4.method114(var44.x, var44.y, BufferedFile.method603(var44.x, var44.y, var4.plane) - var4.endHeight, Client.cycle);
+                     var4.method114(var44.x, var44.y, BufferedFile.getTileHeight(var44.x, var44.y, var4.plane) - var4.endHeight, Client.cycle);
                   }
                }
 
@@ -189,7 +189,7 @@ public class Interpreter {
 
       int var5;
       int var25;
-      if (!Client.field730) {
+      if (!Client.isCameraLocked) {
          var25 = Client.field516;
          if (Client.field568 / 256 > var25) {
             var25 = Client.field568 / 256;
@@ -200,10 +200,10 @@ public class Interpreter {
          }
 
          var5 = Client.field551 + Client.field569 & 2047;
-         SceneTilePaint.method2210(Client.field572, BufferedFile.method603(Tiles.localPlayer.x, Tiles.localPlayer.y, class22.Client_plane) - 50, MouseHandler.field1402, var25, var5, var25 * 3 + 600);
+         SceneTilePaint.method2210(Client.field572, BufferedFile.getTileHeight(Tiles.localPlayer.x, Tiles.localPlayer.y, class22.Client_plane) - 50, MouseHandler.field1402, var25, var5, var25 * 3 + 600);
       }
 
-      if (!Client.field730) {
+      if (!Client.isCameraLocked) {
          var25 = VarpDefinition.method936();
       } else {
          var25 = Renderable.method2038();
