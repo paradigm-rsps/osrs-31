@@ -495,10 +495,11 @@ public class JagexCache {
                return true;
             }
 
+            //IF_SETANGLE
             if (Client.serverPacketOpcode == 207) {
-               var1 = Client.serverPacketBuf.readUnsignedShort();
+               var1 = Client.serverPacketBuf.readUnsignedShort(); //ModelAngleX
                var2 = Client.serverPacketBuf.readInt();
-               var3 = Client.serverPacketBuf.readUnsignedShortAddLE();
+               var3 = Client.serverPacketBuf.readUnsignedShortAddLE(); //ModelAngleY
                var19 = Client.serverPacketBuf.readUnsignedShortAdd();
                Widget var80 = class130.getWidget(var2);
                if (var1 != var80.modelAngleX || var3 != var80.modelAngleY || var19 != var80.field2679) {
@@ -1267,11 +1268,11 @@ public class JagexCache {
                   if (var28.charAt(var3) == 's') {
                      var91[var3 + 1] = Client.serverPacketBuf.method2653();
                   } else {
-                     var91[var3 + 1] = new Integer(Client.serverPacketBuf.readInt());
+                     var91[var3 + 1] = Client.serverPacketBuf.readInt();
                   }
                }
 
-               var91[0] = new Integer(Client.serverPacketBuf.readInt());
+               var91[0] = Client.serverPacketBuf.readInt();
                ScriptEvent var72 = new ScriptEvent();
                var72.args = var91;
                Renderable.method2040(var72);
