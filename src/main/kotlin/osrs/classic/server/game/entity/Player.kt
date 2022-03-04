@@ -19,7 +19,7 @@ import osrs.classic.server.net.StatusResponse
 import osrs.classic.server.net.game.GameProtocol
 import osrs.classic.server.net.login.LoginRequest
 import osrs.classic.server.net.login.LoginResponse
-import osrs.classic.server.net.packet.server.RunClientScript
+import osrs.classic.server.net.packet.server.unknown.RunClientScript
 import osrs.classic.server.util.SHA256
 import osrs.classic.server.util.logger.Logger
 

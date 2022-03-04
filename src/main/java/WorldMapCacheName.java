@@ -73,7 +73,7 @@ public class WorldMapCacheName {
          Clock.method1461();
       } else {
          int var0;
-         for(var0 = 0; var0 < 100 && JagexCache.method1723(); ++var0) {
+         for(var0 = 0; var0 < 100 && JagexCache.handleServerPacket(); ++var0) {
             ;
          }
 
@@ -484,14 +484,14 @@ public class WorldMapCacheName {
                   if (Projectile.field161 != null) {
                      ++Client.field533;
                      if (Client.field533 >= 15) {
-                        class82.method1754(Projectile.field161);
+                        class82.invalidateWidget(Projectile.field161);
                         Projectile.field161 = null;
                      }
                   }
 
                   Widget var38;
                   if (SequenceDefinition.field887 != null) {
-                     class82.method1754(SequenceDefinition.field887);
+                     class82.invalidateWidget(SequenceDefinition.field887);
                      ++Client.field639;
                      if (MouseHandler.MouseHandler_x > Client.field597 + 5 || MouseHandler.MouseHandler_x < Client.field597 - 5 || MouseHandler.MouseHandler_y > Client.field598 + 5 || MouseHandler.MouseHandler_y < Client.field598 - 5) {
                         Client.field600 = true;
@@ -644,7 +644,7 @@ public class WorldMapCacheName {
                                                             if (var3 == 39 || var3 == 40 || var3 == 41 || var3 == 42 || var3 == 43 || var3 == 33 || var3 == 34 || var3 == 35 || var3 == 36 || var3 == 37 || var3 == 38 || var3 == 1005) {
                                                                var4 = Client.menuArguments1[Client.menuOptionsCount - 1];
                                                                var5 = Client.menuArguments2[Client.menuOptionsCount - 1];
-                                                               Widget var28 = class130.method2851(var5);
+                                                               Widget var28 = class130.getWidget(var5);
                                                                if (Buffer.method2811(SoundSystem.method1326(var28))) {
                                                                   break label1258;
                                                                }
@@ -674,35 +674,35 @@ public class WorldMapCacheName {
                                                       Client.field600 = false;
                                                       Client.field639 = 0;
                                                       if (SequenceDefinition.field887 != null) {
-                                                         class82.method1754(SequenceDefinition.field887);
+                                                         class82.invalidateWidget(SequenceDefinition.field887);
                                                       }
 
-                                                      SequenceDefinition.field887 = class130.method2851(var5);
+                                                      SequenceDefinition.field887 = class130.getWidget(var5);
                                                       Client.field596 = var4;
                                                       Client.field597 = MouseHandler.MouseHandler_lastPressedX;
                                                       Client.field598 = MouseHandler.MouseHandler_lastPressedY;
-                                                      class82.method1754(SequenceDefinition.field887);
+                                                      class82.invalidateWidget(SequenceDefinition.field887);
                                                    }
                                                 }
                                              }
 
                                              if (var38 != Tiles.mousedOverWidgetIf1) {
                                                 if (var38 != null) {
-                                                   class82.method1754(var38);
+                                                   class82.invalidateWidget(var38);
                                                 }
 
                                                 if (Tiles.mousedOverWidgetIf1 != null) {
-                                                   class82.method1754(Tiles.mousedOverWidgetIf1);
+                                                   class82.invalidateWidget(Tiles.mousedOverWidgetIf1);
                                                 }
                                              }
 
                                              if (var40 != NPC.field398 && Client.field635 == Client.field636) {
                                                 if (var40 != null) {
-                                                   class82.method1754(var40);
+                                                   class82.invalidateWidget(var40);
                                                 }
 
                                                 if (NPC.field398 != null) {
-                                                   class82.method1754(NPC.field398);
+                                                   class82.invalidateWidget(NPC.field398);
                                                 }
                                              }
 
@@ -710,7 +710,7 @@ public class WorldMapCacheName {
                                                 if (Client.field635 < Client.field636) {
                                                    ++Client.field635;
                                                    if (Client.field636 == Client.field635) {
-                                                      class82.method1754(NPC.field398);
+                                                      class82.invalidateWidget(NPC.field398);
                                                    }
                                                 }
                                              } else if (Client.field635 > 0) {
@@ -841,7 +841,7 @@ public class WorldMapCacheName {
                                              break;
                                           }
 
-                                          var42 = class130.method2851(var41.parentId);
+                                          var42 = class130.getWidget(var41.parentId);
                                        } while(var42 == null || var42.children == null || var41.childIndex >= var42.children.length || var41 != var42.children[var41.childIndex]);
 
                                        Renderable.method2040(var44);
@@ -853,7 +853,7 @@ public class WorldMapCacheName {
                                     break;
                                  }
 
-                                 var42 = class130.method2851(var41.parentId);
+                                 var42 = class130.getWidget(var41.parentId);
                               } while(var42 == null || var42.children == null || var41.childIndex >= var42.children.length || var41 != var42.children[var41.childIndex]);
 
                               Renderable.method2040(var44);
@@ -865,7 +865,7 @@ public class WorldMapCacheName {
                            break;
                         }
 
-                        var42 = class130.method2851(var41.parentId);
+                        var42 = class130.getWidget(var41.parentId);
                      } while(var42 == null || var42.children == null || var41.childIndex >= var42.children.length || var41 != var42.children[var41.childIndex]);
 
                      Renderable.method2040(var44);

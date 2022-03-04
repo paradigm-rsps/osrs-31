@@ -37,7 +37,7 @@ public final class WallDecoration {
    @ObfuscatedSignature(
       descriptor = "Lclass93;"
    )
-   public Renderable field1815;
+   public Renderable renderable1;
    @ObfuscatedName("r")
    @Export("renderable2")
    @ObfuscatedSignature(
@@ -45,7 +45,7 @@ public final class WallDecoration {
    )
    public Renderable renderable2;
    @ObfuscatedName("l")
-   public int field1817 = 0;
+   public int packedId = 0;
    @ObfuscatedName("a")
    int field1809 = 0;
 

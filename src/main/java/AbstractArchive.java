@@ -517,7 +517,7 @@ public abstract class AbstractArchive {
       descriptor = "(II)Lclass157;"
    )
    public static Widget method3230(int var0, int var1) {
-      Widget var2 = class130.method2851(var0);
+      Widget var2 = class130.getWidget(var0);
       if (var1 == -1) {
          return var2;
       } else {

@@ -15,16 +15,16 @@ import osrs.classic.server.net.game.ServerPacket
 class Unknown220(val u1: Int, val value: Int) : Packet {
     companion object : Codec<Unknown220> {
         override fun encode(session: Session, packet: Unknown220, buf: ByteBuf) {
-            buf.writeShortAddLE(packet.value) //unsigned AnimationCycleEnd
+            buf.writeShortAddLE(packet.value) // AnimationCycleEnd
             buf.writeByte(0) // ?
             buf.writeByteNeg(0) // ?
             buf.writeByteAdd(0) // ?
             buf.writeByte(0) // ?
-            buf.writeShortLE(0) // unsigned PlayerIndex
-            buf.writeByteAdd(0) // unsigned ?
+            buf.writeShortLE(0) // u PlayerIndex
+            buf.writeByteAdd(0) // u ?
             buf.writeByteAdd(0) // ?
-            buf.writeShort(0) // unsigned ObjectID
-            buf.writeShortAdd(0)// unsigned AnimationCycleStart
+            buf.writeShort(0) // u ObjectID
+            buf.writeShortAdd(0)// u AnimationCycleStart
         }
     }
 }

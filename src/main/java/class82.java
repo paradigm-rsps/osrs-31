@@ -138,7 +138,7 @@ public final class class82 extends AbstractRasterProvider implements ImageProduc
    @ObfuscatedSignature(
       descriptor = "(Lclass157;)V"
    )
-   static void method1754(Widget var0) {
+   static void invalidateWidget(Widget var0) {
       if (var0.cycle == Client.field685) {
          Client.field686[var0.rootIndex] = true;
       }

@@ -94,7 +94,7 @@ public class Widget extends Node {
    @ObfuscatedName("ae")
    public int field2592 = 0;
    @ObfuscatedName("aa")
-   public int field2593 = 0;
+   public int color = 0;
    @ObfuscatedName("ah")
    public int field2678 = 0;
    @ObfuscatedName("aw")
@@ -475,7 +475,7 @@ public class Widget extends Node {
       }
 
       if (this.type == 1 || this.type == 3 || this.type == 4) {
-         this.field2593 = var1.readInt();
+         this.color = var1.readInt();
       }
 
       if (this.type == 3 || this.type == 4) {
@@ -527,7 +527,7 @@ public class Widget extends Node {
          }
 
          this.field2628 = var1.readUnsignedByte() == 1;
-         this.field2593 = var1.readInt();
+         this.color = var1.readInt();
          this.field2611 = var1.readShort();
          this.field2652 = var1.readShort();
          var4 = var1.readUnsignedByte();
@@ -663,18 +663,18 @@ public class Widget extends Node {
          this.field2626 = var1.readUnsignedByte();
          this.field2627 = var1.readUnsignedByte();
          this.field2628 = var1.readUnsignedByte() == 1;
-         this.field2593 = var1.readInt();
+         this.color = var1.readInt();
       }
 
       if (this.type == 3) {
-         this.field2593 = var1.readInt();
+         this.color = var1.readInt();
          this.field2647 = var1.readUnsignedByte() == 1;
          this.field2582 = var1.readUnsignedByte();
       }
 
       if (this.type == 9) {
          this.field2599 = var1.readUnsignedByte();
-         this.field2593 = var1.readInt();
+         this.color = var1.readInt();
       }
 
       this.field2644 = var1.readMedium();

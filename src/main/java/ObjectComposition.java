@@ -752,7 +752,7 @@ public class ObjectComposition extends DualNode {
                   if (var5 != -1) {
                      SequenceDefinition var6 = class23.method250(var5);
 
-                     for(var3.modelFrameCycle += Client.field525; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class82.method1754(var3)) {
+                     for(var3.modelFrameCycle += Client.field525; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class82.invalidateWidget(var3)) {
                         var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame];
                         ++var3.modelFrame;
                         if (var3.modelFrame >= var6.frameIds.length) {
@@ -772,7 +772,7 @@ public class ObjectComposition extends DualNode {
                   var5 *= Client.field525;
                   var3.modelAngleX = var8 + var3.modelAngleX & 2047;
                   var3.modelAngleY = var5 + var3.modelAngleY & 2047;
-                  class82.method1754(var3);
+                  class82.invalidateWidget(var3);
                }
             }
          }

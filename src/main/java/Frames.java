@@ -339,7 +339,7 @@ public class Frames extends DualNode {
                   } else {
                      Widget var18;
                      if (var3 == 24) {
-                        var18 = class130.method2851(var2);
+                        var18 = class130.getWidget(var2);
                         boolean var12 = true;
                         if (var18.contentType > 0) {
                            var12 = Client.method538(var18);
@@ -368,7 +368,7 @@ public class Frames extends DualNode {
                               GraphicsObject.field308 = var2;
                               Client.selectedSpellChildIndex = var1;
                               FaceNormal.field1523 = var21;
-                              class82.method1754(var17);
+                              class82.invalidateWidget(var17);
                               Client.isItemSelected = 0;
                               Client.field641 = IsaacCipher.method2543(var18);
                               if (Client.field641 == null) {
@@ -395,13 +395,13 @@ public class Frames extends DualNode {
                            }
 
                            if (Client.meslayerContinueWidget != null) {
-                              class82.method1754(Client.meslayerContinueWidget);
+                              class82.invalidateWidget(Client.meslayerContinueWidget);
                               Client.meslayerContinueWidget = null;
                            }
                         } else if (var3 == 28) {
                            Client.rsaBuf.writeByteOpcode(172);
                            Client.rsaBuf.writeInt(var2);
-                           var18 = class130.method2851(var2);
+                           var18 = class130.getWidget(var2);
                            if (var18.cs1Instructions != null && var18.cs1Instructions[0][0] == 5) {
                               var21 = var18.cs1Instructions[0][1];
                               Varps.Varps_main[var21] = 1 - Varps.Varps_main[var21];
@@ -410,7 +410,7 @@ public class Frames extends DualNode {
                         } else if (var3 == 29) {
                            Client.rsaBuf.writeByteOpcode(172);
                            Client.rsaBuf.writeInt(var2);
-                           var18 = class130.method2851(var2);
+                           var18 = class130.getWidget(var2);
                            if (var18.cs1Instructions != null && var18.cs1Instructions[0][0] == 5) {
                               var21 = var18.cs1Instructions[0][1];
                               if (Varps.Varps_main[var21] != var18.cs1ComparisonValues[0]) {
@@ -424,7 +424,7 @@ public class Frames extends DualNode {
                               Client.rsaBuf.writeInt(var2);
                               Client.rsaBuf.writeShort(var1);
                               Client.meslayerContinueWidget = AbstractArchive.method3230(var2, var1);
-                              class82.method1754(Client.meslayerContinueWidget);
+                              class82.invalidateWidget(Client.meslayerContinueWidget);
                            }
                         } else if (var3 == 31) {
                            Client.rsaBuf.writeByteOpcode(43);
@@ -435,7 +435,7 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeIntLE(var2);
                            Client.rsaBuf.writeShortAdd(var4);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else if (var3 == 32) {
                            Client.rsaBuf.writeByteOpcode(112);
@@ -445,7 +445,7 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeIntME(GraphicsObject.field308);
                            Client.rsaBuf.writeIntME(var2);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else if (var3 == 33) {
                            Client.rsaBuf.writeByteOpcode(74);
@@ -453,7 +453,7 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeIntME(var2);
                            Client.rsaBuf.writeShortAddLE(var4);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else if (var3 == 34) {
                            Client.rsaBuf.writeByteOpcode(226);
@@ -461,7 +461,7 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeIntME(var2);
                            Client.rsaBuf.writeShortAddLE(var4);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else if (var3 == 35) {
                            Client.rsaBuf.writeByteOpcode(175);
@@ -469,7 +469,7 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeShort(var4);
                            Client.rsaBuf.writeIntME(var2);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else if (var3 == 36) {
                            Client.rsaBuf.writeByteOpcode(213);
@@ -477,7 +477,7 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeShortAddLE(var1);
                            Client.rsaBuf.writeIntME(var2);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else if (var3 == 37) {
                            Client.rsaBuf.writeByteOpcode(184);
@@ -485,17 +485,17 @@ public class Frames extends DualNode {
                            Client.rsaBuf.writeShortLE(var1);
                            Client.rsaBuf.writeInt(var2);
                            Client.field533 = 0;
-                           Projectile.field161 = class130.method2851(var2);
+                           Projectile.field161 = class130.getWidget(var2);
                            Client.field595 = var1;
                         } else {
                            if (var3 == 38) {
                               ScriptEvent.method1();
-                              var18 = class130.method2851(var2);
+                              var18 = class130.getWidget(var2);
                               Client.isItemSelected = 1;
                               class82.selectedItemSlot = var1;
                               PcmPlayer.selectedItemWidget = var2;
                               DynamicObject.selectedItemId = var4;
-                              class82.method1754(var18);
+                              class82.invalidateWidget(var18);
                               Client.selectedItemName = ScriptEvent.method0(16748608) + class27.method571(var4).name + ScriptEvent.method0(16777215);
                               if (Client.selectedItemName == null) {
                                  Client.selectedItemName = "null";
@@ -510,7 +510,7 @@ public class Frames extends DualNode {
                               Client.rsaBuf.writeIntIME(var2);
                               Client.rsaBuf.writeShort(var4);
                               Client.field533 = 0;
-                              Projectile.field161 = class130.method2851(var2);
+                              Projectile.field161 = class130.getWidget(var2);
                               Client.field595 = var1;
                            } else if (var3 == 40) {
                               Client.rsaBuf.writeByteOpcode(45);
@@ -518,7 +518,7 @@ public class Frames extends DualNode {
                               Client.rsaBuf.writeIntME(var2);
                               Client.rsaBuf.writeShortAdd(var4);
                               Client.field533 = 0;
-                              Projectile.field161 = class130.method2851(var2);
+                              Projectile.field161 = class130.getWidget(var2);
                               Client.field595 = var1;
                            } else if (var3 == 41) {
                               Client.rsaBuf.writeByteOpcode(94);
@@ -526,7 +526,7 @@ public class Frames extends DualNode {
                               Client.rsaBuf.writeShortAdd(var1);
                               Client.rsaBuf.writeShort(var4);
                               Client.field533 = 0;
-                              Projectile.field161 = class130.method2851(var2);
+                              Projectile.field161 = class130.getWidget(var2);
                               Client.field595 = var1;
                            } else if (var3 == 42) {
                               Client.rsaBuf.writeByteOpcode(131);
@@ -534,7 +534,7 @@ public class Frames extends DualNode {
                               Client.rsaBuf.writeShortLE(var1);
                               Client.rsaBuf.writeIntLE(var2);
                               Client.field533 = 0;
-                              Projectile.field161 = class130.method2851(var2);
+                              Projectile.field161 = class130.getWidget(var2);
                               Client.field595 = var1;
                            } else if (var3 == 43) {
                               Client.rsaBuf.writeByteOpcode(44);
@@ -542,7 +542,7 @@ public class Frames extends DualNode {
                               Client.rsaBuf.writeShortLE(var4);
                               Client.rsaBuf.writeShort(var1);
                               Client.field533 = 0;
-                              Projectile.field161 = class130.method2851(var2);
+                              Projectile.field161 = class130.getWidget(var2);
                               Client.field595 = var1;
                            } else if (var3 == 44) {
                               var16 = Client.players[var4];
@@ -694,7 +694,7 @@ public class Frames extends DualNode {
                                     }
 
                                     if (var3 == 1005) {
-                                       var18 = class130.method2851(var2);
+                                       var18 = class130.getWidget(var2);
                                        if (var18 != null && var18.itemQuantities[var1] >= 100000) {
                                           Login.method239(0, "", var18.itemQuantities[var1] + " x " + class27.method571(var4).name);
                                        } else {
@@ -703,7 +703,7 @@ public class Frames extends DualNode {
                                        }
 
                                        Client.field533 = 0;
-                                       Projectile.field161 = class130.method2851(var2);
+                                       Projectile.field161 = class130.getWidget(var2);
                                        Client.field595 = var1;
                                        break label567;
                                     }
@@ -808,7 +808,7 @@ public class Frames extends DualNode {
 
          if (Client.isItemSelected != 0) {
             Client.isItemSelected = 0;
-            class82.method1754(class130.method2851(PcmPlayer.selectedItemWidget));
+            class82.invalidateWidget(class130.getWidget(PcmPlayer.selectedItemWidget));
          }
 
          if (Client.isSpellSelected) {
@@ -816,7 +816,7 @@ public class Frames extends DualNode {
          }
 
          if (Projectile.field161 != null && Client.field533 == 0) {
-            class82.method1754(Projectile.field161);
+            class82.invalidateWidget(Projectile.field161);
          }
 
       }

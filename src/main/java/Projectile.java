@@ -447,7 +447,7 @@ public final class Projectile extends Renderable {
 
    @ObfuscatedName("cp")
    static final void method123() {
-      class82.method1754(Client.clickedWidget);
+      class82.invalidateWidget(Client.clickedWidget);
       ++ClientPreferences.field191;
       if (Client.field703 && Client.field659) {
          int var0 = MouseHandler.MouseHandler_x;
@@ -516,7 +516,7 @@ public final class Projectile extends Renderable {
                            break;
                         }
 
-                        var8 = class130.method2851(var8.parentId);
+                        var8 = class130.getWidget(var8.parentId);
                         if (var8 == null) {
                            var11 = null;
                            break;

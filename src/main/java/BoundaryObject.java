@@ -40,7 +40,7 @@ public final class BoundaryObject {
    )
    public Renderable renderable2;
    @ObfuscatedName("k")
-   public int field1612 = 0;
+   public int packedId = 0;
    @ObfuscatedName("r")
    int field1615 = 0;
 

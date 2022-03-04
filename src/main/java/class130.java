@@ -9,7 +9,7 @@ public final class class130 {
    @ObfuscatedSignature(
       descriptor = "(I)Lclass157;"
    )
-   public static Widget method2851(int var0) {
+   public static Widget getWidget(int var0) {
       int var1 = var0 >> 16;
       int var2 = var0 & '\uffff';
       if (Widget.Widget_interfaceComponents[var1] == null || Widget.Widget_interfaceComponents[var1][var2] == null) {

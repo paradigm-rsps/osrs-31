@@ -1,4 +1,4 @@
-package osrs.classic.server.net.packet.server
+package osrs.classic.server.net.packet.server.unknown
 
 import io.guthix.buffer.writeShortAdd
 import io.netty.buffer.ByteBuf

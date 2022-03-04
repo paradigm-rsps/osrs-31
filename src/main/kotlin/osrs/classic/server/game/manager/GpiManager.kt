@@ -6,7 +6,7 @@ import io.netty.buffer.Unpooled
 import osrs.classic.server.game.World
 import osrs.classic.server.game.entity.Player
 import osrs.classic.server.game.entity.update.PlayerUpdateTask
-import osrs.classic.server.net.packet.server.PlayerUpdate
+import osrs.classic.server.net.packet.server.unknown.PlayerUpdate
 
 class GpiManager(private val player: Player) {
 

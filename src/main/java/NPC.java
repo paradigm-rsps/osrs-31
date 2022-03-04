@@ -373,7 +373,7 @@ public final class NPC extends Actor {
 
             if (var1 == 1 && var3.onSubChange != null) {
                if (var3.childIndex >= 0) {
-                  Widget var6 = class130.method2851(var3.id);
+                  Widget var6 = class130.getWidget(var3.id);
                   if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
                      continue;
                   }

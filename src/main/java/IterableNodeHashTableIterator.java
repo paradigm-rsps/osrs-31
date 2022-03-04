@@ -248,7 +248,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
       int var4;
       int playerIndex;
       int var8;
-      int var9;
+      int id;
       int face;
       int var11;
       if (Client.serverPacketOpcode == 220) {
@@ -261,9 +261,9 @@ public final class IterableNodeHashTableIterator implements Runnable {
          byte var6 = Client.serverPacketBuf.readByte();
          playerIndex = Client.serverPacketBuf.readUnsignedShortLE();
          var8 = Client.serverPacketBuf.readUnsignedByteAdd();
-         var9 = var8 >> 2;
+         id = var8 >> 2;
          face = var8 & 3;
-         var11 = Client.field541[var9];
+         var11 = Client.field541[id];
          byte var12 = Client.serverPacketBuf.readByteAdd();
          int var13 = Client.serverPacketBuf.readUnsignedShort();
          int animationCycleStart = Client.serverPacketBuf.readUnsignedShortAdd();
@@ -294,7 +294,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
             int var24 = tileHeights[var20][var22] + tileHeights[var19][var22] + tileHeights[var20][var21] + tileHeights[var19][var21] >> 2;
             int var25 = (var3 << 7) + (sizeX << 6);
             int var26 = (var4 << 7) + (sizeY << 6);
-            Model objectModel = objectDefinition.method664(var9, face, tileHeights, var25, var24, var26);
+            Model objectModel = objectDefinition.method664(id, face, tileHeights, var25, var24, var26);
             if (objectModel != null) {
                class1.updatePendingSpawn(class22.Client_plane, var3, var4, var11, -1, 0, 0, animationCycleStart + 1, animationCycleEnd + 1);
                entity.animationCycleStart = animationCycleStart + Client.cycle;
@@ -338,39 +338,39 @@ public final class IterableNodeHashTableIterator implements Runnable {
          playerIndex = (var36 & 7) + GraphicsObject.field307;
          if (var37 >= 0 && playerIndex >= 0 && var37 < 103 && playerIndex < 103) {
             if (var4 == 0) {
-               BoundaryObject var34 = Interpreter.scene.method2170(class22.Client_plane, var37, playerIndex);
-               if (var34 != null) {
-                  var9 = var34.field1612 >> 14 & 32767;
+               BoundaryObject boundaryObject = Interpreter.scene.getBoundaryObject(class22.Client_plane, var37, playerIndex);
+               if (boundaryObject != null) {
+                  id = boundaryObject.packedId >> 14 & 32767;
                   if (var2 == 2) {
-                     var34.renderable1 = new DynamicObject(var9, 2, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var34.renderable1);
-                     var34.renderable2 = new DynamicObject(var9, 2, var3 + 1 & 3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var34.renderable2);
+                     boundaryObject.renderable1 = new DynamicObject(id, 2, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, boundaryObject.renderable1);
+                     boundaryObject.renderable2 = new DynamicObject(id, 2, var3 + 1 & 3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, boundaryObject.renderable2);
                   } else {
-                     var34.renderable1 = new DynamicObject(var9, var2, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var34.renderable1);
+                     boundaryObject.renderable1 = new DynamicObject(id, var2, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, boundaryObject.renderable1);
                   }
                }
             }
 
             if (var4 == 1) {
-               WallDecoration var41 = Interpreter.scene.method2064(class22.Client_plane, var37, playerIndex);
-               if (var41 != null) {
-                  var9 = var41.field1817 >> 14 & 32767;
+               WallDecoration wallDecoration = Interpreter.scene.getWallDecoration(class22.Client_plane, var37, playerIndex);
+               if (wallDecoration != null) {
+                  id = wallDecoration.packedId >> 14 & 32767;
                   if (var2 != 4 && var2 != 5) {
                      if (var2 == 6) {
-                        var41.field1815 = new DynamicObject(var9, 4, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
+                        wallDecoration.renderable1 = new DynamicObject(id, 4, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, wallDecoration.renderable1);
                      } else if (var2 == 7) {
-                        var41.field1815 = new DynamicObject(var9, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
+                        wallDecoration.renderable1 = new DynamicObject(id, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, wallDecoration.renderable1);
                      } else if (var2 == 8) {
-                        var41.field1815 = new DynamicObject(var9, 4, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
-                        var41.renderable2 = new DynamicObject(var9, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.renderable2);
+                        wallDecoration.renderable1 = new DynamicObject(id, 4, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, wallDecoration.renderable1);
+                        wallDecoration.renderable2 = new DynamicObject(id, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, wallDecoration.renderable2);
                      }
                   } else {
-                     var41.field1815 = new DynamicObject(var9, 4, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
+                     wallDecoration.renderable1 = new DynamicObject(id, 4, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, wallDecoration.renderable1);
                   }
                }
             }
 
             if (var4 == 2) {
-               GameObject var42 = Interpreter.scene.method2196(class22.Client_plane, var37, playerIndex);
+               GameObject var42 = Interpreter.scene.getGameObject(class22.Client_plane, var37, playerIndex);
                if (var2 == 11) {
                   var2 = 10;
                }
@@ -509,7 +509,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
                   var37 = Client.serverPacketBuf.readUnsignedShort();
                   playerIndex = Client.serverPacketBuf.readUnsignedByte() * 4;
                   var8 = Client.serverPacketBuf.readUnsignedByte() * 4;
-                  var9 = Client.serverPacketBuf.readUnsignedShort();
+                  id = Client.serverPacketBuf.readUnsignedShort();
                   face = Client.serverPacketBuf.readUnsignedShort();
                   var11 = Client.serverPacketBuf.readUnsignedByte();
                   int var38 = Client.serverPacketBuf.readUnsignedByte();
@@ -518,8 +518,8 @@ public final class IterableNodeHashTableIterator implements Runnable {
                      var2 = var2 * 128 + 64;
                      var3 = var3 * 128 + 64;
                      var4 = var4 * 128 + 64;
-                     Projectile var30 = new Projectile(var37, class22.Client_plane, var35, var2, BufferedFile.method603(var35, var2, class22.Client_plane) - playerIndex, var9 + Client.cycle, face + Client.cycle, var11, var38, var36, var8);
-                     var30.method114(var3, var4, BufferedFile.method603(var3, var4, class22.Client_plane) - var8, var9 + Client.cycle);
+                     Projectile var30 = new Projectile(var37, class22.Client_plane, var35, var2, BufferedFile.method603(var35, var2, class22.Client_plane) - playerIndex, id + Client.cycle, face + Client.cycle, var11, var38, var36, var8);
+                     var30.method114(var3, var4, BufferedFile.method603(var3, var4, class22.Client_plane) - var8, id + Client.cycle);
                      Client.field619.method3528(var30);
                   }
 

@@ -2061,9 +2061,9 @@ public final class Client extends GameEngine {
 
             if (!var2) {
                var4 = (int)var0.key;
-               Widget var5 = class130.method2851(var4);
+               Widget var5 = class130.getWidget(var4);
                if (var5 != null) {
-                  class82.method1754(var5);
+                  class82.invalidateWidget(var5);
                }
             }
          }

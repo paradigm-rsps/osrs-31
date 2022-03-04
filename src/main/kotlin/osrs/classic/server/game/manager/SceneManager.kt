@@ -4,7 +4,7 @@ import osrs.classic.server.XteaConfig
 import osrs.classic.server.game.World
 import osrs.classic.server.game.entity.Player
 import osrs.classic.server.game.map.Chunk
-import osrs.classic.server.net.packet.server.RebuildRegionNormal
+import osrs.classic.server.net.packet.server.unknown.RebuildRegionNormal
 import kotlin.math.abs
 
 class SceneManager(private val player: Player) {

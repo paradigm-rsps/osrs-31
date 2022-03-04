@@ -166,7 +166,7 @@ public class ScriptEvent extends Node {
          }
 
          Client.isSpellSelected = false;
-         class82.method1754(var0);
+         class82.invalidateWidget(var0);
       }
    }
 }

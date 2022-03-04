@@ -139,10 +139,10 @@ public class ClientPreferences {
       if (MouseHandler.MouseHandler_currentButton != 0) {
          if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
             var0.field2655 -= 4;
-            class82.method1754(var0);
+            class82.invalidateWidget(var0);
          } else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
             var0.field2655 += 4;
-            class82.method1754(var0);
+            class82.invalidateWidget(var0);
          } else if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
             var7 = var3 * (var3 - 32) / var4;
             if (var7 < 8) {
@@ -152,7 +152,7 @@ public class ClientPreferences {
             int var8 = var6 - var2 - 16 - var7 / 2;
             int var9 = var3 - 32 - var7;
             var0.field2655 = var8 * (var4 - var3) / var9;
-            class82.method1754(var0);
+            class82.invalidateWidget(var0);
             Client.field691 = true;
          }
       }
@@ -161,7 +161,7 @@ public class ClientPreferences {
          var7 = var0.width;
          if (var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
             var0.field2655 += Client.field654 * 45;
-            class82.method1754(var0);
+            class82.invalidateWidget(var0);
          }
       }
 

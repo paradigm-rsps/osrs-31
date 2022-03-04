@@ -362,9 +362,9 @@ public final class Tiles {
          }
       }
 
-      Widget var8 = class130.method2851(var3);
+      Widget var8 = class130.getWidget(var3);
       if (var8 != null) {
-         class82.method1754(var8);
+         class82.invalidateWidget(var8);
       }
 
       for(var5 = 0; var5 < Client.menuOptionsCount; ++var5) {

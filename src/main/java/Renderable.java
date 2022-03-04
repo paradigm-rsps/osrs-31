@@ -476,7 +476,7 @@ public abstract class Renderable extends DualNode {
                         throw new RuntimeException();
                      }
 
-                     var52 = class130.method2851(var14);
+                     var52 = class130.getWidget(var14);
                      if (var52.children == null) {
                         var52.children = new Widget[var35 + 1];
                      }
@@ -507,23 +507,23 @@ public abstract class Renderable extends DualNode {
                         ItemContainer.field286 = var92;
                      }
 
-                     class82.method1754(var52);
+                     class82.invalidateWidget(var52);
                      continue;
                   }
 
                   if (var46 == ScriptOpcodes.CC_DELETE) {
                      var34 = var60 ? Skills.field2054 : ItemContainer.field286;
-                     Widget var72 = class130.method2851(var34.id);
+                     Widget var72 = class130.getWidget(var34.id);
                      var72.children[var34.childIndex] = null;
-                     class82.method1754(var72);
+                     class82.invalidateWidget(var72);
                      continue;
                   }
 
                   if (var46 == ScriptOpcodes.CC_DELETEALL) {
                      --var4;
-                     var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                     var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                      var34.children = null;
-                     class82.method1754(var34);
+                     class82.invalidateWidget(var34);
                      continue;
                   }
 
@@ -549,7 +549,7 @@ public abstract class Renderable extends DualNode {
                   if (var46 >= 2000) {
                      var46 -= 1000;
                      --var4;
-                     var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                     var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                   } else {
                      var34 = var60 ? Skills.field2054 : ItemContainer.field286;
                   }
@@ -558,7 +558,7 @@ public abstract class Renderable extends DualNode {
                      var4 -= 2;
                      var34.rawX = Interpreter.Interpreter_intStack[var4];
                      var34.field2579 = Interpreter.Interpreter_intStack[var4 + 1];
-                     class82.method1754(var34);
+                     class82.invalidateWidget(var34);
                      continue;
                   }
 
@@ -566,7 +566,7 @@ public abstract class Renderable extends DualNode {
                      var4 -= 2;
                      var34.width = Interpreter.Interpreter_intStack[var4];
                      var34.height = Interpreter.Interpreter_intStack[var4 + 1];
-                     class82.method1754(var34);
+                     class82.invalidateWidget(var34);
                      continue;
                   }
 
@@ -575,7 +575,7 @@ public abstract class Renderable extends DualNode {
                      boolean var100 = Interpreter.Interpreter_intStack[var4] == 1;
                      if (var100 != var34.field2588) {
                         var34.field2588 = var100;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                      }
                      continue;
                   }
@@ -587,7 +587,7 @@ public abstract class Renderable extends DualNode {
                            if (var46 >= 2000) {
                               var46 -= 1000;
                               --var4;
-                              var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                              var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                            } else {
                               var34 = var60 ? Skills.field2054 : ItemContainer.field286;
                            }
@@ -653,7 +653,7 @@ public abstract class Renderable extends DualNode {
                               if (var46 >= 2000) {
                                  var46 -= 1000;
                                  --var4;
-                                 var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                                 var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                               } else {
                                  var34 = var60 ? Skills.field2054 : ItemContainer.field286;
                               }
@@ -923,7 +923,7 @@ public abstract class Renderable extends DualNode {
                               }
                            } else if (var46 < 2600) {
                               --var4;
-                              var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                              var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                               if (var46 == ScriptOpcodes.IF_GETX) {
                                  Interpreter.Interpreter_intStack[var4++] = var34.rawX;
                                  continue;
@@ -955,7 +955,7 @@ public abstract class Renderable extends DualNode {
                               }
                            } else if (var46 < 2700) {
                               --var4;
-                              var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                              var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                               if (var46 == ScriptOpcodes.IF_GETSCROLLX) {
                                  Interpreter.Interpreter_intStack[var4++] = var34.field2589;
                                  continue;
@@ -1003,14 +1003,14 @@ public abstract class Renderable extends DualNode {
                            } else if (var46 < 2800) {
                               if (var46 == ScriptOpcodes.IF_GETINVOBJECT) {
                                  --var4;
-                                 var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                                 var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                                  Interpreter.Interpreter_intStack[var4++] = var34.field2680;
                                  continue;
                               }
 
                               if (var46 == ScriptOpcodes.IF_GETINVCOUNT) {
                                  --var4;
-                                 var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                                 var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                                  if (var34.field2680 != -1) {
                                     Interpreter.Interpreter_intStack[var4++] = var34.field2681;
                                  } else {
@@ -1032,7 +1032,7 @@ public abstract class Renderable extends DualNode {
                               }
                            } else if (var46 < 2900) {
                               --var4;
-                              var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                              var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                               if (var46 == ScriptOpcodes.IF_GETTARGETMASK) {
                                  Interpreter.Interpreter_intStack[var4++] = class40.method905(SoundSystem.method1326(var34));
                                  continue;
@@ -1085,7 +1085,7 @@ public abstract class Renderable extends DualNode {
                                     }
 
                                     if (Client.meslayerContinueWidget != null) {
-                                       class82.method1754(Client.meslayerContinueWidget);
+                                       class82.invalidateWidget(Client.meslayerContinueWidget);
                                        Client.meslayerContinueWidget = null;
                                     }
                                     continue;
@@ -1164,7 +1164,7 @@ public abstract class Renderable extends DualNode {
                                     var14 = Interpreter.Interpreter_intStack[var4];
                                     var39 = Interpreter.Interpreter_intStack[var4 + 1];
                                     var35 = Interpreter.Interpreter_intStack[var4 + 2];
-                                    var52 = class130.method2851(var35);
+                                    var52 = class130.getWidget(var35);
                                     ByteArrayPool.method2503(var52, var14, var39);
                                     continue;
                                  }
@@ -2671,12 +2671,12 @@ public abstract class Renderable extends DualNode {
                         if (var46 >= 2000) {
                            var46 -= 1000;
                            --var4;
-                           var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                           var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                         } else {
                            var34 = var60 ? Skills.field2054 : ItemContainer.field286;
                         }
 
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         if (var46 == ScriptOpcodes.CC_SETOBJECT) {
                            var4 -= 2;
                            var39 = Interpreter.Interpreter_intStack[var4];
@@ -2713,7 +2713,7 @@ public abstract class Renderable extends DualNode {
                      if (var46 >= 2000) {
                         var46 -= 1000;
                         --var4;
-                        var34 = class130.method2851(Interpreter.Interpreter_intStack[var4]);
+                        var34 = class130.getWidget(Interpreter.Interpreter_intStack[var4]);
                      } else {
                         var34 = var60 ? Skills.field2054 : ItemContainer.field286;
                      }
@@ -2738,56 +2738,56 @@ public abstract class Renderable extends DualNode {
                            var34.field2655 = 0;
                         }
 
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETCOLOUR) {
                         --var4;
-                        var34.field2593 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        var34.color = Interpreter.Interpreter_intStack[var4];
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETFILL) {
                         --var4;
                         var34.field2647 = Interpreter.Interpreter_intStack[var4] == 1;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETTRANS) {
                         --var4;
                         var34.field2582 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETLINEWID) {
                         --var4;
                         var34.field2599 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETGRAPHIC) {
                         --var4;
                         var34.spriteId2 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SET2DANGLE) {
                         --var4;
                         var34.field2688 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETTILING) {
                         --var4;
                         var34.field2603 = Interpreter.Interpreter_intStack[var4] == 1;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
@@ -2795,7 +2795,7 @@ public abstract class Renderable extends DualNode {
                         var34.modelType = 1;
                         --var4;
                         var34.modelId = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
@@ -2807,7 +2807,7 @@ public abstract class Renderable extends DualNode {
                         var34.modelAngleY = Interpreter.Interpreter_intStack[var4 + 3];
                         var34.field2614 = Interpreter.Interpreter_intStack[var4 + 4];
                         var34.field2679 = Interpreter.Interpreter_intStack[var4 + 5];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
@@ -2818,7 +2818,7 @@ public abstract class Renderable extends DualNode {
                            var34.sequenceId = var39;
                            var34.modelFrame = 0;
                            var34.modelFrameCycle = 0;
-                           class82.method1754(var34);
+                           class82.invalidateWidget(var34);
                         }
                         continue;
                      }
@@ -2826,7 +2826,7 @@ public abstract class Renderable extends DualNode {
                      if (var46 == ScriptOpcodes.CC_SETMODELORTHOG) {
                         --var4;
                         var34.field2621 = Interpreter.Interpreter_intStack[var4] == 1;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
@@ -2835,7 +2835,7 @@ public abstract class Renderable extends DualNode {
                         var15 = Interpreter.Interpreter_stringStack[var5];
                         if (!var15.equals(var34.field2633)) {
                            var34.field2633 = var15;
-                           class82.method1754(var34);
+                           class82.invalidateWidget(var34);
                         }
                         continue;
                      }
@@ -2843,7 +2843,7 @@ public abstract class Renderable extends DualNode {
                      if (var46 == ScriptOpcodes.CC_SETTEXTFONT) {
                         --var4;
                         var34.fontId = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
@@ -2852,42 +2852,42 @@ public abstract class Renderable extends DualNode {
                         var34.field2626 = Interpreter.Interpreter_intStack[var4];
                         var34.field2627 = Interpreter.Interpreter_intStack[var4 + 1];
                         var34.field2625 = Interpreter.Interpreter_intStack[var4 + 2];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETTEXTSHADOW) {
                         --var4;
                         var34.field2628 = Interpreter.Interpreter_intStack[var4] == 1;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETOUTLINE) {
                         --var4;
                         var34.field2604 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETGRAPHICSHADOW) {
                         --var4;
                         var34.field2667 = Interpreter.Interpreter_intStack[var4];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETVFLIP) {
                         --var4;
                         var34.field2606 = Interpreter.Interpreter_intStack[var4] == 1;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
                      if (var46 == ScriptOpcodes.CC_SETHFLIP) {
                         --var4;
                         var34.spriteFlipV = Interpreter.Interpreter_intStack[var4] == 1;
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
 
@@ -2895,7 +2895,7 @@ public abstract class Renderable extends DualNode {
                         var4 -= 2;
                         var34.field2576 = Interpreter.Interpreter_intStack[var4];
                         var34.field2592 = Interpreter.Interpreter_intStack[var4 + 1];
-                        class82.method1754(var34);
+                        class82.invalidateWidget(var34);
                         continue;
                      }
                   }

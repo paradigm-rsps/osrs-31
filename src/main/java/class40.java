@@ -281,7 +281,7 @@ public class class40 extends DualNode {
 
             if (!var9.isIf3 || var12 < var14 && var13 < var15) {
                if (var9.contentType == 1337) {
-                  class82.method1754(var9);
+                  class82.invalidateWidget(var9);
                } else if (var9.contentType == 1338) {
                   DynamicObject.method160(var10, var11);
                } else {

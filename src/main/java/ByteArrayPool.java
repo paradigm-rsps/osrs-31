@@ -130,7 +130,7 @@ public class ByteArrayPool {
                      break;
                   }
 
-                  var5 = class130.method2851(var5.parentId);
+                  var5 = class130.getWidget(var5.parentId);
                   if (var5 == null) {
                      var4 = null;
                      break;
@@ -160,7 +160,7 @@ public class ByteArrayPool {
                         break;
                      }
 
-                     var5 = class130.method2851(var5.parentId);
+                     var5 = class130.getWidget(var5.parentId);
                      if (var5 == null) {
                         var4 = null;
                         break;

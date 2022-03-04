@@ -3,7 +3,7 @@ package osrs.classic.server.game.manager
 import osrs.classic.server.game.entity.Npc
 import osrs.classic.server.game.entity.Player
 import osrs.classic.server.game.entity.update.NpcUpdateTask
-import osrs.classic.server.net.packet.server.UpdateNpcSmall
+import osrs.classic.server.net.packet.server.unknown.UpdateNpcSmall
 
 class NpcManager(
     private val player: Player,

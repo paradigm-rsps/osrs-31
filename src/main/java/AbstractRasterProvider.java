@@ -785,7 +785,7 @@ public abstract class AbstractRasterProvider {
                                        if (var62 != null) {
                                           var62.method1855(var24, var40);
                                        } else if (Widget.field2574) {
-                                          class82.method1754(var10);
+                                          class82.invalidateWidget(var10);
                                        }
                                     }
                                  } else {
@@ -832,7 +832,7 @@ public abstract class AbstractRasterProvider {
 
                                                    var45.field2655 -= var31;
                                                    Client.field598 += var31;
-                                                   class82.method1754(var45);
+                                                   class82.invalidateWidget(var45);
                                                 }
 
                                                 if (var27 + var40 + 32 > Rasterizer2D.Rasterizer2D_yClipEnd && var45.field2655 < var45.field2592 - var45.height) {
@@ -847,7 +847,7 @@ public abstract class AbstractRasterProvider {
 
                                                    var45.field2655 += var31;
                                                    Client.field598 -= var31;
-                                                   class82.method1754(var45);
+                                                   class82.invalidateWidget(var45);
                                                 }
                                              }
                                           } else if (var10 == Projectile.field161 && var21 == Client.field595) {
@@ -856,7 +856,7 @@ public abstract class AbstractRasterProvider {
                                              var61.method1855(var24, var40);
                                           }
                                        } else {
-                                          class82.method1754(var10);
+                                          class82.invalidateWidget(var10);
                                        }
                                     }
                                  }
@@ -871,7 +871,7 @@ public abstract class AbstractRasterProvider {
                                  var21 = var10.field2596;
                               }
                            } else {
-                              var21 = var10.field2593;
+                              var21 = var10.color;
                               if (var10 == Tiles.mousedOverWidgetIf1 && var10.field2595 != 0) {
                                  var21 = var10.field2595;
                               }
@@ -894,7 +894,7 @@ public abstract class AbstractRasterProvider {
                               var59 = var10.method3342();
                               if (var59 == null) {
                                  if (Widget.field2574) {
-                                    class82.method1754(var10);
+                                    class82.invalidateWidget(var10);
                                  }
                               } else {
                                  var38 = var10.field2633;
@@ -908,7 +908,7 @@ public abstract class AbstractRasterProvider {
                                        var38 = var10.field2624;
                                     }
                                  } else {
-                                    var22 = var10.field2593;
+                                    var22 = var10.color;
                                     if (var10 == Tiles.mousedOverWidgetIf1 && var10.field2595 != 0) {
                                        var22 = var10.field2595;
                                     }
@@ -929,7 +929,7 @@ public abstract class AbstractRasterProvider {
                                  if (var10 == Client.meslayerContinueWidget) {
                                     var10000 = null;
                                     var38 = "Please wait...";
-                                    var22 = var10.field2593;
+                                    var22 = var10.color;
                                  }
 
                                  if (!var10.isIf3) {
@@ -945,7 +945,7 @@ public abstract class AbstractRasterProvider {
                                  if (var60 != null) {
                                     var60.method1855(var12, var13);
                                  } else if (Widget.field2574) {
-                                    class82.method1754(var10);
+                                    class82.invalidateWidget(var10);
                                  }
                               } else {
                                  if (var10.field2680 != -1) {
@@ -956,7 +956,7 @@ public abstract class AbstractRasterProvider {
 
                                  if (var60 == null) {
                                     if (Widget.field2574) {
-                                       class82.method1754(var10);
+                                       class82.invalidateWidget(var10);
                                     }
                                  } else {
                                     var22 = var60.width;
@@ -1014,7 +1014,7 @@ public abstract class AbstractRasterProvider {
                                           var56.method2427();
                                           var24 = var56.height / 2;
                                        } else {
-                                          class82.method1754(var10);
+                                          class82.invalidateWidget(var10);
                                        }
                                     }
                                  } else if (var10.modelType == 5) {
@@ -1026,13 +1026,13 @@ public abstract class AbstractRasterProvider {
                                  } else if (var22 == -1) {
                                     var56 = var10.method3351((SequenceDefinition)null, -1, var46, Tiles.localPlayer.appearance);
                                     if (var56 == null && Widget.field2574) {
-                                       class82.method1754(var10);
+                                       class82.invalidateWidget(var10);
                                     }
                                  } else {
                                     SequenceDefinition var48 = class23.method250(var22);
                                     var56 = var10.method3351(var48, var10.modelFrame, var46, Tiles.localPlayer.appearance);
                                     if (var56 == null && Widget.field2574) {
-                                       class82.method1754(var10);
+                                       class82.invalidateWidget(var10);
                                     }
                                  }
 
@@ -1058,7 +1058,7 @@ public abstract class AbstractRasterProvider {
                                     var59 = var10.method3342();
                                     if (var59 == null) {
                                        if (Widget.field2574) {
-                                          class82.method1754(var10);
+                                          class82.invalidateWidget(var10);
                                        }
                                        continue;
                                     }
@@ -1079,11 +1079,11 @@ public abstract class AbstractRasterProvider {
                                              var27 = var24 * (var10.field2611 + 115) + var12;
                                              var43 = var23 * (var10.field2652 + 12) + var13;
                                              if (var10.field2626 == 0) {
-                                                var59.method3626(var44, var27, var43, var10.field2593, var10.field2628 ? 0 : -1);
+                                                var59.method3626(var44, var27, var43, var10.color, var10.field2628 ? 0 : -1);
                                              } else if (var10.field2626 == 1) {
-                                                var59.method3676(var44, var10.width / 2 + var27, var43, var10.field2593, var10.field2628 ? 0 : -1);
+                                                var59.method3676(var44, var10.width / 2 + var27, var43, var10.color, var10.field2628 ? 0 : -1);
                                              } else {
-                                                var59.method3607(var44, var27 + var10.width - 1, var43, var10.field2593, var10.field2628 ? 0 : -1);
+                                                var59.method3607(var44, var27 + var10.width - 1, var43, var10.color, var10.field2628 ? 0 : -1);
                                              }
                                           }
 
@@ -1152,7 +1152,7 @@ public abstract class AbstractRasterProvider {
 
                                  if (var10.type == 9) {
                                     if (var10.field2599 == 1) {
-                                       Rasterizer2D.method1987(var12, var13, var12 + var10.width, var13 + var10.height, var10.field2593);
+                                       Rasterizer2D.method1987(var12, var13, var12 + var10.width, var13 + var10.height, var10.color);
                                     } else {
                                        var21 = var10.width >= 0 ? var10.width * -538789309 * 1353704043 : -var10.width;
                                        var22 = var10.height >= 0 ? var10.height * -1807498407 * 1590318313 : -var10.height;
@@ -1183,9 +1183,9 @@ public abstract class AbstractRasterProvider {
                                           int var36 = var13 + var10.height - var49;
                                           int var37 = var13 + var43 + var10.height;
                                           Rasterizer3D.method2338(var30, var31, var32);
-                                          Rasterizer3D.method2313(var34, var57, var36, var30, var31, var32, var10.field2593);
+                                          Rasterizer3D.method2313(var34, var57, var36, var30, var31, var32, var10.color);
                                           Rasterizer3D.method2338(var30, var32, var54);
-                                          Rasterizer3D.method2313(var34, var36, var37, var30, var32, var54, var10.field2593);
+                                          Rasterizer3D.method2313(var34, var36, var37, var30, var32, var54, var10.color);
                                        }
                                     }
                                  }

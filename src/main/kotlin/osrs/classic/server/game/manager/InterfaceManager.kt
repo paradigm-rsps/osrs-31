@@ -9,9 +9,9 @@ import osrs.classic.server.game.entity.Player
 import osrs.classic.server.game.interfaces.DisplayMode
 import osrs.classic.server.game.interfaces.GameInterface
 import osrs.classic.server.game.interfaces.InterfaceType
-import osrs.classic.server.net.packet.server.IfMoveSub
-import osrs.classic.server.net.packet.server.IfOpenSub
-import osrs.classic.server.net.packet.server.IfOpenTop
+import osrs.classic.server.net.packet.server.unknown.IfMoveSub
+import osrs.classic.server.net.packet.server.unknown.IfOpenSub
+import osrs.classic.server.net.packet.server.unknown.IfOpenTop
 
 class InterfaceManager(private val player: Player) {
 
