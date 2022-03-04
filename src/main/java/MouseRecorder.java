@@ -92,7 +92,7 @@ public class MouseRecorder implements Runnable {
    public static int method167(Buffer var0, String var1) {
       int var2 = var0.offset;
       byte[] var3 = WallDecoration.method2385(var1);
-      var0.method2643(var3.length);
+      var0.writeSmartByteShort(var3.length);
       var0.offset += class183.huffman.method2571(var3, 0, var3.length, var0.array, var0.offset);
       return var0.offset - var2;
    }

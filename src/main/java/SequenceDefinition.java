@@ -87,7 +87,7 @@ public class SequenceDefinition extends DualNode {
    )
    void method752(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -124,32 +124,32 @@ public class SequenceDefinition extends DualNode {
       } else if (var2 == 2) {
          this.frameCount = var1.readUnsignedShort();
       } else if (var2 == 3) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.field883 = new int[var3 + 1];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.field883[var4] = var1.method2665();
+            this.field883[var4] = var1.readUnsignedByte();
          }
 
          this.field883[var3] = 9999999;
       } else if (var2 == 4) {
          this.field902 = true;
       } else if (var2 == 5) {
-         this.field895 = var1.method2665();
+         this.field895 = var1.readUnsignedByte();
       } else if (var2 == 6) {
          this.shield = var1.readUnsignedShort();
       } else if (var2 == 7) {
          this.weapon = var1.readUnsignedShort();
       } else if (var2 == 8) {
-         this.field898 = var1.method2665();
+         this.field898 = var1.readUnsignedByte();
       } else if (var2 == 9) {
-         this.field899 = var1.method2665();
+         this.field899 = var1.readUnsignedByte();
       } else if (var2 == 10) {
-         this.field900 = var1.method2665();
+         this.field900 = var1.readUnsignedByte();
       } else if (var2 == 11) {
-         this.field901 = var1.method2665();
+         this.field901 = var1.readUnsignedByte();
       } else if (var2 == 12) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.chatFrameIds = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
@@ -160,11 +160,11 @@ public class SequenceDefinition extends DualNode {
             this.chatFrameIds[var4] += var1.readUnsignedShort() << 16;
          }
       } else if (var2 == 13) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.soundEffects = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
-            this.soundEffects[var4] = var1.method2801();
+            this.soundEffects[var4] = var1.readMedium();
          }
       }
 
@@ -354,8 +354,8 @@ public class SequenceDefinition extends DualNode {
    )
    public static void method762(Buffer var0, int var1) {
       ReflectionCheck var2 = new ReflectionCheck();
-      var2.size = var0.method2665();
-      var2.id = var0.method2650();
+      var2.size = var0.readUnsignedByte();
+      var2.id = var0.readInt();
       var2.operations = new int[var2.size];
       var2.creationErrors = new int[var2.size];
       var2.fields = new Field[var2.size];
@@ -365,7 +365,7 @@ public class SequenceDefinition extends DualNode {
 
       for(int var3 = 0; var3 < var2.size; ++var3) {
          try {
-            int var4 = var0.method2665();
+            int var4 = var0.readUnsignedByte();
             String var5;
             String var6;
             int var7;
@@ -373,7 +373,7 @@ public class SequenceDefinition extends DualNode {
                if (var4 == 3 || var4 == 4) {
                   var5 = new String(var0.method2653());
                   var6 = new String(var0.method2653());
-                  var7 = var0.method2665();
+                  var7 = var0.readUnsignedByte();
                   String[] var8 = new String[var7];
 
                   for(int var9 = 0; var9 < var7; ++var9) {
@@ -384,7 +384,7 @@ public class SequenceDefinition extends DualNode {
                   int var11;
                   if (var4 == 3) {
                      for(int var10 = 0; var10 < var7; ++var10) {
-                        var11 = var0.method2650();
+                        var11 = var0.readInt();
                         var12[var10] = new byte[var11];
                         var0.readBytes(var12[var10], 0, var11);
                      }
@@ -405,7 +405,7 @@ public class SequenceDefinition extends DualNode {
                var6 = new String(var0.method2653());
                var7 = 0;
                if (var4 == 1) {
-                  var7 = var0.method2650();
+                  var7 = var0.readInt();
                }
 
                var2.operations[var3] = var4;

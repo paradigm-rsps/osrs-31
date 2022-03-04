@@ -59,7 +59,7 @@ public class KitDefinition extends DualNode {
    )
    void method777(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -75,12 +75,12 @@ public class KitDefinition extends DualNode {
    )
    void method778(Buffer var1, int var2) {
       if (var2 == 1) {
-         this.bodypartID = var1.method2665();
+         this.bodypartID = var1.readUnsignedByte();
       } else {
          int var3;
          int var4;
          if (var2 == 2) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.models2 = new int[var3];
 
             for(var4 = 0; var4 < var3; ++var4) {
@@ -89,7 +89,7 @@ public class KitDefinition extends DualNode {
          } else if (var2 == 3) {
             this.nonSelectable = true;
          } else if (var2 == 40) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.recolorFrom = new short[var3];
             this.recolorTo = new short[var3];
 
@@ -98,7 +98,7 @@ public class KitDefinition extends DualNode {
                this.recolorTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 41) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.retextureFrom = new short[var3];
             this.retextureTo = new short[var3];
 

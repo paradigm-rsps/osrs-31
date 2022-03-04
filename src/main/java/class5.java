@@ -179,7 +179,7 @@ public class class5 {
          PacketBuffer var1 = Client.rsaBuf;
          int var2 = var0.length() + 1;
          var1.writeByte(var2);
-         Client.rsaBuf.writeString(var0);
+         Client.rsaBuf.writeStringCp1252NullTerminated(var0);
       }
    }
 }

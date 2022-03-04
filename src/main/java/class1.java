@@ -79,7 +79,7 @@ public class class1 {
 
    @ObfuscatedName("br")
    @Export("method14")
-   static final void method14(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+   static final void updatePendingSpawn(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       PendingSpawn var9 = null;
 
       for(PendingSpawn var10 = (PendingSpawn)Client.pendingSpawns.method3533(); var10 != null; var10 = (PendingSpawn)Client.pendingSpawns.method3535()) {
@@ -117,12 +117,12 @@ public class class1 {
       }
 
       if ((var2 & 512) != 0) {
-         var1.field460 = Client.serverPacketBuf.method2665();
-         var1.field462 = Client.serverPacketBuf.method2665();
+         var1.field460 = Client.serverPacketBuf.readUnsignedByte();
+         var1.field462 = Client.serverPacketBuf.readUnsignedByte();
          var1.field439 = Client.serverPacketBuf.readUnsignedByteSub();
          var1.field463 = Client.serverPacketBuf.readUnsignedByteSub();
          var1.field456 = Client.serverPacketBuf.readUnsignedShort() + Client.cycle;
-         var1.field465 = Client.serverPacketBuf.method2786() + Client.cycle;
+         var1.field465 = Client.serverPacketBuf.readUnsignedShortAddLE() + Client.cycle;
          var1.field466 = Client.serverPacketBuf.readUnsignedByteAdd();
          var1.pathLength = 1;
          var1.field472 = 0;
@@ -141,7 +141,7 @@ public class class1 {
       int var14;
       if ((var2 & 2) != 0) {
          var3 = Client.serverPacketBuf.readUnsignedShort();
-         var14 = Client.serverPacketBuf.method2665();
+         var14 = Client.serverPacketBuf.readUnsignedByte();
          int var15 = Client.serverPacketBuf.readUnsignedByteSub();
          int var6 = Client.serverPacketBuf.offset;
          if (var1.field35 != null && var1.appearance != null) {
@@ -197,7 +197,7 @@ public class class1 {
             var3 = -1;
          }
 
-         var14 = Client.serverPacketBuf.method2665();
+         var14 = Client.serverPacketBuf.readUnsignedByte();
          SpotAnimationDefinition.method770(var1, var3, var14);
       }
 
@@ -216,8 +216,8 @@ public class class1 {
       }
 
       if ((var2 & 8) != 0) {
-         var3 = Client.serverPacketBuf.method2665();
-         var14 = Client.serverPacketBuf.method2665();
+         var3 = Client.serverPacketBuf.readUnsignedByte();
+         var14 = Client.serverPacketBuf.readUnsignedByte();
          var1.method277(var3, var14, Client.cycle);
          var1.field441 = Client.cycle + 300;
          var1.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
@@ -226,7 +226,7 @@ public class class1 {
 
       if ((var2 & 1024) != 0) {
          var1.spotAnimation = Client.serverPacketBuf.readUnsignedShortLE();
-         var3 = Client.serverPacketBuf.method2650();
+         var3 = Client.serverPacketBuf.readInt();
          var1.field430 = var3 >> 16;
          var1.field458 = (var3 & '\uffff') + Client.cycle;
          var1.spotAnimationFrame = 0;
@@ -246,11 +246,11 @@ public class class1 {
          var1.method277(var3, var14, Client.cycle);
          var1.field441 = Client.cycle + 300;
          var1.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
-         var1.field425 = Client.serverPacketBuf.method2665();
+         var1.field425 = Client.serverPacketBuf.readUnsignedByte();
       }
 
       if ((var2 & 128) != 0) {
-         var1.field444 = Client.serverPacketBuf.method2677();
+         var1.field444 = Client.serverPacketBuf.readUnsignedShortAdd();
          if (var1.field444 == 65535) {
             var1.field444 = -1;
          }
@@ -311,7 +311,7 @@ public class class1 {
       PacketBuffer var2 = Client.rsaBuf;
       int var3 = var0.length() + 1;
       var2.writeByte(var3 + 1);
-      Client.rsaBuf.writeString(var0);
+      Client.rsaBuf.writeStringCp1252NullTerminated(var0);
       Client.rsaBuf.method2667(var1);
    }
 }

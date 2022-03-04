@@ -417,13 +417,13 @@ public class ModelData extends Renderable {
       var2.offset = var1.length - 23;
       int var9 = var2.readUnsignedShort();
       int var10 = var2.readUnsignedShort();
-      int var11 = var2.method2665();
-      int var12 = var2.method2665();
-      int var13 = var2.method2665();
-      int var14 = var2.method2665();
-      int var15 = var2.method2665();
-      int var16 = var2.method2665();
-      int var17 = var2.method2665();
+      int var11 = var2.readUnsignedByte();
+      int var12 = var2.readUnsignedByte();
+      int var13 = var2.readUnsignedByte();
+      int var14 = var2.readUnsignedByte();
+      int var15 = var2.readUnsignedByte();
+      int var16 = var2.readUnsignedByte();
+      int var17 = var2.readUnsignedByte();
       int var18 = var2.readUnsignedShort();
       int var19 = var2.readUnsignedShort();
       int var20 = var2.readUnsignedShort();
@@ -438,7 +438,7 @@ public class ModelData extends Renderable {
          var2.offset = 0;
 
          for(var26 = 0; var26 < var11; ++var26) {
-            byte var27 = this.textureRenderTypes[var26] = var2.method2646();
+            byte var27 = this.textureRenderTypes[var26] = var2.readByte();
             if (var27 == 0) {
                ++var23;
             }
@@ -583,7 +583,7 @@ public class ModelData extends Renderable {
       int var54;
       int var55;
       for(var51 = 0; var51 < var9; ++var51) {
-         var52 = var2.method2665();
+         var52 = var2.readUnsignedByte();
          var53 = 0;
          if ((var52 & 1) != 0) {
             var53 = var3.method2657();
@@ -606,7 +606,7 @@ public class ModelData extends Renderable {
          var49 = this.verticesY[var51];
          var50 = this.verticesZ[var51];
          if (var17 == 1) {
-            this.vertexSkins[var51] = var6.method2665();
+            this.vertexSkins[var51] = var6.readUnsignedByte();
          }
       }
 
@@ -621,19 +621,19 @@ public class ModelData extends Renderable {
       for(var51 = 0; var51 < var10; ++var51) {
          this.faceColors[var51] = (short)var2.readUnsignedShort();
          if (var12 == 1) {
-            this.faceRenderTypes[var51] = var3.method2646();
+            this.faceRenderTypes[var51] = var3.readByte();
          }
 
          if (var13 == 255) {
-            this.faceRenderPriorities[var51] = var4.method2646();
+            this.faceRenderPriorities[var51] = var4.readByte();
          }
 
          if (var14 == 1) {
-            this.faceAlphas[var51] = var5.method2646();
+            this.faceAlphas[var51] = var5.readByte();
          }
 
          if (var15 == 1) {
-            this.faceSkins[var51] = var6.method2665();
+            this.faceSkins[var51] = var6.readUnsignedByte();
          }
 
          if (var16 == 1) {
@@ -641,7 +641,7 @@ public class ModelData extends Renderable {
          }
 
          if (this.textureCoords != null && this.faceTextures[var51] != -1) {
-            this.textureCoords[var51] = (byte)(var8.method2665() - 1);
+            this.textureCoords[var51] = (byte)(var8.readUnsignedByte() - 1);
          }
       }
 
@@ -654,7 +654,7 @@ public class ModelData extends Renderable {
 
       int var56;
       for(var55 = 0; var55 < var10; ++var55) {
-         var56 = var3.method2665();
+         var56 = var3.readUnsignedByte();
          if (var56 == 1) {
             var51 = var2.method2657() + var54;
             var52 = var2.method2657() + var51;
@@ -718,7 +718,7 @@ public class ModelData extends Renderable {
             this.field1707[var55] = (short)var4.readUnsignedShort();
             this.field1706[var55] = (short)var4.readUnsignedShort();
             this.field1709[var55] = (short)var5.readUnsignedShort();
-            this.field1712[var55] = var6.method2646();
+            this.field1712[var55] = var6.readByte();
             this.field1731[var55] = (short)var7.readUnsignedShort();
          }
 
@@ -730,7 +730,7 @@ public class ModelData extends Renderable {
             this.field1707[var55] = (short)var4.readUnsignedShort();
             this.field1706[var55] = (short)var4.readUnsignedShort();
             this.field1709[var55] = (short)var5.readUnsignedShort();
-            this.field1712[var55] = var6.method2646();
+            this.field1712[var55] = var6.readByte();
             this.field1731[var55] = (short)var7.readUnsignedShort();
             this.field1711[var55] = (short)var7.readUnsignedShort();
          }
@@ -743,19 +743,19 @@ public class ModelData extends Renderable {
             this.field1707[var55] = (short)var4.readUnsignedShort();
             this.field1706[var55] = (short)var4.readUnsignedShort();
             this.field1709[var55] = (short)var5.readUnsignedShort();
-            this.field1712[var55] = var6.method2646();
+            this.field1712[var55] = var6.readByte();
             this.field1731[var55] = (short)var7.readUnsignedShort();
          }
       }
 
       var2.offset = var26;
-      var55 = var2.method2665();
+      var55 = var2.readUnsignedByte();
       if (var55 != 0) {
          new ModelData0();
          var2.readUnsignedShort();
          var2.readUnsignedShort();
          var2.readUnsignedShort();
-         var2.method2650();
+         var2.readInt();
       }
 
    }
@@ -772,12 +772,12 @@ public class ModelData extends Renderable {
       var4.offset = var1.length - 18;
       int var9 = var4.readUnsignedShort();
       int var10 = var4.readUnsignedShort();
-      int var11 = var4.method2665();
-      int var12 = var4.method2665();
-      int var13 = var4.method2665();
-      int var14 = var4.method2665();
-      int var15 = var4.method2665();
-      int var16 = var4.method2665();
+      int var11 = var4.readUnsignedByte();
+      int var12 = var4.readUnsignedByte();
+      int var13 = var4.readUnsignedByte();
+      int var14 = var4.readUnsignedByte();
+      int var15 = var4.readUnsignedByte();
+      int var16 = var4.readUnsignedByte();
       int var17 = var4.readUnsignedShort();
       int var18 = var4.readUnsignedShort();
       int var19 = var4.readUnsignedShort();
@@ -878,7 +878,7 @@ public class ModelData extends Renderable {
       int var41;
       int var42;
       for(var38 = 0; var38 < var9; ++var38) {
-         var39 = var4.method2665();
+         var39 = var4.readUnsignedByte();
          var40 = 0;
          if ((var39 & 1) != 0) {
             var40 = var5.method2657();
@@ -901,7 +901,7 @@ public class ModelData extends Renderable {
          var36 = this.verticesY[var38];
          var37 = this.verticesZ[var38];
          if (var16 == 1) {
-            this.vertexSkins[var38] = var8.method2665();
+            this.vertexSkins[var38] = var8.readUnsignedByte();
          }
       }
 
@@ -914,7 +914,7 @@ public class ModelData extends Renderable {
       for(var38 = 0; var38 < var10; ++var38) {
          this.faceColors[var38] = (short)var4.readUnsignedShort();
          if (var12 == 1) {
-            var39 = var5.method2665();
+            var39 = var5.readUnsignedByte();
             if ((var39 & 1) == 1) {
                this.faceRenderTypes[var38] = 1;
                var2 = true;
@@ -936,15 +936,15 @@ public class ModelData extends Renderable {
          }
 
          if (var13 == 255) {
-            this.faceRenderPriorities[var38] = var6.method2646();
+            this.faceRenderPriorities[var38] = var6.readByte();
          }
 
          if (var14 == 1) {
-            this.faceAlphas[var38] = var7.method2646();
+            this.faceAlphas[var38] = var7.readByte();
          }
 
          if (var15 == 1) {
-            this.faceSkins[var38] = var8.method2665();
+            this.faceSkins[var38] = var8.readUnsignedByte();
          }
       }
 
@@ -958,7 +958,7 @@ public class ModelData extends Renderable {
       int var43;
       int var44;
       for(var42 = 0; var42 < var10; ++var42) {
-         var43 = var5.method2665();
+         var43 = var5.readUnsignedByte();
          if (var43 == 1) {
             var38 = var4.method2657() + var41;
             var39 = var4.method2657() + var38;

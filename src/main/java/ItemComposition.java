@@ -169,7 +169,7 @@ public class ItemComposition extends DualNode {
    )
    void method856(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -207,17 +207,17 @@ public class ItemComposition extends DualNode {
       } else if (var2 == 11) {
          this.isStackable = 1;
       } else if (var2 == 12) {
-         this.price = var1.method2650();
+         this.price = var1.readInt();
       } else if (var2 == 16) {
          this.isMembersOnly = true;
       } else if (var2 == 23) {
          this.maleModel = var1.readUnsignedShort();
-         this.maleOffset = var1.method2665();
+         this.maleOffset = var1.readUnsignedByte();
       } else if (var2 == 24) {
          this.field991 = var1.readUnsignedShort();
       } else if (var2 == 25) {
          this.femaleModel = var1.readUnsignedShort();
-         this.femaleOffset = var1.method2665();
+         this.femaleOffset = var1.readUnsignedByte();
       } else if (var2 == 26) {
          this.femaleModel1 = var1.readUnsignedShort();
       } else if (var2 >= 30 && var2 < 35) {
@@ -231,7 +231,7 @@ public class ItemComposition extends DualNode {
          int var3;
          int var4;
          if (var2 == 40) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.recolorFrom = new short[var3];
             this.recolorTo = new short[var3];
 
@@ -240,7 +240,7 @@ public class ItemComposition extends DualNode {
                this.recolorTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 41) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.retextureFrom = new short[var3];
             this.retextureTo = new short[var3];
 
@@ -281,11 +281,11 @@ public class ItemComposition extends DualNode {
          } else if (var2 == 112) {
             this.resizeZ = var1.readUnsignedShort();
          } else if (var2 == 113) {
-            this.field1023 = var1.method2646();
+            this.field1023 = var1.readByte();
          } else if (var2 == 114) {
-            this.field1001 = var1.method2646() * 5;
+            this.field1001 = var1.readByte() * 5;
          } else if (var2 == 115) {
-            this.team = var1.method2665();
+            this.team = var1.readUnsignedByte();
          }
       }
 

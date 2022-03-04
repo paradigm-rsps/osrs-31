@@ -120,7 +120,7 @@ public final class Tile extends Node {
             var1 = new Script();
             Buffer var3 = new Buffer(var2);
             var3.offset = var3.array.length - 12;
-            int var4 = var3.method2650();
+            int var4 = var3.readInt();
             var1.field64 = var3.readUnsignedShort();
             var1.field65 = var3.readUnsignedShort();
             var1.field66 = var3.readUnsignedShort();
@@ -137,9 +137,9 @@ public final class Tile extends Node {
                if (var6 == 3) {
                   var1.field69[var5] = var3.method2653();
                } else if (var6 < 100 && var6 != 21 && var6 != 38 && var6 != 39) {
-                  var1.field62[var5] = var3.method2650();
+                  var1.field62[var5] = var3.readInt();
                } else {
-                  var1.field62[var5] = var3.method2665();
+                  var1.field62[var5] = var3.readUnsignedByte();
                }
             }
 
@@ -172,7 +172,7 @@ public final class Tile extends Node {
          if (var5 != 10 && var5 != 11 && var5 != 22) {
             FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var0, var1, true, var5 + 1, var6, 0, 0, 0, 2);
          } else {
-            ObjectComposition var7 = GameBuild.method2853(var3);
+            ObjectComposition var7 = GameBuild.getObjectComposition(var3);
             int var8;
             int var9;
             if (var6 != 0 && var6 != 2) {

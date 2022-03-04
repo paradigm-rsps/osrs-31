@@ -111,16 +111,16 @@ public class VorbisSample extends Node {
    @Export("method1288")
    void method1288(byte[] var1) {
       Buffer var2 = new Buffer(var1);
-      this.sampleRate = var2.method2650();
-      this.sampleCount = var2.method2650();
-      this.start = var2.method2650();
-      this.end = var2.method2650();
+      this.sampleRate = var2.readInt();
+      this.sampleCount = var2.readInt();
+      this.start = var2.readInt();
+      this.end = var2.readInt();
       if (this.end < 0) {
          this.end = ~this.end;
          this.field1151 = true;
       }
 
-      int var3 = var2.method2650();
+      int var3 = var2.readInt();
       this.field1152 = new byte[var3][];
 
       for(int var4 = 0; var4 < var3; ++var4) {
@@ -128,7 +128,7 @@ public class VorbisSample extends Node {
 
          int var6;
          do {
-            var6 = var2.method2665();
+            var6 = var2.readUnsignedByte();
             var5 += var6;
          } while(var6 >= 255);
 

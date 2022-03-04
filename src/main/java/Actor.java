@@ -300,7 +300,7 @@ public abstract class Actor extends Renderable {
          Tiles.Tiles_minPlane = var0;
       }
 
-      ObjectComposition var26 = GameBuild.method2853(var3);
+      ObjectComposition var26 = GameBuild.getObjectComposition(var3);
       int var9;
       int var10;
       if (var4 != 1 && var4 != 3) {
@@ -552,7 +552,7 @@ public abstract class Actor extends Renderable {
                   var21 = 16;
                   var22 = var6.method2057(var0, var1, var2);
                   if (var22 != 0) {
-                     var21 = GameBuild.method2853(var22 >> 14 & 32767).int2;
+                     var21 = GameBuild.getObjectComposition(var22 >> 14 & 32767).int2;
                   }
 
                   if (var26.animationId == -1 && var26.transforms == null) {
@@ -566,7 +566,7 @@ public abstract class Actor extends Renderable {
                   var21 = 8;
                   var22 = var6.method2057(var0, var1, var2);
                   if (var22 != 0) {
-                     var21 = GameBuild.method2853(var22 >> 14 & 32767).int2 / 2;
+                     var21 = GameBuild.getObjectComposition(var22 >> 14 & 32767).int2 / 2;
                   }
 
                   if (var26.animationId == -1 && var26.transforms == null) {
@@ -589,7 +589,7 @@ public abstract class Actor extends Renderable {
                   var21 = 8;
                   var22 = var6.method2057(var0, var1, var2);
                   if (var22 != 0) {
-                     var21 = GameBuild.method2853(var22 >> 14 & 32767).int2 / 2;
+                     var21 = GameBuild.getObjectComposition(var22 >> 14 & 32767).int2 / 2;
                   }
 
                   int var25 = var4 + 2 & 3;

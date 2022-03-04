@@ -241,68 +241,68 @@ public final class IterableNodeHashTableIterator implements Runnable {
    }
 
    @ObfuscatedName("bu")
-   static final void method1498() {
-      int var0;
+   static final void handleServerPacket() {
+      int animationCycleEnd;
       int var2;
       int var3;
       int var4;
-      int var7;
+      int playerIndex;
       int var8;
       int var9;
-      int var10;
+      int face;
       int var11;
       if (Client.serverPacketOpcode == 220) {
-         var0 = Client.serverPacketBuf.method2786();
-         byte var1 = Client.serverPacketBuf.method2646();
-         var2 = Client.serverPacketBuf.method2665();
+         animationCycleEnd = Client.serverPacketBuf.readUnsignedShortAddLE();
+         byte var1 = Client.serverPacketBuf.readByte();
+         var2 = Client.serverPacketBuf.readUnsignedByte();
          var3 = (var2 >> 4 & 7) + Actor.field478;
          var4 = (var2 & 7) + GraphicsObject.field307;
-         byte var5 = Client.serverPacketBuf.method2671();
-         byte var6 = Client.serverPacketBuf.method2646();
-         var7 = Client.serverPacketBuf.readUnsignedShortLE();
+         byte var5 = Client.serverPacketBuf.readByteAdd();
+         byte var6 = Client.serverPacketBuf.readByte();
+         playerIndex = Client.serverPacketBuf.readUnsignedShortLE();
          var8 = Client.serverPacketBuf.readUnsignedByteAdd();
          var9 = var8 >> 2;
-         var10 = var8 & 3;
+         face = var8 & 3;
          var11 = Client.field541[var9];
-         byte var12 = Client.serverPacketBuf.method2671();
+         byte var12 = Client.serverPacketBuf.readByteAdd();
          int var13 = Client.serverPacketBuf.readUnsignedShort();
-         int var14 = Client.serverPacketBuf.method2677();
-         Player var15;
-         if (var7 == Client.localPlayerIndex) {
-            var15 = Tiles.localPlayer;
+         int animationCycleStart = Client.serverPacketBuf.readUnsignedShortAdd();
+         Player entity;
+         if (playerIndex == Client.localPlayerIndex) {
+            entity = Tiles.localPlayer;
          } else {
-            var15 = Client.players[var7];
+            entity = Client.players[playerIndex];
          }
 
-         if (var15 != null) {
-            ObjectComposition var16 = GameBuild.method2853(var13);
-            int var17;
-            int var18;
-            if (var10 != 1 && var10 != 3) {
-               var17 = var16.sizeX;
-               var18 = var16.sizeY;
+         if (entity != null) {
+            ObjectComposition objectDefinition = GameBuild.getObjectComposition(var13);
+            int sizeX;
+            int sizeY;
+            if (face == 1 || face == 3) {
+               sizeX = objectDefinition.sizeY;
+               sizeY = objectDefinition.sizeX;
             } else {
-               var17 = var16.sizeY;
-               var18 = var16.sizeX;
+               sizeX = objectDefinition.sizeX;
+               sizeY = objectDefinition.sizeY;
             }
 
-            int var19 = var3 + (var17 >> 1);
-            int var20 = var3 + (var17 + 1 >> 1);
-            int var21 = var4 + (var18 >> 1);
-            int var22 = var4 + (var18 + 1 >> 1);
-            int[][] var23 = Tiles.Tiles_heights[class22.Client_plane];
-            int var24 = var23[var20][var22] + var23[var19][var22] + var23[var20][var21] + var23[var19][var21] >> 2;
-            int var25 = (var3 << 7) + (var17 << 6);
-            int var26 = (var4 << 7) + (var18 << 6);
-            Model var27 = var16.method664(var9, var10, var23, var25, var24, var26);
-            if (var27 != null) {
-               class1.method14(class22.Client_plane, var3, var4, var11, -1, 0, 0, var14 + 1, var0 + 1);
-               var15.animationCycleStart = var14 + Client.cycle;
-               var15.animationCycleEnd = var0 + Client.cycle;
-               var15.model0 = var27;
-               var15.field34 = var17 * 64 + var3 * 128;
-               var15.field42 = var18 * 64 + var4 * 128;
-               var15.tileHeight2 = var24;
+            int var19 = var3 + (sizeX >> 1);
+            int var20 = var3 + (sizeX + 1 >> 1);
+            int var21 = var4 + (sizeY >> 1);
+            int var22 = var4 + (sizeY + 1 >> 1);
+            int[][] tileHeights = Tiles.Tiles_heights[class22.Client_plane];
+            int var24 = tileHeights[var20][var22] + tileHeights[var19][var22] + tileHeights[var20][var21] + tileHeights[var19][var21] >> 2;
+            int var25 = (var3 << 7) + (sizeX << 6);
+            int var26 = (var4 << 7) + (sizeY << 6);
+            Model objectModel = objectDefinition.method664(var9, face, tileHeights, var25, var24, var26);
+            if (objectModel != null) {
+               class1.updatePendingSpawn(class22.Client_plane, var3, var4, var11, -1, 0, 0, animationCycleStart + 1, animationCycleEnd + 1);
+               entity.animationCycleStart = animationCycleStart + Client.cycle;
+               entity.animationCycleEnd = animationCycleEnd + Client.cycle;
+               entity.model0 = objectModel;
+               entity.field34 = sizeX * 64 + var3 * 128;
+               entity.field42 = sizeY * 64 + var4 * 128;
+               entity.tileHeight2 = var24;
                byte var28;
                if (var5 > var1) {
                   var28 = var5;
@@ -316,10 +316,10 @@ public final class IterableNodeHashTableIterator implements Runnable {
                   var12 = var28;
                }
 
-               var15.field44 = var3 + var5;
-               var15.field46 = var3 + var1;
-               var15.field38 = var6 + var4;
-               var15.field47 = var12 + var4;
+               entity.minX = var3 + var5;
+               entity.maxX = var3 + var1;
+               entity.minY = var6 + var4;
+               entity.maxY = var12 + var4;
             }
          }
       }
@@ -328,73 +328,73 @@ public final class IterableNodeHashTableIterator implements Runnable {
       int var36;
       int var37;
       if (Client.serverPacketOpcode == 182) {
-         var0 = Client.serverPacketBuf.method2677();
+         animationCycleEnd = Client.serverPacketBuf.readUnsignedShortAdd();
          var35 = Client.serverPacketBuf.readUnsignedByteSub();
          var2 = var35 >> 2;
          var3 = var35 & 3;
          var4 = Client.field541[var2];
          var36 = Client.serverPacketBuf.readUnsignedByteAdd();
          var37 = (var36 >> 4 & 7) + Actor.field478;
-         var7 = (var36 & 7) + GraphicsObject.field307;
-         if (var37 >= 0 && var7 >= 0 && var37 < 103 && var7 < 103) {
+         playerIndex = (var36 & 7) + GraphicsObject.field307;
+         if (var37 >= 0 && playerIndex >= 0 && var37 < 103 && playerIndex < 103) {
             if (var4 == 0) {
-               BoundaryObject var34 = Interpreter.scene.method2170(class22.Client_plane, var37, var7);
+               BoundaryObject var34 = Interpreter.scene.method2170(class22.Client_plane, var37, playerIndex);
                if (var34 != null) {
                   var9 = var34.field1612 >> 14 & 32767;
                   if (var2 == 2) {
-                     var34.renderable1 = new DynamicObject(var9, 2, var3 + 4, class22.Client_plane, var37, var7, var0, false, var34.renderable1);
-                     var34.renderable2 = new DynamicObject(var9, 2, var3 + 1 & 3, class22.Client_plane, var37, var7, var0, false, var34.renderable2);
+                     var34.renderable1 = new DynamicObject(var9, 2, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var34.renderable1);
+                     var34.renderable2 = new DynamicObject(var9, 2, var3 + 1 & 3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var34.renderable2);
                   } else {
-                     var34.renderable1 = new DynamicObject(var9, var2, var3, class22.Client_plane, var37, var7, var0, false, var34.renderable1);
+                     var34.renderable1 = new DynamicObject(var9, var2, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var34.renderable1);
                   }
                }
             }
 
             if (var4 == 1) {
-               WallDecoration var41 = Interpreter.scene.method2064(class22.Client_plane, var37, var7);
+               WallDecoration var41 = Interpreter.scene.method2064(class22.Client_plane, var37, playerIndex);
                if (var41 != null) {
                   var9 = var41.field1817 >> 14 & 32767;
                   if (var2 != 4 && var2 != 5) {
                      if (var2 == 6) {
-                        var41.field1815 = new DynamicObject(var9, 4, var3 + 4, class22.Client_plane, var37, var7, var0, false, var41.field1815);
+                        var41.field1815 = new DynamicObject(var9, 4, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
                      } else if (var2 == 7) {
-                        var41.field1815 = new DynamicObject(var9, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, var7, var0, false, var41.field1815);
+                        var41.field1815 = new DynamicObject(var9, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
                      } else if (var2 == 8) {
-                        var41.field1815 = new DynamicObject(var9, 4, var3 + 4, class22.Client_plane, var37, var7, var0, false, var41.field1815);
-                        var41.renderable2 = new DynamicObject(var9, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, var7, var0, false, var41.renderable2);
+                        var41.field1815 = new DynamicObject(var9, 4, var3 + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
+                        var41.renderable2 = new DynamicObject(var9, 4, (var3 + 2 & 3) + 4, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.renderable2);
                      }
                   } else {
-                     var41.field1815 = new DynamicObject(var9, 4, var3, class22.Client_plane, var37, var7, var0, false, var41.field1815);
+                     var41.field1815 = new DynamicObject(var9, 4, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var41.field1815);
                   }
                }
             }
 
             if (var4 == 2) {
-               GameObject var42 = Interpreter.scene.method2196(class22.Client_plane, var37, var7);
+               GameObject var42 = Interpreter.scene.method2196(class22.Client_plane, var37, playerIndex);
                if (var2 == 11) {
                   var2 = 10;
                }
 
                if (var42 != null) {
-                  var42.renderable = new DynamicObject(var42.field1656 >> 14 & 32767, var2, var3, class22.Client_plane, var37, var7, var0, false, var42.renderable);
+                  var42.renderable = new DynamicObject(var42.field1656 >> 14 & 32767, var2, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var42.renderable);
                }
             }
 
             if (var4 == 3) {
-               FloorDecoration var43 = Interpreter.scene.method2066(class22.Client_plane, var37, var7);
+               FloorDecoration var43 = Interpreter.scene.method2066(class22.Client_plane, var37, playerIndex);
                if (var43 != null) {
-                  var43.renderable = new DynamicObject(var43.field1807 >> 14 & 32767, 22, var3, class22.Client_plane, var37, var7, var0, false, var43.renderable);
+                  var43.renderable = new DynamicObject(var43.field1807 >> 14 & 32767, 22, var3, class22.Client_plane, var37, playerIndex, animationCycleEnd, false, var43.renderable);
                }
             }
          }
 
       } else if (Client.serverPacketOpcode == 64) {
-         var0 = Client.serverPacketBuf.readUnsignedByteAdd();
-         var35 = (var0 >> 4 & 7) + Actor.field478;
-         var2 = (var0 & 7) + GraphicsObject.field307;
-         var3 = Client.serverPacketBuf.method2786();
+         animationCycleEnd = Client.serverPacketBuf.readUnsignedByteAdd();
+         var35 = (animationCycleEnd >> 4 & 7) + Actor.field478;
+         var2 = (animationCycleEnd & 7) + GraphicsObject.field307;
+         var3 = Client.serverPacketBuf.readUnsignedShortAddLE();
          var4 = Client.serverPacketBuf.readUnsignedShortLE();
-         var36 = Client.serverPacketBuf.method2786();
+         var36 = Client.serverPacketBuf.readUnsignedShortAddLE();
          if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104 && var3 != Client.localPlayerIndex) {
             TileItem var40 = new TileItem();
             var40.id = var36;
@@ -410,15 +410,15 @@ public final class IterableNodeHashTableIterator implements Runnable {
       } else {
          TileItem var32;
          if (Client.serverPacketOpcode == 89) {
-            var0 = Client.serverPacketBuf.method2786();
-            var35 = Client.serverPacketBuf.method2665();
+            animationCycleEnd = Client.serverPacketBuf.readUnsignedShortAddLE();
+            var35 = Client.serverPacketBuf.readUnsignedByte();
             var2 = (var35 >> 4 & 7) + Actor.field478;
             var3 = (var35 & 7) + GraphicsObject.field307;
             if (var2 >= 0 && var3 >= 0 && var2 < 104 && var3 < 104) {
                NodeDeque var33 = Client.groundItems[class22.Client_plane][var2][var3];
                if (var33 != null) {
                   for(var32 = (TileItem)var33.method3533(); var32 != null; var32 = (TileItem)var33.method3535()) {
-                     if ((var0 & 32767) == var32.id) {
+                     if ((animationCycleEnd & 32767) == var32.id) {
                         var32.method3567();
                         break;
                      }
@@ -434,20 +434,20 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
          } else {
             if (Client.serverPacketOpcode == 111) {
-               var0 = Client.serverPacketBuf.method2665();
-               var35 = (var0 >> 4 & 7) + Actor.field478;
-               var2 = (var0 & 7) + GraphicsObject.field307;
+               animationCycleEnd = Client.serverPacketBuf.readUnsignedByte();
+               var35 = (animationCycleEnd >> 4 & 7) + Actor.field478;
+               var2 = (animationCycleEnd & 7) + GraphicsObject.field307;
                var3 = Client.serverPacketBuf.readUnsignedShort();
-               var4 = Client.serverPacketBuf.method2665();
+               var4 = Client.serverPacketBuf.readUnsignedByte();
                var36 = var4 >> 4 & 15;
                var37 = var4 & 7;
-               var7 = Client.serverPacketBuf.method2665();
+               playerIndex = Client.serverPacketBuf.readUnsignedByte();
                if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                   var8 = var36 + 1;
                   if (Tiles.localPlayer.hitSplatTypes2[0] >= var35 - var8 && Tiles.localPlayer.hitSplatTypes2[0] <= var8 + var35 && Tiles.localPlayer.hitSplatValues2[0] >= var2 - var8 && Tiles.localPlayer.hitSplatValues2[0] <= var2 + var8 && Client.field538 != 0 && var37 > 0 && Client.soundEffectCount < 50) {
                      Client.field742[Client.soundEffectCount] = var3;
                      Client.field726[Client.soundEffectCount] = var37;
-                     Client.field727[Client.soundEffectCount] = var7;
+                     Client.field727[Client.soundEffectCount] = playerIndex;
                      Client.field729[Client.soundEffectCount] = null;
                      Client.field589[Client.soundEffectCount] = var36 + (var2 << 8) + (var35 << 16);
                      ++Client.soundEffectCount;
@@ -456,7 +456,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
             }
 
             if (Client.serverPacketOpcode == 70) {
-               var0 = Client.serverPacketBuf.method2677();
+               animationCycleEnd = Client.serverPacketBuf.readUnsignedShortAdd();
                var35 = Client.serverPacketBuf.readUnsignedByteAdd();
                var2 = (var35 >> 4 & 7) + Actor.field478;
                var3 = (var35 & 7) + GraphicsObject.field307;
@@ -464,7 +464,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
                if (var2 >= 0 && var3 >= 0 && var2 < 104 && var3 < 104) {
                   var32 = new TileItem();
                   var32.id = var4;
-                  var32.quantity = var0;
+                  var32.quantity = animationCycleEnd;
                   if (Client.groundItems[class22.Client_plane][var2][var3] == null) {
                      Client.groundItems[class22.Client_plane][var2][var3] = new NodeDeque();
                   }
@@ -475,60 +475,60 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
             } else if (Client.serverPacketOpcode != 103) {
                if (Client.serverPacketOpcode == 65) {
-                  var0 = Client.serverPacketBuf.readUnsignedByteAdd();
-                  var35 = var0 >> 2;
-                  var2 = var0 & 3;
+                  animationCycleEnd = Client.serverPacketBuf.readUnsignedByteAdd();
+                  var35 = animationCycleEnd >> 2;
+                  var2 = animationCycleEnd & 3;
                   var3 = Client.field541[var35];
-                  var4 = Client.serverPacketBuf.method2665();
+                  var4 = Client.serverPacketBuf.readUnsignedByte();
                   var36 = (var4 >> 4 & 7) + Actor.field478;
                   var37 = (var4 & 7) + GraphicsObject.field307;
-                  var7 = Client.serverPacketBuf.readUnsignedShortLE();
+                  playerIndex = Client.serverPacketBuf.readUnsignedShortLE();
                   if (var36 >= 0 && var37 >= 0 && var36 < 104 && var37 < 104) {
-                     class1.method14(class22.Client_plane, var36, var37, var3, var7, var35, var2, 0, -1);
+                     class1.updatePendingSpawn(class22.Client_plane, var36, var37, var3, playerIndex, var35, var2, 0, -1);
                   }
 
                } else if (Client.serverPacketOpcode == 13) {
-                  var0 = Client.serverPacketBuf.readUnsignedByteAdd();
-                  var35 = (var0 >> 4 & 7) + Actor.field478;
-                  var2 = (var0 & 7) + GraphicsObject.field307;
+                  animationCycleEnd = Client.serverPacketBuf.readUnsignedByteAdd();
+                  var35 = (animationCycleEnd >> 4 & 7) + Actor.field478;
+                  var2 = (animationCycleEnd & 7) + GraphicsObject.field307;
                   var3 = Client.serverPacketBuf.readUnsignedByteAdd();
                   var4 = var3 >> 2;
                   var36 = var3 & 3;
                   var37 = Client.field541[var4];
                   if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
-                     class1.method14(class22.Client_plane, var35, var2, var37, -1, var4, var36, 0, -1);
+                     class1.updatePendingSpawn(class22.Client_plane, var35, var2, var37, -1, var4, var36, 0, -1);
                   }
 
                } else if (Client.serverPacketOpcode == 238) {
-                  var0 = Client.serverPacketBuf.method2665();
-                  var35 = (var0 >> 4 & 7) + Actor.field478;
-                  var2 = (var0 & 7) + GraphicsObject.field307;
-                  var3 = var35 + Client.serverPacketBuf.method2646();
-                  var4 = var2 + Client.serverPacketBuf.method2646();
-                  var36 = Client.serverPacketBuf.method2648();
+                  animationCycleEnd = Client.serverPacketBuf.readUnsignedByte();
+                  var35 = (animationCycleEnd >> 4 & 7) + Actor.field478;
+                  var2 = (animationCycleEnd & 7) + GraphicsObject.field307;
+                  var3 = var35 + Client.serverPacketBuf.readByte();
+                  var4 = var2 + Client.serverPacketBuf.readByte();
+                  var36 = Client.serverPacketBuf.readShort();
                   var37 = Client.serverPacketBuf.readUnsignedShort();
-                  var7 = Client.serverPacketBuf.method2665() * 4;
-                  var8 = Client.serverPacketBuf.method2665() * 4;
+                  playerIndex = Client.serverPacketBuf.readUnsignedByte() * 4;
+                  var8 = Client.serverPacketBuf.readUnsignedByte() * 4;
                   var9 = Client.serverPacketBuf.readUnsignedShort();
-                  var10 = Client.serverPacketBuf.readUnsignedShort();
-                  var11 = Client.serverPacketBuf.method2665();
-                  int var38 = Client.serverPacketBuf.method2665();
+                  face = Client.serverPacketBuf.readUnsignedShort();
+                  var11 = Client.serverPacketBuf.readUnsignedByte();
+                  int var38 = Client.serverPacketBuf.readUnsignedByte();
                   if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104 && var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104 && var37 != 65535) {
                      var35 = var35 * 128 + 64;
                      var2 = var2 * 128 + 64;
                      var3 = var3 * 128 + 64;
                      var4 = var4 * 128 + 64;
-                     Projectile var30 = new Projectile(var37, class22.Client_plane, var35, var2, BufferedFile.method603(var35, var2, class22.Client_plane) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var38, var36, var8);
+                     Projectile var30 = new Projectile(var37, class22.Client_plane, var35, var2, BufferedFile.method603(var35, var2, class22.Client_plane) - playerIndex, var9 + Client.cycle, face + Client.cycle, var11, var38, var36, var8);
                      var30.method114(var3, var4, BufferedFile.method603(var3, var4, class22.Client_plane) - var8, var9 + Client.cycle);
                      Client.field619.method3528(var30);
                   }
 
                } else if (Client.serverPacketOpcode == 41) {
-                  var0 = Client.serverPacketBuf.method2665();
-                  var35 = (var0 >> 4 & 7) + Actor.field478;
-                  var2 = (var0 & 7) + GraphicsObject.field307;
+                  animationCycleEnd = Client.serverPacketBuf.readUnsignedByte();
+                  var35 = (animationCycleEnd >> 4 & 7) + Actor.field478;
+                  var2 = (animationCycleEnd & 7) + GraphicsObject.field307;
                   var3 = Client.serverPacketBuf.readUnsignedShort();
-                  var4 = Client.serverPacketBuf.method2665();
+                  var4 = Client.serverPacketBuf.readUnsignedByte();
                   var36 = Client.serverPacketBuf.readUnsignedShort();
                   if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                      var35 = var35 * 128 + 64;
@@ -539,9 +539,9 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
                }
             } else {
-               var0 = Client.serverPacketBuf.method2665();
-               var35 = (var0 >> 4 & 7) + Actor.field478;
-               var2 = (var0 & 7) + GraphicsObject.field307;
+               animationCycleEnd = Client.serverPacketBuf.readUnsignedByte();
+               var35 = (animationCycleEnd >> 4 & 7) + Actor.field478;
+               var2 = (animationCycleEnd & 7) + GraphicsObject.field307;
                var3 = Client.serverPacketBuf.readUnsignedShort();
                var4 = Client.serverPacketBuf.readUnsignedShort();
                var36 = Client.serverPacketBuf.readUnsignedShort();

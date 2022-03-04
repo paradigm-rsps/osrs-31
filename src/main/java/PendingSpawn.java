@@ -58,7 +58,7 @@ public final class PendingSpawn extends Node {
       var1.offset = var0.length - 7 - class83.SpriteBuffer_spriteCount * 8;
       class83.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
       class83.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
-      int var2 = (var1.method2665() & 255) + 1;
+      int var2 = (var1.readUnsignedByte() & 255) + 1;
 
       int var3;
       for(var3 = 0; var3 < class83.SpriteBuffer_spriteCount; ++var3) {
@@ -81,7 +81,7 @@ public final class PendingSpawn extends Node {
       FloorUnderlayDefinition.SpriteBuffer_spritePalette = new int[var2];
 
       for(var3 = 1; var3 < var2; ++var3) {
-         FloorUnderlayDefinition.SpriteBuffer_spritePalette[var3] = var1.method2801();
+         FloorUnderlayDefinition.SpriteBuffer_spritePalette[var3] = var1.readMedium();
          if (FloorUnderlayDefinition.SpriteBuffer_spritePalette[var3] == 0) {
             FloorUnderlayDefinition.SpriteBuffer_spritePalette[var3] = 1;
          }
@@ -95,16 +95,16 @@ public final class PendingSpawn extends Node {
          int var6 = var5 * var4;
          byte[] var7 = new byte[var6];
          class145.SpriteBuffer_pixels[var3] = var7;
-         int var8 = var1.method2665();
+         int var8 = var1.readUnsignedByte();
          int var9;
          if (var8 == 0) {
             for(var9 = 0; var9 < var6; ++var9) {
-               var7[var9] = var1.method2646();
+               var7[var9] = var1.readByte();
             }
          } else if (var8 == 1) {
             for(var9 = 0; var9 < var4; ++var9) {
                for(int var10 = 0; var10 < var5; ++var10) {
-                  var7[var9 + var4 * var10] = var1.method2646();
+                  var7[var9 + var4 * var10] = var1.readByte();
                }
             }
          }

@@ -268,14 +268,14 @@ public class PlatformInfo extends Node {
       var1.writeByte(this.field2484);
       var1.writeMedium(this.field2468);
       var1.writeShort(this.field2474);
-      var1.writeJagexString(this.field2487);
-      var1.writeJagexString(this.field2464);
-      var1.writeJagexString(this.field2477);
-      var1.writeJagexString(this.field2490);
+      var1.writeStringCp1252NullCircumfixed(this.field2487);
+      var1.writeStringCp1252NullCircumfixed(this.field2464);
+      var1.writeStringCp1252NullCircumfixed(this.field2477);
+      var1.writeStringCp1252NullCircumfixed(this.field2490);
       var1.writeByte(this.field2492);
       var1.writeShort(this.field2491);
-      var1.writeJagexString(this.field2483);
-      var1.writeJagexString(this.field2496);
+      var1.writeStringCp1252NullCircumfixed(this.field2483);
+      var1.writeStringCp1252NullCircumfixed(this.field2496);
       var1.writeByte(this.field2493);
       var1.writeByte(this.field2494);
 

@@ -49,13 +49,13 @@ public final class Player extends Actor {
    )
    Model model0;
    @ObfuscatedName("m")
-   int field44;
+   int minX;
    @ObfuscatedName("u")
-   int field38;
+   int minY;
    @ObfuscatedName("g")
-   int field46;
+   int maxX;
    @ObfuscatedName("o")
-   int field47;
+   int maxY;
    @ObfuscatedName("v")
    @Export("isUnanimated")
    boolean isUnanimated = false;
@@ -69,9 +69,9 @@ public final class Player extends Actor {
    )
    final void method17(Buffer var1) {
       var1.offset = 0;
-      int var2 = var1.method2665();
-      this.headIconPk = var1.method2646();
-      this.headIconPrayer = var1.method2646();
+      int var2 = var1.readUnsignedByte();
+      this.headIconPk = var1.readByte();
+      this.headIconPrayer = var1.readByte();
       int var3 = -1;
       this.team = 0;
       int[] var4 = new int[12];
@@ -79,11 +79,11 @@ public final class Player extends Actor {
       int var6;
       int var7;
       for(int var5 = 0; var5 < 12; ++var5) {
-         var6 = var1.method2665();
+         var6 = var1.readUnsignedByte();
          if (var6 == 0) {
             var4[var5] = 0;
          } else {
-            var7 = var1.method2665();
+            var7 = var1.readUnsignedByte();
             var4[var5] = var7 + (var6 << 8);
             if (var5 == 0 && var4[0] == 65535) {
                var3 = var1.readUnsignedShort();
@@ -102,7 +102,7 @@ public final class Player extends Actor {
       int[] var9 = new int[5];
 
       for(var6 = 0; var6 < 5; ++var6) {
-         var7 = var1.method2665();
+         var7 = var1.readUnsignedByte();
          if (var7 < 0 || var7 >= Skeleton.field1792[var6].length) {
             var7 = 0;
          }
@@ -151,7 +151,7 @@ public final class Player extends Actor {
          RunException.field1413 = this.field35;
       }
 
-      this.combatLevel = var1.method2665();
+      this.combatLevel = var1.readUnsignedByte();
       this.skillLevel = var1.readUnsignedShort();
       if (this.appearance == null) {
          this.appearance = new PlayerComposition();
@@ -257,7 +257,7 @@ public final class Player extends Actor {
          Tiles.Tiles_renderFlags[var1][var2][var3] = 0;
 
          while(true) {
-            var7 = var0.method2665();
+            var7 = var0.readUnsignedByte();
             if (var7 == 0) {
                if (var1 == 0) {
                   Tiles.Tiles_heights[0][var2][var3] = -class1.method11(var2 + 932731 + var4, var5 + var3 + 556238) * 8;
@@ -268,7 +268,7 @@ public final class Player extends Actor {
             }
 
             if (var7 == 1) {
-               int var8 = var0.method2665();
+               int var8 = var0.readUnsignedByte();
                if (var8 == 1) {
                   var8 = 0;
                }
@@ -282,7 +282,7 @@ public final class Player extends Actor {
             }
 
             if (var7 <= 49) {
-               VarpDefinition.Tiles_overlays[var1][var2][var3] = var0.method2646();
+               VarpDefinition.Tiles_overlays[var1][var2][var3] = var0.readByte();
                Tiles.Tiles_shapes[var1][var2][var3] = (byte)((var7 - 2) / 4);
                class123.field2031[var1][var2][var3] = (byte)(var7 - 2 + var6 & 3);
             } else if (var7 <= 81) {
@@ -293,18 +293,18 @@ public final class Player extends Actor {
          }
       } else {
          while(true) {
-            var7 = var0.method2665();
+            var7 = var0.readUnsignedByte();
             if (var7 == 0) {
                break;
             }
 
             if (var7 == 1) {
-               var0.method2665();
+               var0.readUnsignedByte();
                break;
             }
 
             if (var7 <= 49) {
-               var0.method2665();
+               var0.readUnsignedByte();
             }
          }
       }

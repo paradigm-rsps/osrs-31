@@ -76,13 +76,13 @@ public abstract class AbstractArchive {
    void method3202(byte[] var1) {
       this.hash = FileSystem.method1516(var1, var1.length);
       Buffer var2 = new Buffer(class120.method2582(var1));
-      int var3 = var2.method2665();
+      int var3 = var2.readUnsignedByte();
       if (var3 >= 5 && var3 <= 7) {
          if (var3 >= 6) {
-            var2.method2650();
+            var2.readInt();
          }
 
-         int var4 = var2.method2665();
+         int var4 = var2.readUnsignedByte();
          if (var3 >= 7) {
             this.groupCount = var2.method2680();
          } else {
@@ -119,18 +119,18 @@ public abstract class AbstractArchive {
             this.groupNameHashes = new int[var6 + 1];
 
             for(var7 = 0; var7 < this.groupCount; ++var7) {
-               this.groupNameHashes[this.groupIds[var7]] = var2.method2650();
+               this.groupNameHashes[this.groupIds[var7]] = var2.readInt();
             }
 
             this.groupNameHashTable = new IntHashTable(this.groupNameHashes);
          }
 
          for(var7 = 0; var7 < this.groupCount; ++var7) {
-            this.groupCrcs[this.groupIds[var7]] = var2.method2650();
+            this.groupCrcs[this.groupIds[var7]] = var2.readInt();
          }
 
          for(var7 = 0; var7 < this.groupCount; ++var7) {
-            this.groupVersions[this.groupIds[var7]] = var2.method2650();
+            this.groupVersions[this.groupIds[var7]] = var2.readInt();
          }
 
          for(var7 = 0; var7 < this.groupCount; ++var7) {
@@ -188,7 +188,7 @@ public abstract class AbstractArchive {
                this.fileNameHashes[var8] = new int[this.files[var8].length];
 
                for(var10 = 0; var10 < var9; ++var10) {
-                  this.fileNameHashes[var8][this.fileIds[var8][var10]] = var2.method2650();
+                  this.fileNameHashes[var8][this.fileIds[var8][var10]] = var2.readInt();
                }
 
                this.fileNameHashTables[var8] = new IntHashTable(this.fileNameHashes[var8]);
@@ -424,7 +424,7 @@ public abstract class AbstractArchive {
                   var14 = 0;
 
                   for(var15 = 0; var15 < var3; ++var15) {
-                     var14 += var11.method2650();
+                     var14 += var11.readInt();
                      var12[var15] += var14;
                   }
                }
@@ -443,7 +443,7 @@ public abstract class AbstractArchive {
                   int var16 = 0;
 
                   for(int var17 = 0; var17 < var3; ++var17) {
-                     var16 += var11.method2650();
+                     var16 += var11.readInt();
                      System.arraycopy(var20, var14, var19[var17], var12[var17], var16);
                      var12[var17] += var16;
                      var14 += var16;

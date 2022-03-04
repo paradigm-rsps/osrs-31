@@ -144,7 +144,7 @@ public class WorldMapCacheName {
                      }
                   }
 
-                  Client.rsaBuf.method2642(Client.rsaBuf.offset - var1);
+                  Client.rsaBuf.writeLengthByte(Client.rsaBuf.offset - var1);
                   if (var2 >= BoundaryObject.field1625.index) {
                      BoundaryObject.field1625.index = 0;
                   } else {
@@ -207,7 +207,7 @@ public class WorldMapCacheName {
                   Client.rsaBuf.method2667(KeyHandler.field1348[var3]);
                }
 
-               Client.rsaBuf.writeSmartShort(Client.rsaBuf.offset - var0);
+               Client.rsaBuf.writeLengthShort(Client.rsaBuf.offset - var0);
             }
 
             if (Client.field573 > 0) {
@@ -223,7 +223,7 @@ public class WorldMapCacheName {
                Client.field599 = false;
                Client.rsaBuf.writeByteOpcode(97);
                Client.rsaBuf.writeShort(Client.field516);
-               Client.rsaBuf.method2673(Client.field569);
+               Client.rsaBuf.writeShortLE(Client.field569);
             }
 
             if (class23.hasFocus && !Client.field613) {
@@ -291,7 +291,7 @@ public class WorldMapCacheName {
                      var7 = Interpreter.scene.method2070(class22.Client_plane, var5, var6);
                      if (var7 != 0) {
                         var7 = var7 >> 14 & 32767;
-                        var8 = GameBuild.method2853(var7).field848;
+                        var8 = GameBuild.getObjectComposition(var7).field848;
                         if (var8 >= 0) {
                            var24 = var5;
                            var10 = var6;
@@ -537,10 +537,10 @@ public class WorldMapCacheName {
                               }
 
                               Client.rsaBuf.writeByteOpcode(42);
-                              Client.rsaBuf.method2682(SequenceDefinition.field887.id);
-                              Client.rsaBuf.method2674(Client.field596);
+                              Client.rsaBuf.writeIntLE(SequenceDefinition.field887.id);
+                              Client.rsaBuf.writeShortAdd(Client.field596);
                               Client.rsaBuf.writeByte(var33);
-                              Client.rsaBuf.method2768(Client.field655);
+                              Client.rsaBuf.writeShortAddLE(Client.field655);
                            }
                         } else if ((Client.leftClickOpensMenu == 1 || PlatformInfo.method3190(Client.menuOptionsCount - 1)) && Client.menuOptionsCount > 2) {
                            class1.method9();

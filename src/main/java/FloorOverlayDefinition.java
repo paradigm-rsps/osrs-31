@@ -69,7 +69,7 @@ public class FloorOverlayDefinition extends DualNode {
    )
    void method809(Buffer var1, int var2) {
       while(true) {
-         int var3 = var1.method2665();
+         int var3 = var1.readUnsignedByte();
          if (var3 == 0) {
             return;
          }
@@ -85,13 +85,13 @@ public class FloorOverlayDefinition extends DualNode {
    )
    void method810(Buffer var1, int var2, int var3) {
       if (var2 == 1) {
-         this.primaryRgb = var1.method2801();
+         this.primaryRgb = var1.readMedium();
       } else if (var2 == 2) {
-         this.texture = var1.method2665();
+         this.texture = var1.readUnsignedByte();
       } else if (var2 == 5) {
          this.hideUnderlay = false;
       } else if (var2 == 7) {
-         this.secondaryRgb = var1.method2801();
+         this.secondaryRgb = var1.readMedium();
       } else if (var2 == 8) {
          ;
       }

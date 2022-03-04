@@ -130,7 +130,7 @@ public class NPCComposition extends DualNode {
    )
    void method629(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -148,7 +148,7 @@ public class NPCComposition extends DualNode {
       int var3;
       int var4;
       if (var2 == 1) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.models = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
@@ -157,7 +157,7 @@ public class NPCComposition extends DualNode {
       } else if (var2 == 2) {
          this.name = var1.method2653();
       } else if (var2 == 12) {
-         this.size = var1.method2665();
+         this.size = var1.readUnsignedByte();
       } else if (var2 == 13) {
          this.field789 = var1.readUnsignedShort();
       } else if (var2 == 14) {
@@ -177,7 +177,7 @@ public class NPCComposition extends DualNode {
             this.actions[var2 - 30] = null;
          }
       } else if (var2 == 40) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.recolorFrom = new short[var3];
          this.recolorTo = new short[var3];
 
@@ -186,7 +186,7 @@ public class NPCComposition extends DualNode {
             this.recolorTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 41) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.retextureFrom = new short[var3];
          this.retextureTo = new short[var3];
 
@@ -195,7 +195,7 @@ public class NPCComposition extends DualNode {
             this.retextureTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 60) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.field791 = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
@@ -212,9 +212,9 @@ public class NPCComposition extends DualNode {
       } else if (var2 == 99) {
          this.field808 = true;
       } else if (var2 == 100) {
-         this.field809 = var1.method2646();
+         this.field809 = var1.readByte();
       } else if (var2 == 101) {
-         this.field810 = var1.method2646() * 5;
+         this.field810 = var1.readByte() * 5;
       } else if (var2 == 102) {
          this.field811 = var1.readUnsignedShort();
       } else if (var2 == 103) {
@@ -230,7 +230,7 @@ public class NPCComposition extends DualNode {
             this.transformVarp = -1;
          }
 
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.transforms = new int[var3 + 1];
 
          for(var4 = 0; var4 <= var3; ++var4) {

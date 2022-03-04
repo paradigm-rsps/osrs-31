@@ -416,7 +416,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
             ObjectComposition var12;
             if (var1 == 0) {
                Interpreter.scene.method2058(var0, var2, var3);
-               var12 = GameBuild.method2853(var13);
+               var12 = GameBuild.getObjectComposition(var13);
                if (var12.interactType != 0) {
                   Client.collisionMaps[var0].method3432(var2, var3, var14, var15, var12.boolean1);
                }
@@ -428,7 +428,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
 
             if (var1 == 2) {
                Interpreter.scene.method2043(var0, var2, var3);
-               var12 = GameBuild.method2853(var13);
+               var12 = GameBuild.getObjectComposition(var13);
                if (var2 + var12.sizeX > 103 || var3 + var12.sizeX > 103 || var2 + var12.sizeY > 103 || var3 + var12.sizeY > 103) {
                   return;
                }
@@ -440,7 +440,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
 
             if (var1 == 3) {
                Interpreter.scene.method2184(var0, var2, var3);
-               var12 = GameBuild.method2853(var13);
+               var12 = GameBuild.getObjectComposition(var13);
                if (var12.interactType == 1) {
                   Client.collisionMaps[var0].method3425(var2, var3);
                }

@@ -53,8 +53,8 @@ public class MidiFileReader {
       int var3;
       int var5;
       for(var3 = 0; var3 < var2; this.buffer.offset += var5) {
-         int var4 = this.buffer.method2650();
-         var5 = this.buffer.method2650();
+         int var4 = this.buffer.readInt();
+         var5 = this.buffer.readInt();
          if (var4 == 1297379947) {
             this.trackStarts[var3] = this.buffer.offset;
             ++var3;
@@ -161,13 +161,13 @@ public class MidiFileReader {
    int method3076(int var1, int var2) {
       int var4;
       if (var2 == 255) {
-         int var7 = this.buffer.method2665();
+         int var7 = this.buffer.readUnsignedByte();
          var4 = this.buffer.method2660();
          if (var7 == 47) {
             this.buffer.offset += var4;
             return 1;
          } else if (var7 == 81) {
-            int var5 = this.buffer.method2801();
+            int var5 = this.buffer.readMedium();
             var4 -= 3;
             int var6 = this.trackLengths[var1];
             this.field2421 += (long)var6 * (long)(this.field2414 - var5);
@@ -182,11 +182,11 @@ public class MidiFileReader {
          byte var3 = field2411[var2 - 128];
          var4 = var2;
          if (var3 >= 1) {
-            var4 = var2 | this.buffer.method2665() << 8;
+            var4 = var2 | this.buffer.readUnsignedByte() << 8;
          }
 
          if (var3 >= 2) {
-            var4 |= this.buffer.method2665() << 16;
+            var4 |= this.buffer.readUnsignedByte() << 16;
          }
 
          return var4;

@@ -74,7 +74,7 @@ public class SpotAnimationDefinition extends DualNode {
    )
    void method764(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -100,14 +100,14 @@ public class SpotAnimationDefinition extends DualNode {
       } else if (var2 == 6) {
          this.orientation = var1.readUnsignedShort();
       } else if (var2 == 7) {
-         this.ambient = var1.method2665();
+         this.ambient = var1.readUnsignedByte();
       } else if (var2 == 8) {
-         this.contrast = var1.method2665();
+         this.contrast = var1.readUnsignedByte();
       } else {
          int var3;
          int var4;
          if (var2 == 40) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.recolorFrom = new short[var3];
             this.recolorTo = new short[var3];
 
@@ -116,7 +116,7 @@ public class SpotAnimationDefinition extends DualNode {
                this.recolorTo[var4] = (short)var1.readUnsignedShort();
             }
          } else if (var2 == 41) {
-            var3 = var1.method2665();
+            var3 = var1.readUnsignedByte();
             this.retextureFrom = new short[var3];
             this.retextureTo = new short[var3];
 

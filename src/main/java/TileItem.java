@@ -645,7 +645,7 @@ public final class TileItem extends Renderable {
             Client.rsaBuf.writeInt(randomKeys[2]);
             Client.rsaBuf.writeInt(randomKeys[3]);
             Client.rsaBuf.writeLong(0L);
-            Client.rsaBuf.writeString(Login.field339);
+            Client.rsaBuf.writeStringCp1252NullTerminated(Login.field339);
             Client.rsaBuf.encryptRSA(class5.modulus, class5.exponent);
             Client.loginBuf.offset = 0;
             if (Client.gameState == 40) {
@@ -659,7 +659,7 @@ public final class TileItem extends Renderable {
             Client.loginBuf.writeInt(31);
             Client.loginBuf.writeBytes(Client.rsaBuf.array, 0, Client.rsaBuf.offset);
             var2 = Client.loginBuf.offset;
-            Client.loginBuf.writeString(Login.field338);
+            Client.loginBuf.writeStringCp1252NullTerminated(Login.field338);
             Client.loginBuf.writeByte(Client.isLowDetail ? 1 : 0);
             PacketBuffer xteaBuf2 = Client.loginBuf;
             byte[] var4 = new byte[24];
@@ -703,7 +703,7 @@ public final class TileItem extends Renderable {
             Client.field520.writeInt(KeyHandler.archive14.hash);
             Client.field520.writeInt(Tiles.archive15.hash);*/
             Client.loginBuf.encryptXtea(randomKeys, var2, Client.loginBuf.offset);
-            Client.loginBuf.writeSmartShort(Client.loginBuf.offset - var1);
+            Client.loginBuf.writeLengthShort(Client.loginBuf.offset - var1);
             GraphicsObject.gameSocket.flush(Client.loginBuf.array, 0, Client.loginBuf.offset);
             Client.rsaBuf.setIsaacRandomSeed(randomKeys);
 

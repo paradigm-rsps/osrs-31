@@ -56,7 +56,7 @@ public class EnumComposition extends DualNode {
    )
    void method839(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -72,13 +72,13 @@ public class EnumComposition extends DualNode {
    )
    void method841(Buffer var1, int var2) {
       if (var2 == 1) {
-         this.field979 = var1.method2665();
+         this.field979 = var1.readUnsignedByte();
       } else if (var2 == 2) {
-         this.outputType = (char)var1.method2665();
+         this.outputType = (char)var1.readUnsignedByte();
       } else if (var2 == 3) {
          this.defaultStr = var1.method2653();
       } else if (var2 == 4) {
-         this.defaultInt = var1.method2650();
+         this.defaultInt = var1.readInt();
       } else {
          int var3;
          if (var2 == 5) {
@@ -87,7 +87,7 @@ public class EnumComposition extends DualNode {
             this.strVals = new String[this.outputCount];
 
             for(var3 = 0; var3 < this.outputCount; ++var3) {
-               this.keys[var3] = var1.method2650();
+               this.keys[var3] = var1.readInt();
                this.strVals[var3] = var1.method2653();
             }
          } else if (var2 == 6) {
@@ -96,8 +96,8 @@ public class EnumComposition extends DualNode {
             this.intVals = new int[this.outputCount];
 
             for(var3 = 0; var3 < this.outputCount; ++var3) {
-               this.keys[var3] = var1.method2650();
-               this.intVals[var3] = var1.method2650();
+               this.keys[var3] = var1.readInt();
+               this.intVals[var3] = var1.readInt();
             }
          }
       }
@@ -111,8 +111,8 @@ public class EnumComposition extends DualNode {
    static void method851(Archive var0, int var1) {
       if (WallDecoration.NetCache_reference != null) {
          WallDecoration.NetCache_reference.offset = var1 * 8 + 5;
-         int var2 = WallDecoration.NetCache_reference.method2650();
-         int var3 = WallDecoration.NetCache_reference.method2650();
+         int var2 = WallDecoration.NetCache_reference.readInt();
+         int var3 = WallDecoration.NetCache_reference.readInt();
          var0.method3299(var2, var3);
       } else {
          class148.method3173((Archive)null, 255, 255, 0, (byte)0, true);
@@ -184,8 +184,8 @@ public class EnumComposition extends DualNode {
                   var3.field201 = (var4 & 16384) != 0;
                   var3.field196 = var1.method2653();
                   var3.field205 = var1.method2653();
-                  var3.field198 = var1.method2665();
-                  var3.population = var1.method2648();
+                  var3.field198 = var1.readUnsignedByte();
+                  var3.population = var1.readShort();
                }
 
                JagexCache.method1720(Skills.field2058, 0, Skills.field2058.length - 1, Login.World_sortOption1, Login.World_sortOption2);

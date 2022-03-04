@@ -336,23 +336,23 @@ public class JagexCache {
                for(var1 = 0; var1 < Client.Players_count; ++var1) {
                   var2 = Client.Players_indices[var1];
                   var84 = Client.npcs[var2];
-                  var19 = Client.serverPacketBuf.method2665();
+                  var19 = Client.serverPacketBuf.readUnsignedByte();
                   if ((var19 & 2) != 0) {
                      var84.field475 = Client.serverPacketBuf.readUnsignedShortLE();
-                     var84.field446 = Client.serverPacketBuf.method2677();
+                     var84.field446 = Client.serverPacketBuf.readUnsignedShortAdd();
                   }
 
                   if ((var19 & 16) != 0) {
-                     var5 = Client.serverPacketBuf.method2665();
+                     var5 = Client.serverPacketBuf.readUnsignedByte();
                      var6 = Client.serverPacketBuf.readUnsignedByteAdd();
                      var84.method277(var5, var6, Client.cycle);
                      var84.field441 = Client.cycle + 300;
                      var84.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
-                     var84.field425 = Client.serverPacketBuf.method2665();
+                     var84.field425 = Client.serverPacketBuf.readUnsignedByte();
                   }
 
                   if ((var19 & 128) != 0) {
-                     var84.definition = class22.method247(Client.serverPacketBuf.method2786());
+                     var84.definition = class22.method247(Client.serverPacketBuf.readUnsignedShortAddLE());
                      var84.field461 = var84.definition.size;
                      var84.field471 = var84.definition.field800;
                      var84.walkSequence = var84.definition.walkSequence;
@@ -371,16 +371,16 @@ public class JagexCache {
 
                   if ((var19 & 1) != 0) {
                      var5 = Client.serverPacketBuf.readUnsignedByteNeg();
-                     var6 = Client.serverPacketBuf.method2665();
+                     var6 = Client.serverPacketBuf.readUnsignedByte();
                      var84.method277(var5, var6, Client.cycle);
                      var84.field441 = Client.cycle + 300;
                      var84.field431 = Client.serverPacketBuf.readUnsignedByteAdd();
-                     var84.field425 = Client.serverPacketBuf.method2665();
+                     var84.field425 = Client.serverPacketBuf.readUnsignedByte();
                   }
 
                   if ((var19 & 8) != 0) {
                      var84.spotAnimation = Client.serverPacketBuf.readUnsignedShortLE();
-                     var5 = Client.serverPacketBuf.method2650();
+                     var5 = Client.serverPacketBuf.readInt();
                      var84.field430 = var5 >> 16;
                      var84.field458 = (var5 & '\uffff') + Client.cycle;
                      var84.spotAnimationFrame = 0;
@@ -395,7 +395,7 @@ public class JagexCache {
                   }
 
                   if ((var19 & 4) != 0) {
-                     var5 = Client.serverPacketBuf.method2786();
+                     var5 = Client.serverPacketBuf.readUnsignedShortAddLE();
                      if (var5 == 65535) {
                         var5 = -1;
                      }
@@ -424,7 +424,7 @@ public class JagexCache {
                   }
 
                   if ((var19 & 32) != 0) {
-                     var84.field444 = Client.serverPacketBuf.method2677();
+                     var84.field444 = Client.serverPacketBuf.readUnsignedShortAdd();
                      if (var84.field444 == 65535) {
                         var84.field444 = -1;
                      }
@@ -455,7 +455,7 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 212) {
                Client.method568();
-               Client.field558 = Client.serverPacketBuf.method2648();
+               Client.field558 = Client.serverPacketBuf.readShort();
                Client.field676 = Client.field681;
                Client.serverPacketOpcode = -1;
                return true;
@@ -469,13 +469,13 @@ public class JagexCache {
 
             long var20;
             if (Client.serverPacketOpcode == 214) {
-               var1 = Client.serverPacketBuf.method2756();
-               var2 = Client.serverPacketBuf.method2786();
+               var1 = Client.serverPacketBuf.readUnsignedIntIME();
+               var2 = Client.serverPacketBuf.readUnsignedShortAddLE();
                if (var2 == 65535) {
                   var2 = -1;
                }
 
-               var3 = Client.serverPacketBuf.method2687();
+               var3 = Client.serverPacketBuf.readUnsignedIntME();
                var19 = Client.serverPacketBuf.readUnsignedShortLE();
                if (var19 == 65535) {
                   var19 = -1;
@@ -497,9 +497,9 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 207) {
                var1 = Client.serverPacketBuf.readUnsignedShort();
-               var2 = Client.serverPacketBuf.method2650();
-               var3 = Client.serverPacketBuf.method2786();
-               var19 = Client.serverPacketBuf.method2677();
+               var2 = Client.serverPacketBuf.readInt();
+               var3 = Client.serverPacketBuf.readUnsignedShortAddLE();
+               var19 = Client.serverPacketBuf.readUnsignedShortAdd();
                Widget var80 = class130.method2851(var2);
                if (var1 != var80.modelAngleX || var3 != var80.modelAngleY || var19 != var80.field2679) {
                   var80.modelAngleX = var1;
@@ -514,11 +514,11 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 37) {
                Client.field730 = true;
-               World.field209 = Client.serverPacketBuf.method2665();
-               Interpreter.field416 = Client.serverPacketBuf.method2665();
+               World.field209 = Client.serverPacketBuf.readUnsignedByte();
+               Interpreter.field416 = Client.serverPacketBuf.readUnsignedByte();
                class5.field73 = Client.serverPacketBuf.readUnsignedShort();
-               ObjectSound.field78 = Client.serverPacketBuf.method2665();
-               SoundCache.field1206 = Client.serverPacketBuf.method2665();
+               ObjectSound.field78 = Client.serverPacketBuf.readUnsignedByte();
+               SoundCache.field1206 = Client.serverPacketBuf.readUnsignedByte();
                if (SoundCache.field1206 >= 100) {
                   Login.cameraX = World.field209 * 128 + 64;
                   class17.cameraZ = Interpreter.field416 * 128 + 64;
@@ -537,18 +537,18 @@ public class JagexCache {
             String var78;
             if (Client.serverPacketOpcode == 126) {
                while(Client.serverPacketBuf.offset < Client.serverPacketLength) {
-                  var52 = Client.serverPacketBuf.method2665() == 1;
+                  var52 = Client.serverPacketBuf.readUnsignedByte() == 1;
                   var78 = Client.serverPacketBuf.method2653();
                   var18 = Client.serverPacketBuf.method2653();
                   var19 = Client.serverPacketBuf.readUnsignedShort();
-                  var5 = Client.serverPacketBuf.method2665();
-                  var6 = Client.serverPacketBuf.method2665();
+                  var5 = Client.serverPacketBuf.readUnsignedByte();
+                  var6 = Client.serverPacketBuf.readUnsignedByte();
                   boolean var64 = (var6 & 2) != 0;
                   var59 = (var6 & 1) != 0;
                   if (var19 > 0) {
                      Client.serverPacketBuf.method2653();
-                     Client.serverPacketBuf.method2665();
-                     Client.serverPacketBuf.method2650();
+                     Client.serverPacketBuf.readUnsignedByte();
+                     Client.serverPacketBuf.readInt();
                   }
 
                   Client.serverPacketBuf.method2653();
@@ -655,7 +655,7 @@ public class JagexCache {
 
             Widget var70;
             if (Client.serverPacketOpcode == 102) {
-               var1 = Client.serverPacketBuf.method2650();
+               var1 = Client.serverPacketBuf.readInt();
                var2 = Client.serverPacketBuf.readUnsignedShort();
                if (var1 < -70000) {
                   var2 += 32768;
@@ -686,9 +686,9 @@ public class JagexCache {
 
                for(var5 = 0; var5 < var19; ++var5) {
                   var6 = Client.serverPacketBuf.readUnsignedShort();
-                  var7 = Client.serverPacketBuf.method2665();
+                  var7 = Client.serverPacketBuf.readUnsignedByte();
                   if (var7 == 255) {
-                     var7 = Client.serverPacketBuf.method2650();
+                     var7 = Client.serverPacketBuf.readInt();
                   }
 
                   if (var70 != null && var5 < var70.itemIds.length) {
@@ -710,7 +710,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 68) {
-               var1 = Client.serverPacketBuf.method2629();
+               var1 = Client.serverPacketBuf.readUnsignedIntLE();
                GraphicsObject.field305 = ItemContainer.taskHandler.method1605(var1);
                Client.serverPacketOpcode = -1;
                return true;
@@ -718,7 +718,7 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 53) {
                var1 = Client.serverPacketBuf.readUnsignedShort();
-               var2 = Client.serverPacketBuf.method2629();
+               var2 = Client.serverPacketBuf.readUnsignedIntLE();
                var70 = class130.method2851(var2);
                if (var70.modelType != 1 || var1 != var70.modelId) {
                   var70.modelType = 1;
@@ -738,7 +738,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 216) {
-               var1 = Client.serverPacketBuf.method2650();
+               var1 = Client.serverPacketBuf.readInt();
                InterfaceParent var93 = (InterfaceParent)Client.interfaceParents.method3512((long)var1);
                if (var93 != null) {
                   Tiles.method60(var93, true);
@@ -756,7 +756,7 @@ public class JagexCache {
             Widget var4;
             if (Client.serverPacketOpcode == 78) {
                var1 = Client.serverPacketBuf.readUnsignedShort();
-               var2 = Client.serverPacketBuf.method2629();
+               var2 = Client.serverPacketBuf.readUnsignedIntLE();
                var3 = Client.serverPacketBuf.readUnsignedShortLE();
                var4 = class130.method2851(var2);
                var4.field2601 = var1 + (var3 << 16);
@@ -774,7 +774,7 @@ public class JagexCache {
             if (Client.serverPacketOpcode == 86) {
                var28 = Client.serverPacketBuf.method2653();
                var2 = Client.serverPacketBuf.readUnsignedShort();
-               byte var66 = Client.serverPacketBuf.method2646();
+               byte var66 = Client.serverPacketBuf.readByte();
                var74 = false;
                if (var66 == -128) {
                   var74 = true;
@@ -854,7 +854,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 40) {
-               var1 = Client.serverPacketBuf.method2650();
+               var1 = Client.serverPacketBuf.readInt();
                var2 = Client.serverPacketBuf.readUnsignedShort();
                if (var1 < -70000) {
                   var2 += 32768;
@@ -871,9 +871,9 @@ public class JagexCache {
                   var5 = Client.serverPacketBuf.readUnsignedShort();
                   var6 = 0;
                   if (var5 != 0) {
-                     var6 = Client.serverPacketBuf.method2665();
+                     var6 = Client.serverPacketBuf.readUnsignedByte();
                      if (var6 == 255) {
-                        var6 = Client.serverPacketBuf.method2650();
+                        var6 = Client.serverPacketBuf.readInt();
                      }
                   }
 
@@ -896,7 +896,7 @@ public class JagexCache {
             if (Client.serverPacketOpcode == 188) {
                var1 = Client.serverPacketBuf.readUnsignedByteAdd();
                var2 = Client.serverPacketBuf.readUnsignedByteSub();
-               var3 = Client.serverPacketBuf.method2665();
+               var3 = Client.serverPacketBuf.readUnsignedByte();
                class22.Client_plane = var1 >> 1;
                Tiles.localPlayer.method290(var3, var2, (var1 & 1) == 1);
                Client.serverPacketOpcode = -1;
@@ -913,7 +913,7 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 38) {
                Client.method568();
-               Client.field648 = Client.serverPacketBuf.method2665();
+               Client.field648 = Client.serverPacketBuf.readUnsignedByte();
                Client.field676 = Client.field681;
                Client.serverPacketOpcode = -1;
                return true;
@@ -928,7 +928,7 @@ public class JagexCache {
             String var55;
             if (Client.serverPacketOpcode == 244) {
                while(Client.serverPacketBuf.offset < Client.serverPacketLength) {
-                  var1 = Client.serverPacketBuf.method2665();
+                  var1 = Client.serverPacketBuf.readUnsignedByte();
                   var65 = (var1 & 1) == 1;
                   var18 = Client.serverPacketBuf.method2653();
                   var55 = Client.serverPacketBuf.method2653();
@@ -967,7 +967,7 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 210) {
                var1 = Client.serverPacketBuf.readUnsignedShortLE();
-               var2 = Client.serverPacketBuf.method2756();
+               var2 = Client.serverPacketBuf.readUnsignedIntIME();
                var70 = class130.method2851(var2);
                if (var70.modelType != 2 || var1 != var70.modelId) {
                   var70.modelType = 2;
@@ -1016,7 +1016,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 69) {
-               var1 = Client.serverPacketBuf.method2677();
+               var1 = Client.serverPacketBuf.readUnsignedShortAdd();
                Client.field643 = var1;
                Tiles.method99(var1);
                MouseRecorder.method168(Client.field643);
@@ -1030,8 +1030,8 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 56) {
-               var1 = Client.serverPacketBuf.method2786();
-               var2 = Client.serverPacketBuf.method2756();
+               var1 = Client.serverPacketBuf.readUnsignedShortAddLE();
+               var2 = Client.serverPacketBuf.readUnsignedIntIME();
                var70 = class130.method2851(var2);
                if (var70 != null && var70.type == 0) {
                   if (var1 > var70.field2592 - var70.height) {
@@ -1058,10 +1058,10 @@ public class JagexCache {
             int var35;
             if (Client.serverPacketOpcode == 63) {
                var28 = Client.serverPacketBuf.method2653();
-               var29 = Client.serverPacketBuf.method2757();
+               var29 = Client.serverPacketBuf.readLong();
                var31 = (long)Client.serverPacketBuf.readUnsignedShort();
-               var20 = (long)Client.serverPacketBuf.method2801();
-               var8 = Client.serverPacketBuf.method2665();
+               var20 = (long)Client.serverPacketBuf.readMedium();
+               var8 = Client.serverPacketBuf.readUnsignedByte();
                var33 = var20 + (var31 << 32);
                var67 = false;
 
@@ -1130,7 +1130,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 237) {
-               var2 = Client.serverPacketBuf.method2665();
+               var2 = Client.serverPacketBuf.readUnsignedByte();
                class136[] var73 = new class136[]{class136.field2336, class136.field2332, class136.field2335};
                class136[] var56 = var73;
                var5 = 0;
@@ -1161,8 +1161,8 @@ public class JagexCache {
             if (Client.serverPacketOpcode == 153) {
                var28 = Client.serverPacketBuf.method2653();
                var29 = (long)Client.serverPacketBuf.readUnsignedShort();
-               var31 = (long)Client.serverPacketBuf.method2801();
-               var6 = Client.serverPacketBuf.method2665();
+               var31 = (long)Client.serverPacketBuf.readMedium();
+               var6 = Client.serverPacketBuf.readUnsignedByte();
                var37 = var31 + (var29 << 32);
                boolean var9 = false;
 
@@ -1214,7 +1214,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 51) {
-               Client.hintArrowType = Client.serverPacketBuf.method2665();
+               Client.hintArrowType = Client.serverPacketBuf.readUnsignedByte();
                if (Client.hintArrowType == 1) {
                   Client.field499 = Client.serverPacketBuf.readUnsignedShort();
                }
@@ -1248,7 +1248,7 @@ public class JagexCache {
                   Client.hintArrowType = 2;
                   Client.hintArrowX = Client.serverPacketBuf.readUnsignedShort();
                   Client.hintArrowY = Client.serverPacketBuf.readUnsignedShort();
-                  Client.field479 = Client.serverPacketBuf.method2665();
+                  Client.field479 = Client.serverPacketBuf.readUnsignedByte();
                }
 
                if (Client.hintArrowType == 10) {
@@ -1267,11 +1267,11 @@ public class JagexCache {
                   if (var28.charAt(var3) == 's') {
                      var91[var3 + 1] = Client.serverPacketBuf.method2653();
                   } else {
-                     var91[var3 + 1] = new Integer(Client.serverPacketBuf.method2650());
+                     var91[var3 + 1] = new Integer(Client.serverPacketBuf.readInt());
                   }
                }
 
-               var91[0] = new Integer(Client.serverPacketBuf.method2650());
+               var91[0] = new Integer(Client.serverPacketBuf.readInt());
                ScriptEvent var72 = new ScriptEvent();
                var72.args = var91;
                Renderable.method2040(var72);
@@ -1280,20 +1280,20 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 111 || Client.serverPacketOpcode == 103 || Client.serverPacketOpcode == 220 || Client.serverPacketOpcode == 64 || Client.serverPacketOpcode == 41 || Client.serverPacketOpcode == 238 || Client.serverPacketOpcode == 89 || Client.serverPacketOpcode == 70 || Client.serverPacketOpcode == 182 || Client.serverPacketOpcode == 13 || Client.serverPacketOpcode == 65) {
-               IterableNodeHashTableIterator.method1498();
+               IterableNodeHashTableIterator.handleServerPacket();
                Client.serverPacketOpcode = -1;
                return true;
             }
 
             if (Client.serverPacketOpcode == 107) {
-               GraphicsObject.field307 = Client.serverPacketBuf.method2665();
-               Actor.field478 = Client.serverPacketBuf.method2665();
+               GraphicsObject.field307 = Client.serverPacketBuf.readUnsignedByte();
+               Actor.field478 = Client.serverPacketBuf.readUnsignedByte();
                Client.serverPacketOpcode = -1;
                return true;
             }
 
             if (Client.serverPacketOpcode == 138) {
-               Client.field717 = Client.serverPacketBuf.method2665();
+               Client.field717 = Client.serverPacketBuf.readUnsignedByte();
                Client.serverPacketOpcode = -1;
                return true;
             }
@@ -1335,7 +1335,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 149) {
-               byte var61 = Client.serverPacketBuf.method2672();
+               byte var61 = Client.serverPacketBuf.readByteSub();
                var2 = Client.serverPacketBuf.readUnsignedShortLE();
                Varps.Varps_temp[var2] = var61;
                if (Varps.Varps_main[var2] != var61) {
@@ -1350,9 +1350,9 @@ public class JagexCache {
 
             InterfaceParent var53;
             if (Client.serverPacketOpcode == 66) {
-               var1 = Client.serverPacketBuf.method2687();
+               var1 = Client.serverPacketBuf.readUnsignedIntME();
                var2 = Client.serverPacketBuf.readUnsignedShort();
-               var3 = Client.serverPacketBuf.method2665();
+               var3 = Client.serverPacketBuf.readUnsignedByte();
                var53 = (InterfaceParent)Client.interfaceParents.method3512((long)var1);
                if (var53 != null) {
                   Tiles.method60(var53, var2 != var53.group);
@@ -1401,11 +1401,11 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 135) {
                Client.field730 = true;
-               AccessFile.field757 = Client.serverPacketBuf.method2665();
-               class125.field2036 = Client.serverPacketBuf.method2665();
+               AccessFile.field757 = Client.serverPacketBuf.readUnsignedByte();
+               class125.field2036 = Client.serverPacketBuf.readUnsignedByte();
                SceneTilePaint.field1681 = Client.serverPacketBuf.readUnsignedShort();
-               FaceNormal.field1519 = Client.serverPacketBuf.method2665();
-               class65.field1268 = Client.serverPacketBuf.method2665();
+               FaceNormal.field1519 = Client.serverPacketBuf.readUnsignedByte();
+               class65.field1268 = Client.serverPacketBuf.readUnsignedByte();
                if (class65.field1268 >= 100) {
                   var1 = AccessFile.field757 * 128 + 64;
                   var2 = class125.field2036 * 128 + 64;
@@ -1433,7 +1433,7 @@ public class JagexCache {
                Client.method568();
                var1 = Client.serverPacketBuf.readUnsignedByteNeg();
                var2 = Client.serverPacketBuf.readUnsignedByteAdd();
-               var3 = Client.serverPacketBuf.method2629();
+               var3 = Client.serverPacketBuf.readUnsignedIntLE();
                Client.field529[var2] = var3;
                Client.field621[var2] = var1;
                Client.levels[var2] = 1;
@@ -1451,7 +1451,7 @@ public class JagexCache {
 
             Widget var88;
             if (Client.serverPacketOpcode == 8) {
-               var1 = Client.serverPacketBuf.method2756();
+               var1 = Client.serverPacketBuf.readUnsignedIntIME();
                var88 = class130.method2851(var1);
 
                for(var3 = 0; var3 < var88.itemIds.length; ++var3) {
@@ -1469,8 +1469,8 @@ public class JagexCache {
                GraphicsObject.field307 = Client.serverPacketBuf.readUnsignedByteAdd();
 
                while(Client.serverPacketBuf.offset < Client.serverPacketLength) {
-                  Client.serverPacketOpcode = Client.serverPacketBuf.method2665();
-                  IterableNodeHashTableIterator.method1498();
+                  Client.serverPacketOpcode = Client.serverPacketBuf.readUnsignedByte();
+                  IterableNodeHashTableIterator.handleServerPacket();
                }
 
                Client.serverPacketOpcode = -1;
@@ -1478,8 +1478,8 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 31) {
-               var1 = Client.serverPacketBuf.method2629();
-               var2 = Client.serverPacketBuf.method2765();
+               var1 = Client.serverPacketBuf.readUnsignedIntLE();
+               var2 = Client.serverPacketBuf.readShortAdd();
                var70 = class130.method2851(var1);
                if (var2 != var70.sequenceId || var2 == -1) {
                   var70.sequenceId = var2;
@@ -1493,7 +1493,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 217) {
-               var1 = Client.serverPacketBuf.method2756();
+               var1 = Client.serverPacketBuf.readUnsignedIntIME();
                var88 = class130.method2851(var1);
                var88.modelType = 3;
                var88.modelId = Tiles.localPlayer.appearance.method3401();
@@ -1601,7 +1601,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 137) {
-               var1 = Client.serverPacketBuf.method2687();
+               var1 = Client.serverPacketBuf.readUnsignedIntME();
                var2 = Client.serverPacketBuf.readUnsignedShort();
                Varps.Varps_temp[var2] = var1;
                if (Varps.Varps_main[var2] != var1) {
@@ -1631,9 +1631,9 @@ public class JagexCache {
 
                InterfaceParent var92;
                for(; var3-- > 0; var92.field54 = true) {
-                  var19 = Client.serverPacketBuf.method2650();
+                  var19 = Client.serverPacketBuf.readInt();
                   var5 = Client.serverPacketBuf.readUnsignedShort();
-                  var6 = Client.serverPacketBuf.method2665();
+                  var6 = Client.serverPacketBuf.readUnsignedByte();
                   var92 = (InterfaceParent)Client.interfaceParents.method3512((long)var19);
                   if (var92 != null && var5 != var92.group) {
                      Tiles.method60(var92, true);
@@ -1693,10 +1693,10 @@ public class JagexCache {
                Client.widgetFlags = new NodeHashTable(512);
 
                while(Client.serverPacketBuf.offset < var1) {
-                  var19 = Client.serverPacketBuf.method2650();
+                  var19 = Client.serverPacketBuf.readInt();
                   var5 = Client.serverPacketBuf.readUnsignedShort();
                   var6 = Client.serverPacketBuf.readUnsignedShort();
-                  var7 = Client.serverPacketBuf.method2650();
+                  var7 = Client.serverPacketBuf.readInt();
 
                   for(var8 = var5; var8 <= var6; ++var8) {
                      var33 = ((long)var19 << 32) + (long)var8;
@@ -1720,9 +1720,9 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 198) {
-               var1 = Client.serverPacketBuf.method2696();
-               var2 = Client.serverPacketBuf.method2765();
-               var3 = Client.serverPacketBuf.method2650();
+               var1 = Client.serverPacketBuf.readShortAddLE();
+               var2 = Client.serverPacketBuf.readShortAdd();
+               var3 = Client.serverPacketBuf.readInt();
                var4 = class130.method2851(var3);
                var5 = var1 + var4.field2623;
                var6 = var2 + var4.field2584;
@@ -1737,7 +1737,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 35) {
-               var1 = Client.serverPacketBuf.method2687();
+               var1 = Client.serverPacketBuf.readUnsignedIntME();
                var78 = Client.serverPacketBuf.method2653();
                var70 = class130.method2851(var1);
                if (!var78.equals(var70.field2633)) {
@@ -1774,10 +1774,10 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 190) {
-               var1 = Client.serverPacketBuf.method2665();
-               var2 = Client.serverPacketBuf.method2665();
-               var3 = Client.serverPacketBuf.method2665();
-               var19 = Client.serverPacketBuf.method2665();
+               var1 = Client.serverPacketBuf.readUnsignedByte();
+               var2 = Client.serverPacketBuf.readUnsignedByte();
+               var3 = Client.serverPacketBuf.readUnsignedByte();
+               var19 = Client.serverPacketBuf.readUnsignedByte();
                Client.field731[var1] = true;
                Client.field575[var1] = var2;
                Client.field733[var1] = var3;
@@ -1788,8 +1788,8 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 71) {
-               var1 = Client.serverPacketBuf.method2677();
-               var2 = Client.serverPacketBuf.method2629();
+               var1 = Client.serverPacketBuf.readUnsignedShortAdd();
+               var2 = Client.serverPacketBuf.readUnsignedIntLE();
                var3 = var1 >> 10 & 31;
                var19 = var1 >> 5 & 31;
                var5 = var1 & 31;
@@ -1805,15 +1805,15 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 24) {
-               Client.field700 = Client.serverPacketBuf.method2665();
-               Client.field748 = Client.serverPacketBuf.method2665();
+               Client.field700 = Client.serverPacketBuf.readUnsignedByte();
+               Client.field748 = Client.serverPacketBuf.readUnsignedByte();
                Client.serverPacketOpcode = -1;
                return true;
             }
 
             if (Client.serverPacketOpcode == 22) {
                var1 = Client.serverPacketBuf.readUnsignedShort();
-               var2 = Client.serverPacketBuf.method2665();
+               var2 = Client.serverPacketBuf.readUnsignedByte();
                var3 = Client.serverPacketBuf.readUnsignedShort();
                ClientPreferences.method151(var1, var2, var3);
                Client.serverPacketOpcode = -1;
@@ -1828,7 +1828,7 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 253) {
                var52 = Client.serverPacketBuf.readUnsignedByteNeg() == 1;
-               var2 = Client.serverPacketBuf.method2687();
+               var2 = Client.serverPacketBuf.readUnsignedIntME();
                var70 = class130.method2851(var2);
                if (var52 != var70.field2588) {
                   var70.field2588 = var52;
@@ -1840,7 +1840,7 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 30) {
-               var1 = Client.serverPacketBuf.method2677();
+               var1 = Client.serverPacketBuf.readUnsignedShortAdd();
                if (var1 == 65535) {
                   var1 = -1;
                }
@@ -1851,8 +1851,8 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 136) {
-               var1 = Client.serverPacketBuf.method2801();
-               var2 = Client.serverPacketBuf.method2786();
+               var1 = Client.serverPacketBuf.readMedium();
+               var2 = Client.serverPacketBuf.readUnsignedShortAddLE();
                if (var2 == 65535) {
                   var2 = -1;
                }
@@ -1874,7 +1874,7 @@ public class JagexCache {
                }
 
                Client.field720 = Client.serverPacketBuf.method2653();
-               long var42 = Client.serverPacketBuf.method2757();
+               long var42 = Client.serverPacketBuf.readLong();
                var31 = var42;
                if (var42 > 0L && var42 < 6582952005840035281L) {
                   if (0L == var42 % 37L) {
@@ -1901,8 +1901,8 @@ public class JagexCache {
                }
 
                Client.field660 = var18;
-               FloorUnderlayDefinition.field882 = Client.serverPacketBuf.method2646();
-               var6 = Client.serverPacketBuf.method2665();
+               FloorUnderlayDefinition.field882 = Client.serverPacketBuf.readByte();
+               var6 = Client.serverPacketBuf.readUnsignedByte();
                if (var6 == 255) {
                   Client.serverPacketOpcode = -1;
                   return true;
@@ -1916,7 +1916,7 @@ public class JagexCache {
                   var27[var8].field112 = Client.serverPacketBuf.method2653();
                   var27[var8].field103 = Projectile.method125(var27[var8].field112, class5.field75);
                   var27[var8].field109 = Client.serverPacketBuf.readUnsignedShort();
-                  var27[var8].field105 = Client.serverPacketBuf.method2646();
+                  var27[var8].field105 = Client.serverPacketBuf.readByte();
                   Client.serverPacketBuf.method2653();
                   if (var27[var8].field112.equals(Tiles.localPlayer.field35)) {
                      MusicPatch.field2354 = var27[var8].field105;
@@ -1950,13 +1950,13 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 150) {
-               var1 = Client.serverPacketBuf.method2756();
-               var2 = Client.serverPacketBuf.method2786();
+               var1 = Client.serverPacketBuf.readUnsignedIntIME();
+               var2 = Client.serverPacketBuf.readUnsignedShortAddLE();
                if (var2 == 65535) {
                   var2 = -1;
                }
 
-               var3 = Client.serverPacketBuf.method2687();
+               var3 = Client.serverPacketBuf.readUnsignedIntME();
                var4 = class130.method2851(var3);
                ItemComposition var23;
                if (!var4.isIf3) {

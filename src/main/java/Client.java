@@ -1147,7 +1147,7 @@ public final class Client extends GameEngine {
                                     int var14 = var12 & 63;
                                     int var15 = var12 >> 6 & 63;
                                     int var16 = var12 >> 12;
-                                    int var17 = var9.method2665();
+                                    int var17 = var9.readUnsignedByte();
                                     int var18 = var17 >> 2;
                                     int var19 = var17 & 3;
                                     int var20 = var15 + var5;
@@ -1611,10 +1611,10 @@ public final class Client extends GameEngine {
 
                         if (MusicPatchPcmStream.NetCache_currentResponse == null) {
                            NetCache.NetCache_responseHeaderBuffer.offset = 0;
-                           var9 = NetCache.NetCache_responseHeaderBuffer.method2665();
+                           var9 = NetCache.NetCache_responseHeaderBuffer.readUnsignedByte();
                            var10 = NetCache.NetCache_responseHeaderBuffer.readUnsignedShort();
-                           int var11 = NetCache.NetCache_responseHeaderBuffer.method2665();
-                           var12 = NetCache.NetCache_responseHeaderBuffer.method2650();
+                           int var11 = NetCache.NetCache_responseHeaderBuffer.readUnsignedByte();
+                           var12 = NetCache.NetCache_responseHeaderBuffer.readInt();
                            long var13 = (long)(var10 + (var9 << 16));
                            NetFileRequest var15 = (NetFileRequest)NetCache.NetCache_pendingPriorityResponses.method3512(var13);
                            NetCache.field2519 = true;
@@ -1670,8 +1670,8 @@ public final class Client extends GameEngine {
                                  Archive var19 = NetCache.NetCache_archives[var10];
                                  if (var19 != null) {
                                     WallDecoration.NetCache_reference.offset = var10 * 8 + 5;
-                                    var12 = WallDecoration.NetCache_reference.method2650();
-                                    int var20 = WallDecoration.NetCache_reference.method2650();
+                                    var12 = WallDecoration.NetCache_reference.readInt();
+                                    int var20 = WallDecoration.NetCache_reference.readInt();
                                     var19.method3299(var12, var20);
                                  }
                               }

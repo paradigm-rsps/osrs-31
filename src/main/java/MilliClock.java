@@ -164,7 +164,7 @@ public class MilliClock extends Clock {
                         var0.writeLong(((Number)var12).longValue());
                      } else if (var12 instanceof String) {
                         var0.writeByte(2);
-                        var0.writeString((String)var12);
+                        var0.writeStringCp1252NullTerminated((String)var12);
                      } else {
                         var0.writeByte(4);
                      }
@@ -198,7 +198,7 @@ public class MilliClock extends Clock {
          }
 
          var0.method2664(var3);
-         var0.method2642(var0.offset - var3);
+         var0.writeLengthByte(var0.offset - var3);
          var2.method3567();
       }
    }

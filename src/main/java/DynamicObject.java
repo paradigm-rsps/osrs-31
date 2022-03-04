@@ -109,7 +109,7 @@ public class DynamicObject extends Renderable {
          this.cycleStart = Client.cycle - var1;
       }
 
-      ObjectComposition var12 = GameBuild.method2853(this.id);
+      ObjectComposition var12 = GameBuild.getObjectComposition(this.id);
       if (var12.transforms != null) {
          var12 = var12.method673();
       }

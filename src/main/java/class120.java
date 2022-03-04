@@ -30,8 +30,8 @@ public class class120 {
    @Export("method2582")
    static final byte[] method2582(byte[] var0) {
       Buffer var1 = new Buffer(var0);
-      int var2 = var1.method2665();
-      int var3 = var1.method2650();
+      int var2 = var1.readUnsignedByte();
+      int var3 = var1.readInt();
       if (var3 < 0 || AbstractArchive.field2507 != 0 && var3 > AbstractArchive.field2507) {
          throw new RuntimeException();
       } else if (var2 == 0) {
@@ -39,7 +39,7 @@ public class class120 {
          var1.readBytes(var6, 0, var3);
          return var6;
       } else {
-         int var4 = var1.method2650();
+         int var4 = var1.readInt();
          if (var4 >= 0 && (AbstractArchive.field2507 == 0 || var4 <= AbstractArchive.field2507)) {
             byte[] var5 = new byte[var4];
             if (var2 == 1) {

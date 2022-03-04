@@ -21,7 +21,7 @@ public class MusicTrack extends Node {
    )
    MusicTrack(Buffer var1) {
       var1.offset = var1.array.length - 3;
-      int var2 = var1.method2665();
+      int var2 = var1.readUnsignedByte();
       int var3 = var1.readUnsignedShort();
       int var4 = var2 * 10 + 14;
       var1.offset = 0;
@@ -41,7 +41,7 @@ public class MusicTrack extends Node {
          var14 = -1;
 
          while(true) {
-            var15 = var1.method2665();
+            var15 = var1.readUnsignedByte();
             if (var15 != var14) {
                ++var4;
             }
@@ -103,7 +103,7 @@ public class MusicTrack extends Node {
 
       int var29;
       for(var29 = 0; var29 < var6; ++var29) {
-         var28 = var28 + var1.method2665() & 127;
+         var28 = var28 + var1.readUnsignedByte() & 127;
          if (var28 != 0 && var28 != 32) {
             if (var28 == 1) {
                ++var16;
@@ -206,7 +206,7 @@ public class MusicTrack extends Node {
          while(true) {
             while(true) {
                int var63 = var1.method2660();
-               var51.method2644(var63);
+               var51.writeVarInt(var63);
                int var64 = var1.array[var29++] & 255;
                boolean var65 = var64 != var62;
                var62 = var64 & 15;
@@ -217,7 +217,7 @@ public class MusicTrack extends Node {
 
                   var51.writeByte(47);
                   var51.writeByte(0);
-                  var51.writeSmartInt(var51.offset - var61);
+                  var51.writeLengthInt(var51.offset - var61);
                   continue label244;
                }
 

@@ -292,7 +292,7 @@ public class FileSystem {
             Client.rsaBuf.method2667(Client.field546[var16] - var23);
          }
 
-         Client.rsaBuf.method2674(var23 + Frames.baseY);
+         Client.rsaBuf.writeShortAdd(var23 + Frames.baseY);
          Client.rsaBuf.method2667(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
          Client.rsaBuf.writeShort(var30 + FaceNormal.baseX);
          return true;

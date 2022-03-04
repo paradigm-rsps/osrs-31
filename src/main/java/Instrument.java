@@ -362,7 +362,7 @@ public class Instrument {
       this.pitch.method1331(var1);
       this.volume = new SoundEnvelope();
       this.volume.method1331(var1);
-      int var2 = var1.method2665();
+      int var2 = var1.readUnsignedByte();
       if (var2 != 0) {
          --var1.offset;
          this.pitchModifier = new SoundEnvelope();
@@ -371,7 +371,7 @@ public class Instrument {
          this.pitchModifierAmplitude.method1331(var1);
       }
 
-      var2 = var1.method2665();
+      var2 = var1.readUnsignedByte();
       if (var2 != 0) {
          --var1.offset;
          this.volumeMultiplier = new SoundEnvelope();
@@ -380,7 +380,7 @@ public class Instrument {
          this.volumeMultiplierAmplitude.method1331(var1);
       }
 
-      var2 = var1.method2665();
+      var2 = var1.readUnsignedByte();
       if (var2 != 0) {
          --var1.offset;
          this.release = new SoundEnvelope();

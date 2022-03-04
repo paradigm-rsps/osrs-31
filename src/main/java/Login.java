@@ -172,14 +172,14 @@ public class Login {
                }
 
                var11.offset = 0;
-               var12 = var11.method2665();
+               var12 = var11.readUnsignedByte();
                if (var12 < 1 || var12 > 3) {
                   throw new IOException("" + var12);
                }
 
                int var13 = 0;
                if (var12 > 1) {
-                  var13 = var11.method2665();
+                  var13 = var11.readUnsignedByte();
                }
 
                if (var12 <= 2) {
@@ -329,13 +329,13 @@ public class Login {
 
          for(var4 = 0; var4 < var3; ++var4) {
             for(var5 = 0; var5 < 4; ++var5) {
-               class161.field2709[var4][var5] = Client.serverPacketBuf.method2687();
+               class161.field2709[var4][var5] = Client.serverPacketBuf.readUnsignedIntME();
             }
          }
 
          var4 = Client.serverPacketBuf.readUnsignedShortLE();
          var5 = Client.serverPacketBuf.readUnsignedShort();
-         var6 = Client.serverPacketBuf.method2677();
+         var6 = Client.serverPacketBuf.readUnsignedShortAdd();
          class149.field2463 = new int[var3];
          ObjectSound.field93 = new int[var3];
          ScriptEvent.field0 = new int[var3];
@@ -389,13 +389,13 @@ public class Login {
 
          for(var4 = 0; var4 < var3; ++var4) {
             for(var5 = 0; var5 < 4; ++var5) {
-               class161.field2709[var4][var5] = Client.serverPacketBuf.method2687();
+               class161.field2709[var4][var5] = Client.serverPacketBuf.readUnsignedIntME();
             }
          }
 
          var4 = Client.serverPacketBuf.readUnsignedShortLE();
-         var5 = Client.serverPacketBuf.method2677();
-         var6 = Client.serverPacketBuf.method2677();
+         var5 = Client.serverPacketBuf.readUnsignedShortAdd();
+         var6 = Client.serverPacketBuf.readUnsignedShortAdd();
          class149.field2463 = new int[var3];
          ObjectSound.field93 = new int[var3];
          ScriptEvent.field0 = new int[var3];

@@ -573,7 +573,7 @@ public class Interpreter {
             if (var26 != var12) {
                var12 = var26;
                if (var37 == 2 && scene.method2071(class22.Client_plane, var15, var16, var26) >= 0) {
-                  ObjectComposition var19 = GameBuild.method2853(var18);
+                  ObjectComposition var19 = GameBuild.getObjectComposition(var18);
                   if (var19.transforms != null) {
                      var19 = var19.method673();
                   }

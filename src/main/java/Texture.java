@@ -41,8 +41,8 @@ public class Texture extends Node {
    )
    Texture(Buffer var1) {
       this.averageRGB = var1.readUnsignedShort();
-      this.field1494 = var1.method2665() == 1;
-      int var2 = var1.method2665();
+      this.field1494 = var1.readUnsignedByte() == 1;
+      int var2 = var1.readUnsignedByte();
       if (var2 >= 1 && var2 <= 4) {
          this.fileIds = new int[var2];
 
@@ -55,7 +55,7 @@ public class Texture extends Node {
             this.field1496 = new int[var2 - 1];
 
             for(var3 = 0; var3 < var2 - 1; ++var3) {
-               this.field1496[var3] = var1.method2665();
+               this.field1496[var3] = var1.readUnsignedByte();
             }
          }
 
@@ -63,18 +63,18 @@ public class Texture extends Node {
             this.field1497 = new int[var2 - 1];
 
             for(var3 = 0; var3 < var2 - 1; ++var3) {
-               this.field1497[var3] = var1.method2665();
+               this.field1497[var3] = var1.readUnsignedByte();
             }
          }
 
          this.field1498 = new int[var2];
 
          for(var3 = 0; var3 < var2; ++var3) {
-            this.field1498[var3] = var1.method2650();
+            this.field1498[var3] = var1.readInt();
          }
 
-         this.animationDirection = var1.method2665();
-         this.animationSpeed = var1.method2665();
+         this.animationDirection = var1.readUnsignedByte();
+         this.animationSpeed = var1.readUnsignedByte();
          this.pixels = null;
       } else {
          throw new RuntimeException();

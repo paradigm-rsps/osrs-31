@@ -339,14 +339,14 @@ public class Widget extends Node {
    )
    void method3336(Buffer var1) {
       this.isIf3 = false;
-      this.type = var1.method2665();
-      this.buttonType = var1.method2665();
+      this.type = var1.readUnsignedByte();
+      this.buttonType = var1.readUnsignedByte();
       this.contentType = var1.readUnsignedShort();
-      this.field2623 = this.rawX = var1.method2648();
-      this.field2584 = this.field2579 = var1.method2648();
+      this.field2623 = this.rawX = var1.readShort();
+      this.field2584 = this.field2579 = var1.readShort();
       this.width = var1.readUnsignedShort();
       this.height = var1.readUnsignedShort();
-      this.field2582 = var1.method2665();
+      this.field2582 = var1.readUnsignedByte();
       this.parentId = var1.readUnsignedShort();
       if (this.parentId == 65535) {
          this.parentId = -1;
@@ -359,19 +359,19 @@ public class Widget extends Node {
          this.field2675 = -1;
       }
 
-      int var2 = var1.method2665();
+      int var2 = var1.readUnsignedByte();
       int var3;
       if (var2 > 0) {
          this.cs1Comparisons = new int[var2];
          this.cs1ComparisonValues = new int[var2];
 
          for(var3 = 0; var3 < var2; ++var3) {
-            this.cs1Comparisons[var3] = var1.method2665();
+            this.cs1Comparisons[var3] = var1.readUnsignedByte();
             this.cs1ComparisonValues[var3] = var1.readUnsignedShort();
          }
       }
 
-      var3 = var1.method2665();
+      var3 = var1.readUnsignedByte();
       int var4;
       int var5;
       int var6;
@@ -393,50 +393,50 @@ public class Widget extends Node {
 
       if (this.type == 0) {
          this.field2592 = var1.readUnsignedShort();
-         this.field2588 = var1.method2665() == 1;
+         this.field2588 = var1.readUnsignedByte() == 1;
       }
 
       if (this.type == 1) {
          var1.readUnsignedShort();
-         var1.method2665();
+         var1.readUnsignedByte();
       }
 
       if (this.type == 2) {
          this.itemIds = new int[this.height * this.width];
          this.itemQuantities = new int[this.height * this.width];
-         var4 = var1.method2665();
+         var4 = var1.readUnsignedByte();
          if (var4 == 1) {
             this.field2644 |= 268435456;
          }
 
-         var5 = var1.method2665();
+         var5 = var1.readUnsignedByte();
          if (var5 == 1) {
             this.field2644 |= 1073741824;
          }
 
-         var6 = var1.method2665();
+         var6 = var1.readUnsignedByte();
          if (var6 == 1) {
             this.field2644 |= Integer.MIN_VALUE;
          }
 
-         int var7 = var1.method2665();
+         int var7 = var1.readUnsignedByte();
          if (var7 == 1) {
             this.field2644 |= 536870912;
          }
 
-         this.field2611 = var1.method2665();
-         this.field2652 = var1.method2665();
+         this.field2611 = var1.readUnsignedByte();
+         this.field2652 = var1.readUnsignedByte();
          this.field2631 = new int[20];
          this.field2632 = new int[20];
          this.inventorySprites = new int[20];
 
          int var8;
          for(var8 = 0; var8 < 20; ++var8) {
-            int var11 = var1.method2665();
+            int var11 = var1.readUnsignedByte();
             if (var11 == 1) {
-               this.field2631[var8] = var1.method2648();
-               this.field2632[var8] = var1.method2648();
-               this.inventorySprites[var8] = var1.method2650();
+               this.field2631[var8] = var1.readShort();
+               this.field2632[var8] = var1.readShort();
+               this.inventorySprites[var8] = var1.readInt();
             } else {
                this.inventorySprites[var8] = -1;
             }
@@ -454,19 +454,19 @@ public class Widget extends Node {
       }
 
       if (this.type == 3) {
-         this.field2647 = var1.method2665() == 1;
+         this.field2647 = var1.readUnsignedByte() == 1;
       }
 
       if (this.type == 4 || this.type == 1) {
-         this.field2626 = var1.method2665();
-         this.field2627 = var1.method2665();
-         this.field2625 = var1.method2665();
+         this.field2626 = var1.readUnsignedByte();
+         this.field2627 = var1.readUnsignedByte();
+         this.field2625 = var1.readUnsignedByte();
          this.fontId = var1.readUnsignedShort();
          if (this.fontId == 65535) {
             this.fontId = -1;
          }
 
-         this.field2628 = var1.method2665() == 1;
+         this.field2628 = var1.readUnsignedByte() == 1;
       }
 
       if (this.type == 4) {
@@ -475,18 +475,18 @@ public class Widget extends Node {
       }
 
       if (this.type == 1 || this.type == 3 || this.type == 4) {
-         this.field2593 = var1.method2650();
+         this.field2593 = var1.readInt();
       }
 
       if (this.type == 3 || this.type == 4) {
-         this.field2678 = var1.method2650();
-         this.field2595 = var1.method2650();
-         this.field2596 = var1.method2650();
+         this.field2678 = var1.readInt();
+         this.field2595 = var1.readInt();
+         this.field2596 = var1.readInt();
       }
 
       if (this.type == 5) {
-         this.spriteId2 = var1.method2650();
-         this.spriteId = var1.method2650();
+         this.spriteId2 = var1.readInt();
+         this.spriteId = var1.readInt();
       }
 
       if (this.type == 6) {
@@ -520,17 +520,17 @@ public class Widget extends Node {
       if (this.type == 7) {
          this.itemIds = new int[this.height * this.width];
          this.itemQuantities = new int[this.height * this.width];
-         this.field2626 = var1.method2665();
+         this.field2626 = var1.readUnsignedByte();
          this.fontId = var1.readUnsignedShort();
          if (this.fontId == 65535) {
             this.fontId = -1;
          }
 
-         this.field2628 = var1.method2665() == 1;
-         this.field2593 = var1.method2650();
-         this.field2611 = var1.method2648();
-         this.field2652 = var1.method2648();
-         var4 = var1.method2665();
+         this.field2628 = var1.readUnsignedByte() == 1;
+         this.field2593 = var1.readInt();
+         this.field2611 = var1.readShort();
+         this.field2652 = var1.readShort();
+         var4 = var1.readUnsignedByte();
          if (var4 == 1) {
             this.field2644 |= 1073741824;
          }
@@ -594,15 +594,15 @@ public class Widget extends Node {
       descriptor = "(Lclass126;)V"
    )
    void method3337(Buffer var1) {
-      var1.method2665();
+      var1.readUnsignedByte();
       this.isIf3 = true;
-      this.type = var1.method2665();
+      this.type = var1.readUnsignedByte();
       this.contentType = var1.readUnsignedShort();
-      this.field2623 = this.rawX = var1.method2648();
-      this.field2584 = this.field2579 = var1.method2648();
+      this.field2623 = this.rawX = var1.readShort();
+      this.field2584 = this.field2579 = var1.readShort();
       this.width = var1.readUnsignedShort();
       if (this.type == 9) {
-         this.height = var1.method2648();
+         this.height = var1.readShort();
       } else {
          this.height = var1.readUnsignedShort();
       }
@@ -614,21 +614,21 @@ public class Widget extends Node {
          this.parentId += this.id & -65536;
       }
 
-      this.field2588 = var1.method2665() == 1;
+      this.field2588 = var1.readUnsignedByte() == 1;
       if (this.type == 0) {
          this.field2576 = var1.readUnsignedShort();
          this.field2592 = var1.readUnsignedShort();
       }
 
       if (this.type == 5) {
-         this.spriteId2 = var1.method2650();
+         this.spriteId2 = var1.readInt();
          this.field2688 = var1.readUnsignedShort();
-         this.field2603 = var1.method2665() == 1;
-         this.field2582 = var1.method2665();
-         this.field2604 = var1.method2665();
-         this.field2667 = var1.method2650();
-         this.field2606 = var1.method2665() == 1;
-         this.spriteFlipV = var1.method2665() == 1;
+         this.field2603 = var1.readUnsignedByte() == 1;
+         this.field2582 = var1.readUnsignedByte();
+         this.field2604 = var1.readUnsignedByte();
+         this.field2667 = var1.readInt();
+         this.field2606 = var1.readUnsignedByte() == 1;
+         this.spriteFlipV = var1.readUnsignedByte() == 1;
       }
 
       if (this.type == 6) {
@@ -638,8 +638,8 @@ public class Widget extends Node {
             this.modelId = -1;
          }
 
-         this.field2577 = var1.method2648();
-         this.field2668 = var1.method2648();
+         this.field2577 = var1.readShort();
+         this.field2668 = var1.readShort();
          this.modelAngleX = var1.readUnsignedShort();
          this.modelAngleY = var1.readUnsignedShort();
          this.field2614 = var1.readUnsignedShort();
@@ -649,7 +649,7 @@ public class Widget extends Node {
             this.sequenceId = -1;
          }
 
-         this.field2621 = var1.method2665() == 1;
+         this.field2621 = var1.readUnsignedByte() == 1;
       }
 
       if (this.type == 4) {
@@ -659,27 +659,27 @@ public class Widget extends Node {
          }
 
          this.field2633 = var1.method2653();
-         this.field2625 = var1.method2665();
-         this.field2626 = var1.method2665();
-         this.field2627 = var1.method2665();
-         this.field2628 = var1.method2665() == 1;
-         this.field2593 = var1.method2650();
+         this.field2625 = var1.readUnsignedByte();
+         this.field2626 = var1.readUnsignedByte();
+         this.field2627 = var1.readUnsignedByte();
+         this.field2628 = var1.readUnsignedByte() == 1;
+         this.field2593 = var1.readInt();
       }
 
       if (this.type == 3) {
-         this.field2593 = var1.method2650();
-         this.field2647 = var1.method2665() == 1;
-         this.field2582 = var1.method2665();
+         this.field2593 = var1.readInt();
+         this.field2647 = var1.readUnsignedByte() == 1;
+         this.field2582 = var1.readUnsignedByte();
       }
 
       if (this.type == 9) {
-         this.field2599 = var1.method2665();
-         this.field2593 = var1.method2650();
+         this.field2599 = var1.readUnsignedByte();
+         this.field2593 = var1.readInt();
       }
 
-      this.field2644 = var1.method2801();
+      this.field2644 = var1.readMedium();
       this.field2636 = var1.method2653();
-      int var2 = var1.method2665();
+      int var2 = var1.readUnsignedByte();
       if (var2 > 0) {
          this.actions = new String[var2];
 
@@ -688,9 +688,9 @@ public class Widget extends Node {
          }
       }
 
-      this.field2567 = var1.method2665();
-      this.field2640 = var1.method2665();
-      this.isScrollBar = var1.method2665() == 1;
+      this.field2567 = var1.readUnsignedByte();
+      this.field2640 = var1.readUnsignedByte();
+      this.isScrollBar = var1.readUnsignedByte() == 1;
       this.spellActionName = var1.method2653();
       this.onLoad = this.method3376(var1);
       this.field2649 = this.method3376(var1);
@@ -721,16 +721,16 @@ public class Widget extends Node {
       descriptor = "(Lclass126;)[Ljava/lang/Object;"
    )
    Object[] method3376(Buffer var1) {
-      int var2 = var1.method2665();
+      int var2 = var1.readUnsignedByte();
       if (var2 == 0) {
          return null;
       } else {
          Object[] var3 = new Object[var2];
 
          for(int var4 = 0; var4 < var2; ++var4) {
-            int var5 = var1.method2665();
+            int var5 = var1.readUnsignedByte();
             if (var5 == 0) {
-               var3[var4] = new Integer(var1.method2650());
+               var3[var4] = new Integer(var1.readInt());
             } else if (var5 == 1) {
                var3[var4] = var1.method2653();
             }
@@ -747,14 +747,14 @@ public class Widget extends Node {
       descriptor = "(Lclass126;)[I"
    )
    int[] method3362(Buffer var1) {
-      int var2 = var1.method2665();
+      int var2 = var1.readUnsignedByte();
       if (var2 == 0) {
          return null;
       } else {
          int[] var3 = new int[var2];
 
          for(int var4 = 0; var4 < var2; ++var4) {
-            var3[var4] = var1.method2650();
+            var3[var4] = var1.readInt();
          }
 
          return var3;

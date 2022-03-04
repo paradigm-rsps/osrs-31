@@ -53,9 +53,9 @@ public class SoundEnvelope {
       descriptor = "(Lclass126;)V"
    )
    final void method1331(Buffer var1) {
-      this.form = var1.method2665();
-      this.start = var1.method2650();
-      this.end = var1.method2650();
+      this.form = var1.readUnsignedByte();
+      this.start = var1.readInt();
+      this.end = var1.readInt();
       this.method1341(var1);
    }
 
@@ -65,7 +65,7 @@ public class SoundEnvelope {
       descriptor = "(Lclass126;)V"
    )
    final void method1341(Buffer var1) {
-      this.segments = var1.method2665();
+      this.segments = var1.readUnsignedByte();
       this.durations = new int[this.segments];
       this.phases = new int[this.segments];
 

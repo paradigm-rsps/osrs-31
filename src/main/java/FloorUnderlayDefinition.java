@@ -52,7 +52,7 @@ public class FloorUnderlayDefinition extends DualNode {
    )
    void method701(Buffer var1, int var2) {
       while(true) {
-         int var3 = var1.method2665();
+         int var3 = var1.readUnsignedByte();
          if (var3 == 0) {
             return;
          }
@@ -68,7 +68,7 @@ public class FloorUnderlayDefinition extends DualNode {
    )
    void method699(Buffer var1, int var2, int var3) {
       if (var2 == 1) {
-         this.rgb = var1.method2801();
+         this.rgb = var1.readMedium();
       }
 
    }

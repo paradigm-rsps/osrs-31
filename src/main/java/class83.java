@@ -52,9 +52,9 @@ public class class83 {
       for(int var0 = 0; var0 < Client.Players_count; ++var0) {
          int var1 = Client.Players_indices[var0];
          Player var2 = Client.players[var1];
-         int var3 = Client.serverPacketBuf.method2665();
+         int var3 = Client.serverPacketBuf.readUnsignedByte();
          if ((var3 & 32) != 0) {
-            var3 += Client.serverPacketBuf.method2665() << 8;
+            var3 += Client.serverPacketBuf.readUnsignedByte() << 8;
          }
 
          class1.method10(var1, var2, var3);

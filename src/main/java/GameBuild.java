@@ -48,7 +48,7 @@ public class GameBuild {
    @ObfuscatedSignature(
       descriptor = "(I)Lclass31;"
    )
-   public static ObjectComposition method2853(int var0) {
+   public static ObjectComposition getObjectComposition(int var0) {
       ObjectComposition var1 = (ObjectComposition)ObjectComposition.ObjectDefinition_cached.method3474((long)var0);
       if (var1 != null) {
          return var1;

@@ -232,14 +232,14 @@ public class Archive extends AbstractArchive {
          Archive_crc.update(var3, 0, var3.length);
          var5 = (int)Archive_crc.getValue();
          Buffer var9 = new Buffer(class120.method2582(var3));
-         int var7 = var9.method2665();
+         int var7 = var9.readUnsignedByte();
          if (var7 != 5 && var7 != 6) {
             throw new RuntimeException("");
          }
 
          int var8 = 0;
          if (var7 >= 6) {
-            var8 = var9.method2650();
+            var8 = var9.readInt();
          }
 
          if (var5 != this.indexCrc || var8 != this.indexVersion) {

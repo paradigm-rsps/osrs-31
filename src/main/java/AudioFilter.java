@@ -93,13 +93,13 @@ public class AudioFilter {
       descriptor = "(Lclass126;Lclass55;)V"
    )
    final void method1420(Buffer var1, SoundEnvelope var2) {
-      int var3 = var1.method2665();
+      int var3 = var1.readUnsignedByte();
       this.pairs[0] = var3 >> 4;
       this.pairs[1] = var3 & 15;
       if (var3 != 0) {
          this.field1246[0] = var1.readUnsignedShort();
          this.field1246[1] = var1.readUnsignedShort();
-         int var7 = var1.method2665();
+         int var7 = var1.readUnsignedByte();
 
          int var5;
          int var6;

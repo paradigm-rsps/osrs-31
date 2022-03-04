@@ -303,7 +303,7 @@ public final class NPC extends Actor {
                if (var3.model0 != null && Client.cycle >= var3.animationCycleStart && Client.cycle < var3.animationCycleEnd) {
                   var3.isUnanimated = false;
                   var3.tileHeight = BufferedFile.method603(var3.x, var3.y, class22.Client_plane);
-                  Interpreter.scene.method2053(class22.Client_plane, var3.x, var3.y, var3.tileHeight, 60, var3, var3.field432, var4, var3.field44, var3.field38, var3.field46, var3.field47);
+                  Interpreter.scene.method2053(class22.Client_plane, var3.x, var3.y, var3.tileHeight, 60, var3, var3.field432, var4, var3.minX, var3.minY, var3.maxX, var3.maxY);
                } else {
                   if ((var3.x & 127) == 64 && (var3.y & 127) == 64) {
                      if (Client.field586[var5][var6] == Client.field724) {
@@ -457,7 +457,7 @@ public final class NPC extends Actor {
                   PacketBuffer var6 = Client.rsaBuf;
                   int var3 = var0.length() + 1;
                   var6.writeByte(var3);
-                  Client.rsaBuf.writeString(var0);
+                  Client.rsaBuf.writeStringCp1252NullTerminated(var0);
                }
             }
          } else {
@@ -487,7 +487,7 @@ public final class NPC extends Actor {
                   PacketBuffer var8 = Client.rsaBuf;
                   int var7 = var0.length() + 1;
                   var8.writeByte(var7);
-                  Client.rsaBuf.writeString(var0);
+                  Client.rsaBuf.writeStringCp1252NullTerminated(var0);
                   break;
                }
             }

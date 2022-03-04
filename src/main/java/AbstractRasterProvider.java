@@ -82,7 +82,7 @@ public abstract class AbstractRasterProvider {
       descriptor = "(IIIIIIILclass94;Lclass163;)V"
    )
    static final void method1819(int var0, int var1, int var2, int var3, int var4, int var5, int var6, Scene var7, CollisionMap var8) {
-      ObjectComposition var9 = GameBuild.method2853(var4);
+      ObjectComposition var9 = GameBuild.getObjectComposition(var4);
       int var10;
       int var11;
       if (var5 != 1 && var5 != 3) {
@@ -234,7 +234,7 @@ public abstract class AbstractRasterProvider {
                   var22 = 16;
                   var23 = var7.method2057(var0, var2, var3);
                   if (var23 != 0) {
-                     var22 = GameBuild.method2853(var23 >> 14 & 32767).int2;
+                     var22 = GameBuild.getObjectComposition(var23 >> 14 & 32767).int2;
                   }
 
                   if (var9.animationId == -1 && var9.transforms == null) {
@@ -248,7 +248,7 @@ public abstract class AbstractRasterProvider {
                   var22 = 8;
                   var23 = var7.method2057(var0, var2, var3);
                   if (var23 != 0) {
-                     var22 = GameBuild.method2853(var23 >> 14 & 32767).int2 / 2;
+                     var22 = GameBuild.getObjectComposition(var23 >> 14 & 32767).int2 / 2;
                   }
 
                   if (var9.animationId == -1 && var9.transforms == null) {
@@ -271,7 +271,7 @@ public abstract class AbstractRasterProvider {
                   var22 = 8;
                   var23 = var7.method2057(var0, var2, var3);
                   if (var23 != 0) {
-                     var22 = GameBuild.method2853(var23 >> 14 & 32767).int2 / 2;
+                     var22 = GameBuild.getObjectComposition(var23 >> 14 & 32767).int2 / 2;
                   }
 
                   int var26 = var5 + 2 & 3;

@@ -177,7 +177,7 @@ public final class Tiles {
          int[] var10 = MouseRecorder.sceneMinimapSprite.pixels;
          var11 = var1 * 4 + (103 - var2) * 2048 + 24624;
          var12 = var5 >> 14 & 32767;
-         ObjectComposition var13 = GameBuild.method2853(var12);
+         ObjectComposition var13 = GameBuild.getObjectComposition(var12);
          if (var13.mapSceneId != -1) {
             IndexedSprite var14 = Decimator.mapSceneSprites[var13.mapSceneId];
             if (var14 != null) {
@@ -254,7 +254,7 @@ public final class Tiles {
          var7 = var6 >> 6 & 3;
          var8 = var6 & 31;
          var9 = var5 >> 14 & 32767;
-         ObjectComposition var23 = GameBuild.method2853(var9);
+         ObjectComposition var23 = GameBuild.getObjectComposition(var9);
          int var18;
          if (var23.mapSceneId != -1) {
             IndexedSprite var19 = Decimator.mapSceneSprites[var23.mapSceneId];
@@ -288,7 +288,7 @@ public final class Tiles {
       var5 = Interpreter.scene.method2070(var0, var1, var2);
       if (var5 != 0) {
          var6 = var5 >> 14 & 32767;
-         ObjectComposition var20 = GameBuild.method2853(var6);
+         ObjectComposition var20 = GameBuild.getObjectComposition(var6);
          if (var20.mapSceneId != -1) {
             IndexedSprite var21 = Decimator.mapSceneSprites[var20.mapSceneId];
             if (var21 != null) {

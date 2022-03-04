@@ -208,7 +208,7 @@ public class TaskHandler implements Runnable {
 
    @ObfuscatedName("f")
    @Export("method1625")
-   public static int method1625(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
+   public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
       int var5 = var2 - var1;
 
       for(int var6 = 0; var6 < var5; ++var6) {

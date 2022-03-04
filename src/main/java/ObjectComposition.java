@@ -200,7 +200,7 @@ public class ObjectComposition extends DualNode {
    )
    void method659(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }
@@ -218,7 +218,7 @@ public class ObjectComposition extends DualNode {
       int var3;
       int var4;
       if (var2 == 1) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          if (var3 > 0) {
             if (this.modelIds != null && !ObjectDefinition_isLowDetail) {
                var1.offset += 3 * var3;
@@ -228,14 +228,14 @@ public class ObjectComposition extends DualNode {
 
                for(var4 = 0; var4 < var3; ++var4) {
                   this.modelIds[var4] = var1.readUnsignedShort();
-                  this.models[var4] = var1.method2665();
+                  this.models[var4] = var1.readUnsignedByte();
                }
             }
          }
       } else if (var2 == 2) {
          this.name = var1.method2653();
       } else if (var2 == 5) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          if (var3 > 0) {
             if (this.modelIds != null && !ObjectDefinition_isLowDetail) {
                var1.offset += var3 * 2;
@@ -249,16 +249,16 @@ public class ObjectComposition extends DualNode {
             }
          }
       } else if (var2 == 14) {
-         this.sizeX = var1.method2665();
+         this.sizeX = var1.readUnsignedByte();
       } else if (var2 == 15) {
-         this.sizeY = var1.method2665();
+         this.sizeY = var1.readUnsignedByte();
       } else if (var2 == 17) {
          this.interactType = 0;
          this.boolean1 = false;
       } else if (var2 == 18) {
          this.boolean1 = false;
       } else if (var2 == 19) {
-         this.int1 = var1.method2665();
+         this.int1 = var1.readUnsignedByte();
       } else if (var2 == 21) {
          this.clipType = 0;
       } else if (var2 == 22) {
@@ -273,18 +273,18 @@ public class ObjectComposition extends DualNode {
       } else if (var2 == 27) {
          this.interactType = 1;
       } else if (var2 == 28) {
-         this.int2 = var1.method2665();
+         this.int2 = var1.readUnsignedByte();
       } else if (var2 == 29) {
-         this.ambient = var1.method2646();
+         this.ambient = var1.readByte();
       } else if (var2 == 39) {
-         this.contrast = var1.method2646() * 25;
+         this.contrast = var1.readByte() * 25;
       } else if (var2 >= 30 && var2 < 35) {
          this.actions[var2 - 30] = var1.method2653();
          if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) {
             this.actions[var2 - 30] = null;
          }
       } else if (var2 == 40) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.recolorFrom = new short[var3];
          this.recolorTo = new short[var3];
 
@@ -293,7 +293,7 @@ public class ObjectComposition extends DualNode {
             this.recolorTo[var4] = (short)var1.readUnsignedShort();
          }
       } else if (var2 == 41) {
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.retextureFrom = new short[var3];
          this.retextureTo = new short[var3];
 
@@ -316,19 +316,19 @@ public class ObjectComposition extends DualNode {
       } else if (var2 == 68) {
          this.mapSceneId = var1.readUnsignedShort();
       } else if (var2 == 69) {
-         this.field858 = var1.method2665();
+         this.field858 = var1.readUnsignedByte();
       } else if (var2 == 70) {
-         this.offsetX = var1.method2648();
+         this.offsetX = var1.readShort();
       } else if (var2 == 71) {
-         this.offsetHeight = var1.method2648();
+         this.offsetHeight = var1.readShort();
       } else if (var2 == 72) {
-         this.offsetY = var1.method2648();
+         this.offsetY = var1.readShort();
       } else if (var2 == 73) {
          this.boolean2 = true;
       } else if (var2 == 74) {
          this.isSolid = true;
       } else if (var2 == 75) {
-         this.int3 = var1.method2665();
+         this.int3 = var1.readUnsignedByte();
       } else if (var2 == 77) {
          this.transformVarbit = var1.readUnsignedShort();
          if (this.transformVarbit == 65535) {
@@ -340,7 +340,7 @@ public class ObjectComposition extends DualNode {
             this.transformVarp = -1;
          }
 
-         var3 = var1.method2665();
+         var3 = var1.readUnsignedByte();
          this.transforms = new int[var3 + 1];
 
          for(var4 = 0; var4 <= var3; ++var4) {
@@ -351,19 +351,19 @@ public class ObjectComposition extends DualNode {
          }
       } else if (var2 == 78) {
          this.ambientSoundId = var1.readUnsignedShort();
-         this.field841 = var1.method2665();
+         this.field841 = var1.readUnsignedByte();
       } else if (var2 == 79) {
          this.int5 = var1.readUnsignedShort();
          this.int7 = var1.readUnsignedShort();
-         this.field841 = var1.method2665();
-         var3 = var1.method2665();
+         this.field841 = var1.readUnsignedByte();
+         var3 = var1.readUnsignedByte();
          this.soundEffectIds = new int[var3];
 
          for(var4 = 0; var4 < var3; ++var4) {
             this.soundEffectIds[var4] = var1.readUnsignedShort();
          }
       } else if (var2 == 81) {
-         this.clipType = var1.method2665() * 256;
+         this.clipType = var1.readUnsignedByte() * 256;
       }
 
    }
@@ -681,7 +681,7 @@ public class ObjectComposition extends DualNode {
          var1 = Varps.Varps_main[this.transformVarp];
       }
 
-      return var1 >= 0 && var1 < this.transforms.length && this.transforms[var1] != -1 ? GameBuild.method2853(this.transforms[var1]) : null;
+      return var1 >= 0 && var1 < this.transforms.length && this.transforms[var1] != -1 ? GameBuild.getObjectComposition(this.transforms[var1]) : null;
    }
 
    @ObfuscatedName("s")
@@ -692,7 +692,7 @@ public class ObjectComposition extends DualNode {
       } else {
          for(int var1 = 0; var1 < this.transforms.length; ++var1) {
             if (this.transforms[var1] != -1) {
-               ObjectComposition var2 = GameBuild.method2853(this.transforms[var1]);
+               ObjectComposition var2 = GameBuild.getObjectComposition(this.transforms[var1]);
                if (var2.ambientSoundId != -1 || var2.soundEffectIds != null) {
                   return true;
                }

@@ -40,14 +40,14 @@ public class ClientPreferences {
    )
    ClientPreferences(Buffer var1) {
       if (var1 != null && var1.array != null) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 >= 0 && var2 <= ClientPreferences_optionCount) {
-            if (var1.method2665() == 1) {
+            if (var1.readUnsignedByte() == 1) {
                this.roofsHidden = true;
             }
 
             if (var2 > 1) {
-               this.titleMusicDisabled = var1.method2665() == 1;
+               this.titleMusicDisabled = var1.readUnsignedByte() == 1;
             }
          } else {
             this.method136(true);

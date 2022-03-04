@@ -36,9 +36,9 @@ public class class10 {
          Buffer var3 = new Buffer(500);
          var3.writeByte(3);
          var3.writeByte(var1 != null ? 1 : 0);
-         var3.method2638(var0.getPath());
+         var3.writeCESU8(var0.getPath());
          if (var1 != null) {
-            var3.method2638("");
+            var3.writeCESU8("");
          }
 
          var2.method574(var3.array, 0, var3.offset);
@@ -104,11 +104,11 @@ public class class10 {
             int var15 = var13 & 63;
             int var16 = var13 >> 6 & 63;
             int var17 = var13 >> 12;
-            int var18 = var10.method2665();
+            int var18 = var10.readUnsignedByte();
             int var19 = var18 >> 2;
             int var20 = var18 & 3;
             if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) {
-               ObjectComposition var21 = GameBuild.method2853(var11);
+               ObjectComposition var21 = GameBuild.getObjectComposition(var11);
                int var24 = var16 & 7;
                int var25 = var15 & 7;
                int var27 = var21.sizeX;

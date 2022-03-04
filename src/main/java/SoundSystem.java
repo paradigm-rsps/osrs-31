@@ -124,7 +124,7 @@ public class SoundSystem implements Runnable {
             if (var0.objectId >= 0) {
                var2 = var0.objectId;
                var3 = var0.field359;
-               var4 = GameBuild.method2853(var2);
+               var4 = GameBuild.getObjectComposition(var2);
                if (var3 == 11) {
                   var3 = 10;
                }
@@ -150,7 +150,7 @@ public class SoundSystem implements Runnable {
                if (var0.id >= 0) {
                   var2 = var0.id;
                   var3 = var0.field362;
-                  var4 = GameBuild.method2853(var2);
+                  var4 = GameBuild.getObjectComposition(var2);
                   if (var3 == 11) {
                      var3 = 10;
                   }

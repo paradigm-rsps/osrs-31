@@ -37,7 +37,7 @@ public class class40 extends DualNode {
    )
    void method917(Buffer var1) {
       while(true) {
-         int var2 = var1.method2665();
+         int var2 = var1.readUnsignedByte();
          if (var2 == 0) {
             return;
          }

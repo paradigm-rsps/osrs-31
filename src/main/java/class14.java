@@ -94,11 +94,11 @@ public class class14 {
                var7 += var9 - 1;
                int var10 = var7 & 63;
                int var11 = var7 >> 6 & 63;
-               int var12 = var4.method2665() >> 2;
+               int var12 = var4.readUnsignedByte() >> 2;
                int var13 = var11 + var1;
                int var14 = var10 + var2;
                if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
-                  ObjectComposition var15 = GameBuild.method2853(var5);
+                  ObjectComposition var15 = GameBuild.getObjectComposition(var5);
                   if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
                      if (!var15.method662()) {
                         ++Client.field510;
@@ -115,7 +115,7 @@ public class class14 {
                break;
             }
 
-            var4.method2665();
+            var4.readUnsignedByte();
          }
       }
    }
