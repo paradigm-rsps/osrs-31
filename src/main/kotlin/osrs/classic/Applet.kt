@@ -27,7 +27,7 @@ object Applet : AppletStub, AppletContext {
 
     private fun configureApplet(): Applet {
         if (!this::applet.isInitialized) {
-            applet = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Applet
+            applet = ClassLoader.getSystemClassLoader().loadClass("osrs.Client").newInstance() as Applet
             applet.setStub(this)
             applet.maximumSize = appletMaxSize()
             applet.minimumSize = appletMinSize()
