@@ -17,9 +17,9 @@ class PacketDecoder(private val protocol: GameProtocol) {
     private var unknown: Boolean = false
 
     fun decode(buf: ByteBuf, out: MutableList<Any>) {
-        buf.readBytes(buf.readableBytes())
-        return
         try {
+            buf.readBytes(buf.readableBytes())
+            return
             when(stage) {
                 Stage.OPCODE -> buf.readOpcode(out)
                 Stage.LENGTH -> buf.readLength(out)

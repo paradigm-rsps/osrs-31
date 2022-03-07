@@ -46,7 +46,7 @@ public abstract class Actor extends Renderable {
    @Export("runSequence")
    int runSequence = -1;
    @ObfuscatedName("av")
-   String field434 = null;
+   String overheadText = null;
    @ObfuscatedName("ak")
    int field435 = 100;
    @ObfuscatedName("ax")

@@ -155,7 +155,7 @@ public class NPCComposition extends DualNode {
             this.models[var4] = var1.readUnsignedShort();
          }
       } else if (var2 == 2) {
-         this.name = var1.method2653();
+         this.name = var1.readChatString();
       } else if (var2 == 12) {
          this.size = var1.readUnsignedByte();
       } else if (var2 == 13) {
@@ -172,7 +172,7 @@ public class NPCComposition extends DualNode {
          this.walkLeftSequence = var1.readUnsignedShort();
          this.walkRightSequence = var1.readUnsignedShort();
       } else if (var2 >= 30 && var2 < 35) {
-         this.actions[var2 - 30] = var1.method2653();
+         this.actions[var2 - 30] = var1.readChatString();
          if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) {
             this.actions[var2 - 30] = null;
          }

@@ -20,7 +20,6 @@ import osrs.classic.server.net.game.GameProtocol
 import osrs.classic.server.net.login.LoginRequest
 import osrs.classic.server.net.login.LoginResponse
 import osrs.classic.server.net.packet.server.IF_OPENTOP
-import osrs.classic.server.net.packet.server.RebuildRegionNormal
 import osrs.classic.server.net.packet.unknown.server.RunClientScript
 import osrs.classic.server.util.SHA256
 import osrs.classic.server.util.logger.Logger
@@ -54,6 +53,10 @@ class Player(val client: Client) : LivingEntity() {
             addMovementModeUpdateFlag()
         }
 
+    fun Player.updateAppearance() {
+        this.addAppearanceUpdateFlag()
+    }
+
 /**
      * The run energy value of the player.
      *//*
@@ -74,12 +77,13 @@ class Player(val client: Client) : LivingEntity() {
     /*
      * Player context managers.
      */
-    val gpi = GpiManager(this)
+    val gpi = UpdateManager(this)
     val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
     val npcs = NpcManager(this)
     private val varpManager = VarpManager(this)
     override val updateFlags = sortedSetOf<PlayerUpdateFlag>()
+    val players = UpdateManager(this)
 
 /*
     *//**
@@ -168,6 +172,7 @@ class Player(val client: Client) : LivingEntity() {
                 client.session.protocol.set(GameProtocol(client.session))
                 this.initialize()
                 client.session.writeAndFlush(IF_OPENTOP(548))
+                client.player.updateAppearance()
                 EventBus.dispatch(PlayerLoginEvent(this))
                 Logger.info("[username: $username] has connected to the server.")
             }
@@ -185,6 +190,7 @@ class Player(val client: Client) : LivingEntity() {
     internal fun synchronize() {
         varpManager.synchronize()
         scene.synchronize()
+        players.synchronize()
         //gpi.synchronize()
         //npcs.synchronize()
         client.flush()

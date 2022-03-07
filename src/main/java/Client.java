@@ -169,7 +169,7 @@ public final class Client extends GameEngine {
    static Widget field740;
    @ObfuscatedName("hr")
    @Export("Players_count")
-   static int Players_count;
+   static int playersCount;
    @ObfuscatedName("jc")
    static int field661;
    @ObfuscatedName("nv")
@@ -210,7 +210,7 @@ public final class Client extends GameEngine {
    static class22[] field532;
    @ObfuscatedName("hj")
    @Export("Players_indices")
-   static int[] Players_indices;
+   static int[] playersIndex;
    @ObfuscatedName("gc")
    static int field604;
    @ObfuscatedName("mn")
@@ -381,7 +381,7 @@ public final class Client extends GameEngine {
    @ObfuscatedSignature(
       descriptor = "[Lclass126;"
    )
-   static Buffer[] field608;
+   static Buffer[] appearanceCache;
    @ObfuscatedName("ks")
    static String[] field678;
    @ObfuscatedName("lt")
@@ -726,9 +726,9 @@ public final class Client extends GameEngine {
       players = new Player[2048];
       field604 = 0;
       field524 = new int[2048];
-      Players_count = 0;
-      Players_indices = new int[2048];
-      field608 = new Buffer[2048];
+      playersCount = 0;
+      playersIndex = new int[2048];
+      appearanceCache = new Buffer[2048];
       localPlayerIndex = -1;
       isMember = 0;
       field623 = 0;

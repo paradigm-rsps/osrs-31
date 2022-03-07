@@ -67,7 +67,7 @@ public final class Player extends Actor {
    @ObfuscatedSignature(
       descriptor = "(Lclass126;)V"
    )
-   final void method17(Buffer var1) {
+   void updateAppearance(Buffer var1) {
       var1.offset = 0;
       int var2 = var1.readUnsignedByte();
       this.headIconPk = var1.readByte();
@@ -146,7 +146,7 @@ public final class Player extends Actor {
          super.runSequence = -1;
       }
 
-      this.field35 = var1.method2653();
+      this.field35 = var1.readChatString();
       if (this == Tiles.localPlayer) {
          RunException.field1413 = this.field35;
       }

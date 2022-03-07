@@ -8,7 +8,7 @@ import osrs.classic.server.game.entity.Player
 import osrs.classic.server.game.entity.update.PlayerUpdateTask
 import osrs.classic.server.net.packet.unknown.server.PlayerUpdate
 
-class GpiManager(private val player: Player) {
+class UpdateManager(private val player: Player) {
 
     private val world = World
 

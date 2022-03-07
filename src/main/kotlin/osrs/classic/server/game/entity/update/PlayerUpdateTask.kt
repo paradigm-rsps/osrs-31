@@ -5,9 +5,8 @@ import io.guthix.buffer.toBitMode
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import osrs.classic.server.game.MovementType
-import osrs.classic.server.game.World
 import osrs.classic.server.game.entity.Player
-import osrs.classic.server.game.manager.GpiManager
+import osrs.classic.server.game.manager.UpdateManager
 import osrs.classic.server.game.map.Tile
 import java.util.*
 import kotlin.math.abs
@@ -17,34 +16,33 @@ class PlayerUpdateTask(private val player: Player) {
 
     internal fun execute(buf: ByteBuf) {
         val mainBuf = Unpooled.buffer()
-        val maskBuf = Unpooled.buffer()
+        val bitBuf = mainBuf.toBitMode()
+        val it = player
+        if (it.updateFlags.isNotEmpty())
+            processPlayer(bitBuf)
 
-        processLocalPlayers(mainBuf, maskBuf, true)
-        processLocalPlayers(mainBuf, maskBuf, false)
-        processExternalPlayers(mainBuf, maskBuf, false)
-        processExternalPlayers(mainBuf, maskBuf, true)
+        val maskBuf = bitBuf.toByteMode()
 
-        player.gpi.localPlayerCount = 0
-        player.gpi.externalPlayerCount = 0
-        for(index in 1 until World.MAX_PLAYERS) {
-            player.gpi.skipFlags[index] = player.gpi.skipFlags[index] shr 1
-            if(player.gpi.localPlayers[index] != null) {
-                player.gpi.localPlayerIndexes[player.gpi.localPlayerCount++] = index
-            } else {
-                player.gpi.externalPlayerIndexes[player.gpi.externalPlayerCount++] = index
-            }
-        }
+        /*
+         * Process npc update flags for each NPC in the local player's scene.
+         */
 
-        mainBuf.writeBytes(maskBuf)
-        maskBuf.release()
 
         buf.writeBytes(mainBuf)
+    }
+
+    private fun updatePlayer() {
+
+    }
+
+    private fun processPlayer(bitBuf: BitBuf) {
+
     }
 
     private fun processLocalPlayers(buf: ByteBuf, maskBuf: ByteBuf, activityFlag: Boolean) {
         fun shouldUpdateLocalPlayer(thisPlayer: Player, localPlayer: Player): Boolean {
             return (localPlayer.updateFlags.isNotEmpty()
-                    || !thisPlayer.tile.isWithinRadius(localPlayer.tile, GpiManager.RENDER_DISTANCE)
+                    || !thisPlayer.tile.isWithinRadius(localPlayer.tile, UpdateManager.RENDER_DISTANCE)
                     || localPlayer.movementType != MovementType.NONE
                     )
         }
@@ -57,7 +55,7 @@ class PlayerUpdateTask(private val player: Player) {
                 val dx = localPlayer.tile.x - localPlayer.prevTile.x
                 val dy = localPlayer.tile.y - localPlayer.prevTile.y
                 val dz = localPlayer.tile.plane - localPlayer.prevTile.plane
-                if(abs(dx) <= GpiManager.RENDER_DISTANCE && abs(dy) <= GpiManager.RENDER_DISTANCE) {
+                if(abs(dx) <= UpdateManager.RENDER_DISTANCE && abs(dy) <= UpdateManager.RENDER_DISTANCE) {
                     buf.writeBoolean(false)
                     buf.writeBits(dz and 0x3, 2)
                     buf.writeBits(dx and 0x1F, 5)
@@ -69,7 +67,7 @@ class PlayerUpdateTask(private val player: Player) {
                     buf.writeBits(dy and 0x3FFF, 14)
                 }
             }
-            else if(!player.tile.isWithinRadius(localPlayer.tile, GpiManager.RENDER_DISTANCE)) {
+            else if(!player.tile.isWithinRadius(localPlayer.tile, UpdateManager.RENDER_DISTANCE)) {
                 buf.writeBits(0, 2)
                 player.gpi.localPlayers[localPlayer.index] = null
             }
@@ -128,12 +126,12 @@ class PlayerUpdateTask(private val player: Player) {
 
     private fun processExternalPlayers(buf: ByteBuf, maskBuf: ByteBuf, activityFlag: Boolean) {
         fun shouldUpdateExternalPlayer(thisPlayer: Player, externalPlayer: Player): Boolean {
-            return (thisPlayer.tile.isWithinRadius(externalPlayer.tile, GpiManager.RENDER_DISTANCE)
+            return (thisPlayer.tile.isWithinRadius(externalPlayer.tile, UpdateManager.RENDER_DISTANCE)
                     || player.gpi.tileMultipliers[externalPlayer.index] != externalPlayer.tile.as18BitInteger)
         }
 
         fun updateExternalPlayer(externalPlayer: Player, buf: BitBuf, maskBuf: ByteBuf) {
-            if(player.tile.isWithinRadius(externalPlayer.tile, GpiManager.RENDER_DISTANCE)) {
+            if(player.tile.isWithinRadius(externalPlayer.tile, UpdateManager.RENDER_DISTANCE)) {
                 buf.writeBits(0, 2)
                 if(player.gpi.tileMultipliers[externalPlayer.index] != externalPlayer.tile.as18BitInteger) {
                     buf.writeBoolean(true)

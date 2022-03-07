@@ -195,27 +195,26 @@ public class SpotAnimationDefinition extends DualNode {
    @ObfuscatedSignature(
       descriptor = "(Lclass2;II)V"
    )
-   static void method770(Player var0, int var1, int var2) {
-      if (var0.animation == var1 && var1 != -1) {
-         int var3 = class23.getAnimations(var1).field901;
+   static void setAnimation(Player player, int id, int delay) {
+      if (player.animation == id && id != -1) {
+         int var3 = class23.getAnimations(id).field901;
          if (var3 == 1) {
-            var0.sequenceFrame = 0;
-            var0.sequenceFrameCycle = 0;
-            var0.sequenceDelay = var2;
-            var0.field421 = 0;
+            player.sequenceFrame = 0;
+            player.sequenceFrameCycle = 0;
+            player.sequenceDelay = delay;
+            player.field421 = 0;
          }
 
          if (var3 == 2) {
-            var0.field421 = 0;
+            player.field421 = 0;
          }
-      } else if (var1 == -1 || var0.animation == -1 || class23.getAnimations(var1).field895 >= class23.getAnimations(var0.animation).field895) {
-         var0.animation = var1;
-         var0.sequenceFrame = 0;
-         var0.sequenceFrameCycle = 0;
-         var0.sequenceDelay = var2;
-         var0.field421 = 0;
-         var0.remainingSteps = var0.pathLength;
+      } else if (id == -1 || player.animation == -1 || class23.getAnimations(id).field895 >= class23.getAnimations(player.animation).field895) {
+         player.animation = id;
+         player.sequenceFrame = 0;
+         player.sequenceFrameCycle = 0;
+         player.sequenceDelay = delay;
+         player.field421 = 0;
+         player.remainingSteps = player.pathLength;
       }
-
    }
 }

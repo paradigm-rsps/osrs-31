@@ -7,7 +7,7 @@ import io.netty.buffer.Unpooled
 import osrs.classic.server.game.MovementType
 import osrs.classic.server.game.entity.Npc
 import osrs.classic.server.game.entity.Player
-import osrs.classic.server.game.manager.GpiManager
+import osrs.classic.server.game.manager.UpdateManager
 
 class NpcUpdateTask(private val player: Player) {
 
@@ -48,7 +48,7 @@ class NpcUpdateTask(private val player: Player) {
                 }
                 npc.isDead
                 || npc.movementType == MovementType.TELEPORT
-                || !player.tile.isWithinRadius(npc.tile, GpiManager.RENDER_DISTANCE) -> {
+                || !player.tile.isWithinRadius(npc.tile, UpdateManager.RENDER_DISTANCE) -> {
                     buf.writeBoolean(true)
                     buf.writeBits(3, 2)
                     removals.add(npc)
@@ -69,7 +69,7 @@ class NpcUpdateTask(private val player: Player) {
 
     private fun updateExternalNpc(buf: BitBuf): BitBuf {
         var added = 0
-        for(npc in player.world.findNpcs(player.tile, GpiManager.RENDER_DISTANCE)) {
+        for(npc in player.world.findNpcs(player.tile, UpdateManager.RENDER_DISTANCE)) {
             if(added > 16) break
             if(!player.npcs.contains(npc)) {
                 buf.writeBits(npc.index, 15)
@@ -93,7 +93,7 @@ class NpcUpdateTask(private val player: Player) {
     }
 
     private fun Npc.shouldRender(): Boolean {
-        return player.tile.isWithinRadius(this.tile, GpiManager.RENDER_DISTANCE) && player.npcs.contains(this)
+        return player.tile.isWithinRadius(this.tile, UpdateManager.RENDER_DISTANCE) && player.npcs.contains(this)
     }
 
     private val Npc.direction: Int get() = when(orientation) {

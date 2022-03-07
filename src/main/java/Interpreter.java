@@ -339,17 +339,17 @@ public class Interpreter {
                }
             }
 
-            if (((Actor)var32).field434 != null && (var12 >= Client.field604 || Client.field700 == 0 || Client.field700 == 3 || Client.field700 == 1 && ItemContainer.method203(((Player)var32).field35))) {
+            if (((Actor)var32).overheadText != null && (var12 >= Client.field604 || Client.field700 == 0 || Client.field700 == 3 || Client.field700 == 1 && ItemContainer.method203(((Player)var32).field35))) {
                Script.method33((Actor)var32, ((Actor)var32).defaultHeight);
                if (Client.viewportTempX > -1 && Client.field576 < Client.field577) {
-                  Client.field581[Client.field576] = class40.fontBold12.method3601(((Actor)var32).field434) / 2;
+                  Client.field581[Client.field576] = class40.fontBold12.method3601(((Actor)var32).overheadText) / 2;
                   Client.field528[Client.field576] = class40.fontBold12.ascent;
                   Client.field625[Client.field576] = Client.viewportTempX;
                   Client.field722[Client.field576] = Client.viewportTempY;
                   Client.field582[Client.field576] = ((Actor)var32).field436;
                   Client.field583[Client.field576] = ((Actor)var32).field445;
                   Client.field584[Client.field576] = ((Actor)var32).field435;
-                  Client.field522[Client.field576] = ((Actor)var32).field434;
+                  Client.field522[Client.field576] = ((Actor)var32).overheadText;
                   ++Client.field576;
                }
             }

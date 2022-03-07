@@ -135,7 +135,7 @@ public final class Tile extends Node {
             for(int var5 = 0; var3.offset < var3.array.length - 12; var1.field61[var5++] = var6) {
                var6 = var3.readUnsignedShort();
                if (var6 == 3) {
-                  var1.field69[var5] = var3.method2653();
+                  var1.field69[var5] = var3.readChatString();
                } else if (var6 < 100 && var6 != 21 && var6 != 38 && var6 != 39) {
                   var1.field62[var5] = var3.readInt();
                } else {

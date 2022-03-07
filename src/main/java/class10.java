@@ -214,7 +214,7 @@ public class class10 {
    @ObfuscatedName("bc")
    static final void method130() {
       Client.field623 = 0;
-      Client.Players_count = 0;
+      Client.playersCount = 0;
       Client.serverPacketBuf.switchBitMode();
       int var0 = Client.serverPacketBuf.readBits(1);
       int var1;
@@ -225,13 +225,13 @@ public class class10 {
       if (var0 != 0) {
          var1 = Client.serverPacketBuf.readBits(2);
          if (var1 == 0) {
-            Client.Players_indices[++Client.Players_count - 1] = 2047;
+            Client.playersIndex[++Client.playersCount - 1] = 2047;
          } else if (var1 == 1) {
             var2 = Client.serverPacketBuf.readBits(3);
             Tiles.localPlayer.method279(var2, false);
             var3 = Client.serverPacketBuf.readBits(1);
             if (var3 == 1) {
-               Client.Players_indices[++Client.Players_count - 1] = 2047;
+               Client.playersIndex[++Client.playersCount - 1] = 2047;
             }
          } else if (var1 == 2) {
             var2 = Client.serverPacketBuf.readBits(3);
@@ -240,14 +240,14 @@ public class class10 {
             Tiles.localPlayer.method279(var3, true);
             var4 = Client.serverPacketBuf.readBits(1);
             if (var4 == 1) {
-               Client.Players_indices[++Client.Players_count - 1] = 2047;
+               Client.playersIndex[++Client.playersCount - 1] = 2047;
             }
          } else if (var1 == 3) {
             var2 = Client.serverPacketBuf.readBits(1);
             class22.Client_plane = Client.serverPacketBuf.readBits(2);
             var3 = Client.serverPacketBuf.readBits(1);
             if (var3 == 1) {
-               Client.Players_indices[++Client.Players_count - 1] = 2047;
+               Client.playersIndex[++Client.playersCount - 1] = 2047;
             }
 
             var4 = Client.serverPacketBuf.readBits(7);
@@ -282,7 +282,7 @@ public class class10 {
                if (var5 == 0) {
                   Client.field524[++Client.field604 - 1] = var2;
                   var10.field467 = Client.cycle;
-                  Client.Players_indices[++Client.Players_count - 1] = var2;
+                  Client.playersIndex[++Client.playersCount - 1] = var2;
                } else if (var5 == 1) {
                   Client.field524[++Client.field604 - 1] = var2;
                   var10.field467 = Client.cycle;
@@ -290,7 +290,7 @@ public class class10 {
                   var10.method279(var6, false);
                   var7 = Client.serverPacketBuf.readBits(1);
                   if (var7 == 1) {
-                     Client.Players_indices[++Client.Players_count - 1] = var2;
+                     Client.playersIndex[++Client.playersCount - 1] = var2;
                   }
                } else if (var5 == 2) {
                   Client.field524[++Client.field604 - 1] = var2;
@@ -301,7 +301,7 @@ public class class10 {
                   var10.method279(var7, true);
                   int var8 = Client.serverPacketBuf.readBits(1);
                   if (var8 == 1) {
-                     Client.Players_indices[++Client.Players_count - 1] = var2;
+                     Client.playersIndex[++Client.playersCount - 1] = var2;
                   }
                } else if (var5 == 3) {
                   Client.field485[++Client.field623 - 1] = var2;
@@ -319,8 +319,8 @@ public class class10 {
             boolean var11 = false;
             if (Client.players[var0] == null) {
                Client.players[var0] = new Player();
-               if (Client.field608[var0] != null) {
-                  Client.players[var0].method17(Client.field608[var0]);
+               if (Client.appearanceCache[var0] != null) {
+                  Client.players[var0].updateAppearance(Client.appearanceCache[var0]);
                }
 
                var11 = true;
@@ -337,7 +337,7 @@ public class class10 {
             var4 = Client.serverPacketBuf.readBits(1);
             var5 = Client.serverPacketBuf.readBits(1);
             if (var5 == 1) {
-               Client.Players_indices[++Client.Players_count - 1] = var0;
+               Client.playersIndex[++Client.playersCount - 1] = var0;
             }
 
             var6 = Client.serverPacketBuf.readBits(5);
@@ -352,7 +352,7 @@ public class class10 {
          }
 
          Client.serverPacketBuf.switchToByteMode();
-         class83.method1768();
+         class83.updatePlayers();
 
          for(var0 = 0; var0 < Client.field623; ++var0) {
             var1 = Client.field485[var0];

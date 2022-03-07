@@ -393,7 +393,7 @@ public final class NPC extends Actor {
 
    @ObfuscatedName("cn")
    @Export("method256")
-   static final void method256(int var0, String var1, String var2, String var3) {
+   static final void method256(int var0, String var1, String text, String var3) {
       for(int var4 = 99; var4 > 0; --var4) {
          Client.field694[var4] = Client.field694[var4 - 1];
          Client.field695[var4] = Client.field695[var4 - 1];
@@ -403,7 +403,7 @@ public final class NPC extends Actor {
 
       Client.field694[0] = var0;
       Client.field695[0] = var1;
-      Client.field697[0] = var2;
+      Client.field697[0] = text;
       Client.field696[0] = var3;
       ++Client.field580;
       Client.field482 = Client.field681;
@@ -422,14 +422,14 @@ public final class NPC extends Actor {
                   class22 var7 = Client.field532[var2];
                   var4 = Projectile.method125(var7.field381, class5.field75);
                   if (var4 != null && var4.equals(var1)) {
-                     Login.method239(0, "", var0 + " is already on your friend list");
+                     Login.setOverheadText(0, "", var0 + " is already on your friend list");
                      return;
                   }
 
                   if (var7.field369 != null) {
                      var5 = Projectile.method125(var7.field369, class5.field75);
                      if (var5 != null && var5.equals(var1)) {
-                        Login.method239(0, "", var0 + " is already on your friend list");
+                        Login.setOverheadText(0, "", var0 + " is already on your friend list");
                         return;
                      }
                   }
@@ -439,21 +439,21 @@ public final class NPC extends Actor {
                   class10 var8 = Client.field741[var2];
                   var4 = Projectile.method125(var8.field177, class5.field75);
                   if (var4 != null && var4.equals(var1)) {
-                     Login.method239(0, "", "Please remove " + var0 + " from your ignore list first");
+                     Login.setOverheadText(0, "", "Please remove " + var0 + " from your ignore list first");
                      return;
                   }
 
                   if (var8.field178 != null) {
                      var5 = Projectile.method125(var8.field178, class5.field75);
                      if (var5 != null && var5.equals(var1)) {
-                        Login.method239(0, "", "Please remove " + var0 + " from your ignore list first");
+                        Login.setOverheadText(0, "", "Please remove " + var0 + " from your ignore list first");
                         return;
                      }
                   }
                }
 
                if (Projectile.method125(Tiles.localPlayer.field35, class5.field75).equals(var1)) {
-                  Login.method239(0, "", "You can't add yourself to your own friend list");
+                  Login.setOverheadText(0, "", "You can't add yourself to your own friend list");
                } else {
                   Client.rsaBuf.writeByteOpcode(10);
                   PacketBuffer var6 = Client.rsaBuf;
@@ -463,7 +463,7 @@ public final class NPC extends Actor {
                }
             }
          } else {
-            Login.method239(0, "", "Your friend list is full. Max of 200 for free users, and 400 for members");
+            Login.setOverheadText(0, "", "Your friend list is full. Max of 200 for free users, and 400 for members");
          }
       }
    }

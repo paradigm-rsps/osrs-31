@@ -696,7 +696,7 @@ public class Frames extends DualNode {
                                     if (var3 == 1005) {
                                        var18 = class130.getWidget(var2);
                                        if (var18 != null && var18.itemQuantities[var1] >= 100000) {
-                                          Login.method239(0, "", var18.itemQuantities[var1] + " x " + class27.method571(var4).name);
+                                          Login.setOverheadText(0, "", var18.itemQuantities[var1] + " x " + class27.method571(var4).name);
                                        } else {
                                           Client.rsaBuf.writeByteOpcode(128);
                                           Client.rsaBuf.writeShort(var4);

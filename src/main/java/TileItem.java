@@ -911,7 +911,7 @@ public final class TileItem extends Renderable {
 
       for(responseState = 0; responseState < 2048; ++responseState) {
          Client.players[responseState] = null;
-         Client.field608[responseState] = null;
+         Client.appearanceCache[responseState] = null;
       }
 
       for(responseState = 0; responseState < 32768; ++responseState) {

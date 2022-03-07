@@ -371,13 +371,13 @@ public class SequenceDefinition extends DualNode {
             int var7;
             if (var4 != 0 && var4 != 1 && var4 != 2) {
                if (var4 == 3 || var4 == 4) {
-                  var5 = new String(var0.method2653());
-                  var6 = new String(var0.method2653());
+                  var5 = new String(var0.readChatString());
+                  var6 = new String(var0.readChatString());
                   var7 = var0.readUnsignedByte();
                   String[] var8 = new String[var7];
 
                   for(int var9 = 0; var9 < var7; ++var9) {
-                     var8[var9] = new String(var0.method2653());
+                     var8[var9] = new String(var0.readChatString());
                   }
 
                   byte[][] var12 = new byte[var7][];
@@ -401,8 +401,8 @@ public class SequenceDefinition extends DualNode {
                   var2.arguments[var3] = var12;
                }
             } else {
-               var5 = new String(var0.method2653());
-               var6 = new String(var0.method2653());
+               var5 = new String(var0.readChatString());
+               var6 = new String(var0.readChatString());
                var7 = 0;
                if (var4 == 1) {
                   var7 = var0.readInt();

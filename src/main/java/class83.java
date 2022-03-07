@@ -48,17 +48,16 @@ public class class83 {
    }
 
    @ObfuscatedName("by")
-   static final void method1768() {
-      for(int var0 = 0; var0 < Client.Players_count; ++var0) {
-         int var1 = Client.Players_indices[var0];
-         Player var2 = Client.players[var1];
-         int var3 = Client.serverPacketBuf.readUnsignedByte();
-         if ((var3 & 32) != 0) {
-            var3 += Client.serverPacketBuf.readUnsignedByte() << 8;
+   static final void updatePlayers() {
+      for(int var0 = 0; var0 < Client.playersCount; ++var0) {
+         int playerIndex = Client.playersIndex[var0];
+         Player player = Client.players[playerIndex];
+         int flag = Client.serverPacketBuf.readUnsignedByte();
+         if ((flag & 32) != 0) {
+            flag += Client.serverPacketBuf.readUnsignedByte() << 8;
          }
 
-         class1.method10(var1, var2, var3);
+         class1.updatePlayer(playerIndex, player, flag);
       }
-
    }
 }

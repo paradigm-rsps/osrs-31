@@ -4,7 +4,6 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import osrs.classic.server.util.logger.Logger;
 
 @ObfuscatedName("q")
 @Implements("Login")
@@ -337,7 +336,6 @@ public class Login {
          tileX = Client.serverPacketBuf.readUnsignedShortLE();
          tileY = Client.serverPacketBuf.readUnsignedShort();
          chunkX = Client.serverPacketBuf.readUnsignedShortAdd();
-         Logger.INSTANCE.debug("tileX {} tileY {} chunkX {}", tileX, tileY, chunkX);
          class149.regions = new int[regionsLength];
          ObjectSound.regionMapArchiveIds = new int[regionsLength];
          ScriptEvent.regionLandArchiveIds = new int[regionsLength];
@@ -441,7 +439,7 @@ public class Login {
    }
 
    @ObfuscatedName("co")
-   static final void method239(int var0, String var1, String var2) {
-      NPC.method256(var0, var1, var2, (String)null);
+   static final void setOverheadText(int var0, String var1, String text) {
+      NPC.method256(var0, var1, text, (String)null);
    }
 }

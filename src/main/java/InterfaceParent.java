@@ -92,7 +92,7 @@ public class InterfaceParent extends Node {
 
    @ObfuscatedName("e")
    @Export("method27")
-   public static String method27(byte[] var0, int var1, int var2) {
+   public static String readString(byte[] var0, int var1, int var2) {
       char[] var3 = new char[var2];
       int var4 = 0;
 

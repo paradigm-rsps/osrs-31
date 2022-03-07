@@ -110,43 +110,45 @@ public class class1 {
    @ObfuscatedSignature(
       descriptor = "(ILclass2;I)V"
    )
-   static final void method10(int var0, Player var1, int var2) {
-      if ((var2 & 4) != 0) {
-         var1.field475 = Client.serverPacketBuf.readUnsignedShortLE();
-         var1.field446 = Client.serverPacketBuf.readUnsignedShortLE();
+   static final void updatePlayer(int playerIndex, Player player, int flag) {
+      if ((flag & 4) != 0) {
+         player.field475 = Client.serverPacketBuf.readUnsignedShortLE();
+         player.field446 = Client.serverPacketBuf.readUnsignedShortLE();
       }
 
-      if ((var2 & 512) != 0) {
-         var1.field460 = Client.serverPacketBuf.readUnsignedByte();
-         var1.field462 = Client.serverPacketBuf.readUnsignedByte();
-         var1.field439 = Client.serverPacketBuf.readUnsignedByteSub();
-         var1.field463 = Client.serverPacketBuf.readUnsignedByteSub();
-         var1.field456 = Client.serverPacketBuf.readUnsignedShort() + Client.cycle;
-         var1.field465 = Client.serverPacketBuf.readUnsignedShortAddLE() + Client.cycle;
-         var1.field466 = Client.serverPacketBuf.readUnsignedByteAdd();
-         var1.pathLength = 1;
-         var1.remainingSteps = 0;
+      //forceMovement
+      if ((flag & 512) != 0) {
+         player.field460 = Client.serverPacketBuf.readUnsignedByte();
+         player.field462 = Client.serverPacketBuf.readUnsignedByte();
+         player.field439 = Client.serverPacketBuf.readUnsignedByteSub();
+         player.field463 = Client.serverPacketBuf.readUnsignedByteSub();
+         player.field456 = Client.serverPacketBuf.readUnsignedShort() + Client.cycle;
+         player.field465 = Client.serverPacketBuf.readUnsignedShortAddLE() + Client.cycle;
+         player.field466 = Client.serverPacketBuf.readUnsignedByteAdd();
+         player.pathLength = 1;
+         player.remainingSteps = 0;
       }
 
-      int var3;
-      if ((var2 & 1) != 0) {
-         var3 = Client.serverPacketBuf.readUnsignedByteSub();
-         byte[] var4 = new byte[var3];
-         Buffer var5 = new Buffer(var4);
-         Client.serverPacketBuf.readBytes(var4, 0, var3);
-         Client.field608[var0] = var5;
-         var1.method17(var5);
+      //Appearance
+      int index;
+      if ((flag & 1) != 0) {
+         index = Client.serverPacketBuf.readUnsignedByteSub();
+         byte[] b = new byte[index];
+         Buffer appearanceCache = new Buffer(b);
+         Client.serverPacketBuf.readBytes(b, 0, index);
+         Client.appearanceCache[playerIndex] = appearanceCache;
+         player.updateAppearance(appearanceCache);
       }
 
       int var14;
-      if ((var2 & 2) != 0) {
-         var3 = Client.serverPacketBuf.readUnsignedShort();
+      if ((flag & 2) != 0) {
+         index = Client.serverPacketBuf.readUnsignedShort();
          var14 = Client.serverPacketBuf.readUnsignedByte();
          int var15 = Client.serverPacketBuf.readUnsignedByteSub();
          int var6 = Client.serverPacketBuf.offset;
-         if (var1.field35 != null && var1.appearance != null) {
+         if (player.field35 != null && player.appearance != null) {
             boolean var7 = false;
-            if (var14 <= 1 && ObjectSound.method45(var1.field35)) {
+            if (var14 <= 1 && ObjectSound.method45(player.field35)) {
                var7 = true;
             }
 
@@ -165,25 +167,25 @@ public class class1 {
 
                   byte[] var12 = new byte[var11];
                   var9.offset += class183.huffman.method2572(var9.array, var9.offset, var12, 0, var11);
-                  String var13 = InterfaceParent.method27(var12, 0, var11);
+                  String var13 = InterfaceParent.readString(var12, 0, var11);
                   var10 = var13;
                } catch (Exception var17) {
                   var10 = "Cabbage";
                }
 
                var10 = AbstractFont.method3605(TaskHandler.method1595(var10));
-               var1.field434 = var10.trim();
-               var1.field436 = var3 >> 8;
-               var1.field445 = var3 & 255;
-               var1.field435 = 150;
+               player.overheadText = var10.trim();
+               player.field436 = index >> 8;
+               player.field445 = index & 255;
+               player.field435 = 150;
                if (var14 != 2 && var14 != 3) {
                   if (var14 == 1) {
-                     Login.method239(1, FloorOverlayDefinition.method829(0) + var1.field35, var10);
+                     Login.setOverheadText(1, FloorOverlayDefinition.method829(0) + player.field35, var10);
                   } else {
-                     Login.method239(2, var1.field35, var10);
+                     Login.setOverheadText(2, player.field35, var10);
                   }
                } else {
-                  Login.method239(1, FloorOverlayDefinition.method829(1) + var1.field35, var10);
+                  Login.setOverheadText(1, FloorOverlayDefinition.method829(1) + player.field35, var10);
                }
             }
          }
@@ -191,68 +193,70 @@ public class class1 {
          Client.serverPacketBuf.offset = var6 + var15;
       }
 
-      if ((var2 & 16) != 0) {
-         var3 = Client.serverPacketBuf.readUnsignedShort();
-         if (var3 == 65535) {
-            var3 = -1;
+      //Animation
+      if ((flag & 16) != 0) {
+         index = Client.serverPacketBuf.readUnsignedShort();
+         if (index == 65535) {
+            index = -1;
          }
 
          var14 = Client.serverPacketBuf.readUnsignedByte();
-         SpotAnimationDefinition.method770(var1, var3, var14);
+         SpotAnimationDefinition.setAnimation(player, index, var14);
       }
 
-      if ((var2 & 64) != 0) {
-         var1.field434 = Client.serverPacketBuf.method2653();
-         if (var1.field434.charAt(0) == '~') {
-            var1.field434 = var1.field434.substring(1);
-            Login.method239(2, var1.field35, var1.field434);
-         } else if (var1 == Tiles.localPlayer) {
-            Login.method239(2, var1.field35, var1.field434);
+      //ForceChat
+      if ((flag & 64) != 0) {
+         player.overheadText = Client.serverPacketBuf.readChatString();
+         if (player.overheadText.charAt(0) == '~') {
+            player.overheadText = player.overheadText.substring(1);
+            Login.setOverheadText(2, player.field35, player.overheadText);
+         } else if (player == Tiles.localPlayer) {
+            Login.setOverheadText(2, player.field35, player.overheadText);
          }
 
-         var1.field436 = 0;
-         var1.field445 = 0;
-         var1.field435 = 150;
+         player.field436 = 0;
+         player.field445 = 0;
+         player.field435 = 150;
       }
 
-      if ((var2 & 8) != 0) {
-         var3 = Client.serverPacketBuf.readUnsignedByte();
+      if ((flag & 8) != 0) {
+         index = Client.serverPacketBuf.readUnsignedByte();
          var14 = Client.serverPacketBuf.readUnsignedByte();
-         var1.method277(var3, var14, Client.cycle);
-         var1.field441 = Client.cycle + 300;
-         var1.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
-         var1.field425 = Client.serverPacketBuf.readUnsignedByteSub();
+         player.method277(index, var14, Client.cycle);
+         player.field441 = Client.cycle + 300;
+         player.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
+         player.field425 = Client.serverPacketBuf.readUnsignedByteSub();
       }
 
-      if ((var2 & 1024) != 0) {
-         var1.spotAnimation = Client.serverPacketBuf.readUnsignedShortLE();
-         var3 = Client.serverPacketBuf.readInt();
-         var1.field430 = var3 >> 16;
-         var1.field458 = (var3 & '\uffff') + Client.cycle;
-         var1.spotAnimationFrame = 0;
-         var1.spotAnimationFrameCycle = 0;
-         if (var1.field458 > Client.cycle) {
-            var1.spotAnimationFrame = -1;
+      if ((flag & 1024) != 0) {
+         player.spotAnimation = Client.serverPacketBuf.readUnsignedShortLE();
+         index = Client.serverPacketBuf.readInt();
+         player.field430 = index >> 16;
+         player.field458 = (index & '\uffff') + Client.cycle;
+         player.spotAnimationFrame = 0;
+         player.spotAnimationFrameCycle = 0;
+         if (player.field458 > Client.cycle) {
+            player.spotAnimationFrame = -1;
          }
 
-         if (var1.spotAnimation == 65535) {
-            var1.spotAnimation = -1;
+         if (player.spotAnimation == 65535) {
+            player.spotAnimation = -1;
          }
       }
 
-      if ((var2 & 256) != 0) {
-         var3 = Client.serverPacketBuf.readUnsignedByteNeg();
+      if ((flag & 256) != 0) {
+         index = Client.serverPacketBuf.readUnsignedByteNeg();
          var14 = Client.serverPacketBuf.readUnsignedByteAdd();
-         var1.method277(var3, var14, Client.cycle);
-         var1.field441 = Client.cycle + 300;
-         var1.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
-         var1.field425 = Client.serverPacketBuf.readUnsignedByte();
+         player.method277(index, var14, Client.cycle);
+         player.field441 = Client.cycle + 300;
+         player.field431 = Client.serverPacketBuf.readUnsignedByteNeg();
+         player.field425 = Client.serverPacketBuf.readUnsignedByte();
       }
 
-      if ((var2 & 128) != 0) {
-         var1.field444 = Client.serverPacketBuf.readUnsignedShortAdd();
-         if (var1.field444 == 65535) {
-            var1.field444 = -1;
+      if ((flag & 128) != 0) {
+         player.field444 = Client.serverPacketBuf.readUnsignedShortAdd();
+         if (player.field444 == 65535) {
+            player.field444 = -1;
          }
       }
 

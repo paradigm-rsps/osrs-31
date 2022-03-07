@@ -288,13 +288,13 @@ public class Buffer extends Node {
          ++this.offset;
          return null;
       } else {
-         return this.method2653();
+         return this.readChatString();
       }
    }
 
    @ObfuscatedName("bh")
    @Export("method2653")
-   public String method2653() {
+   public String readChatString() {
       int var1 = this.offset;
 
       while(this.array[++this.offset - 1] != 0) {
@@ -302,7 +302,7 @@ public class Buffer extends Node {
       }
 
       int var2 = this.offset - var1 - 1;
-      return var2 == 0 ? "" : InterfaceParent.method27(this.array, var1, var2);
+      return var2 == 0 ? "" : InterfaceParent.readString(this.array, var1, var2);
    }
 
    @ObfuscatedName("ba")
@@ -319,7 +319,7 @@ public class Buffer extends Node {
          }
 
          int var3 = this.offset - var2 - 1;
-         return var3 == 0 ? "" : InterfaceParent.method27(this.array, var2, var3);
+         return var3 == 0 ? "" : InterfaceParent.readString(this.array, var2, var3);
       }
    }
 

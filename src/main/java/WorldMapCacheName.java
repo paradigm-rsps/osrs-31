@@ -457,7 +457,7 @@ public class WorldMapCacheName {
                      if (var27 != null && var27.field435 > 0) {
                         --var27.field435;
                         if (var27.field435 == 0) {
-                           var27.field434 = null;
+                           var27.overheadText = null;
                         }
                      }
                   }
@@ -468,7 +468,7 @@ public class WorldMapCacheName {
                      if (var43 != null && var43.field435 > 0) {
                         --var43.field435;
                         if (var43.field435 == 0) {
-                           var43.field434 = null;
+                           var43.overheadText = null;
                         }
                      }
                   }
@@ -807,11 +807,11 @@ public class WorldMapCacheName {
                                              for(class27 var29 = (class27)Client.field680.method3506(); var29 != null; var29 = (class27)Client.field680.method3501()) {
                                                 if ((long)var29.field756 < ClientPreferences.method148() / 1000L - 5L) {
                                                    if (var29.field751 > 0) {
-                                                      Login.method239(5, "", var29.field749 + " has logged in.");
+                                                      Login.setOverheadText(5, "", var29.field749 + " has logged in.");
                                                    }
 
                                                    if (var29.field751 == 0) {
-                                                      Login.method239(5, "", var29.field749 + " has logged out.");
+                                                      Login.setOverheadText(5, "", var29.field749 + " has logged out.");
                                                    }
 
                                                    var29.method3563();

@@ -445,7 +445,7 @@ public class Widget extends Node {
          this.field2602 = new String[5];
 
          for(var8 = 0; var8 < 5; ++var8) {
-            String var9 = var1.method2653();
+            String var9 = var1.readChatString();
             if (var9.length() > 0) {
                this.field2602[var8] = var9;
                this.field2644 |= 1 << var8 + 23;
@@ -470,8 +470,8 @@ public class Widget extends Node {
       }
 
       if (this.type == 4) {
-         this.field2633 = var1.method2653();
-         this.field2624 = var1.method2653();
+         this.field2633 = var1.readChatString();
+         this.field2624 = var1.readChatString();
       }
 
       if (this.type == 1 || this.type == 3 || this.type == 4) {
@@ -538,7 +538,7 @@ public class Widget extends Node {
          this.field2602 = new String[5];
 
          for(var5 = 0; var5 < 5; ++var5) {
-            String var10 = var1.method2653();
+            String var10 = var1.readChatString();
             if (var10.length() > 0) {
                this.field2602[var5] = var10;
                this.field2644 |= 1 << var5 + 23;
@@ -547,18 +547,18 @@ public class Widget extends Node {
       }
 
       if (this.type == 8) {
-         this.field2633 = var1.method2653();
+         this.field2633 = var1.readChatString();
       }
 
       if (this.buttonType == 2 || this.type == 2) {
-         this.spellActionName = var1.method2653();
-         this.field2676 = var1.method2653();
+         this.spellActionName = var1.readChatString();
+         this.field2676 = var1.readChatString();
          var4 = var1.readUnsignedShort() & 63;
          this.field2644 |= var4 << 11;
       }
 
       if (this.buttonType == 1 || this.buttonType == 4 || this.buttonType == 5 || this.buttonType == 6) {
-         this.field2677 = var1.method2653();
+         this.field2677 = var1.readChatString();
          if (this.field2677.length() == 0) {
             if (this.buttonType == 1) {
                this.field2677 = "Ok";
@@ -658,7 +658,7 @@ public class Widget extends Node {
             this.fontId = -1;
          }
 
-         this.field2633 = var1.method2653();
+         this.field2633 = var1.readChatString();
          this.field2625 = var1.readUnsignedByte();
          this.field2626 = var1.readUnsignedByte();
          this.field2627 = var1.readUnsignedByte();
@@ -678,20 +678,20 @@ public class Widget extends Node {
       }
 
       this.field2644 = var1.readMedium();
-      this.field2636 = var1.method2653();
+      this.field2636 = var1.readChatString();
       int var2 = var1.readUnsignedByte();
       if (var2 > 0) {
          this.actions = new String[var2];
 
          for(int var3 = 0; var3 < var2; ++var3) {
-            this.actions[var3] = var1.method2653();
+            this.actions[var3] = var1.readChatString();
          }
       }
 
       this.field2567 = var1.readUnsignedByte();
       this.field2640 = var1.readUnsignedByte();
       this.isScrollBar = var1.readUnsignedByte() == 1;
-      this.spellActionName = var1.method2653();
+      this.spellActionName = var1.readChatString();
       this.onLoad = this.method3376(var1);
       this.field2649 = this.method3376(var1);
       this.field2651 = this.method3376(var1);
@@ -732,7 +732,7 @@ public class Widget extends Node {
             if (var5 == 0) {
                var3[var4] = new Integer(var1.readInt());
             } else if (var5 == 1) {
-               var3[var4] = var1.method2653();
+               var3[var4] = var1.readChatString();
             }
          }
 

@@ -1065,13 +1065,13 @@ public abstract class Renderable extends DualNode {
                                  if (var46 == ScriptOpcodes.MES) {
                                     --var5;
                                     var97 = Interpreter.Interpreter_stringStack[var5];
-                                    Login.method239(0, "", var97);
+                                    Login.setOverheadText(0, "", var97);
                                     continue;
                                  }
 
                                  if (var46 == ScriptOpcodes.ANIM) {
                                     var4 -= 2;
-                                    SpotAnimationDefinition.method770(Tiles.localPlayer, Interpreter.Interpreter_intStack[var4], Interpreter.Interpreter_intStack[var4 + 1]);
+                                    SpotAnimationDefinition.setAnimation(Tiles.localPlayer, Interpreter.Interpreter_intStack[var4], Interpreter.Interpreter_intStack[var4 + 1]);
                                     continue;
                                  }
 
@@ -1154,7 +1154,7 @@ public abstract class Renderable extends DualNode {
                                     }
 
                                     if (!var83) {
-                                       Login.method239(0, "", "Unable to find " + var15);
+                                       Login.setOverheadText(0, "", "Unable to find " + var15);
                                     }
                                     continue;
                                  }
@@ -1534,14 +1534,14 @@ public abstract class Renderable extends DualNode {
                                              var54 = Client.field741[var35];
                                              var88 = Projectile.method125(var54.field177, class5.field75);
                                              if (var88 != null && var88.equals(var15)) {
-                                                Login.method239(0, "", var97 + " is already on your ignore list");
+                                                Login.setOverheadText(0, "", var97 + " is already on your ignore list");
                                                 continue label3012;
                                              }
 
                                              if (var54.field178 != null) {
                                                 var84 = Projectile.method125(var54.field178, class5.field75);
                                                 if (var84 != null && var84.equals(var15)) {
-                                                   Login.method239(0, "", var97 + " is already on your ignore list");
+                                                   Login.setOverheadText(0, "", var97 + " is already on your ignore list");
                                                    continue label3012;
                                                 }
                                              }
@@ -1551,21 +1551,21 @@ public abstract class Renderable extends DualNode {
                                              class22 var57 = Client.field532[var35];
                                              var88 = Projectile.method125(var57.field381, class5.field75);
                                              if (var88 != null && var88.equals(var15)) {
-                                                Login.method239(0, "", "Please remove " + var97 + " from your friend list first");
+                                                Login.setOverheadText(0, "", "Please remove " + var97 + " from your friend list first");
                                                 continue label3012;
                                              }
 
                                              if (var57.field369 != null) {
                                                 var84 = Projectile.method125(var57.field369, class5.field75);
                                                 if (var84 != null && var84.equals(var15)) {
-                                                   Login.method239(0, "", "Please remove " + var97 + " from your friend list first");
+                                                   Login.setOverheadText(0, "", "Please remove " + var97 + " from your friend list first");
                                                    continue label3012;
                                                 }
                                              }
                                           }
 
                                           if (Projectile.method125(Tiles.localPlayer.field35, class5.field75).equals(var15)) {
-                                             Login.method239(0, "", "You can't add yourself to your own ignore list");
+                                             Login.setOverheadText(0, "", "You can't add yourself to your own ignore list");
                                           } else {
                                              Client.rsaBuf.writeByteOpcode(63);
                                              PacketBuffer var55 = Client.rsaBuf;
@@ -1576,7 +1576,7 @@ public abstract class Renderable extends DualNode {
                                           continue;
                                        }
 
-                                       Login.method239(0, "", "Your ignore list is full. Max of 100 for free users, and 400 for members");
+                                       Login.setOverheadText(0, "", "Your ignore list is full. Max of 100 for free users, and 400 for members");
                                        continue;
                                     }
 
@@ -2485,9 +2485,9 @@ public abstract class Renderable extends DualNode {
                                              Projectile.clientPreferences.roofsHidden = !Projectile.clientPreferences.roofsHidden;
                                              class17.method185();
                                              if (Projectile.clientPreferences.roofsHidden) {
-                                                Login.method239(0, "", "Roofs are now all hidden");
+                                                Login.setOverheadText(0, "", "Roofs are now all hidden");
                                              } else {
-                                                Login.method239(0, "", "Roofs will only be removed selectively");
+                                                Login.setOverheadText(0, "", "Roofs will only be removed selectively");
                                              }
                                           }
 

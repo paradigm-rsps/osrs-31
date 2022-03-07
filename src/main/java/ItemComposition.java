@@ -187,7 +187,7 @@ public class ItemComposition extends DualNode {
       if (var2 == 1) {
          this.model = var1.readUnsignedShort();
       } else if (var2 == 2) {
-         this.name = var1.method2653();
+         this.name = var1.readChatString();
       } else if (var2 == 4) {
          this.zoom2d = var1.readUnsignedShort();
       } else if (var2 == 5) {
@@ -221,12 +221,12 @@ public class ItemComposition extends DualNode {
       } else if (var2 == 26) {
          this.femaleModel1 = var1.readUnsignedShort();
       } else if (var2 >= 30 && var2 < 35) {
-         this.groundActions[var2 - 30] = var1.method2653();
+         this.groundActions[var2 - 30] = var1.readChatString();
          if (this.groundActions[var2 - 30].equalsIgnoreCase("Hidden")) {
             this.groundActions[var2 - 30] = null;
          }
       } else if (var2 >= 35 && var2 < 40) {
-         this.inventoryActions[var2 - 35] = var1.method2653();
+         this.inventoryActions[var2 - 35] = var1.readChatString();
       } else {
          int var3;
          int var4;

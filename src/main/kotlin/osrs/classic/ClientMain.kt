@@ -1,6 +1,7 @@
 package osrs.classic
 
 import java.awt.BorderLayout
+import java.awt.Dimension
 import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.WindowConstants.EXIT_ON_CLOSE
@@ -12,7 +13,7 @@ class ClientMain {
             AppletConfiguration.init()
             Applet.init()
             val frame = JFrame("OSRS Classic")
-            frame.size = Applet.applet.size
+            frame.size = Dimension(780,542)
             frame.isResizable = false
             val panel = JPanel()
             panel.size = frame.size

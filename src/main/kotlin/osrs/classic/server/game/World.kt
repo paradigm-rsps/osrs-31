@@ -83,7 +83,7 @@ object World : EventSubject, TaskSubject {
      * The game world cycle logic.
      */
     fun gameLogic() {
-        println("process tick")
+        //println("process tick")
         // Process client packets
         players.forEach { it.client.processPackets() }
 
