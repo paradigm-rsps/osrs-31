@@ -1,4 +1,4 @@
-package osrs.classic.server.net.packet.server.unknown
+package osrs.classic.server.net.packet.unknown.server
 
 import io.netty.buffer.ByteBuf
 import osrs.classic.server.net.Session

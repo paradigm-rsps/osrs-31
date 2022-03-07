@@ -36,11 +36,11 @@ public abstract class AbstractByteArrayCopier {
       int var4;
       if (var0.field456 > Client.cycle) {
          var2 = var0.field456 - Client.cycle;
-         var3 = var0.field461 * 64 + var0.field460 * 128;
-         var4 = var0.field461 * 64 + var0.field462 * 128;
+         var3 = var0.size * 64 + var0.field460 * 128;
+         var4 = var0.size * 64 + var0.field462 * 128;
          var0.x += (var3 - var0.x) / var2;
          var0.y += (var4 - var0.y) / var2;
-         var0.field476 = 0;
+         var0.delaySteps = 0;
          if (var0.field466 == 0) {
             var0.orientation = 1024;
          }
@@ -63,22 +63,22 @@ public abstract class AbstractByteArrayCopier {
       }
 
       if (var0.x < 128 || var0.y < 128 || var0.x >= 13184 || var0.y >= 13184) {
-         var0.sequence = -1;
+         var0.animation = -1;
          var0.spotAnimation = -1;
          var0.field456 = 0;
          var0.field465 = 0;
-         var0.x = var0.hitSplatTypes2[0] * 128 + var0.field461 * 64;
-         var0.y = var0.hitSplatValues2[0] * 128 + var0.field461 * 64;
+         var0.x = var0.pathX[0] * 128 + var0.size * 64;
+         var0.y = var0.pathY[0] * 128 + var0.size * 64;
          var0.method280();
       }
 
       if (Tiles.localPlayer == var0 && (var0.x < 1536 || var0.y < 1536 || var0.x >= 11776 || var0.y >= 11776)) {
-         var0.sequence = -1;
+         var0.animation = -1;
          var0.spotAnimation = -1;
          var0.field456 = 0;
          var0.field465 = 0;
-         var0.x = var0.field461 * 64 + var0.hitSplatTypes2[0] * 128;
-         var0.y = var0.hitSplatValues2[0] * 128 + var0.field461 * 64;
+         var0.x = var0.size * 64 + var0.pathX[0] * 128;
+         var0.y = var0.pathY[0] * 128 + var0.size * 64;
          var0.method280();
       }
 
@@ -110,7 +110,7 @@ public abstract class AbstractByteArrayCopier {
             }
          }
 
-         if ((var0.field475 != 0 || var0.field446 != 0) && (var0.pathLength == 0 || var0.field476 > 0)) {
+         if ((var0.field475 != 0 || var0.field446 != 0) && (var0.pathLength == 0 || var0.delaySteps > 0)) {
             var2 = var0.x - (var0.field475 * 64 - FaceNormal.baseX * 64 - FaceNormal.baseX * 64);
             var3 = var0.y - (var0.field446 * 64 - Frames.baseY * 64 - Frames.baseY * 64);
             if (var2 != 0 || var3 != 0) {

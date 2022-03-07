@@ -177,7 +177,7 @@ public class JagexCache {
                GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 1);
                Client.serverPacketBuf.offset = 0;
                Client.serverPacketOpcode = Client.serverPacketBuf.readOpcode();
-               Client.serverPacketLength = class164.field2771[Client.serverPacketOpcode];
+               Client.serverPacketLength = class164.serverPacketLengths[Client.serverPacketOpcode];
                --var0;
             }
 
@@ -315,7 +315,7 @@ public class JagexCache {
                      Client.Players_indices[++Client.Players_count - 1] = var1;
                   }
 
-                  var84.field461 = var84.definition.size;
+                  var84.size = var84.definition.size;
                   var84.field471 = var84.definition.field800;
                   if (var84.field471 == 0) {
                      var84.field432 = 0;
@@ -328,7 +328,7 @@ public class JagexCache {
                   var84.idleSequence = var84.definition.field789;
                   var84.turnLeftSequence = var84.definition.textSize;
                   var84.turnRightSequence = var84.definition.turnRightSequence;
-                  var84.method290(Tiles.localPlayer.hitSplatTypes2[0] + var5, Tiles.localPlayer.hitSplatValues2[0] + var19, var7 == 1);
+                  var84.setPosition(Tiles.localPlayer.pathX[0] + var5, Tiles.localPlayer.pathY[0] + var19, var7 == 1);
                }
 
                Client.serverPacketBuf.switchToByteMode();
@@ -353,7 +353,7 @@ public class JagexCache {
 
                   if ((var19 & 128) != 0) {
                      var84.definition = class22.method247(Client.serverPacketBuf.readUnsignedShortAddLE());
-                     var84.field461 = var84.definition.size;
+                     var84.size = var84.definition.size;
                      var84.field471 = var84.definition.field800;
                      var84.walkSequence = var84.definition.walkSequence;
                      var84.walkBackSequence = var84.definition.walkBackSequence;
@@ -401,8 +401,8 @@ public class JagexCache {
                      }
 
                      var6 = Client.serverPacketBuf.readUnsignedByteSub();
-                     if (var5 == var84.sequence && var5 != -1) {
-                        var7 = class23.method250(var5).field901;
+                     if (var5 == var84.animation && var5 != -1) {
+                        var7 = class23.getAnimations(var5).field901;
                         if (var7 == 1) {
                            var84.sequenceFrame = 0;
                            var84.sequenceFrameCycle = 0;
@@ -413,13 +413,13 @@ public class JagexCache {
                         if (var7 == 2) {
                            var84.field421 = 0;
                         }
-                     } else if (var5 == -1 || var84.sequence == -1 || class23.method250(var5).field895 >= class23.method250(var84.sequence).field895) {
-                        var84.sequence = var5;
+                     } else if (var5 == -1 || var84.animation == -1 || class23.getAnimations(var5).field895 >= class23.getAnimations(var84.animation).field895) {
+                        var84.animation = var5;
                         var84.sequenceFrame = 0;
                         var84.sequenceFrameCycle = 0;
                         var84.sequenceDelay = var6;
                         var84.field421 = 0;
-                        var84.field472 = var84.pathLength;
+                        var84.remainingSteps = var84.pathLength;
                      }
                   }
 
@@ -485,7 +485,7 @@ public class JagexCache {
                   var20 = (long)var5 + ((long)var1 << 32);
                   Node var22 = Client.widgetFlags.method3512(var20);
                   if (var22 != null) {
-                     var22.method3567();
+                     var22.remove();
                   }
 
                   Client.widgetFlags.method3517(new IntegerNode(var3), var20);
@@ -656,9 +656,10 @@ public class JagexCache {
             }
 
             Widget var70;
+            // UPDATE_INV_FULL
             if (Client.serverPacketOpcode == 102) {
-               var1 = Client.serverPacketBuf.readInt();
-               var2 = Client.serverPacketBuf.readUnsignedShort();
+               var1 = Client.serverPacketBuf.readInt(); // Key
+               var2 = Client.serverPacketBuf.readUnsignedShort(); // Container
                if (var1 < -70000) {
                   var2 += 32768;
                }
@@ -900,7 +901,7 @@ public class JagexCache {
                var2 = Client.serverPacketBuf.readUnsignedByteSub();
                var3 = Client.serverPacketBuf.readUnsignedByte();
                class22.Client_plane = var1 >> 1;
-               Tiles.localPlayer.method290(var3, var2, (var1 & 1) == 1);
+               Tiles.localPlayer.setPosition(var3, var2, (var1 & 1) == 1);
                Client.serverPacketOpcode = -1;
                return true;
             }
@@ -1019,9 +1020,9 @@ public class JagexCache {
 
             if (Client.serverPacketOpcode == 69) {
                var1 = Client.serverPacketBuf.readUnsignedShortAdd();
-               Client.field643 = var1;
+               Client.rootInterface = var1;
                Tiles.method99(var1);
-               MouseRecorder.method168(Client.field643);
+               MouseRecorder.method168(Client.rootInterface);
 
                for(var2 = 0; var2 < 100; ++var2) {
                   Client.field686[var2] = true;
@@ -1393,8 +1394,8 @@ public class JagexCache {
                   }
                }
 
-               if (Client.field643 != -1) {
-                  SceneTilePaint.method2208(Client.field643, 1);
+               if (Client.rootInterface != -1) {
+                  SceneTilePaint.method2208(Client.rootInterface, 1);
                }
 
                Client.serverPacketOpcode = -1;
@@ -1578,13 +1579,13 @@ public class JagexCache {
             if (Client.serverPacketOpcode == 94) {
                for(var1 = 0; var1 < Client.players.length; ++var1) {
                   if (Client.players[var1] != null) {
-                     Client.players[var1].sequence = -1;
+                     Client.players[var1].animation = -1;
                   }
                }
 
                for(var1 = 0; var1 < Client.npcs.length; ++var1) {
                   if (Client.npcs[var1] != null) {
-                     Client.npcs[var1].sequence = -1;
+                     Client.npcs[var1].animation = -1;
                   }
                }
 
@@ -1621,10 +1622,10 @@ public class JagexCache {
                var1 = Client.serverPacketLength + Client.serverPacketBuf.offset;
                var2 = Client.serverPacketBuf.readUnsignedShort();
                var3 = Client.serverPacketBuf.readUnsignedShort();
-               if (var2 != Client.field643) {
-                  Client.field643 = var2;
-                  Tiles.method99(Client.field643);
-                  MouseRecorder.method168(Client.field643);
+               if (var2 != Client.rootInterface) {
+                  Client.rootInterface = var2;
+                  Tiles.method99(Client.rootInterface);
+                  MouseRecorder.method168(Client.rootInterface);
 
                   for(var19 = 0; var19 < 100; ++var19) {
                      Client.field686[var19] = true;
@@ -1676,8 +1677,8 @@ public class JagexCache {
                         }
                      }
 
-                     if (Client.field643 != -1) {
-                        SceneTilePaint.method2208(Client.field643, 1);
+                     if (Client.rootInterface != -1) {
+                        SceneTilePaint.method2208(Client.rootInterface, 1);
                      }
 
                      var92 = var82;
@@ -1767,8 +1768,8 @@ public class JagexCache {
             }
 
             if (Client.serverPacketOpcode == 52) {
-               if (Client.field643 != -1) {
-                  SceneTilePaint.method2208(Client.field643, 0);
+               if (Client.rootInterface != -1) {
+                  SceneTilePaint.method2208(Client.rootInterface, 0);
                }
 
                Client.serverPacketOpcode = -1;
@@ -2002,7 +2003,7 @@ public class JagexCache {
          } catch (IOException var50) {
             Clock.method1461();
          } catch (Exception var51) {
-            var28 = "" + Client.serverPacketOpcode + "," + Client.field728 + "," + Client.field488 + "," + Client.serverPacketLength + "," + (Tiles.localPlayer.hitSplatTypes2[0] + FaceNormal.baseX) + "," + (Tiles.localPlayer.hitSplatValues2[0] + Frames.baseY) + ",";
+            var28 = "" + Client.serverPacketOpcode + "," + Client.field728 + "," + Client.field488 + "," + Client.serverPacketLength + "," + (Tiles.localPlayer.pathX[0] + FaceNormal.baseX) + "," + (Tiles.localPlayer.pathY[0] + Frames.baseY) + ",";
 
             for(var2 = 0; var2 < Client.serverPacketLength && var2 < 50; ++var2) {
                var28 = var28 + Client.serverPacketBuf.array[var2] + ",";

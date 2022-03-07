@@ -103,7 +103,7 @@ public class class23 {
    @ObfuscatedSignature(
       descriptor = "(I)Lclass33;"
    )
-   public static SequenceDefinition method250(int var0) {
+   public static SequenceDefinition getAnimations(int var0) {
       SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.method3474((long)var0);
       if (var1 != null) {
          return var1;

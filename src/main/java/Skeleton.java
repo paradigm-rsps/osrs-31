@@ -224,7 +224,7 @@ public class Skeleton extends Node {
                   } else {
                      Login.Login_loadingText = "Loaded title screen";
                      Login.Login_loadingPercent = 50;
-                     NPC.method260(5);
+                     NPC.updateGameState(5);
                      Client.titleLoadingStage = 70;
                   }
                } else if (Client.titleLoadingStage == 70) {
@@ -312,7 +312,7 @@ public class Skeleton extends Node {
                         Client.titleLoadingStage = 140;
                      }
                   } else if (Client.titleLoadingStage == 140) {
-                     NPC.method260(10);
+                     NPC.updateGameState(10);
                   }
                } else {
                   var8 = 0;

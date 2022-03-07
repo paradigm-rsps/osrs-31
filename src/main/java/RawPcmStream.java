@@ -211,12 +211,12 @@ public class RawPcmStream extends PcmStream {
    public synchronized void method992(int var1) {
       if (var1 == 0) {
          this.method983(0);
-         this.method3567();
+         this.remove();
       } else if (this.field1067 == 0 && this.field1059 == 0) {
          this.field1064 = 0;
          this.field1055 = 0;
          this.field1057 = 0;
-         this.method3567();
+         this.remove();
       } else {
          int var2 = -this.field1057;
          if (this.field1057 > var2) {
@@ -317,7 +317,7 @@ public class RawPcmStream extends PcmStream {
          if (this.field1061 < 0) {
             if (this.field1058 <= 0) {
                this.method989();
-               this.method3567();
+               this.remove();
                return;
             }
 
@@ -327,7 +327,7 @@ public class RawPcmStream extends PcmStream {
          if (this.field1061 >= var7) {
             if (this.field1058 >= 0) {
                this.method989();
-               this.method3567();
+               this.remove();
                return;
             }
 
@@ -464,14 +464,14 @@ public class RawPcmStream extends PcmStream {
                if (this.field1061 < 0) {
                   this.field1061 = -1;
                   this.method989();
-                  this.method3567();
+                  this.remove();
                }
             } else {
                this.method1119(var1, var9, var7, var3, 0);
                if (this.field1061 >= var7) {
                   this.field1061 = var7;
                   this.method989();
-                  this.method3567();
+                  this.remove();
                }
             }
 
@@ -489,7 +489,7 @@ public class RawPcmStream extends PcmStream {
                this.field1059 = 0;
                this.field1067 = 0;
                this.field1057 = 0;
-               this.method3567();
+               this.remove();
                var1 = this.field1064;
             }
 
@@ -515,7 +515,7 @@ public class RawPcmStream extends PcmStream {
       if (this.field1061 < 0) {
          if (this.field1058 <= 0) {
             this.method989();
-            this.method3567();
+            this.remove();
             return;
          }
 
@@ -525,7 +525,7 @@ public class RawPcmStream extends PcmStream {
       if (this.field1061 >= var5) {
          if (this.field1058 >= 0) {
             this.method989();
-            this.method3567();
+            this.remove();
             return;
          }
 
@@ -648,12 +648,12 @@ public class RawPcmStream extends PcmStream {
             if (this.field1061 < 0) {
                this.field1061 = -1;
                this.method989();
-               this.method3567();
+               this.remove();
             }
          } else if (this.field1061 >= var5) {
             this.field1061 = var5;
             this.method989();
-            this.method3567();
+            this.remove();
          }
 
       }
@@ -779,7 +779,7 @@ public class RawPcmStream extends PcmStream {
             this.field1059 = 0;
             this.field1067 = 0;
             this.field1057 = 0;
-            this.method3567();
+            this.remove();
             return true;
          } else {
             this.method980();

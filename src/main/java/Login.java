@@ -4,6 +4,7 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import osrs.classic.server.util.logger.Logger;
 
 @ObfuscatedName("q")
 @Implements("Login")
@@ -312,128 +313,129 @@ public class Login {
    @Export("method242")
    static final void loadRegions(boolean isInstance) {
       Client.isInInstance = isInstance;
-      int var1;
-      int var2;
-      int var3;
-      int var4;
-      int var5;
-      int var6;
-      int var8;
-      int var9;
-      int var10;
+      int plane;
+      int chunkY;
+      int regionsLength;
+      int tileX;
+      int tileY;
+      int chunkX;
+      int regionX;
+      int regionY;
+      int regionID;
       if (!Client.isInInstance) {
-         var1 = Client.serverPacketBuf.readUnsignedByteSub();
-         var2 = Client.serverPacketBuf.readUnsignedShortLE();
-         var3 = (Client.serverPacketLength - Client.serverPacketBuf.offset) / 16;
-         class161.field2709 = new int[var3][4];
+         plane = Client.serverPacketBuf.readUnsignedByteSub();
+         chunkY = Client.serverPacketBuf.readUnsignedShortLE();
+         regionsLength = (Client.serverPacketLength - Client.serverPacketBuf.offset) / 16;
+         class161.xteaKeys = new int[regionsLength][4];
 
-         for(var4 = 0; var4 < var3; ++var4) {
-            for(var5 = 0; var5 < 4; ++var5) {
-               class161.field2709[var4][var5] = Client.serverPacketBuf.readUnsignedIntME();
+         for(tileX = 0; tileX < regionsLength; ++tileX) {
+            for(tileY = 0; tileY < 4; ++tileY) {
+               class161.xteaKeys[tileX][tileY] = Client.serverPacketBuf.readInt();
             }
          }
 
-         var4 = Client.serverPacketBuf.readUnsignedShortLE();
-         var5 = Client.serverPacketBuf.readUnsignedShort();
-         var6 = Client.serverPacketBuf.readUnsignedShortAdd();
-         class149.field2463 = new int[var3];
-         ObjectSound.field93 = new int[var3];
-         ScriptEvent.field0 = new int[var3];
-         Buffer.field2045 = new byte[var3][];
-         PendingSpawn.field365 = new byte[var3][];
-         boolean var7 = false;
-         if ((var6 / 8 == 48 || var6 / 8 == 49) && var2 / 8 == 48) {
-            var7 = true;
+         tileX = Client.serverPacketBuf.readUnsignedShortLE();
+         tileY = Client.serverPacketBuf.readUnsignedShort();
+         chunkX = Client.serverPacketBuf.readUnsignedShortAdd();
+         Logger.INSTANCE.debug("tileX {} tileY {} chunkX {}", tileX, tileY, chunkX);
+         class149.regions = new int[regionsLength];
+         ObjectSound.regionMapArchiveIds = new int[regionsLength];
+         ScriptEvent.regionLandArchiveIds = new int[regionsLength];
+         Buffer.regionLandArchives = new byte[regionsLength][];
+         PendingSpawn.regionMapArchives = new byte[regionsLength][];
+         boolean skipRegionLoad = false;
+         if ((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
+            skipRegionLoad = true;
          }
 
-         if (var6 / 8 == 48 && var2 / 8 == 148) {
-            var7 = true;
+         if (chunkX / 8 == 48 && chunkY / 8 == 148) {
+            skipRegionLoad = true;
          }
 
-         var3 = 0;
+         regionsLength = 0;
 
-         for(var8 = (var6 - 6) / 8; var8 <= (var6 + 6) / 8; ++var8) {
-            for(var9 = (var2 - 6) / 8; var9 <= (var2 + 6) / 8; ++var9) {
-               var10 = var9 + (var8 << 8);
-               if (!var7 || var9 != 49 && var9 != 149 && var9 != 147 && var8 != 50 && (var8 != 49 || var9 != 47)) {
-                  class149.field2463[var3] = var10;
-                  ObjectSound.field93[var3] = class146.archive5.method3219("m" + var8 + "_" + var9);
-                  ScriptEvent.field0[var3] = class146.archive5.method3219("l" + var8 + "_" + var9);
-                  ++var3;
+         for(regionX = (chunkX - 6) / 8; regionX <= (chunkX + 6) / 8; ++regionX) {
+            for(regionY = (chunkY - 6) / 8; regionY <= (chunkY + 6) / 8; ++regionY) {
+               regionID = regionY + (regionX << 8);
+               if (!skipRegionLoad || regionY != 49 && regionY != 149 && regionY != 147 && regionX != 50 && (regionX != 49 || regionY != 47)) {
+                  class149.regions[regionsLength] = regionID;
+                  ObjectSound.regionMapArchiveIds[regionsLength] = class146.archive5.getGroupId("m" + regionX + "_" + regionY);
+                  ScriptEvent.regionLandArchiveIds[regionsLength] = class146.archive5.getGroupId("l" + regionX + "_" + regionY);
+                  ++regionsLength;
                }
             }
          }
 
-         class5.method42(var6, var2, var1, var4, var5);
+         class5.updateScene(chunkX, chunkY, plane, tileX, tileY);
       } else {
-         var1 = Client.serverPacketBuf.readUnsignedShortLE();
-         var2 = Client.serverPacketBuf.readUnsignedByteSub();
+         plane = Client.serverPacketBuf.readUnsignedShortLE();
+         chunkY = Client.serverPacketBuf.readUnsignedByteSub();
          Client.serverPacketBuf.switchBitMode();
 
-         for(var3 = 0; var3 < 4; ++var3) {
-            for(var4 = 0; var4 < 13; ++var4) {
-               for(var5 = 0; var5 < 13; ++var5) {
-                  var6 = Client.serverPacketBuf.readBits(1);
-                  if (var6 == 1) {
-                     Client.field540[var3][var4][var5] = Client.serverPacketBuf.readBits(26);
+         for(regionsLength = 0; regionsLength < 4; ++regionsLength) {
+            for(tileX = 0; tileX < 13; ++tileX) {
+               for(tileY = 0; tileY < 13; ++tileY) {
+                  chunkX = Client.serverPacketBuf.readBits(1);
+                  if (chunkX == 1) {
+                     Client.instanceChunkTemplates[regionsLength][tileX][tileY] = Client.serverPacketBuf.readBits(26);
                   } else {
-                     Client.field540[var3][var4][var5] = -1;
+                     Client.instanceChunkTemplates[regionsLength][tileX][tileY] = -1;
                   }
                }
             }
          }
 
          Client.serverPacketBuf.switchToByteMode();
-         var3 = (Client.serverPacketLength - Client.serverPacketBuf.offset) / 16;
-         class161.field2709 = new int[var3][4];
+         regionsLength = (Client.serverPacketLength - Client.serverPacketBuf.offset) / 16;
+         class161.xteaKeys = new int[regionsLength][4];
 
-         for(var4 = 0; var4 < var3; ++var4) {
-            for(var5 = 0; var5 < 4; ++var5) {
-               class161.field2709[var4][var5] = Client.serverPacketBuf.readUnsignedIntME();
+         for(tileX = 0; tileX < regionsLength; ++tileX) {
+            for(tileY = 0; tileY < 4; ++tileY) {
+               class161.xteaKeys[tileX][tileY] = Client.serverPacketBuf.readUnsignedIntME();
             }
          }
 
-         var4 = Client.serverPacketBuf.readUnsignedShortLE();
-         var5 = Client.serverPacketBuf.readUnsignedShortAdd();
-         var6 = Client.serverPacketBuf.readUnsignedShortAdd();
-         class149.field2463 = new int[var3];
-         ObjectSound.field93 = new int[var3];
-         ScriptEvent.field0 = new int[var3];
-         Buffer.field2045 = new byte[var3][];
-         PendingSpawn.field365 = new byte[var3][];
-         var3 = 0;
+         tileX = Client.serverPacketBuf.readUnsignedShortLE();
+         tileY = Client.serverPacketBuf.readUnsignedShortAdd();
+         chunkX = Client.serverPacketBuf.readUnsignedShortAdd();
+         class149.regions = new int[regionsLength];
+         ObjectSound.regionMapArchiveIds = new int[regionsLength];
+         ScriptEvent.regionLandArchiveIds = new int[regionsLength];
+         Buffer.regionLandArchives = new byte[regionsLength][];
+         PendingSpawn.regionMapArchives = new byte[regionsLength][];
+         regionsLength = 0;
 
          for(int var16 = 0; var16 < 4; ++var16) {
-            for(var8 = 0; var8 < 13; ++var8) {
-               for(var9 = 0; var9 < 13; ++var9) {
-                  var10 = Client.field540[var16][var8][var9];
-                  if (var10 != -1) {
-                     int var11 = var10 >> 14 & 1023;
-                     int var12 = var10 >> 3 & 2047;
+            for(regionX = 0; regionX < 13; ++regionX) {
+               for(regionY = 0; regionY < 13; ++regionY) {
+                  regionID = Client.instanceChunkTemplates[var16][regionX][regionY];
+                  if (regionID != -1) {
+                     int var11 = regionID >> 14 & 1023;
+                     int var12 = regionID >> 3 & 2047;
                      int var13 = (var11 / 8 << 8) + var12 / 8;
 
                      int var14;
-                     for(var14 = 0; var14 < var3; ++var14) {
-                        if (class149.field2463[var14] == var13) {
+                     for(var14 = 0; var14 < regionsLength; ++var14) {
+                        if (class149.regions[var14] == var13) {
                            var13 = -1;
                            break;
                         }
                      }
 
                      if (var13 != -1) {
-                        class149.field2463[var3] = var13;
+                        class149.regions[regionsLength] = var13;
                         var14 = var13 >> 8 & 255;
                         int var15 = var13 & 255;
-                        ObjectSound.field93[var3] = class146.archive5.method3219("m" + var14 + "_" + var15);
-                        ScriptEvent.field0[var3] = class146.archive5.method3219("l" + var14 + "_" + var15);
-                        ++var3;
+                        ObjectSound.regionMapArchiveIds[regionsLength] = class146.archive5.getGroupId("m" + var14 + "_" + var15);
+                        ScriptEvent.regionLandArchiveIds[regionsLength] = class146.archive5.getGroupId("l" + var14 + "_" + var15);
+                        ++regionsLength;
                      }
                   }
                }
             }
          }
 
-         class5.method42(var6, var5, var2, var1, var4);
+         class5.updateScene(chunkX, tileY, chunkY, plane, tileX);
       }
 
    }

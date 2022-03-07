@@ -223,7 +223,7 @@ public class PcmPlayer {
             TileItem.soundSystem.field1183 = true;
 
             while(TileItem.soundSystem.field1182) {
-               SequenceDefinition.method761(50L);
+               SequenceDefinition.sleepWeird(50L);
             }
 
             TileItem.soundSystem = null;

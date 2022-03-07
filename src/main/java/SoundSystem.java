@@ -44,12 +44,12 @@ public class SoundSystem implements Runnable {
                }
             }
 
-            SequenceDefinition.method761(10L);
+            SequenceDefinition.sleepWeird(10L);
             TaskHandler var5 = this.field1181;
             var2 = null;
             if (var5.thread != null) {
                for(int var3 = 0; var3 < 50 && var5.thread.peekEvent() != null; ++var3) {
-                  SequenceDefinition.method761(1L);
+                  SequenceDefinition.sleepWeird(1L);
                }
 
                if (var2 != null) {
@@ -140,7 +140,7 @@ public class SoundSystem implements Runnable {
             }
 
             KeyHandler.method1648(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field361, var0.field359);
-            var0.method3567();
+            var0.remove();
          } else {
             if (var0.delay > 0) {
                --var0.delay;
@@ -168,9 +168,9 @@ public class SoundSystem implements Runnable {
                KeyHandler.method1648(var0.plane, var0.type, var0.x, var0.y, var0.id, var0.orientation, var0.field362);
                var0.delay = -1;
                if (var0.id == var0.objectId && var0.objectId == -1) {
-                  var0.method3567();
+                  var0.remove();
                } else if (var0.id == var0.objectId && var0.field361 == var0.orientation && var0.field362 == var0.field359) {
-                  var0.method3567();
+                  var0.remove();
                }
             }
          }

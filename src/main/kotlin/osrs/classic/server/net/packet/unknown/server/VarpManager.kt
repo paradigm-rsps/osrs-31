@@ -1,4 +1,4 @@
-package osrs.classic.server.net.packet.server.unknown
+package osrs.classic.server.net.packet.unknown.server
 
 import osrs.classic.server.cache.GameCache
 import osrs.classic.server.game.entity.Player

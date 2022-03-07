@@ -180,18 +180,18 @@ public class class10 {
       descriptor = "(Lclass26;)V"
    )
    static final void method134(Actor var0) {
-      if (var0.field465 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > class23.method250(var0.sequence).frameLengths[var0.sequenceFrame]) {
+      if (var0.field465 == Client.cycle || var0.animation == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > class23.getAnimations(var0.animation).frameLengths[var0.sequenceFrame]) {
          int var1 = var0.field465 - var0.field456;
          int var2 = Client.cycle - var0.field456;
-         int var3 = var0.field461 * 64 + var0.field460 * 128;
-         int var4 = var0.field461 * 64 + var0.field462 * 128;
-         int var5 = var0.field461 * 64 + var0.field439 * 128;
-         int var6 = var0.field461 * 64 + var0.field463 * 128;
+         int var3 = var0.size * 64 + var0.field460 * 128;
+         int var4 = var0.size * 64 + var0.field462 * 128;
+         int var5 = var0.size * 64 + var0.field439 * 128;
+         int var6 = var0.size * 64 + var0.field463 * 128;
          var0.x = (var2 * var5 + var3 * (var1 - var2)) / var1;
          var0.y = (var6 * var2 + var4 * (var1 - var2)) / var1;
       }
 
-      var0.field476 = 0;
+      var0.delaySteps = 0;
       if (var0.field466 == 0) {
          var0.orientation = 1024;
       }
@@ -252,7 +252,7 @@ public class class10 {
 
             var4 = Client.serverPacketBuf.readBits(7);
             var5 = Client.serverPacketBuf.readBits(7);
-            Tiles.localPlayer.method290(var5, var4, var2 == 1);
+            Tiles.localPlayer.setPosition(var5, var4, var2 == 1);
          }
       }
 
@@ -310,7 +310,7 @@ public class class10 {
          }
 
          Player var9;
-         for(; Client.serverPacketBuf.method2514(Client.serverPacketLength) >= 11; var9.method290(Tiles.localPlayer.hitSplatTypes2[0] + var7, Tiles.localPlayer.hitSplatValues2[0] + var6, var4 == 1)) {
+         for(; Client.serverPacketBuf.method2514(Client.serverPacketLength) >= 11; var9.setPosition(Tiles.localPlayer.pathX[0] + var7, Tiles.localPlayer.pathY[0] + var6, var4 == 1)) {
             var0 = Client.serverPacketBuf.readBits(11);
             if (var0 == 2047) {
                break;

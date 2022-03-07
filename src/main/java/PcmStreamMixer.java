@@ -37,7 +37,7 @@ public class PcmStreamMixer extends PcmStream {
       descriptor = "(Lclass47;)V"
    )
    public final synchronized void method1127(PcmStream var1) {
-      var1.method3567();
+      var1.remove();
    }
 
    @ObfuscatedName("e")
@@ -71,7 +71,7 @@ public class PcmStreamMixer extends PcmStream {
       descriptor = "(Lclass60;)V"
    )
    void method1137(PcmStreamMixerListener var1) {
-      var1.method3567();
+      var1.remove();
       var1.method1394();
       Node var2 = this.field1068.sentinel.previous;
       if (var2 == this.field1068.sentinel) {

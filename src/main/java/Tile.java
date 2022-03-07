@@ -170,7 +170,7 @@ public final class Tile extends Node {
          int var5 = var4 & 31;
          int var6 = var4 >> 6 & 3;
          if (var5 != 10 && var5 != 11 && var5 != 22) {
-            FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var0, var1, true, var5 + 1, var6, 0, 0, 0, 2);
+            FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var0, var1, true, var5 + 1, var6, 0, 0, 0, 2);
          } else {
             ObjectComposition var7 = GameBuild.getObjectComposition(var3);
             int var8;
@@ -188,7 +188,7 @@ public final class Tile extends Node {
                var10 = (var10 >> 4 - var6) + (var10 << var6 & 15);
             }
 
-            FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var0, var1, true, 0, 0, var8, var9, var10, 2);
+            FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var0, var1, true, 0, 0, var8, var9, var10, 2);
          }
 
          Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;

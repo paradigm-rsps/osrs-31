@@ -82,26 +82,27 @@ object World : EventSubject, TaskSubject {
     /**
      * The game world cycle logic.
      */
-    internal fun gameLogic() {
+    fun gameLogic() {
+        println("process tick")
         // Process client packets
         players.forEach { it.client.processPackets() }
 
         // World
-        processTasks()
+        //processTasks()
 
         // Npc
-        processNpcTasks()
-        processNpcMovement()
+       // processNpcTasks()
+        //processNpcMovement()
 
         // Player
-        processPlayerTasks()
-        processPlayerMovement()
+        //processPlayerTasks()
+        //processPlayerMovement()
 
         // Synchronize
         synchronize()
 
         // Post
-        postProcess()
+        //postProcess()
 
         tick++
     }

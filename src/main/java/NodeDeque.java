@@ -34,7 +34,7 @@ public class NodeDeque {
             return;
          }
 
-         var1.method3567();
+         var1.remove();
       }
    }
 
@@ -45,7 +45,7 @@ public class NodeDeque {
    )
    public void method3528(Node var1) {
       if (var1.next != null) {
-         var1.method3567();
+         var1.remove();
       }
 
       var1.next = this.sentinel.next;
@@ -61,7 +61,7 @@ public class NodeDeque {
    )
    public void method3529(Node var1) {
       if (var1.next != null) {
-         var1.method3567();
+         var1.remove();
       }
 
       var1.next = this.sentinel;
@@ -80,7 +80,7 @@ public class NodeDeque {
       if (var1 == this.sentinel) {
          return null;
       } else {
-         var1.method3567();
+         var1.remove();
          return var1;
       }
    }
@@ -95,7 +95,7 @@ public class NodeDeque {
       if (var1 == this.sentinel) {
          return null;
       } else {
-         var1.method3567();
+         var1.remove();
          return var1;
       }
    }
@@ -171,7 +171,7 @@ public class NodeDeque {
    )
    public static void method3530(Node var0, Node var1) {
       if (var0.next != null) {
-         var0.method3567();
+         var0.remove();
       }
 
       var0.next = var1.next;

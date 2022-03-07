@@ -2,8 +2,8 @@ package osrs.classic.server.game.manager
 
 import osrs.classic.server.cache.GameCache
 import osrs.classic.server.game.entity.Player
-import osrs.classic.server.net.packet.server.unknown.UpdateVarpLarge
-import osrs.classic.server.net.packet.server.unknown.UpdateVarpSmall
+import osrs.classic.server.net.packet.unknown.server.UpdateVarpLarge
+import osrs.classic.server.net.packet.unknown.server.UpdateVarpSmall
 import kotlin.math.pow
 
 class VarpManager(private val player: Player) {

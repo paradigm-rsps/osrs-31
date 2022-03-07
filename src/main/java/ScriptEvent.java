@@ -13,7 +13,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
    @ObfuscatedName("dy")
-   static int[] field0;
+   static int[] regionLandArchiveIds;
    @ObfuscatedName("i")
    @Export("args")
    Object[] args;

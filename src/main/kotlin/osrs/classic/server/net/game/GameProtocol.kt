@@ -5,18 +5,18 @@ import osrs.classic.server.net.Message
 import osrs.classic.server.net.Protocol
 import osrs.classic.server.net.Session
 
-class GameProtocol(session: osrs.classic.server.net.Session) : osrs.classic.server.net.Protocol(session) {
+class GameProtocol(session: Session) : Protocol(session) {
 
     private val encoder = PacketEncoder(this)
     private val decoder = PacketDecoder(this)
 
     override fun encode(message: Message, out: ByteBuf) {
-        if(message !is Packet) return
+        if (message !is Packet) return
         encoder.encode(message, out)
     }
 
     override fun decode(buf: ByteBuf, out: MutableList<Any>) {
-        if(buf.readableBytes() > 0) {
+        if (buf.readableBytes() > 0) {
             decoder.decode(buf, out)
         } else {
             val codec = GamePackets.CLIENT.getCodec(-1)
@@ -26,7 +26,7 @@ class GameProtocol(session: osrs.classic.server.net.Session) : osrs.classic.serv
     }
 
     override fun handle(message: Message) {
-        if(message !is Packet) return
+        if (message !is Packet) return
         message.handle(session)
     }
 

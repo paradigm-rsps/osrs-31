@@ -331,7 +331,7 @@ public final class Tiles {
    static final void method60(InterfaceParent var0, boolean var1) {
       int var2 = var0.group;
       int var3 = (int)var0.key;
-      var0.method3567();
+      var0.remove();
       int var5;
       if (var1 && var2 != -1 && Widget.Widget_loadedInterfaces[var2]) {
          Widget.Widget_archive.method3216(var2);
@@ -358,7 +358,7 @@ public final class Tiles {
 
       for(IntegerNode var7 = (IntegerNode)Client.widgetFlags.method3515(); var7 != null; var7 = (IntegerNode)Client.widgetFlags.method3516()) {
          if ((long)var2 == (var7.key >> 48 & 65535L)) {
-            var7.method3567();
+            var7.remove();
          }
       }
 
@@ -384,8 +384,8 @@ public final class Tiles {
          }
       }
 
-      if (Client.field643 != -1) {
-         SceneTilePaint.method2208(Client.field643, 1);
+      if (Client.rootInterface != -1) {
+         SceneTilePaint.method2208(Client.rootInterface, 1);
       }
 
    }

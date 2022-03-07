@@ -100,7 +100,7 @@ public class SoundCache {
          if (var7 == null) {
             return null;
          } else {
-            var8.method3567();
+            var8.remove();
             this.rawSounds.method3517(var7, var5);
             return var7;
          }

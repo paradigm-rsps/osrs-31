@@ -19,7 +19,9 @@ import osrs.classic.server.net.StatusResponse
 import osrs.classic.server.net.game.GameProtocol
 import osrs.classic.server.net.login.LoginRequest
 import osrs.classic.server.net.login.LoginResponse
-import osrs.classic.server.net.packet.server.unknown.RunClientScript
+import osrs.classic.server.net.packet.server.IF_OPENTOP
+import osrs.classic.server.net.packet.server.RebuildRegionNormal
+import osrs.classic.server.net.packet.unknown.server.RunClientScript
 import osrs.classic.server.util.SHA256
 import osrs.classic.server.util.logger.Logger
 
@@ -76,7 +78,7 @@ class Player(val client: Client) : LivingEntity() {
     val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
     val npcs = NpcManager(this)
-
+    private val varpManager = VarpManager(this)
     override val updateFlags = sortedSetOf<PlayerUpdateFlag>()
 
 /*
@@ -90,6 +92,30 @@ class Player(val client: Client) : LivingEntity() {
         client.write(RunClientScript(id, *params))
     }
 
+    /**
+     * Updates a varp's bit value for this player.
+     *
+     * @param id Int
+     * @param value Int
+     */
+    fun updateVarbit(id: Int, value: Int) {
+        varpManager.updateVarbit(id, value)
+    }
+
+    /**
+     * Updates a Varp's value for this player.
+     *
+     * @param id Int
+     * @param value Int
+     */
+    fun updateVarp(id: Int, value: Int) {
+        varpManager.updateVarp(id, value)
+    }
+
+    /**
+     * A map of varps by their ID for this player.
+     */
+    val varps: Map<Int, Int> get() = varpManager.varps.toMap()
 
 /*
     fun sendGameMessage(message: String, type: MessageType = MessageType.GAME) {
@@ -98,6 +124,7 @@ class Player(val client: Client) : LivingEntity() {
 */
 
     fun initialize() {
+
         //gpi.initialize()
         scene.initialize()
         //interfaces.initialize()
@@ -135,10 +162,12 @@ class Player(val client: Client) : LivingEntity() {
         client.session.decoderIsaac.init(request.xteas)
 
         val response = LoginResponse(StatusResponse.NORMAL, this)
-        client.session.writeAndFlush(response).addListener {
+        client.session.writeAndFlush(response)
+        .addListener {
             if (it.isSuccess) {
                 client.session.protocol.set(GameProtocol(client.session))
                 this.initialize()
+                client.session.writeAndFlush(IF_OPENTOP(548))
                 EventBus.dispatch(PlayerLoginEvent(this))
                 Logger.info("[username: $username] has connected to the server.")
             }
@@ -154,15 +183,17 @@ class Player(val client: Client) : LivingEntity() {
     }
 
     internal fun synchronize() {
+        varpManager.synchronize()
         scene.synchronize()
-        gpi.synchronize()
-        npcs.synchronize()
+        //gpi.synchronize()
+        //npcs.synchronize()
         client.flush()
     }
 
     override fun postProcess() {
         super.postProcess()
         EventBus.dispatch(PlayerCycleEvent(this))
+        varpManager.synchronize()
         scene.postProcess()
     }
 

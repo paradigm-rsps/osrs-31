@@ -169,9 +169,9 @@ public class VarpDefinition extends DualNode {
 
    @ObfuscatedName("ct")
    @Export("method927")
-   static final void method927(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+   static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
       if (EnumComposition.method852(var0)) {
-         class40.method904(Widget.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
+         class40.drawInterface(Widget.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
       }
    }
 }

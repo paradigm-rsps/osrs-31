@@ -3,6 +3,7 @@
 package osrs.classic.server.net.game
 
 import io.github.classgraph.ClassGraph
+import osrs.classic.server.net.packet.server.UPDATE_INV_FULL
 import osrs.classic.server.util.logger.Logger
 import kotlin.reflect.KClass
 import kotlin.reflect.full.companionObjectInstance
@@ -45,7 +46,7 @@ object GamePackets {
         ClassGraph()
             .enableClassInfo()
             .enableAnnotationInfo()
-            .acceptPackages("dev.avernic.server.engine.net.packet.server")
+            .acceptPackages(UPDATE_INV_FULL::class.java.packageName)
             .scan()
             .use { result ->
                 result.getClassesWithAnnotation(ServerPacket::class.qualifiedName).forEach { classInfo ->

@@ -24,7 +24,7 @@ public class Node {
 
    @ObfuscatedName("he")
    @Export("method3567")
-   public void method3567() {
+   public void remove() {
       if (this.next != null) {
          this.next.previous = this.previous;
          this.previous.next = this.next;

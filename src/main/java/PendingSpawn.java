@@ -9,7 +9,7 @@ public final class PendingSpawn extends Node {
    @ObfuscatedName("q")
    static String field358;
    @ObfuscatedName("do")
-   static byte[][] field365;
+   static byte[][] regionMapArchives;
    @ObfuscatedName("i")
    @Export("plane")
    int plane;

@@ -4,7 +4,7 @@ import net.runelite.mapping.ObfuscatedName;
 @ObfuscatedName("el")
 public class class149 {
    @ObfuscatedName("dt")
-   static int[] field2463;
+   static int[] regions;
 
    @ObfuscatedName("i")
    public static void method3176(boolean var0) {

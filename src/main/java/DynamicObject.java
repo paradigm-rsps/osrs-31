@@ -57,7 +57,7 @@ public class DynamicObject extends Renderable {
       this.x = var5;
       this.y = var6;
       if (var7 != -1) {
-         this.sequenceDefinition = class23.method250(var7);
+         this.sequenceDefinition = class23.getAnimations(var7);
          this.frame = 0;
          this.cycleStart = Client.cycle - 1;
          if (this.sequenceDefinition.field901 == 0 && var9 != null && var9 instanceof DynamicObject) {
@@ -177,7 +177,7 @@ public class DynamicObject extends Renderable {
                int var8 = var6 * var3 - var2 * var5 >> 11;
                int var9 = var7 + Tiles.localPlayer.x >> 7;
                int var10 = Tiles.localPlayer.y - var8 >> 7;
-               boolean var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var9, var10, true, 0, 0, 0, 0, 0, 1);
+               boolean var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var9, var10, true, 0, 0, 0, 0, 0, 1);
                if (var11) {
                   Client.rsaBuf.writeByte(var2);
                   Client.rsaBuf.writeByte(var3);

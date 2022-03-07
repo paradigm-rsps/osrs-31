@@ -161,7 +161,7 @@ public class SpotAnimationDefinition extends DualNode {
 
       Model var5;
       if (this.sequence != -1 && var1 != -1) {
-         var5 = class23.method250(this.sequence).method727(var2, var1);
+         var5 = class23.getAnimations(this.sequence).method727(var2, var1);
       } else {
          var5 = var2.method2495(true);
       }
@@ -196,8 +196,8 @@ public class SpotAnimationDefinition extends DualNode {
       descriptor = "(Lclass2;II)V"
    )
    static void method770(Player var0, int var1, int var2) {
-      if (var0.sequence == var1 && var1 != -1) {
-         int var3 = class23.method250(var1).field901;
+      if (var0.animation == var1 && var1 != -1) {
+         int var3 = class23.getAnimations(var1).field901;
          if (var3 == 1) {
             var0.sequenceFrame = 0;
             var0.sequenceFrameCycle = 0;
@@ -208,13 +208,13 @@ public class SpotAnimationDefinition extends DualNode {
          if (var3 == 2) {
             var0.field421 = 0;
          }
-      } else if (var1 == -1 || var0.sequence == -1 || class23.method250(var1).field895 >= class23.method250(var0.sequence).field895) {
-         var0.sequence = var1;
+      } else if (var1 == -1 || var0.animation == -1 || class23.getAnimations(var1).field895 >= class23.getAnimations(var0.animation).field895) {
+         var0.animation = var1;
          var0.sequenceFrame = 0;
          var0.sequenceFrameCycle = 0;
          var0.sequenceDelay = var2;
          var0.field421 = 0;
-         var0.field472 = var0.pathLength;
+         var0.remainingSteps = var0.pathLength;
       }
 
    }

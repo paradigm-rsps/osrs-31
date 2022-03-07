@@ -750,7 +750,7 @@ public class ObjectComposition extends DualNode {
                   }
 
                   if (var5 != -1) {
-                     SequenceDefinition var6 = class23.method250(var5);
+                     SequenceDefinition var6 = class23.getAnimations(var5);
 
                      for(var3.modelFrameCycle += Client.field525; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class82.invalidateWidget(var3)) {
                         var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame];

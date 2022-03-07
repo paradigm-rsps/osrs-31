@@ -2,6 +2,7 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import osrs.classic.server.util.logger.Logger;
 
 @ObfuscatedName("y")
 @Implements("NPC")
@@ -41,8 +42,8 @@ public final class NPC extends Actor {
       if (this.definition == null) {
          return null;
       } else {
-         SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? class23.method250(super.sequence) : null;
-         SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : class23.method250(super.movementSequence);
+         SequenceDefinition var1 = super.animation != -1 && super.sequenceDelay == 0 ? class23.getAnimations(super.animation) : null;
+         SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : class23.getAnimations(super.movementSequence);
          Model var3 = this.definition.method643(var1, super.sequenceFrame, var2, super.movementFrame);
          if (var3 == null) {
             return null;
@@ -119,7 +120,8 @@ public final class NPC extends Actor {
 
    @ObfuscatedName("a")
    @Export("method260")
-   static void method260(int var0) {
+   static void updateGameState(int var0) {
+      Logger.INSTANCE.debug("GameState {}", var0);
       if (var0 != Client.gameState) {
          if (Client.gameState == 0) {
             NPCComposition.field801 = null;

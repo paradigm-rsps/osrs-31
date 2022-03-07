@@ -65,7 +65,7 @@ public final class GraphicsObject extends Renderable {
       int var8 = NPCComposition.method656(this.id).sequence;
       if (var8 != -1) {
          this.isFinished = false;
-         this.sequenceDefinition = class23.method250(var8);
+         this.sequenceDefinition = class23.getAnimations(var8);
       } else {
          this.isFinished = true;
       }

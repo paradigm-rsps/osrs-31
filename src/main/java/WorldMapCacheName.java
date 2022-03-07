@@ -240,8 +240,8 @@ public class WorldMapCacheName {
 
             int var10;
             int var24;
-            if (Client.isLowDetail && Client.field531 != class22.Client_plane) {
-               class5.method42(Client.field746, Client.field739, class22.Client_plane, Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0]);
+            if (Client.isLowDetail && Client.renderPlane != class22.Client_plane) {
+               class5.updateScene(Client.chunkX, Client.chunkY, class22.Client_plane, Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0]);
             } else if (Client.field710 != class22.Client_plane) {
                Client.field710 = class22.Client_plane;
                var0 = class22.Client_plane;
@@ -567,7 +567,7 @@ public class WorldMapCacheName {
                      Client.field705[Client.field704] = IsaacCipher.field2000;
                   }
 
-                  VarpDefinition.method927(Client.field643, 0, 0, 765, 503, 0, 0);
+                  VarpDefinition.drawWidgets(Client.rootInterface, 0, 0, 765, 503, 0, 0);
                   ++Client.field681;
 
                   while(true) {
@@ -592,7 +592,7 @@ public class WorldMapCacheName {
                                              if (Scene.Scene_selectedX != -1) {
                                                 var2 = Scene.Scene_selectedX;
                                                 var3 = Scene.Scene_selectedY;
-                                                boolean var36 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var2, var3, true, 0, 0, 0, 0, 0, 0);
+                                                boolean var36 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var2, var3, true, 0, 0, 0, 0, 0, 0);
                                                 Scene.Scene_selectedX = -1;
                                                 if (var36) {
                                                    Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;

@@ -89,7 +89,7 @@ class LoginDecoder(private val session: Session) {
         }
 
         val password: String = rsaBuf.readStringCP1252()
-        println(password)
+
 
         /*
          * ======== XTEA BUFFER DECODE =======
@@ -103,6 +103,7 @@ class LoginDecoder(private val session: Session) {
         ) {
             throw LoginError(StatusResponse.INVALID_CREDENTIALS)
         }
+
         val isLowDetail = xteaBuf.readByte()
         ByteArray(24) { xteaBuf.readByte() }
 

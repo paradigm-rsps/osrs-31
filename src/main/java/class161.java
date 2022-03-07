@@ -4,7 +4,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("ff")
 public class class161 {
    @ObfuscatedName("dk")
-   static int[][] field2709;
+   static int[][] xteaKeys;
    @ObfuscatedName("ey")
    @ObfuscatedSignature(
       descriptor = "[Lclass85;"

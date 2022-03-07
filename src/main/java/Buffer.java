@@ -18,7 +18,7 @@ public class Buffer extends Node {
    @ObfuscatedName("u")
    static int[] field2040;
    @ObfuscatedName("de")
-   static byte[][] field2045;
+   static byte[][] regionLandArchives;
    @ObfuscatedName("e")
    @Export("array")
    public byte[] array;

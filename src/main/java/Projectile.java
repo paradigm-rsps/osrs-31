@@ -112,7 +112,7 @@ public final class Projectile extends Renderable {
       this.isMoving = false;
       int var12 = NPCComposition.method656(this.id).sequence;
       if (var12 != -1) {
-         this.sequenceDefinition = class23.method250(var12);
+         this.sequenceDefinition = class23.getAnimations(var12);
       } else {
          this.sequenceDefinition = null;
       }
@@ -375,7 +375,7 @@ public final class Projectile extends Renderable {
       descriptor = "(Lclass151;Lclass151;Ljava/lang/String;Ljava/lang/String;)Lclass182;"
    )
    public static Font method127(AbstractArchive var0, AbstractArchive var1, String var2, String var3) {
-      int var4 = var0.method3219(var2);
+      int var4 = var0.getGroupId(var2);
       int var5 = var0.method3238(var4, var3);
       return class82.method1757(var0, var1, var4, var5);
    }

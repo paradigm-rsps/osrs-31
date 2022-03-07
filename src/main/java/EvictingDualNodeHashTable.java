@@ -61,7 +61,7 @@ public final class EvictingDualNodeHashTable {
    public void method3475(long var1) {
       DualNode var3 = (DualNode)this.hashTable.method3512(var1);
       if (var3 != null) {
-         var3.method3567();
+         var3.remove();
          var3.method3509();
          ++this.remainingCapacity;
       }
@@ -76,11 +76,11 @@ public final class EvictingDualNodeHashTable {
    public void method3473(DualNode var1, long var2) {
       if (this.remainingCapacity == 0) {
          DualNode var4 = this.deque.method3498();
-         var4.method3567();
+         var4.remove();
          var4.method3509();
          if (var4 == this.field2798) {
             var4 = this.deque.method3498();
-            var4.method3567();
+            var4.remove();
             var4.method3509();
          }
       } else {

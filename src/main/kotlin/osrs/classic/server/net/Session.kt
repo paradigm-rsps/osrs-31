@@ -22,7 +22,7 @@ class Session(val ctx: ChannelHandlerContext) {
     var xteas = IntArray(4) { 0 }
     var reconnectXteas: IntArray? = null
 
-    val protocol = AtomicReference<osrs.classic.server.net.Protocol>(null)
+    val protocol = AtomicReference<Protocol>(null)
 
     val encoderIsaac = IsaacRandom()
     val decoderIsaac = IsaacRandom()
@@ -42,7 +42,8 @@ class Session(val ctx: ChannelHandlerContext) {
 
     internal fun onMessage(message: Message) {
         if(protocol.get() is GameProtocol && message is Packet) {
-/*            client.packetQueue.add(message)*/
+            print(message)
+            client.packetQueue.add(message)
         } else {
             protocol.get().handle(message)
         }

@@ -1029,7 +1029,7 @@ public abstract class AbstractRasterProvider {
                                        class82.invalidateWidget(var10);
                                     }
                                  } else {
-                                    SequenceDefinition var48 = class23.method250(var22);
+                                    SequenceDefinition var48 = class23.getAnimations(var22);
                                     var56 = var10.method3351(var48, var10.modelFrame, var46, Tiles.localPlayer.appearance);
                                     if (var56 == null && Widget.field2574) {
                                        class82.invalidateWidget(var10);

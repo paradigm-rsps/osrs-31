@@ -24,7 +24,7 @@ class HandshakeProtocol(session: osrs.classic.server.net.Session) : osrs.classic
     override fun handle(message: osrs.classic.server.net.Message) {
         when(message) {
             is HandshakeRequest.JS5 -> message.handle()
-            is HandshakeRequest.LOGIN -> message.handle()
+            is HandshakeRequest.LOGIN -> handle()
         }
     }
 
@@ -38,7 +38,7 @@ class HandshakeProtocol(session: osrs.classic.server.net.Session) : osrs.classic
         session.writeAndFlush(StatusResponse.SUCCESSFUL)
     }
 
-    private fun HandshakeRequest.LOGIN.handle() {
+    private fun handle() {
         val response = HandshakeResponse(StatusResponse.SUCCESSFUL, session.seed)
         session.writeAndFlush(response)
         session.protocol.set(LoginProtocol(session))

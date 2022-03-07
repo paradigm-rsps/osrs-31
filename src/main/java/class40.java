@@ -223,7 +223,7 @@ public class class40 extends DualNode {
    @ObfuscatedSignature(
       descriptor = "([Lclass157;IIIIIII)V"
    )
-   static final void method904(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+   static final void drawInterface(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       for(int var8 = 0; var8 < var0.length; ++var8) {
          Widget var9 = var0[var8];
          if (var9 != null && (!var9.isIf3 || var9.type == 0 || var9.hasListener || SoundSystem.method1326(var9) != 0 || var9 == Client.field740) && var9.parentId == var1 && (!var9.isIf3 || !Archive.method3322(var9))) {
@@ -290,14 +290,14 @@ public class class40 extends DualNode {
                         continue;
                      }
 
-                     method904(var0, var9.id, var12, var13, var14, var15, var10 - var9.field2589, var11 - var9.field2655);
+                     drawInterface(var0, var9.id, var12, var13, var14, var15, var10 - var9.field2589, var11 - var9.field2655);
                      if (var9.children != null) {
-                        method904(var9.children, var9.id, var12, var13, var14, var15, var10 - var9.field2589, var11 - var9.field2655);
+                        drawInterface(var9.children, var9.id, var12, var13, var14, var15, var10 - var9.field2589, var11 - var9.field2655);
                      }
 
                      InterfaceParent var23 = (InterfaceParent)Client.interfaceParents.method3512((long)var9.id);
                      if (var23 != null) {
-                        VarpDefinition.method927(var23.group, var12, var13, var14, var15, var10, var11);
+                        VarpDefinition.drawWidgets(var23.group, var12, var13, var14, var15, var10, var11);
                      }
                   }
 

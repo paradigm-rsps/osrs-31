@@ -283,7 +283,7 @@ public class TaskHandler implements Runnable {
       descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)Lclass86;"
    )
    public static IndexedSprite method1598(AbstractArchive var0, String var1, String var2) {
-      int var3 = var0.method3219(var1);
+      int var3 = var0.getGroupId(var1);
       int var4 = var0.method3238(var3, var2);
       IndexedSprite var5;
       if (!KitDefinition.method796(var0, var3, var4)) {

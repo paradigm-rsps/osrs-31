@@ -63,7 +63,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
          if (this.field1280 != null) {
             while(this.field1280.status == 0) {
-               SequenceDefinition.method761(1L);
+               SequenceDefinition.sleepWeird(1L);
             }
 
             if (this.field1280.status == 1) {
@@ -419,7 +419,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
                if (var33 != null) {
                   for(var32 = (TileItem)var33.method3533(); var32 != null; var32 = (TileItem)var33.method3535()) {
                      if ((animationCycleEnd & 32767) == var32.id) {
-                        var32.method3567();
+                        var32.remove();
                         break;
                      }
                   }
@@ -444,7 +444,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
                playerIndex = Client.serverPacketBuf.readUnsignedByte();
                if (var35 >= 0 && var2 >= 0 && var35 < 104 && var2 < 104) {
                   var8 = var36 + 1;
-                  if (Tiles.localPlayer.hitSplatTypes2[0] >= var35 - var8 && Tiles.localPlayer.hitSplatTypes2[0] <= var8 + var35 && Tiles.localPlayer.hitSplatValues2[0] >= var2 - var8 && Tiles.localPlayer.hitSplatValues2[0] <= var2 + var8 && Client.field538 != 0 && var37 > 0 && Client.soundEffectCount < 50) {
+                  if (Tiles.localPlayer.pathX[0] >= var35 - var8 && Tiles.localPlayer.pathX[0] <= var8 + var35 && Tiles.localPlayer.pathY[0] >= var2 - var8 && Tiles.localPlayer.pathY[0] <= var2 + var8 && Client.field538 != 0 && var37 > 0 && Client.soundEffectCount < 50) {
                      Client.field742[Client.soundEffectCount] = var3;
                      Client.field726[Client.soundEffectCount] = var37;
                      Client.field727[Client.soundEffectCount] = playerIndex;

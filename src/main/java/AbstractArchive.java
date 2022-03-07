@@ -470,7 +470,7 @@ public abstract class AbstractArchive {
 
    @ObfuscatedName("v")
    @Export("method3219")
-   public int method3219(String var1) {
+   public int getGroupId(String var1) {
       var1 = var1.toLowerCase();
       return this.groupNameHashTable.method3471(class65.method1456(var1));
    }

@@ -121,7 +121,7 @@ public class Frames extends DualNode {
             if (var3 == 7) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -135,7 +135,7 @@ public class Frames extends DualNode {
             } else if (var3 == 8) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -148,7 +148,7 @@ public class Frames extends DualNode {
             } else if (var3 == 9) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -159,7 +159,7 @@ public class Frames extends DualNode {
             } else if (var3 == 10) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -170,7 +170,7 @@ public class Frames extends DualNode {
             } else if (var3 == 11) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -181,7 +181,7 @@ public class Frames extends DualNode {
             } else if (var3 == 12) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -192,7 +192,7 @@ public class Frames extends DualNode {
             } else if (var3 == 13) {
                var5 = Client.npcs[var4];
                if (var5 != null) {
-                  FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var5.hitSplatTypes2[0], var5.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                  FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var5.pathX[0], var5.pathY[0], false, 0, 0, 1, 1, 0, 2);
                   Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                   Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                   Client.mouseCrossColor = 2;
@@ -205,7 +205,7 @@ public class Frames extends DualNode {
                if (var3 == 14) {
                   var16 = Client.players[var4];
                   if (var16 != null) {
-                     FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                     FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
@@ -219,7 +219,7 @@ public class Frames extends DualNode {
                } else if (var3 == 15) {
                   var16 = Client.players[var4];
                   if (var16 != null) {
-                     FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                     FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                      Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                      Client.mouseCrossColor = 2;
@@ -232,9 +232,9 @@ public class Frames extends DualNode {
                } else {
                   boolean var11;
                   if (var3 == 16) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -249,9 +249,9 @@ public class Frames extends DualNode {
                      Client.rsaBuf.writeShortAddLE(var4);
                      Client.rsaBuf.writeShort(var1 + FaceNormal.baseX);
                   } else if (var3 == 17) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -265,9 +265,9 @@ public class Frames extends DualNode {
                      Client.rsaBuf.writeShortAdd(var4);
                      Client.rsaBuf.writeShortAddLE(Client.selectedSpellChildIndex);
                   } else if (var3 == 18) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -279,9 +279,9 @@ public class Frames extends DualNode {
                      Client.rsaBuf.writeShortAdd(var1 + FaceNormal.baseX);
                      Client.rsaBuf.writeShort(var4);
                   } else if (var3 == 19) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -293,9 +293,9 @@ public class Frames extends DualNode {
                      Client.rsaBuf.writeShortAddLE(var4);
                      Client.rsaBuf.writeShortAdd(var2 + baseY);
                   } else if (var3 == 20) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -307,9 +307,9 @@ public class Frames extends DualNode {
                      Client.rsaBuf.writeShortAdd(var1 + FaceNormal.baseX);
                      Client.rsaBuf.writeShortLE(var2 + baseY);
                   } else if (var3 == 21) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -321,9 +321,9 @@ public class Frames extends DualNode {
                      Client.rsaBuf.writeShort(var4);
                      Client.rsaBuf.writeShortAddLE(var2 + baseY);
                   } else if (var3 == 22) {
-                     var11 = FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
+                     var11 = FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 0, 0, 0, 2);
                      if (!var11) {
-                        FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
+                        FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var1, var2, false, 0, 0, 1, 1, 0, 2);
                      }
 
                      Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
@@ -547,7 +547,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 44) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -558,7 +558,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 45) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -569,7 +569,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 46) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -580,7 +580,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 47) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -591,7 +591,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 48) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -602,7 +602,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 49) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -613,7 +613,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 50) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;
@@ -624,7 +624,7 @@ public class Frames extends DualNode {
                            } else if (var3 == 51) {
                               var16 = Client.players[var4];
                               if (var16 != null) {
-                                 FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var16.hitSplatTypes2[0], var16.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var16.pathX[0], var16.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                  Client.mouseCrossX = MouseHandler.MouseHandler_lastPressedX;
                                  Client.mouseCrossY = MouseHandler.MouseHandler_lastPressedY;
                                  Client.mouseCrossColor = 2;

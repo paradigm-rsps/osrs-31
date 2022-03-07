@@ -4,6 +4,7 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import osrs.classic.server.util.logger.Logger;
 
 @ObfuscatedName("o")
 @Implements("TileItem")
@@ -148,7 +149,7 @@ public final class TileItem extends Renderable {
          var10 = var9 * 768 >> 8;
 
          int var19;
-         int var20;
+         int renderPlane;
          for(var11 = 1; var11 < 103; ++var11) {
             for(var12 = 1; var12 < 103; ++var12) {
                var13 = Tiles.Tiles_heights[var2][var12 + 1][var11] - Tiles.Tiles_heights[var2][var12 - 1][var11];
@@ -158,8 +159,8 @@ public final class TileItem extends Renderable {
                var17 = 65536 / var15;
                var18 = (var14 << 8) / var15;
                var19 = (var16 * -50 + var18 * -50 + var17 * -10) / var10 + 96;
-               var20 = (var42[var12][var11 + 1] >> 3) + (var42[var12 - 1][var11] >> 2) + (var42[var12][var11 - 1] >> 2) + (var42[var12 + 1][var11] >> 3) + (var42[var12][var11] >> 1);
-               Tiles.field120[var12][var11] = var19 - var20;
+               renderPlane = (var42[var12][var11 + 1] >> 3) + (var42[var12 - 1][var11] >> 2) + (var42[var12][var11 - 1] >> 2) + (var42[var12 + 1][var11] >> 3) + (var42[var12][var11] >> 1);
+               Tiles.field120[var12][var11] = var19 - renderPlane;
             }
          }
 
@@ -233,14 +234,14 @@ public final class TileItem extends Renderable {
                         }
 
                         if ((Tiles.Tiles_renderFlags[var2][var11][var17] & 8) != 0) {
-                           var20 = 0;
+                           renderPlane = 0;
                         } else if (var2 > 0 && (Tiles.Tiles_renderFlags[1][var11][var17] & 2) != 0) {
-                           var20 = var2 - 1;
+                           renderPlane = var2 - 1;
                         } else {
-                           var20 = var2;
+                           renderPlane = var2;
                         }
 
-                        if (var20 != Client.field531) {
+                        if (renderPlane != Client.renderPlane) {
                            continue;
                         }
                      }
@@ -249,9 +250,9 @@ public final class TileItem extends Renderable {
                         Tiles.Tiles_minPlane = var2;
                      }
 
-                     var20 = Tiles.Tiles_underlays[var2][var11][var17] & 255;
+                     renderPlane = Tiles.Tiles_underlays[var2][var11][var17] & 255;
                      int var21 = VarpDefinition.Tiles_overlays[var2][var11][var17] & 255;
-                     if (var20 > 0 || var21 > 0) {
+                     if (renderPlane > 0 || var21 > 0) {
                         int var22 = Tiles.Tiles_heights[var2][var11][var17];
                         int var23 = Tiles.Tiles_heights[var2][var11 + 1][var17];
                         int var24 = Tiles.Tiles_heights[var2][var11 + 1][var17 + 1];
@@ -264,7 +265,7 @@ public final class TileItem extends Renderable {
                         int var31 = -1;
                         int var32;
                         int var33;
-                        if (var20 > 0) {
+                        if (renderPlane > 0) {
                            var32 = var12 * 256 / var15;
                            var33 = var13 / var16;
                            int var34 = var14 / var16;
@@ -282,7 +283,7 @@ public final class TileItem extends Renderable {
 
                         if (var2 > 0) {
                            boolean var47 = true;
-                           if (var20 == 0 && Tiles.Tiles_shapes[var2][var11][var17] != 0) {
+                           if (renderPlane == 0 && Tiles.Tiles_shapes[var2][var11][var17] != 0) {
                               var47 = false;
                            }
 
@@ -570,6 +571,7 @@ public final class TileItem extends Renderable {
    @ObfuscatedName("v")
    static final void loggedOutCycle() {
       try {
+         Logger.INSTANCE.setHeader("Client");
          if (Client.loginStep == 0) {
             if (GraphicsObject.gameSocket != null) {
                GraphicsObject.gameSocket.method1471();
@@ -583,6 +585,7 @@ public final class TileItem extends Renderable {
          }
 
          if (Client.loginStep == 1) {
+            Logger.INSTANCE.debug("loginState 1 - init login socket");
             if (StudioGame.field2087 == null) {
                StudioGame.field2087 = ItemContainer.taskHandler.createSocket(SoundSystem.worldHost, class82.currentPort);
             }
@@ -599,6 +602,7 @@ public final class TileItem extends Renderable {
          }
 
          if (Client.loginStep == 2) {
+            Logger.INSTANCE.debug("loginState 2 - login handshake");
             Client.rsaBuf.offset = 0;
             Client.rsaBuf.writeByte(14);
             GraphicsObject.gameSocket.flush(Client.rsaBuf.array, 0, 1);
@@ -606,8 +610,9 @@ public final class TileItem extends Renderable {
             Client.loginStep = 3;
          }
 
-         int responseState;
+         int responseState = -1;
          if (Client.loginStep == 3) {
+            Logger.INSTANCE.debug("loginState 3 - handshake response");
             if (Client.pcmPlayer0 != null) {
                Client.pcmPlayer0.method1228();
             }
@@ -634,9 +639,10 @@ public final class TileItem extends Renderable {
             Client.loginStep = 5;
          }
 
-         int var1;
-         int var2;
+         int var1 = -1;
+         int var2 = -1;
          if (Client.loginStep == 5) {
+            Logger.INSTANCE.debug("loginState 5 - login (1) Client -> Server");
             int[] randomKeys = new int[]{(int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D)};
             Client.rsaBuf.offset = 0;
             Client.rsaBuf.writeByte(10);
@@ -716,6 +722,7 @@ public final class TileItem extends Renderable {
          }
 
          if (Client.loginStep == 6 && GraphicsObject.gameSocket.available() > 0) {
+            Logger.INSTANCE.debug("loginState 6 - login (2) process server response");
             responseState = GraphicsObject.gameSocket.readByte();
             if (responseState == 21 && Client.gameState == 20) {
                Client.loginStep = 7;
@@ -750,7 +757,7 @@ public final class TileItem extends Renderable {
                   }
 
                   ItemContainer.itemContainers = new NodeHashTable(32);
-                  NPC.method260(30);
+                  NPC.updateGameState(30);
 
                   for(var1 = 0; var1 < 100; ++var1) {
                      Client.field686[var1] = true;
@@ -783,18 +790,16 @@ public final class TileItem extends Renderable {
 
          } else {
             if (Client.loginStep == 9 && GraphicsObject.gameSocket.available() >= 5) {
-
-               // START DECODE LOGIN RESPONSE
-               System.out.println("here");
-
+               Logger.INSTANCE.debug("loginState 9 - login (3) handle OK response (Server -> Client)");
                Client.privilegeLevel = GraphicsObject.gameSocket.readByte();
-               System.out.println(Client.privilegeLevel);
                Client.isModerator = GraphicsObject.gameSocket.readByte() == 1;
+
                Client.localPlayerIndex = GraphicsObject.gameSocket.readByte();
                Client.localPlayerIndex <<= 8;
                Client.localPlayerIndex += GraphicsObject.gameSocket.readByte();
                Client.isMember = GraphicsObject.gameSocket.readByte();
-               //GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 1);
+
+               GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 1);
 
 
                // START DECODE INITIAL PACKET [LoadRegionNormal]
@@ -803,6 +808,7 @@ public final class TileItem extends Renderable {
                // calling readOpcode which just reads a byte and add isaacRandom.nextInt()
                Client.serverPacketBuf.offset = 0;
                Client.serverPacketOpcode = Client.serverPacketBuf.readOpcode();
+               Logger.INSTANCE.debug("loginState 9 - login (4) switch to encrypted packetBuffer");
                GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 2);
                Client.serverPacketBuf.offset = 0;
                Client.serverPacketLength = Client.serverPacketBuf.readUnsignedShort();
@@ -826,164 +832,18 @@ public final class TileItem extends Renderable {
                Client.loginStep = 10;
             }
 
-            // I think this just handles socket timeout during login but it does something which changing the port.
-            // The game is able to reconnect by incrementing the sockets client port on the system by one.
-            if (Client.loginStep != 10) {
-               ++Client.socketIdleCycles;
-               if (Client.socketIdleCycles > 2000) {
-                  if (Client.connectedState < 1) {
-                     if (class82.currentPort == MouseRecorder.OSRS_PORT) {
-                        class82.currentPort = Client.somePortIncrement;
-                     } else {
-                        class82.currentPort = MouseRecorder.OSRS_PORT;
-                     }
-
-                     ++Client.connectedState;
-                     Client.loginStep = 0;
-                  } else {
-                     loginError(-3);
-                  }
-               }
-            } else {
+            if (Client.loginStep == 10){
+               Logger.INSTANCE.debug("loginState 10 - login (5) switch to encrypted packetBuffer");
                if (GraphicsObject.gameSocket.available() >= Client.serverPacketLength) {
                   Client.serverPacketBuf.offset = 0;
 
                   // Reads the # of bytes the packet said it's length was off the packet buffer.
                   GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, Client.serverPacketLength);
-                  Client.field545 = -1L;
-                  Client.field494 = -1;
-                  BoundaryObject.field1625.index = 0;
-                  class23.hasFocus = true;
-                  Client.field613 = true;
-                  Client.field707 = -1L;
-                  class10.method135();
-                  Client.rsaBuf.offset = 0;
-                  Client.serverPacketBuf.offset = 0;
-                  Client.serverPacketOpcode = -1;
-                  Client.field527 = -1;
-                  Client.field728 = -1;
-                  Client.field488 = -1;
-                  Client.field565 = 0;
-                  Client.field585 = 0;
-                  Client.logoutTimer = 0;
-                  Client.hintArrowType = 0;
-                  Client.menuOptionsCount = 0;
-                  Client.isMenuOpen = false;
-                  MouseHandler.MouseHandler_idleCycles = 0;
 
-                  for(responseState = 0; responseState < 100; ++responseState) {
-                     Client.field697[responseState] = null;
-                  }
+                  resetViewport(responseState, var1, var2);
 
-                  Client.field580 = 0;
-                  Client.isItemSelected = 0;
-                  Client.isSpellSelected = false;
-                  Client.soundEffectCount = 0;
-                  Client.field734 = (int)(Math.random() * 100.0D) - 50;
-                  Client.field549 = (int)(Math.random() * 110.0D) - 55;
-                  Client.field551 = (int)(Math.random() * 80.0D) - 40;
-                  Client.field554 = (int)(Math.random() * 120.0D) - 60;
-                  Client.field556 = (int)(Math.random() * 30.0D) - 20;
-                  Client.field569 = (int)(Math.random() * 20.0D) - 10 & 2047;
-                  Client.field717 = 0;
-                  Client.field710 = -1;
-                  Client.field715 = 0;
-                  Client.field716 = 0;
-                  Client.field604 = 0;
-                  Client.npcCount = 0;
-
-                  for(responseState = 0; responseState < 2048; ++responseState) {
-                     Client.players[responseState] = null;
-                     Client.field608[responseState] = null;
-                  }
-
-                  for(responseState = 0; responseState < 32768; ++responseState) {
-                     Client.npcs[responseState] = null;
-                  }
-
-                  Tiles.localPlayer = Client.players[2047] = new Player();
-                  Client.field619.method3527();
-                  Client.field620.method3527();
-
-                  for(responseState = 0; responseState < 4; ++responseState) {
-                     for(var1 = 0; var1 < 104; ++var1) {
-                        for(var2 = 0; var2 < 104; ++var2) {
-                           Client.groundItems[responseState][var1][var2] = null;
-                        }
-                     }
-                  }
-
-                  Client.pendingSpawns = new NodeDeque();
-                  Client.field737 = 0;
-                  Client.field736 = 0;
-                  Client.field534 = 0;
-
-                  for(responseState = 0; responseState < VarpDefinition.field1039; ++responseState) {
-                     VarpDefinition var9 = GameBuild.method2854(responseState);
-                     if (var9 != null && var9.type == 0) {
-                        Varps.Varps_temp[responseState] = 0;
-                        Varps.Varps_main[responseState] = 0;
-                     }
-                  }
-
-                  for(responseState = 0; responseState < Client.field677.length; ++responseState) {
-                     Client.field677[responseState] = -1;
-                  }
-
-                  if (Client.field643 != -1) {
-                     responseState = Client.field643;
-                     if (responseState != -1 && Widget.Widget_loadedInterfaces[responseState]) {
-                        Widget.Widget_archive.method3216(responseState);
-                        if (Widget.Widget_interfaceComponents[responseState] != null) {
-                           boolean var14 = true;
-
-                           for(var2 = 0; var2 < Widget.Widget_interfaceComponents[responseState].length; ++var2) {
-                              if (Widget.Widget_interfaceComponents[responseState][var2] != null) {
-                                 if (Widget.Widget_interfaceComponents[responseState][var2].type != 2) {
-                                    Widget.Widget_interfaceComponents[responseState][var2] = null;
-                                 } else {
-                                    var14 = false;
-                                 }
-                              }
-                           }
-
-                           if (var14) {
-                              Widget.Widget_interfaceComponents[responseState] = null;
-                           }
-
-                           Widget.Widget_loadedInterfaces[responseState] = false;
-                        }
-                     }
-                  }
-
-                  for(InterfaceParent var17 = (InterfaceParent)Client.interfaceParents.method3515(); var17 != null; var17 = (InterfaceParent)Client.interfaceParents.method3516()) {
-                     Tiles.method60(var17, true);
-                  }
-
-                  Client.field643 = -1;
-                  Client.interfaceParents = new NodeHashTable(8);
-                  Client.meslayerContinueWidget = null;
-                  Client.isMenuOpen = false;
-                  Client.menuOptionsCount = 0;
-                  Client.playerAppearance.setPlayerAppearance((int[])null, new int[]{0, 0, 0, 0, 0}, false, -1);
-
-                  for(responseState = 0; responseState < 8; ++responseState) {
-                     Client.playerMenuActions[responseState] = null;
-                     Client.playerOptionsPriorities[responseState] = false;
-                  }
-
-                  ItemContainer.itemContainers = new NodeHashTable(32);
-                  Client.field489 = true;
-
-                  for(responseState = 0; responseState < 100; ++responseState) {
-                     Client.field686[responseState] = true;
-                  }
-
-                  Client.field660 = null;
-                  SoundSystem.field1188 = 0;
-                  ItemComposition.field1026 = null;
-                  Client.field746 = -1;
                   Login.loadRegions(false);
+
                   Client.serverPacketOpcode = -1;
                }
 
@@ -1003,6 +863,143 @@ public final class TileItem extends Renderable {
             loginError(-2);
          }
       }
+   }
+
+   static void resetViewport(int responseState, int var1, int var2) throws IOException {
+
+      Client.field545 = -1L;
+      Client.field494 = -1;
+      BoundaryObject.field1625.index = 0;
+      class23.hasFocus = true;
+      Client.field613 = true;
+      Client.field707 = -1L;
+      class10.method135();
+      Client.rsaBuf.offset = 0;
+      Client.serverPacketBuf.offset = 0;
+      Client.serverPacketOpcode = -1;
+      Client.field527 = -1;
+      Client.field728 = -1;
+      Client.field488 = -1;
+      Client.field565 = 0;
+      Client.field585 = 0;
+      Client.logoutTimer = 0;
+      Client.hintArrowType = 0;
+      Client.menuOptionsCount = 0;
+      Client.isMenuOpen = false;
+      MouseHandler.MouseHandler_idleCycles = 0;
+
+      for(responseState = 0; responseState < 100; ++responseState) {
+         Client.field697[responseState] = null;
+      }
+
+      Client.field580 = 0;
+      Client.isItemSelected = 0;
+      Client.isSpellSelected = false;
+      Client.soundEffectCount = 0;
+      Client.field734 = (int)(Math.random() * 100.0D) - 50;
+      Client.field549 = (int)(Math.random() * 110.0D) - 55;
+      Client.field551 = (int)(Math.random() * 80.0D) - 40;
+      Client.field554 = (int)(Math.random() * 120.0D) - 60;
+      Client.field556 = (int)(Math.random() * 30.0D) - 20;
+      Client.field569 = (int)(Math.random() * 20.0D) - 10 & 2047;
+      Client.field717 = 0;
+      Client.field710 = -1;
+      Client.field715 = 0;
+      Client.field716 = 0;
+      Client.field604 = 0;
+      Client.npcCount = 0;
+
+      for(responseState = 0; responseState < 2048; ++responseState) {
+         Client.players[responseState] = null;
+         Client.field608[responseState] = null;
+      }
+
+      for(responseState = 0; responseState < 32768; ++responseState) {
+         Client.npcs[responseState] = null;
+      }
+
+      Tiles.localPlayer = Client.players[2047] = new Player();
+      Client.field619.method3527();
+      Client.field620.method3527();
+
+      for(responseState = 0; responseState < 4; ++responseState) {
+         for(var1 = 0; var1 < 104; ++var1) {
+            for(var2 = 0; var2 < 104; ++var2) {
+               Client.groundItems[responseState][var1][var2] = null;
+            }
+         }
+      }
+
+      Client.pendingSpawns = new NodeDeque();
+      Client.field737 = 0;
+      Client.field736 = 0;
+      Client.field534 = 0;
+
+      for(responseState = 0; responseState < VarpDefinition.field1039; ++responseState) {
+         VarpDefinition var9 = GameBuild.method2854(responseState);
+         if (var9 != null && var9.type == 0) {
+            Varps.Varps_temp[responseState] = 0;
+            Varps.Varps_main[responseState] = 0;
+         }
+      }
+
+      for(responseState = 0; responseState < Client.field677.length; ++responseState) {
+         Client.field677[responseState] = -1;
+      }
+
+      if (Client.rootInterface != -1) {
+         responseState = Client.rootInterface;
+         if (responseState != -1 && Widget.Widget_loadedInterfaces[responseState]) {
+            Widget.Widget_archive.method3216(responseState);
+            if (Widget.Widget_interfaceComponents[responseState] != null) {
+               boolean var14 = true;
+
+               for(var2 = 0; var2 < Widget.Widget_interfaceComponents[responseState].length; ++var2) {
+                  if (Widget.Widget_interfaceComponents[responseState][var2] != null) {
+                     if (Widget.Widget_interfaceComponents[responseState][var2].type != 2) {
+                        Widget.Widget_interfaceComponents[responseState][var2] = null;
+                     } else {
+                        var14 = false;
+                     }
+                  }
+               }
+
+               if (var14) {
+                  Widget.Widget_interfaceComponents[responseState] = null;
+               }
+
+               Widget.Widget_loadedInterfaces[responseState] = false;
+            }
+         }
+      }
+
+      for(InterfaceParent var17 = (InterfaceParent)Client.interfaceParents.method3515(); var17 != null; var17 = (InterfaceParent)Client.interfaceParents.method3516()) {
+         Tiles.method60(var17, true);
+      }
+
+      Client.rootInterface = -1;
+      Client.interfaceParents = new NodeHashTable(8);
+      Client.meslayerContinueWidget = null;
+      Client.isMenuOpen = false;
+      Client.menuOptionsCount = 0;
+      Client.playerAppearance.setPlayerAppearance((int[])null, new int[]{0, 0, 0, 0, 0}, false, -1);
+
+      for(responseState = 0; responseState < 8; ++responseState) {
+         Client.playerMenuActions[responseState] = null;
+         Client.playerOptionsPriorities[responseState] = false;
+      }
+
+      ItemContainer.itemContainers = new NodeHashTable(32);
+      Client.field489 = true;
+
+      for(responseState = 0; responseState < 100; ++responseState) {
+         Client.field686[responseState] = true;
+      }
+
+      Client.field660 = null;
+      SoundSystem.field1188 = 0;
+      ItemComposition.field1026 = null;
+      Client.chunkX = -1;
    }
 
    @ObfuscatedName("j")
@@ -1074,7 +1071,7 @@ public final class TileItem extends Renderable {
          BufferedFile.method624("Unexpected server response", "Please try using a different world.", "");
       }
 
-      NPC.method260(10);
+      NPC.updateGameState(10);
    }
 
    @ObfuscatedName("ck")

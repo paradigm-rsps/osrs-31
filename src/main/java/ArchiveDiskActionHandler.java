@@ -39,7 +39,7 @@ public class ArchiveDiskActionHandler implements Runnable {
                   var1.archiveDisk.method1501((int)var1.key, var1.data, var1.data.length);
                   var2 = ArchiveDiskActionHandler_requestQueue;
                   synchronized(ArchiveDiskActionHandler_requestQueue) {
-                     var1.method3567();
+                     var1.remove();
                   }
                } else if (var1.type == 1) {
                   var1.data = var1.archiveDisk.method1500((int)var1.key);
@@ -60,7 +60,7 @@ public class ArchiveDiskActionHandler implements Runnable {
                   field2565 = 600;
                }
             } else {
-               SequenceDefinition.method761(100L);
+               SequenceDefinition.sleepWeird(100L);
                var14 = ArchiveDiskActionHandler_lock;
                synchronized(ArchiveDiskActionHandler_lock) {
                   if (field2565 <= 1) {

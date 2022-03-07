@@ -16,7 +16,7 @@ public abstract class Clock {
       descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)[Lclass85;"
    )
    public static SpritePixels[] method1467(AbstractArchive var0, String var1, String var2) {
-      int var3 = var0.method3219(var1);
+      int var3 = var0.getGroupId(var1);
       int var4 = var0.method3238(var3, var2);
       SpritePixels[] var5;
       if (!KitDefinition.method796(var0, var3, var4)) {
@@ -53,7 +53,7 @@ public abstract class Clock {
       if (Client.logoutTimer > 0) {
          Canvas.method1655();
       } else {
-         NPC.method260(40);
+         NPC.updateGameState(40);
          EnumComposition.field978 = GraphicsObject.gameSocket;
          GraphicsObject.gameSocket = null;
       }

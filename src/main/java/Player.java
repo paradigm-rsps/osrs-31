@@ -169,8 +169,8 @@ public final class Player extends Actor {
       if (this.appearance == null) {
          return null;
       } else {
-         SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? class23.method250(super.sequence) : null;
-         SequenceDefinition var2 = super.movementSequence == -1 || this.isUnanimated || super.movementSequence == super.idleSequence && var1 != null ? null : class23.method250(super.movementSequence);
+         SequenceDefinition var1 = super.animation != -1 && super.sequenceDelay == 0 ? class23.getAnimations(super.animation) : null;
+         SequenceDefinition var2 = super.movementSequence == -1 || this.isUnanimated || super.movementSequence == super.idleSequence && var1 != null ? null : class23.getAnimations(super.movementSequence);
          Model var3 = this.appearance.method3407(var1, super.sequenceFrame, var2, super.movementFrame);
          if (var3 == null) {
             return null;
@@ -241,7 +241,7 @@ public final class Player extends Actor {
       descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;IZ)V"
    )
    public static void method23(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
-      int var5 = var0.method3219(var1);
+      int var5 = var0.getGroupId(var1);
       int var6 = var0.method3238(var5, var2);
       class161.method3399(var0, var5, var6, var3, var4);
    }

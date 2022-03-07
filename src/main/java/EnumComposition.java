@@ -210,7 +210,7 @@ public class EnumComposition extends DualNode {
             int var4 = var2.x >> 7;
             int var5 = var2.y >> 7;
             if (var4 >= 0 && var4 < 104 && var5 >= 0 && var5 < 104) {
-               if (var2.field461 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
+               if (var2.size == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
                   if (Client.field586[var4][var5] == Client.field724) {
                      continue;
                   }
@@ -222,7 +222,7 @@ public class EnumComposition extends DualNode {
                   var3 -= Integer.MIN_VALUE;
                }
 
-               Interpreter.scene.method2094(class22.Client_plane, var2.x, var2.y, BufferedFile.getTileHeight(var2.field461 * 64 - 64 + var2.x, var2.field461 * 64 - 64 + var2.y, class22.Client_plane), var2.field461 * 64 - 64 + 60, var2, var2.field432, var3, var2.isWalking);
+               Interpreter.scene.method2094(class22.Client_plane, var2.x, var2.y, BufferedFile.getTileHeight(var2.size * 64 - 64 + var2.x, var2.size * 64 - 64 + var2.y, class22.Client_plane), var2.size * 64 - 64 + 60, var2, var2.field432, var3, var2.isWalking);
             }
          }
       }

@@ -171,6 +171,7 @@ data class ObjConfig(override val id: Int) : Config(id) {
                     82 -> objConfig.mapIconId = data.readUnsignedShort()
                     89 -> objConfig.randomizeAnimationStart = true
                     249 -> objConfig.params = data.readParams()
+                    60 -> {}
                     else -> throw IOException("Did not recognise opcode $opcode.")
                 }
             }

@@ -168,7 +168,7 @@ public class Interpreter {
                scene.method2094(class22.Client_plane, (int)var4.x, (int)var4.y, (int)var4.z, 60, var4, var4.yaw, -1, false);
             }
          } else {
-            var4.method3567();
+            var4.remove();
          }
       }
 
@@ -177,13 +177,13 @@ public class Interpreter {
             if (Client.cycle >= var35.cycleStart) {
                var35.method207(Client.field525);
                if (var35.isFinished) {
-                  var35.method3567();
+                  var35.remove();
                } else {
                   scene.method2094(var35.plane, var35.x, var35.y, var35.height, 60, var35, 0, -1, false);
                }
             }
          } else {
-            var35.method3567();
+            var35.remove();
          }
       }
 

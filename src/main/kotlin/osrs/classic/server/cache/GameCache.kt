@@ -40,7 +40,7 @@ object GameCache {
 
         archiveCrcs.addAll(validator.archiveValidators.map { it.crc })
 
-        //this.loadArchives()
+        this.loadArchives()
     }
 
     private fun loadArchives() {

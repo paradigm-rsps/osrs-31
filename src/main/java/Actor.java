@@ -20,7 +20,7 @@ public abstract class Actor extends Renderable {
    @Export("isWalking")
    boolean isWalking = false;
    @ObfuscatedName("b")
-   int field461 = 1;
+   int size = 1;
    @ObfuscatedName("y")
    @Export("idleSequence")
    int idleSequence = -1;
@@ -84,7 +84,7 @@ public abstract class Actor extends Renderable {
    int field449 = 0;
    @ObfuscatedName("ad")
    @Export("sequence")
-   int sequence = -1;
+   int animation = -1;
    @ObfuscatedName("az")
    @Export("sequenceFrame")
    int sequenceFrame = 0;
@@ -140,16 +140,16 @@ public abstract class Actor extends Renderable {
    int pathLength = 0;
    @ObfuscatedName("bs")
    @Export("hitSplatTypes2")
-   int[] hitSplatTypes2 = new int[10];
+   int[] pathX = new int[10];
    @ObfuscatedName("bx")
    @Export("hitSplatValues2")
-   int[] hitSplatValues2 = new int[10];
+   int[] pathY = new int[10];
    @ObfuscatedName("bl")
    boolean[] field459 = new boolean[10];
    @ObfuscatedName("be")
-   int field476 = 0;
+   int delaySteps = 0;
    @ObfuscatedName("bi")
-   int field472 = 0;
+   int remainingSteps = 0;
 
    @ObfuscatedName("f")
    @Export("vmethod281")
@@ -158,45 +158,45 @@ public abstract class Actor extends Renderable {
    }
 
    @ObfuscatedName("a")
-   final void method290(int var1, int var2, boolean var3) {
-      if (this.sequence != -1 && class23.method250(this.sequence).field900 == 1) {
-         this.sequence = -1;
+   final void setPosition(int x, int y, boolean isTeleport) {
+      if (this.animation != -1 && class23.getAnimations(this.animation).field900 == 1) {
+         this.animation = -1;
       }
 
-      if (!var3) {
-         int var4 = var1 - this.hitSplatTypes2[0];
-         int var5 = var2 - this.hitSplatValues2[0];
+      if (!isTeleport) {
+         int var4 = x - this.pathX[0];
+         int var5 = y - this.pathY[0];
          if (var4 >= -8 && var4 <= 8 && var5 >= -8 && var5 <= 8) {
             if (this.pathLength < 9) {
                ++this.pathLength;
             }
 
             for(int var6 = this.pathLength; var6 > 0; --var6) {
-               this.hitSplatTypes2[var6] = this.hitSplatTypes2[var6 - 1];
-               this.hitSplatValues2[var6] = this.hitSplatValues2[var6 - 1];
+               this.pathX[var6] = this.pathX[var6 - 1];
+               this.pathY[var6] = this.pathY[var6 - 1];
                this.field459[var6] = this.field459[var6 - 1];
             }
 
-            this.hitSplatTypes2[0] = var1;
-            this.hitSplatValues2[0] = var2;
+            this.pathX[0] = x;
+            this.pathY[0] = y;
             this.field459[0] = false;
             return;
          }
       }
 
       this.pathLength = 0;
-      this.field472 = 0;
-      this.field476 = 0;
-      this.hitSplatTypes2[0] = var1;
-      this.hitSplatValues2[0] = var2;
-      this.x = this.hitSplatTypes2[0] * 128 + this.field461 * 64;
-      this.y = this.hitSplatValues2[0] * 128 + this.field461 * 64;
+      this.remainingSteps = 0;
+      this.delaySteps = 0;
+      this.pathX[0] = x;
+      this.pathY[0] = y;
+      this.x = this.pathX[0] * 128 + this.size * 64;
+      this.y = this.pathY[0] * 128 + this.size * 64;
    }
 
    @ObfuscatedName("z")
    final void method279(int var1, boolean var2) {
-      int var3 = this.hitSplatTypes2[0];
-      int var4 = this.hitSplatValues2[0];
+      int var3 = this.pathX[0];
+      int var4 = this.pathY[0];
       if (var1 == 0) {
          --var3;
          ++var4;
@@ -233,8 +233,8 @@ public abstract class Actor extends Renderable {
          --var4;
       }
 
-      if (this.sequence != -1 && class23.method250(this.sequence).field900 == 1) {
-         this.sequence = -1;
+      if (this.animation != -1 && class23.getAnimations(this.animation).field900 == 1) {
+         this.animation = -1;
       }
 
       if (this.pathLength < 9) {
@@ -242,13 +242,13 @@ public abstract class Actor extends Renderable {
       }
 
       for(int var5 = this.pathLength; var5 > 0; --var5) {
-         this.hitSplatTypes2[var5] = this.hitSplatTypes2[var5 - 1];
-         this.hitSplatValues2[var5] = this.hitSplatValues2[var5 - 1];
+         this.pathX[var5] = this.pathX[var5 - 1];
+         this.pathY[var5] = this.pathY[var5 - 1];
          this.field459[var5] = this.field459[var5 - 1];
       }
 
-      this.hitSplatTypes2[0] = var3;
-      this.hitSplatValues2[0] = var4;
+      this.pathX[0] = var3;
+      this.pathY[0] = var4;
       this.field459[0] = var2;
    }
 
@@ -256,7 +256,7 @@ public abstract class Actor extends Renderable {
    @Export("method280")
    final void method280() {
       this.pathLength = 0;
-      this.field472 = 0;
+      this.remainingSteps = 0;
    }
 
    @ObfuscatedName("m")
@@ -291,7 +291,7 @@ public abstract class Actor extends Renderable {
             var8 = var0;
          }
 
-         if (var8 != Client.field531) {
+         if (var8 != Client.renderPlane) {
             return;
          }
       }

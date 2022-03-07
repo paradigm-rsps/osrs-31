@@ -1133,7 +1133,7 @@ public abstract class Renderable extends DualNode {
                                     for(var33 = 0; var33 < Client.field604; ++var33) {
                                        Player var37 = Client.players[Client.field524[var33]];
                                        if (var37 != null && var37.field35 != null && var37.field35.equalsIgnoreCase(var15)) {
-                                          FileSystem.method1517(Tiles.localPlayer.hitSplatTypes2[0], Tiles.localPlayer.hitSplatValues2[0], var37.hitSplatTypes2[0], var37.hitSplatValues2[0], false, 0, 0, 1, 1, 0, 2);
+                                          FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var37.pathX[0], var37.pathY[0], false, 0, 0, 1, 1, 0, 2);
                                           if (var14 == ScriptOpcodes.GET_VARP) {
                                              Client.rsaBuf.writeByteOpcode(2);
                                              Client.rsaBuf.writeShortAddLE(Client.field524[var33]);

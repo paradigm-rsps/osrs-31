@@ -325,13 +325,13 @@ public class SequenceDefinition extends DualNode {
    }
 
    @ObfuscatedName("i")
-   public static final void method761(long var0) {
+   public static final void sleepWeird(long var0) {
       if (var0 > 0L) {
          if (0L == var0 % 10L) {
-            ItemContainer.method199(var0 - 1L);
-            ItemContainer.method199(1L);
+            ItemContainer.sleep(var0 - 1L);
+            ItemContainer.sleep(1L);
          } else {
-            ItemContainer.method199(var0);
+            ItemContainer.sleep(var0);
          }
 
       }

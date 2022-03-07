@@ -25,7 +25,7 @@ public final class ObjectSound extends Node {
    )
    static NodeDeque objectSounds = new NodeDeque();
    @ObfuscatedName("dd")
-   static int[] field93;
+   static int[] regionMapArchiveIds;
    @ObfuscatedName("ev")
    @Export("headIconHintSprites")
    @ObfuscatedSignature(
@@ -105,7 +105,7 @@ public final class ObjectSound extends Node {
       descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)[Lclass86;"
    )
    public static IndexedSprite[] method52(AbstractArchive var0, String var1, String var2) {
-      int var3 = var0.method3219(var1);
+      int var3 = var0.getGroupId(var1);
       int var4 = var0.method3238(var3, var2);
       IndexedSprite[] var5;
       if (!KitDefinition.method796(var0, var3, var4)) {

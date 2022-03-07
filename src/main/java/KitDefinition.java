@@ -279,25 +279,25 @@ public class KitDefinition extends DualNode {
    static final void method803(Actor var0) {
       var0.movementSequence = var0.idleSequence;
       if (var0.pathLength == 0) {
-         var0.field476 = 0;
+         var0.delaySteps = 0;
       } else {
-         if (var0.sequence != -1 && var0.sequenceDelay == 0) {
-            SequenceDefinition var1 = class23.method250(var0.sequence);
-            if (var0.field472 > 0 && var1.field899 == 0) {
-               ++var0.field476;
+         if (var0.animation != -1 && var0.sequenceDelay == 0) {
+            SequenceDefinition var1 = class23.getAnimations(var0.animation);
+            if (var0.remainingSteps > 0 && var1.field899 == 0) {
+               ++var0.delaySteps;
                return;
             }
 
-            if (var0.field472 <= 0 && var1.field900 == 0) {
-               ++var0.field476;
+            if (var0.remainingSteps <= 0 && var1.field900 == 0) {
+               ++var0.delaySteps;
                return;
             }
          }
 
          int var9 = var0.x;
          int var2 = var0.y;
-         int var3 = var0.field461 * 64 + var0.hitSplatTypes2[var0.pathLength - 1] * 128;
-         int var4 = var0.field461 * 64 + var0.hitSplatValues2[var0.pathLength - 1] * 128;
+         int var3 = var0.size * 64 + var0.pathX[var0.pathLength - 1] * 128;
+         int var4 = var0.size * 64 + var0.pathY[var0.pathLength - 1] * 128;
          if (var3 - var9 <= 256 && var3 - var9 >= -256 && var4 - var2 <= 256 && var4 - var2 >= -256) {
             if (var9 < var3) {
                if (var2 < var4) {
@@ -359,9 +359,9 @@ public class KitDefinition extends DualNode {
                   var7 = 8;
                }
 
-               if (var0.field476 > 0 && var0.pathLength > 1) {
+               if (var0.delaySteps > 0 && var0.pathLength > 1) {
                   var7 = 8;
-                  --var0.field476;
+                  --var0.delaySteps;
                }
             } else {
                if (var0.pathLength > 1) {
@@ -372,9 +372,9 @@ public class KitDefinition extends DualNode {
                   var7 = 8;
                }
 
-               if (var0.field476 > 0 && var0.pathLength > 1) {
+               if (var0.delaySteps > 0 && var0.pathLength > 1) {
                   var7 = 8;
-                  --var0.field476;
+                  --var0.delaySteps;
                }
             }
 
@@ -412,8 +412,8 @@ public class KitDefinition extends DualNode {
 
             if (var3 == var0.x && var4 == var0.y) {
                --var0.pathLength;
-               if (var0.field472 > 0) {
-                  --var0.field472;
+               if (var0.remainingSteps > 0) {
+                  --var0.remainingSteps;
                }
             }
 

@@ -62,6 +62,6 @@ public final class Canvas extends java.awt.Canvas {
       }
 
       ObjectSound.objectSounds.method3527();
-      NPC.method260(10);
+      NPC.updateGameState(10);
    }
 }

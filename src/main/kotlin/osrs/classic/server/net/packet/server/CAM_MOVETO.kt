@@ -12,11 +12,11 @@ import osrs.classic.server.net.game.ServerPacket
 class CAM_MOVETO() : Packet {
     companion object : Codec<CAM_MOVETO> {
         override fun encode(session: Session, packet: CAM_MOVETO, buf: ByteBuf) {
-            buf.writeByte(0) //u ?
-            buf.writeByte(0) //u ?
-            buf.writeShort(0) //u ?
-            buf.writeByte(0) //u ?
-            buf.writeByte(0) //u ?
+            buf.writeByte(0) // ?
+            buf.writeByte(0) // ?
+            buf.writeShort(0) // ?
+            buf.writeByte(0) // ?
+            buf.writeByte(0) // ?
         }
     }
 }

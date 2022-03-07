@@ -131,7 +131,7 @@ public class ItemContainer extends Node {
                      }
 
                      BufferedFile.method624("", "Connecting to server...", "");
-                     NPC.method260(20);
+                     NPC.updateGameState(20);
                      return;
                   }
 
@@ -187,7 +187,7 @@ public class ItemContainer extends Node {
                               }
 
                               BufferedFile.method624("", "Connecting to server...", "");
-                              NPC.method260(20);
+                              NPC.updateGameState(20);
                               return;
                            }
 
@@ -213,7 +213,7 @@ public class ItemContainer extends Node {
    }
 
    @ObfuscatedName("w")
-   static final void method199(long var0) {
+   static final void sleep(long var0) {
       try {
          Thread.sleep(var0);
       } catch (InterruptedException var3) {
@@ -265,7 +265,7 @@ public class ItemContainer extends Node {
       var0.isWalking = false;
       SequenceDefinition var1;
       if (var0.movementSequence != -1) {
-         var1 = class23.method250(var0.movementSequence);
+         var1 = class23.getAnimations(var0.movementSequence);
          if (var1 != null && var1.frameIds != null) {
             ++var0.field449;
             if (var0.movementFrame < var1.frameIds.length && var0.field449 > var1.frameLengths[var0.movementFrame]) {
@@ -291,7 +291,7 @@ public class ItemContainer extends Node {
 
          int var3 = NPCComposition.method656(var0.spotAnimation).sequence;
          if (var3 != -1) {
-            SequenceDefinition var2 = class23.method250(var3);
+            SequenceDefinition var2 = class23.getAnimations(var3);
             if (var2 != null && var2.frameIds != null) {
                ++var0.spotAnimationFrameCycle;
                if (var0.spotAnimationFrame < var2.frameIds.length && var0.spotAnimationFrameCycle > var2.frameLengths[var0.spotAnimationFrame]) {
@@ -311,16 +311,16 @@ public class ItemContainer extends Node {
          }
       }
 
-      if (var0.sequence != -1 && var0.sequenceDelay <= 1) {
-         var1 = class23.method250(var0.sequence);
-         if (var1.field899 == 1 && var0.field472 > 0 && var0.field456 <= Client.cycle && var0.field465 < Client.cycle) {
+      if (var0.animation != -1 && var0.sequenceDelay <= 1) {
+         var1 = class23.getAnimations(var0.animation);
+         if (var1.field899 == 1 && var0.remainingSteps > 0 && var0.field456 <= Client.cycle && var0.field465 < Client.cycle) {
             var0.sequenceDelay = 1;
             return;
          }
       }
 
-      if (var0.sequence != -1 && var0.sequenceDelay == 0) {
-         var1 = class23.method250(var0.sequence);
+      if (var0.animation != -1 && var0.sequenceDelay == 0) {
+         var1 = class23.getAnimations(var0.animation);
          if (var1 != null && var1.frameIds != null) {
             ++var0.sequenceFrameCycle;
             if (var0.sequenceFrame < var1.frameIds.length && var0.sequenceFrameCycle > var1.frameLengths[var0.sequenceFrame]) {
@@ -333,17 +333,17 @@ public class ItemContainer extends Node {
                var0.sequenceFrame -= var1.frameCount;
                ++var0.field421;
                if (var0.field421 >= var1.field898) {
-                  var0.sequence = -1;
+                  var0.animation = -1;
                } else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var1.frameIds.length) {
                   class14.method165(var1, var0.sequenceFrame, var0.x, var0.y);
                } else {
-                  var0.sequence = -1;
+                  var0.animation = -1;
                }
             }
 
             var0.isWalking = var1.field902;
          } else {
-            var0.sequence = -1;
+            var0.animation = -1;
          }
       }
 

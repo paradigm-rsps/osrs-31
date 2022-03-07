@@ -24,7 +24,7 @@ public class NanoClock extends Clock {
          var5 = var3;
       }
 
-      SequenceDefinition.method761(var5 / 1000000L);
+      SequenceDefinition.sleepWeird(var5 / 1000000L);
       long var7 = System.nanoTime();
 
       int var9;

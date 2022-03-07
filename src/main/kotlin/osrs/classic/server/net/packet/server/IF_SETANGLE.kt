@@ -13,10 +13,10 @@ import osrs.classic.server.net.game.ServerPacket
 class IF_SETANGLE() : Packet {
     companion object : Codec<IF_SETANGLE> {
         override fun encode(session: Session, packet: IF_SETANGLE, buf: ByteBuf) {
-            buf.writeShort(0) //u ModelAngleX
-            buf.writeInt(0) //u ?
-            buf.writeShortAddLE(0) //u ModelAngleY
-            buf.writeShortAdd(0) //u ?
+            buf.writeShort(0) // ModelAngleX
+            buf.writeInt(0) // ?
+            buf.writeShortAddLE(0) // ModelAngleY
+            buf.writeShortAdd(0) // ?
         }
     }
 }

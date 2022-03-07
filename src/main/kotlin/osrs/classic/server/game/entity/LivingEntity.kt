@@ -21,7 +21,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
 
     open var index: Int = -1
     open var size: Int = 1
-    override var tile: Tile = Tile(0, 0, 0)
+    override var tile: Tile = Tile(3213, 3213, 0)
     open var prevTile: Tile = Tile(0, 0, 0)
     override var orientation: Int = 0
     open var running: Boolean = false

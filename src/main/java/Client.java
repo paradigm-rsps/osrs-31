@@ -25,7 +25,7 @@ public final class Client extends GameEngine {
    @Export("isMenuOpen")
    static boolean isMenuOpen;
    @ObfuscatedName("jl")
-   static int field643;
+   static int rootInterface;
    @ObfuscatedName("ie")
    @Export("menuActions")
    static String[] menuActions;
@@ -574,11 +574,11 @@ public final class Client extends GameEngine {
    @ObfuscatedName("cm")
    static boolean field530 = false;
    @ObfuscatedName("ci")
-   static int field531 = 0;
+   static int renderPlane = 0;
    @ObfuscatedName("cb")
-   static int field746;
+   static int chunkX;
    @ObfuscatedName("cl")
-   static int field739;
+   static int chunkY;
    @ObfuscatedName("co")
    static int field509 = 0;
    @ObfuscatedName("cn")
@@ -593,7 +593,7 @@ public final class Client extends GameEngine {
    @Export("tapToDrop")
    static boolean isInInstance = false;
    @ObfuscatedName("dc")
-   static int[][][] field540 = new int[4][13][13];
+   static int[][][] instanceChunkTemplates = new int[4][13][13];
    @ObfuscatedName("dv")
    static final int[] field541 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
    @ObfuscatedName("ds")
@@ -763,7 +763,7 @@ public final class Client extends GameEngine {
       selectedSpellChildIndex = -1;
       field641 = null;
       field594 = null;
-      field643 = -1;
+      rootInterface = -1;
       interfaceParents = new NodeHashTable(8);
       chatEffects = 0;
       field646 = 0;
@@ -1003,18 +1003,18 @@ public final class Client extends GameEngine {
                boolean var36 = true;
 
                int var25;
-               for(var25 = 0; var25 < Buffer.field2045.length; ++var25) {
-                  if (ObjectSound.field93[var25] != -1 && Buffer.field2045[var25] == null) {
-                     Buffer.field2045[var25] = class146.archive5.method3204(ObjectSound.field93[var25], 0);
-                     if (Buffer.field2045[var25] == null) {
+               for(var25 = 0; var25 < Buffer.regionLandArchives.length; ++var25) {
+                  if (ObjectSound.regionMapArchiveIds[var25] != -1 && Buffer.regionLandArchives[var25] == null) {
+                     Buffer.regionLandArchives[var25] = class146.archive5.method3204(ObjectSound.regionMapArchiveIds[var25], 0);
+                     if (Buffer.regionLandArchives[var25] == null) {
                         var36 = false;
                         ++field509;
                      }
                   }
 
-                  if (ScriptEvent.field0[var25] != -1 && PendingSpawn.field365[var25] == null) {
-                     PendingSpawn.field365[var25] = class146.archive5.method3205(ScriptEvent.field0[var25], 0, class161.field2709[var25]);
-                     if (PendingSpawn.field365[var25] == null) {
+                  if (ScriptEvent.regionLandArchiveIds[var25] != -1 && PendingSpawn.regionMapArchives[var25] == null) {
+                     PendingSpawn.regionMapArchives[var25] = class146.archive5.method3205(ScriptEvent.regionLandArchiveIds[var25], 0, class161.xteaKeys[var25]);
+                     if (PendingSpawn.regionMapArchives[var25] == null) {
                         var36 = false;
                         ++field509;
                      }
@@ -1029,11 +1029,11 @@ public final class Client extends GameEngine {
 
                   int var5;
                   int var26;
-                  for(var25 = 0; var25 < Buffer.field2045.length; ++var25) {
-                     byte[] var3 = PendingSpawn.field365[var25];
+                  for(var25 = 0; var25 < Buffer.regionLandArchives.length; ++var25) {
+                     byte[] var3 = PendingSpawn.regionMapArchives[var25];
                      if (var3 != null) {
-                        var26 = (class149.field2463[var25] >> 8) * 64 - FaceNormal.baseX;
-                        var5 = (class149.field2463[var25] & 255) * 64 - Frames.baseY;
+                        var26 = (class149.regions[var25] >> 8) * 64 - FaceNormal.baseX;
+                        var5 = (class149.regions[var25] & 255) * 64 - Frames.baseY;
                         if (isInInstance) {
                            var26 = 10;
                            var5 = 10;
@@ -1072,7 +1072,7 @@ public final class Client extends GameEngine {
 
                      SequenceDefinition.method759();
                      VertexNormal.method2024();
-                     var25 = Buffer.field2045.length;
+                     var25 = Buffer.regionLandArchives.length;
 
                      for(ObjectSound var35 = (ObjectSound)ObjectSound.objectSounds.method3533(); var35 != null; var35 = (ObjectSound)ObjectSound.objectSounds.method3535()) {
                         if (var35.stream1 != null) {
@@ -1096,20 +1096,20 @@ public final class Client extends GameEngine {
                      if (!isInInstance) {
                         byte[] var6;
                         for(var27 = 0; var27 < var25; ++var27) {
-                           var26 = (class149.field2463[var27] >> 8) * 64 - FaceNormal.baseX;
-                           var5 = (class149.field2463[var27] & 255) * 64 - Frames.baseY;
-                           var6 = Buffer.field2045[var27];
+                           var26 = (class149.regions[var27] >> 8) * 64 - FaceNormal.baseX;
+                           var5 = (class149.regions[var27] & 255) * 64 - Frames.baseY;
+                           var6 = Buffer.regionLandArchives[var27];
                            if (var6 != null) {
                               SequenceDefinition.method759();
-                              Renderable.method2039(var6, var26, var5, field746 * 8 - 48, field739 * 8 - 48, collisionMaps);
+                              Renderable.method2039(var6, var26, var5, chunkX * 8 - 48, chunkY * 8 - 48, collisionMaps);
                            }
                         }
 
                         for(var27 = 0; var27 < var25; ++var27) {
-                           var26 = (class149.field2463[var27] >> 8) * 64 - FaceNormal.baseX;
-                           var5 = (class149.field2463[var27] & 255) * 64 - Frames.baseY;
-                           var6 = Buffer.field2045[var27];
-                           if (var6 == null && field739 < 800) {
+                           var26 = (class149.regions[var27] >> 8) * 64 - FaceNormal.baseX;
+                           var5 = (class149.regions[var27] & 255) * 64 - Frames.baseY;
+                           var6 = Buffer.regionLandArchives[var27];
+                           if (var6 == null && chunkY < 800) {
                               SequenceDefinition.method759();
                               IterableNodeHashTableIterator.method1485(var26, var5, 64, 64);
                            }
@@ -1118,10 +1118,10 @@ public final class Client extends GameEngine {
                         class65.method1454(true);
 
                         for(var27 = 0; var27 < var25; ++var27) {
-                           byte[] var4 = PendingSpawn.field365[var27];
+                           byte[] var4 = PendingSpawn.regionMapArchives[var27];
                            if (var4 != null) {
-                              var5 = (class149.field2463[var27] >> 8) * 64 - FaceNormal.baseX;
-                              var28 = (class149.field2463[var27] & 255) * 64 - Frames.baseY;
+                              var5 = (class149.regions[var27] >> 8) * 64 - FaceNormal.baseX;
+                              var28 = (class149.regions[var27] & 255) * 64 - Frames.baseY;
                               SequenceDefinition.method759();
                               Scene var7 = Interpreter.scene;
                               CollisionMap[] var8 = collisionMaps;
@@ -1182,7 +1182,7 @@ public final class Client extends GameEngine {
                            if (var27 >= 4) {
                               for(var27 = 0; var27 < 13; ++var27) {
                                  for(var26 = 0; var26 < 13; ++var26) {
-                                    var5 = field540[0][var27][var26];
+                                    var5 = instanceChunkTemplates[0][var27][var26];
                                     if (var5 == -1) {
                                        IterableNodeHashTableIterator.method1485(var27 * 8, var26 * 8, 8, 8);
                                     }
@@ -1201,7 +1201,7 @@ public final class Client extends GameEngine {
 
                                  for(var26 = 0; var26 < 13; ++var26) {
                                     for(var5 = 0; var5 < 13; ++var5) {
-                                       var28 = field540[var27][var26][var5];
+                                       var28 = instanceChunkTemplates[var27][var26][var5];
                                        if (var28 != -1) {
                                           var29 = var28 >> 24 & 3;
                                           var30 = var28 >> 1 & 3;
@@ -1209,9 +1209,9 @@ public final class Client extends GameEngine {
                                           var10 = var28 >> 3 & 2047;
                                           var11 = (var31 / 8 << 8) + var10 / 8;
 
-                                          for(var12 = 0; var12 < class149.field2463.length; ++var12) {
-                                             if (class149.field2463[var12] == var11 && PendingSpawn.field365[var12] != null) {
-                                                class10.method131(PendingSpawn.field365[var12], var27, var26 * 8, var5 * 8, var29, (var31 & 7) * 8, (var10 & 7) * 8, var30, Interpreter.scene, collisionMaps);
+                                          for(var12 = 0; var12 < class149.regions.length; ++var12) {
+                                             if (class149.regions[var12] == var11 && PendingSpawn.regionMapArchives[var12] != null) {
+                                                class10.method131(PendingSpawn.regionMapArchives[var12], var27, var26 * 8, var5 * 8, var29, (var31 & 7) * 8, (var10 & 7) * 8, var30, Interpreter.scene, collisionMaps);
                                                 break;
                                              }
                                           }
@@ -1228,7 +1228,7 @@ public final class Client extends GameEngine {
                            for(var26 = 0; var26 < 13; ++var26) {
                               for(var5 = 0; var5 < 13; ++var5) {
                                  boolean var37 = false;
-                                 var29 = field540[var27][var26][var5];
+                                 var29 = instanceChunkTemplates[var27][var26][var5];
                                  if (var29 != -1) {
                                     var30 = var29 >> 24 & 3;
                                     var31 = var29 >> 1 & 3;
@@ -1236,9 +1236,9 @@ public final class Client extends GameEngine {
                                     var11 = var29 >> 3 & 2047;
                                     var12 = (var10 / 8 << 8) + var11 / 8;
 
-                                    for(var13 = 0; var13 < class149.field2463.length; ++var13) {
-                                       if (class149.field2463[var13] == var12 && Buffer.field2045[var13] != null) {
-                                          NPC.method268(Buffer.field2045[var13], var27, var26 * 8, var5 * 8, var30, (var10 & 7) * 8, (var11 & 7) * 8, var31, collisionMaps);
+                                    for(var13 = 0; var13 < class149.regions.length; ++var13) {
+                                       if (class149.regions[var13] == var12 && Buffer.regionLandArchives[var13] != null) {
+                                          NPC.method268(Buffer.regionLandArchives[var13], var27, var26 * 8, var5 * 8, var30, (var10 & 7) * 8, (var11 & 7) * 8, var31, collisionMaps);
                                           var37 = true;
                                           break;
                                        }
@@ -1290,10 +1290,10 @@ public final class Client extends GameEngine {
                      }
 
                      if (!isInInstance) {
-                        var26 = (field746 - 6) / 8;
-                        var5 = (field746 + 6) / 8;
-                        var28 = (field739 - 6) / 8;
-                        var29 = (field739 + 6) / 8;
+                        var26 = (chunkX - 6) / 8;
+                        var5 = (chunkX + 6) / 8;
+                        var28 = (chunkY - 6) / 8;
+                        var29 = (chunkY + 6) / 8;
 
                         for(var30 = var26 - 1; var30 <= var5 + 1; ++var30) {
                            for(var31 = var28 - 1; var31 <= var29 + 1; ++var31) {
@@ -1305,7 +1305,7 @@ public final class Client extends GameEngine {
                         }
                      }
 
-                     NPC.method260(30);
+                     NPC.updateGameState(30);
                      SequenceDefinition.method759();
                      Tiles.Tiles_underlays = null;
                      VarpDefinition.Tiles_overlays = null;
@@ -1698,7 +1698,7 @@ public final class Client extends GameEngine {
                               MusicPatchPcmStream.NetCache_currentResponse.archive.method3300((int)(MusicPatchPcmStream.NetCache_currentResponse.key & 65535L), class68.NetCache_responseArchiveBuffer.array, (MusicPatchPcmStream.NetCache_currentResponse.key & 16711680L) == 16711680L, NetCache.field2519);
                            }
 
-                           MusicPatchPcmStream.NetCache_currentResponse.method3567();
+                           MusicPatchPcmStream.NetCache_currentResponse.remove();
                            if (NetCache.field2519) {
                               --NetCache.NetCache_pendingPriorityResponsesCount;
                            } else {

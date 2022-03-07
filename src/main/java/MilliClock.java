@@ -88,7 +88,7 @@ public class MilliClock extends Clock {
          this.field1262 = var2;
       }
 
-      SequenceDefinition.method761((long)this.field1262);
+      SequenceDefinition.sleepWeird((long)this.field1262);
 
       for(var5 = 0; this.field1254 < 256; this.field1254 += this.field1256) {
          ++var5;
@@ -199,7 +199,7 @@ public class MilliClock extends Clock {
 
          var0.method2664(var3);
          var0.writeLengthByte(var0.offset - var3);
-         var2.method3567();
+         var2.remove();
       }
    }
 

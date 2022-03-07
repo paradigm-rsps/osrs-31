@@ -278,7 +278,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
    public void destroy() {
       if (this == gameEngine && !isKilled) {
          stopTimeMs = ClientPreferences.method148();
-         SequenceDefinition.method761(5000L);
+         SequenceDefinition.sleepWeird(5000L);
          this.method1524();
       }
    }
@@ -358,7 +358,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
             } while(var9.thread == null);
 
             for(var3 = 0; var3 < 50 && var9.thread.peekEvent() != null; ++var3) {
-               SequenceDefinition.method761(1L);
+               SequenceDefinition.sleepWeird(1L);
             }
 
             if (var10 != null) {

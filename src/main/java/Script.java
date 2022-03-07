@@ -395,7 +395,7 @@ public class Script extends DualNode {
       descriptor = "(ILclass151;Ljava/lang/String;Ljava/lang/String;IZ)V"
    )
    public static void method34(int var0, AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
-      int var6 = var1.method3219(var2);
+      int var6 = var1.getGroupId(var2);
       int var7 = var1.method3238(var6, var3);
       ObjectSound.method43(var0, var1, var6, var7, var4, var5);
    }
@@ -418,8 +418,8 @@ public class Script extends DualNode {
       }
 
       int var0;
-      if (Client.field643 != -1) {
-         var0 = Client.field643;
+      if (Client.rootInterface != -1) {
+         var0 = Client.rootInterface;
          if (EnumComposition.method852(var0)) {
             ObjectComposition.method698(Widget.Widget_interfaceComponents[var0], -1);
          }
@@ -439,9 +439,9 @@ public class Script extends DualNode {
       Client.field634 = -1;
       class7.field113 = null;
       int var1;
-      if (Client.field643 != -1) {
+      if (Client.rootInterface != -1) {
          Client.rootWidgetCount = 0;
-         var0 = Client.field643;
+         var0 = Client.rootInterface;
          if (!EnumComposition.method852(var0)) {
             for(var1 = 0; var1 < 100; ++var1) {
                Client.field686[var1] = true;

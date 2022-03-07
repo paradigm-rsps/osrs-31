@@ -69,7 +69,7 @@ public class class7 extends Node {
             var0.delay = 0;
             Client.method354(var0);
          } else {
-            var0.method3567();
+            var0.remove();
          }
       }
 

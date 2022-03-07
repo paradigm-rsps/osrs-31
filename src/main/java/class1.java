@@ -21,7 +21,7 @@ public class class1 {
       descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)Lclass85;"
    )
    public static SpritePixels method13(AbstractArchive var0, String var1, String var2) {
-      int var3 = var0.method3219(var1);
+      int var3 = var0.getGroupId(var1);
       int var4 = var0.method3238(var3, var2);
       SpritePixels var5;
       if (!KitDefinition.method796(var0, var3, var4)) {
@@ -125,7 +125,7 @@ public class class1 {
          var1.field465 = Client.serverPacketBuf.readUnsignedShortAddLE() + Client.cycle;
          var1.field466 = Client.serverPacketBuf.readUnsignedByteAdd();
          var1.pathLength = 1;
-         var1.field472 = 0;
+         var1.remainingSteps = 0;
       }
 
       int var3;

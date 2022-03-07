@@ -134,7 +134,7 @@ public final class WallDecoration {
    static void method2384(int var0) {
       ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.method3512((long)var0);
       if (var1 != null) {
-         var1.method3567();
+         var1.remove();
       }
    }
 }

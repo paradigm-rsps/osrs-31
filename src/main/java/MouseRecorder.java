@@ -51,7 +51,7 @@ public class MouseRecorder implements Runnable {
    int[] ys = new int[500];
 
    public void run() {
-      for(; this.isRunning; SequenceDefinition.method761(50L)) {
+      for(; this.isRunning; SequenceDefinition.sleepWeird(50L)) {
          Object var1 = this.lock;
          synchronized(this.lock) {
             if (this.index < 500) {

@@ -68,60 +68,60 @@ public class class5 {
    }
 
    @ObfuscatedName("az")
-   static final void method42(int var0, int var1, int var2, int var3, int var4) {
-      if (var0 != Client.field746 || Client.field739 != var1 || var2 != Client.field531 && Client.isLowDetail) {
-         Client.field746 = var0;
-         Client.field739 = var1;
-         Client.field531 = var2;
+   static final void updateScene(int chunkX, int chunkY, int clientPlane, int tileX, int tileY) {
+      if (chunkX != Client.chunkX || Client.chunkY != chunkY || clientPlane != Client.renderPlane && Client.isLowDetail) {
+         Client.chunkX = chunkX;
+         Client.chunkY = chunkY;
+         Client.renderPlane = clientPlane;
          if (!Client.isLowDetail) {
-            Client.field531 = 0;
+            Client.renderPlane = 0;
          }
 
-         NPC.method260(25);
+         NPC.updateGameState(25);
          class27.method570("Loading - please wait.", true);
          int var5 = FaceNormal.baseX;
          int var6 = Frames.baseY;
-         FaceNormal.baseX = (var0 - 6) * 8;
-         Frames.baseY = (var1 - 6) * 8;
-         int var7 = FaceNormal.baseX - var5;
-         int var8 = Frames.baseY - var6;
+         FaceNormal.baseX = (chunkX - 6) * 8;
+         Frames.baseY = (chunkY - 6) * 8;
+         int spawnX = FaceNormal.baseX - var5;
+         int spawnY = Frames.baseY - var6;
          var5 = FaceNormal.baseX;
          var6 = Frames.baseY;
 
-         int var9;
+         int index;
          int var11;
-         for(var9 = 0; var9 < 32768; ++var9) {
-            NPC var21 = Client.npcs[var9];
+         for(index = 0; index < 32768; ++index) {
+            NPC var21 = Client.npcs[index];
             if (var21 != null) {
                for(var11 = 0; var11 < 10; ++var11) {
-                  var21.hitSplatTypes2[var11] -= var7;
-                  var21.hitSplatValues2[var11] -= var8;
+                  var21.pathX[var11] -= spawnX;
+                  var21.pathY[var11] -= spawnY;
                }
 
-               var21.x -= var7 * 128;
-               var21.y -= var8 * 128;
+               var21.x -= spawnX * 128;
+               var21.y -= spawnY * 128;
             }
          }
 
-         for(var9 = 0; var9 < 2048; ++var9) {
-            Player var24 = Client.players[var9];
+         for(index = 0; index < 2048; ++index) {
+            Player var24 = Client.players[index];
             if (var24 != null) {
                for(var11 = 0; var11 < 10; ++var11) {
-                  var24.hitSplatTypes2[var11] -= var7;
-                  var24.hitSplatValues2[var11] -= var8;
+                  var24.pathX[var11] -= spawnX;
+                  var24.pathY[var11] -= spawnY;
                }
 
-               var24.x -= var7 * 128;
-               var24.y -= var8 * 128;
+               var24.x -= spawnX * 128;
+               var24.y -= spawnY * 128;
             }
          }
 
-         class22.Client_plane = var2;
-         Tiles.localPlayer.method290(var3, var4, false);
+         class22.Client_plane = clientPlane;
+         Tiles.localPlayer.setPosition(tileX, tileY, false);
          byte var22 = 0;
          byte var10 = 104;
          byte var23 = 1;
-         if (var7 < 0) {
+         if (spawnX < 0) {
             var22 = 103;
             var10 = -1;
             var23 = -1;
@@ -130,7 +130,7 @@ public class class5 {
          byte var12 = 0;
          byte var13 = 104;
          byte var14 = 1;
-         if (var8 < 0) {
+         if (spawnY < 0) {
             var12 = 103;
             var13 = -1;
             var14 = -1;
@@ -138,8 +138,8 @@ public class class5 {
 
          for(int var15 = var22; var10 != var15; var15 += var23) {
             for(int var16 = var12; var16 != var13; var16 += var14) {
-               int var17 = var7 + var15;
-               int var18 = var16 + var8;
+               int var17 = spawnX + var15;
+               int var18 = var16 + spawnY;
 
                for(int var19 = 0; var19 < 4; ++var19) {
                   if (var17 >= 0 && var18 >= 0 && var17 < 104 && var18 < 104) {
@@ -151,17 +151,17 @@ public class class5 {
             }
          }
 
-         for(PendingSpawn var20 = (PendingSpawn)Client.pendingSpawns.method3533(); var20 != null; var20 = (PendingSpawn)Client.pendingSpawns.method3535()) {
-            var20.x -= var7;
-            var20.y -= var8;
-            if (var20.x < 0 || var20.y < 0 || var20.x >= 104 || var20.y >= 104) {
-               var20.method3567();
+         for(PendingSpawn spawn = (PendingSpawn)Client.pendingSpawns.method3533(); spawn != null; spawn = (PendingSpawn)Client.pendingSpawns.method3535()) {
+            spawn.x -= spawnX;
+            spawn.y -= spawnY;
+            if (spawn.x < 0 || spawn.y < 0 || spawn.x >= 104 || spawn.y >= 104) {
+               spawn.remove();
             }
          }
 
          if (Client.field715 != 0) {
-            Client.field715 -= var7;
-            Client.field716 -= var8;
+            Client.field715 -= spawnX;
+            Client.field716 -= spawnY;
          }
 
          Client.soundEffectCount = 0;
