@@ -6,7 +6,7 @@ import java.util.*
 
 object Logger {
     var plugin: String? = null
-    var format = "%-35s%s%n"
+    var format = "%-20s%s%n"
     var header = ""
     fun info(message: Any, vararg replacers: Any) {
         printColorMessageReplacers(ANSI_WHITE, message, *replacers)
@@ -38,9 +38,16 @@ object Logger {
         } else {
             header
         }
+        var headerColor = DEFAULT_CONTROLLER_COLOR
+        if (header == "Client") {
+            headerColor = ANSI_PURPLE
+        } else if (header == "Server") {
+            headerColor = ANSI_BLUE
+        }
         val header = Message.newMessage()
-                .add(DEFAULT_CONTROLLER_COLOR, "[$tempName] ")
-                .build()
+            .add(headerColor, "[$tempName] ")
+            .build()
+
         System.out.format(format, header, ansiColor + message)
         print(ANSI_RESET)
     }

@@ -1,5 +1,8 @@
 package osrs;
 
+import meteor.Configuration;
+import osrs.classic.server.util.logger.Logger;
+
 public final class PacketBuffer extends Buffer {
     static final int[] bitTable = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, Integer.MAX_VALUE, -1};
     IsaacCipher isaacCipher;
@@ -21,7 +24,8 @@ public final class PacketBuffer extends Buffer {
         int i = super.array[++super.offset - 1];
         int j = this.isaacCipher.nextInt();
         int l = i - j & 255;
-        System.out.println("Packet opcode: " + l);
+        if (Configuration.debugPackets)
+            Logger.INSTANCE.debug("Packet opcode: " + l);
         return l;
     }
 

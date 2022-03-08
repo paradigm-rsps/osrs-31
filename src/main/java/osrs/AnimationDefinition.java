@@ -1,6 +1,5 @@
 package osrs;
 
-import net.runelite.rs.Reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -253,82 +252,6 @@ public class AnimationDefinition extends DualNode {
         var0 += var0 >>> 8;
         var0 += var0 >>> 16;
         return var0 & 255;
-    }
-
-    public static void method762(Buffer var0, int var1) {
-        ReflectionCheck var2 = new ReflectionCheck();
-        var2.size = var0.readUnsignedByte();
-        var2.id = var0.readInt();
-        var2.operations = new int[var2.size];
-        var2.creationErrors = new int[var2.size];
-        var2.fields = new Field[var2.size];
-        var2.intReplaceValues = new int[var2.size];
-        var2.methods = new Method[var2.size];
-        var2.arguments = new byte[var2.size][][];
-
-        for (int var3 = 0; var3 < var2.size; ++var3) {
-            try {
-                int var4 = var0.readUnsignedByte();
-                String var5;
-                String var6;
-                int var7;
-                if (var4 != 0 && var4 != 1 && var4 != 2) {
-                    if (var4 == 3 || var4 == 4) {
-                        var5 = var0.readChatString();
-                        var6 = var0.readChatString();
-                        var7 = var0.readUnsignedByte();
-                        String[] var8 = new String[var7];
-
-                        for (int var9 = 0; var9 < var7; ++var9) {
-                            var8[var9] = var0.readChatString();
-                        }
-
-                        byte[][] var12 = new byte[var7][];
-                        int var11;
-                        if (var4 == 3) {
-                            for (int var10 = 0; var10 < var7; ++var10) {
-                                var11 = var0.readInt();
-                                var12[var10] = new byte[var11];
-                                var0.readBytes(var12[var10], 0, var11);
-                            }
-                        }
-
-                        var2.operations[var3] = var4;
-                        Class[] var13 = new Class[var7];
-
-                        for (var11 = 0; var11 < var7; ++var11) {
-                            var13[var11] = class82.method1737(var8[var11]);
-                        }
-
-                        var2.methods[var3] = class82.method1737(var5).getDeclaredMethod(var6, var13);
-                        var2.arguments[var3] = var12;
-                    }
-                } else {
-                    var5 = var0.readChatString();
-                    var6 = var0.readChatString();
-                    var7 = 0;
-                    if (var4 == 1) {
-                        var7 = var0.readInt();
-                    }
-
-                    var2.operations[var3] = var4;
-                    var2.intReplaceValues[var3] = var7;
-                    var2.fields[var3] = Reflection.findField(class82.method1737(var5), var6);
-                }
-            } catch (ClassNotFoundException var15) {
-                var2.creationErrors[var3] = -1;
-            } catch (SecurityException var16) {
-                var2.creationErrors[var3] = -2;
-            } catch (NullPointerException var17) {
-                var2.creationErrors[var3] = -3;
-            } catch (Exception var18) {
-                var2.creationErrors[var3] = -4;
-            } catch (Throwable var19) {
-                var2.creationErrors[var3] = -5;
-            }
-        }
-
-        class181.reflectionChecks.method3528(var2);
     }
 
     static final void method759() {

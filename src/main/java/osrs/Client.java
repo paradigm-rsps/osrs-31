@@ -1,6 +1,7 @@
 package osrs;
 
 import osrs.classic.Applet;
+import osrs.classic.server.util.logger.Logger;
 
 import java.awt.*;
 import java.io.IOException;
@@ -506,6 +507,7 @@ public final class Client extends GameEngine {
     }
 
     protected final void cycle() {
+        Logger.INSTANCE.setHeader("Client");
         ++cycle;
         this.method521();
 
@@ -1418,7 +1420,7 @@ public final class Client extends GameEngine {
     }
 
     public final void init() {
-        System.out.println("OSRS Classic: Revision 31");
+        Logger.INSTANCE.debug("OSRS Classic: Revision 31");
         try {
             if (this.method1537()) {
                 WorldMapCacheName[] var1 = new WorldMapCacheName[]{WorldMapCacheName.field2778, WorldMapCacheName.field2775, WorldMapCacheName.field2783, WorldMapCacheName.field2779, WorldMapCacheName.field2777, WorldMapCacheName.field2776, WorldMapCacheName.field2781, WorldMapCacheName.field2780, WorldMapCacheName.field2782};
@@ -1452,7 +1454,7 @@ public final class Client extends GameEngine {
                                     ++var10;
                                 }
                                 assert var19 != null;
-                                System.out.println("Build: (id) " + var19.buildId + " - (name) " + var19.name);
+                                Logger.INSTANCE.debug("Build: (id) " + var19.buildId + " - (name) " + var19.name);
                                 NPC.field400 = var19;
                                 break;
                             case 2:
@@ -1476,7 +1478,7 @@ public final class Client extends GameEngine {
 
                                     ++var10;
                                 }
-                                System.out.println("Studio Game: (id) " + var6.id + " - (name) " + var6.name);
+                                Logger.INSTANCE.debug("Studio Game: (id) " + var6.id + " - (name) " + var6.name);
                                 field484 = var6;
                                 if (field484 == StudioGame.oldscape) {
                                     class5.field75 = LoginType.oldscape;

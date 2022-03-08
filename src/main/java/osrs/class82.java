@@ -1,6 +1,5 @@
 package osrs;
 
-import net.runelite.rs.Reflection;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -85,26 +84,6 @@ public final class class82 extends AbstractRasterProvider implements ImageProduc
 
     public static Font method1757(AbstractArchive var0, AbstractArchive var1, int var2, int var3) {
         return !KitDefinition.method796(var0, var2, var3) ? null : class134.method2864(var1.method3204(var2, var3));
-    }
-
-    static Class method1737(String var0) throws ClassNotFoundException {
-        if (var0.equals("B")) {
-            return Byte.TYPE;
-        } else if (var0.equals("I")) {
-            return Integer.TYPE;
-        } else if (var0.equals("S")) {
-            return Short.TYPE;
-        } else if (var0.equals("J")) {
-            return Long.TYPE;
-        } else if (var0.equals("Z")) {
-            return Boolean.TYPE;
-        } else if (var0.equals("F")) {
-            return Float.TYPE;
-        } else if (var0.equals("D")) {
-            return Double.TYPE;
-        } else {
-            return var0.equals("C") ? Character.TYPE : Reflection.findClass(var0);
-        }
     }
 
     static void invalidateWidget(Widget var0) {

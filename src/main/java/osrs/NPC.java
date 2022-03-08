@@ -1,5 +1,6 @@
 package osrs;
 
+import meteor.Configuration;
 import osrs.cache.Definitions;
 import osrs.classic.server.util.logger.Logger;
 
@@ -85,7 +86,8 @@ public final class NPC extends Actor {
     }
 
     static void updateGameState(int var0) {
-        Logger.INSTANCE.debug("GameState {}", var0);
+        if (Configuration.debugLogin)
+            Logger.INSTANCE.debug("GameState {}", var0);
         if (var0 != Client.gameState) {
             if (Client.gameState == 0) {
                 NPCComposition.field801 = null;

@@ -1,6 +1,5 @@
 package osrs;
 
-import net.runelite.rs.Reflection;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -78,107 +77,6 @@ public class MilliClock extends Clock {
 
         this.field1254 &= 255;
         return var5;
-    }
-
-    public static void handleReflectionCheck(PacketBuffer var0, int var1) {
-        while (true) {
-            ReflectionCheck var2 = (ReflectionCheck) class181.reflectionChecks.method3533();
-            if (var2 == null) {
-                return;
-            }
-
-            var0.writeByteOpcode(var1);
-            var0.writeByte(0);
-            int var3 = var0.offset;
-            var0.writeInt(var2.id);
-
-            for (int var4 = 0; var4 < var2.size; ++var4) {
-                if (var2.creationErrors[var4] != 0) {
-                    var0.writeByte(var2.creationErrors[var4]);
-                } else {
-                    try {
-                        int var5 = var2.operations[var4];
-                        Field var6;
-                        int var7;
-                        if (var5 == 0) {
-                            var6 = var2.fields[var4];
-                            var7 = Reflection.getInt(var6, null);
-                            var0.writeByte(0);
-                            var0.writeInt(var7);
-                        } else if (var5 == 1) {
-                            var6 = var2.fields[var4];
-                            Reflection.setInt(var6, null, var2.intReplaceValues[var4]);
-                            var0.writeByte(0);
-                        } else if (var5 == 2) {
-                            var6 = var2.fields[var4];
-                            var7 = var6.getModifiers();
-                            var0.writeByte(0);
-                            var0.writeInt(var7);
-                        }
-
-                        Method var26;
-                        if (var5 != 3) {
-                            if (var5 == 4) {
-                                var26 = var2.methods[var4];
-                                var7 = var26.getModifiers();
-                                var0.writeByte(0);
-                                var0.writeInt(var7);
-                            }
-                        } else {
-                            var26 = var2.methods[var4];
-                            byte[][] var11 = var2.arguments[var4];
-                            Object[] var8 = new Object[var11.length];
-
-                            for (int var9 = 0; var9 < var11.length; ++var9) {
-                                ObjectInputStream var10 = new ObjectInputStream(new ByteArrayInputStream(var11[var9]));
-                                var8[var9] = var10.readObject();
-                            }
-
-                            Object var12 = Reflection.invoke(var26, null, var8);
-                            if (var12 == null) {
-                                var0.writeByte(0);
-                            } else if (var12 instanceof Number) {
-                                var0.writeByte(1);
-                                var0.writeLong(((Number) var12).longValue());
-                            } else if (var12 instanceof String) {
-                                var0.writeByte(2);
-                                var0.writeStringCp1252NullTerminated((String) var12);
-                            } else {
-                                var0.writeByte(4);
-                            }
-                        }
-                    } catch (ClassNotFoundException var14) {
-                        var0.writeByte(-10);
-                    } catch (InvalidClassException var15) {
-                        var0.writeByte(-11);
-                    } catch (StreamCorruptedException var16) {
-                        var0.writeByte(-12);
-                    } catch (OptionalDataException var17) {
-                        var0.writeByte(-13);
-                    } catch (IllegalAccessException var18) {
-                        var0.writeByte(-14);
-                    } catch (IllegalArgumentException var19) {
-                        var0.writeByte(-15);
-                    } catch (InvocationTargetException var20) {
-                        var0.writeByte(-16);
-                    } catch (SecurityException var21) {
-                        var0.writeByte(-17);
-                    } catch (IOException var22) {
-                        var0.writeByte(-18);
-                    } catch (NullPointerException var23) {
-                        var0.writeByte(-19);
-                    } catch (Exception var24) {
-                        var0.writeByte(-20);
-                    } catch (Throwable var25) {
-                        var0.writeByte(-21);
-                    }
-                }
-            }
-
-            var0.method2664(var3);
-            var0.writeLengthByte(var0.offset - var3);
-            var2.remove();
-        }
     }
 
     static Frames method1438(int var0) {

@@ -38,7 +38,6 @@ public class WorldMapCacheName {
             }
 
             if (Client.gameState == 30) {
-                MilliClock.handleReflectionCheck(Client.rsaBuf, 87);
                 Object var16 = BoundaryObject.field1625.lock;
                 int var1;
                 int var2;

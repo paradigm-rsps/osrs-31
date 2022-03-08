@@ -1,6 +1,6 @@
 package osrs;
 
-import net.runelite.rs.ScriptOpcodes;
+import meteor.ScriptOpcodes;
 
 import java.util.Date;
 

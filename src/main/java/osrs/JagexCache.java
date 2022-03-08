@@ -1297,12 +1297,6 @@ public class JagexCache {
                     return true;
                 }
 
-                if (Client.serverPacketOpcode == 173) {
-                    AnimationDefinition.method762(Client.serverPacketBuf, Client.serverPacketLength);
-                    Client.serverPacketOpcode = -1;
-                    return true;
-                }
-
                 if (Client.serverPacketOpcode == 149) {
                     byte var61 = Client.serverPacketBuf.readByteSub();
                     var2 = Client.serverPacketBuf.readUnsignedShortLE();

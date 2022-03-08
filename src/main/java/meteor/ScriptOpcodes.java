@@ -1,4 +1,4 @@
-package net.runelite.rs;
+package meteor;
 
 public class ScriptOpcodes {
    public static final int ICONST = 0;

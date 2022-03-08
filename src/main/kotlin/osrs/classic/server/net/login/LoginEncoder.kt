@@ -15,8 +15,6 @@ class LoginEncoder(private val session: Session) {
         out.writeBoolean(message.player.privilege.id >= 1)
         out.writeShort(message.player.index)
         out.writeBoolean(message.player.member)
-
-        println("Fired login encoder - index: ${message.player.index}")
     }
 
 }

@@ -1,5 +1,6 @@
 package osrs;
 
+import meteor.Configuration;
 import osrs.cache.Definitions;
 import osrs.classic.server.util.logger.Logger;
 
@@ -535,7 +536,6 @@ public final class TileItem extends Renderable {
 
     static final void loggedOutCycle() {
         try {
-            Logger.INSTANCE.setHeader("Client");
             if (Client.loginStep == 0) {
                 if (GraphicsObject.gameSocket != null) {
                     GraphicsObject.gameSocket.method1471();
@@ -549,7 +549,8 @@ public final class TileItem extends Renderable {
             }
 
             if (Client.loginStep == 1) {
-                Logger.INSTANCE.debug("loginState 1 - init login socket");
+                if (Configuration.debugLogin)
+                    Logger.INSTANCE.debug("loginState 1 - init login socket");
                 if (StudioGame.field2087 == null) {
                     StudioGame.field2087 = ItemContainer.taskHandler.createSocket(SoundSystem.worldHost, class82.currentPort);
                 }
@@ -566,7 +567,8 @@ public final class TileItem extends Renderable {
             }
 
             if (Client.loginStep == 2) {
-                Logger.INSTANCE.debug("loginState 2 - login handshake");
+                if (Configuration.debugLogin)
+                    Logger.INSTANCE.debug("loginState 2 - login handshake");
                 Client.rsaBuf.offset = 0;
                 Client.rsaBuf.writeByte(14);
                 GraphicsObject.gameSocket.flush(Client.rsaBuf.array, 0, 1);
@@ -576,7 +578,8 @@ public final class TileItem extends Renderable {
 
             int responseState = -1;
             if (Client.loginStep == 3) {
-                Logger.INSTANCE.debug("loginState 3 - handshake response");
+                if (Configuration.debugLogin)
+                    Logger.INSTANCE.debug("loginState 3 - handshake response");
                 if (Client.pcmPlayer0 != null) {
                     Client.pcmPlayer0.method1228();
                 }
@@ -606,7 +609,8 @@ public final class TileItem extends Renderable {
             int var1 = -1;
             int var2 = -1;
             if (Client.loginStep == 5) {
-                Logger.INSTANCE.debug("loginState 5 - login (1) Client -> Server");
+                if (Configuration.debugLogin)
+                    Logger.INSTANCE.debug("loginState 5 - login (1) Client -> Server");
                 int[] randomKeys = new int[]{(int) (Math.random() * 9.9999999E7D), (int) (Math.random() * 9.9999999E7D), (int) (Math.random() * 9.9999999E7D), (int) (Math.random() * 9.9999999E7D)};
                 Client.rsaBuf.offset = 0;
                 Client.rsaBuf.writeByte(10);
@@ -685,7 +689,8 @@ public final class TileItem extends Renderable {
             }
 
             if (Client.loginStep == 6 && GraphicsObject.gameSocket.available() > 0) {
-                Logger.INSTANCE.debug("loginState 6 - login (2) process server response");
+                if (Configuration.debugLogin)
+                    Logger.INSTANCE.debug("loginState 6 - login (2) process server response");
                 responseState = GraphicsObject.gameSocket.readByte();
                 if (responseState == 21 && Client.gameState == 20) {
                     Client.loginStep = 7;
@@ -753,7 +758,8 @@ public final class TileItem extends Renderable {
 
             } else {
                 if (Client.loginStep == 9 && GraphicsObject.gameSocket.available() >= 5) {
-                    Logger.INSTANCE.debug("loginState 9 - login (3) handle OK response (Server -> Client)");
+                    if (Configuration.debugLogin)
+                        Logger.INSTANCE.debug("loginState 9 - login (3) handle OK response (Server -> Client)");
                     Client.privilegeLevel = GraphicsObject.gameSocket.readByte();
                     Client.isModerator = GraphicsObject.gameSocket.readByte() == 1;
 
@@ -771,7 +777,8 @@ public final class TileItem extends Renderable {
                     // calling readOpcode which just reads a byte and add isaacRandom.nextInt()
                     Client.serverPacketBuf.offset = 0;
                     Client.serverPacketOpcode = Client.serverPacketBuf.readOpcode();
-                    Logger.INSTANCE.debug("loginState 9 - login (4) switch to encrypted packetBuffer");
+                    if (Configuration.debugLogin)
+                        Logger.INSTANCE.debug("loginState 9 - login (4) switch to encrypted packetBuffer");
                     GraphicsObject.gameSocket.read(Client.serverPacketBuf.array, 0, 2);
                     Client.serverPacketBuf.offset = 0;
                     Client.serverPacketLength = Client.serverPacketBuf.readUnsignedShort();
@@ -794,7 +801,8 @@ public final class TileItem extends Renderable {
                 }
 
                 if (Client.loginStep == 10) {
-                    Logger.INSTANCE.debug("loginState 10 - login (5) switch to encrypted packetBuffer");
+                    if (Configuration.debugLogin)
+                        Logger.INSTANCE.debug("loginState 10 - login (5) switch to encrypted packetBuffer");
                     if (GraphicsObject.gameSocket.available() >= Client.serverPacketLength) {
                         Client.serverPacketBuf.offset = 0;
 
