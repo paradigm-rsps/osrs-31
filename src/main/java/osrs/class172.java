@@ -1,12 +1,7 @@
 package osrs;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("fu")
 public class class172 {
-    @ObfuscatedName("i")
     class177 field2802 = new class177();
-    @ObfuscatedName("w")
     class177 field2801;
 
     public class172() {
@@ -14,7 +9,6 @@ public class class172 {
         this.field2802.field2813 = this.field2802;
     }
 
-    @ObfuscatedName("i")
     public void method3500(class177 var1) {
         if (var1.field2813 != null) {
             var1.method3563();
@@ -26,7 +20,6 @@ public class class172 {
         var1.field2814.field2813 = var1;
     }
 
-    @ObfuscatedName("w")
     public class177 method3506() {
         class177 var1 = this.field2802.field2814;
         if (var1 == this.field2802) {
@@ -38,7 +31,6 @@ public class class172 {
         }
     }
 
-    @ObfuscatedName("f")
     public class177 method3501() {
         class177 var1 = this.field2801;
         if (var1 == this.field2802) {

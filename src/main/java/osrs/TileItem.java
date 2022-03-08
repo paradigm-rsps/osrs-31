@@ -1,51 +1,24 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 import osrs.classic.server.util.logger.Logger;
 
 import java.io.IOException;
 import java.net.Socket;
 
-@ObfuscatedName("o")
-@Implements("TileItem")
 public final class TileItem extends Renderable {
-    @ObfuscatedName("k")
-    @Export("soundSystem")
-    @ObfuscatedSignature(
-            descriptor = "Lclass54;"
-    )
     static SoundSystem soundSystem;
-    @ObfuscatedName("i")
-    @Export("id")
     int id;
-    @ObfuscatedName("w")
-    @Export("quantity")
     int quantity;
 
-    @ObfuscatedName("w")
-    @Export("vmethod2030")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass111;"
-    )
     protected final Model vmethod2030() {
         return class27.method571(this.id).method886(this.quantity);
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;)V"
-    )
     public static void method180(AbstractArchive var0) {
         class40.field1035 = var0;
     }
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass86;)V"
-    )
     static final void method181(IndexedSprite var0) {
         short var1 = 256;
 
@@ -92,10 +65,6 @@ public final class TileItem extends Renderable {
 
     }
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass94;[Lclass163;)V"
-    )
     static final void method182(Scene var0, CollisionMap[] var1) {
         int var2;
         int var3;
@@ -155,8 +124,8 @@ public final class TileItem extends Renderable {
             int renderPlane;
             for (var11 = 1; var11 < 103; ++var11) {
                 for (var12 = 1; var12 < 103; ++var12) {
-                    var13 = Tiles.Tiles_heights[var2][var12 + 1][var11] - Tiles.Tiles_heights[var2][var12 - 1][var11];
-                    var14 = Tiles.Tiles_heights[var2][var12][var11 + 1] - Tiles.Tiles_heights[var2][var12][var11 - 1];
+                    var13 = Tiles.tileHeights[var2][var12 + 1][var11] - Tiles.tileHeights[var2][var12 - 1][var11];
+                    var14 = Tiles.tileHeights[var2][var12][var11 + 1] - Tiles.tileHeights[var2][var12][var11 - 1];
                     var15 = (int) Math.sqrt(var13 * var13 + var14 * var14 + 65536);
                     var16 = (var13 << 8) / var15;
                     var17 = 65536 / var15;
@@ -256,10 +225,10 @@ public final class TileItem extends Renderable {
                             renderPlane = Tiles.Tiles_underlays[var2][var11][var17] & 255;
                             int var21 = VarpDefinition.Tiles_overlays[var2][var11][var17] & 255;
                             if (renderPlane > 0 || var21 > 0) {
-                                int var22 = Tiles.Tiles_heights[var2][var11][var17];
-                                int var23 = Tiles.Tiles_heights[var2][var11 + 1][var17];
-                                int var24 = Tiles.Tiles_heights[var2][var11 + 1][var17 + 1];
-                                int var25 = Tiles.Tiles_heights[var2][var11][var17 + 1];
+                                int var22 = Tiles.tileHeights[var2][var11][var17];
+                                int var23 = Tiles.tileHeights[var2][var11 + 1][var17];
+                                int var24 = Tiles.tileHeights[var2][var11 + 1][var17 + 1];
+                                int var25 = Tiles.tileHeights[var2][var11][var17 + 1];
                                 int var26 = Tiles.field120[var11][var17];
                                 int var27 = Tiles.field120[var11 + 1][var17];
                                 int var28 = Tiles.field120[var11 + 1][var17 + 1];
@@ -287,7 +256,7 @@ public final class TileItem extends Renderable {
                                 if (var2 > 0) {
                                     boolean var47 = renderPlane != 0 || Tiles.Tiles_shapes[var2][var11][var17] == 0;
 
-                                   if (var21 > 0 && !PcmPlayer.method1225(var21 - 1).hideUnderlay) {
+                                    if (var21 > 0 && !PcmPlayer.method1225(var21 - 1).hideUnderlay) {
                                         var47 = false;
                                     }
 
@@ -441,8 +410,8 @@ public final class TileItem extends Renderable {
                             var13 = (var12 + 1 - var11) * (var10 - var9 + 1);
                             if (var13 >= 8) {
                                 var46 = 240;
-                                var15 = Tiles.Tiles_heights[var12][var8][var9] - var46;
-                                var16 = Tiles.Tiles_heights[var11][var8][var9];
+                                var15 = Tiles.tileHeights[var12][var8][var9] - var46;
+                                var16 = Tiles.tileHeights[var11][var8][var9];
                                 Scene.method2045(var5, 1, var8 * 128, var8 * 128, var9 * 128, var10 * 128 + 128, var15, var16);
 
                                 for (var17 = var11; var17 <= var12; ++var17) {
@@ -490,8 +459,8 @@ public final class TileItem extends Renderable {
                             var13 = (var10 - var9 + 1) * (var12 + 1 - var11);
                             if (var13 >= 8) {
                                 var46 = 240;
-                                var15 = Tiles.Tiles_heights[var12][var9][var7] - var46;
-                                var16 = Tiles.Tiles_heights[var11][var9][var7];
+                                var15 = Tiles.tileHeights[var12][var9][var7] - var46;
+                                var16 = Tiles.tileHeights[var11][var9][var7];
                                 Scene.method2045(var5, 2, var9 * 128, var10 * 128 + 128, var7 * 128, var7 * 128, var15, var16);
 
                                 for (var17 = var11; var17 <= var12; ++var17) {
@@ -537,7 +506,7 @@ public final class TileItem extends Renderable {
                             }
 
                             if ((var10 - var9 + 1) * (var12 - var11 + 1) >= 4) {
-                                var13 = Tiles.Tiles_heights[var6][var9][var11];
+                                var13 = Tiles.tileHeights[var6][var9][var11];
                                 Scene.method2045(var5, 4, var9 * 128, var10 * 128 + 128, var11 * 128, var12 * 128 + 128, var13, var13);
 
                                 for (var14 = var9; var14 <= var10; ++var14) {
@@ -554,7 +523,6 @@ public final class TileItem extends Renderable {
 
     }
 
-    @ObfuscatedName("m")
     public static void method179(boolean var0) {
         if (var0 != ItemComposition.ItemDefinition_inMembersWorld) {
             ItemComposition.ItemDefinition_cached.method3482();
@@ -565,7 +533,6 @@ public final class TileItem extends Renderable {
 
     }
 
-    @ObfuscatedName("v")
     static final void loggedOutCycle() {
         try {
             Logger.INSTANCE.setHeader("Client");
@@ -930,7 +897,7 @@ public final class TileItem extends Renderable {
         Client.field534 = 0;
 
         for (responseState = 0; responseState < VarpDefinition.field1039; ++responseState) {
-            VarpDefinition var9 = GameBuild.method2854(responseState);
+            VarpDefinition var9 = Definitions.getVarp(responseState);
             if (var9 != null && var9.type == 0) {
                 Varps.Varps_temp[responseState] = 0;
                 Varps.Varps_main[responseState] = 0;
@@ -996,8 +963,6 @@ public final class TileItem extends Renderable {
         Client.chunkX = -1;
     }
 
-    @ObfuscatedName("j")
-    @Export("method183")
     static void loginError(int var0) {
         if (var0 == -3) {
             BufferedFile.method624("Connection timed out.", "Please try using a different world.", "");
@@ -1068,7 +1033,6 @@ public final class TileItem extends Renderable {
         NPC.updateGameState(10);
     }
 
-    @ObfuscatedName("ck")
     static final String method173(int var0) {
         return var0 < 999999999 ? Integer.toString(var0) : "*";
     }

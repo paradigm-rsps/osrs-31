@@ -1,28 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dk")
-@Implements("Frames")
 public class Frames extends DualNode {
-    @ObfuscatedName("p")
     public static int field1825;
-    @ObfuscatedName("cf")
-    @Export("baseY")
     static int baseY;
-    @ObfuscatedName("i")
-    @Export("frames")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass96;"
-    )
     Animation[] frames;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;IZ)V"
-    )
     Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
         NodeDeque var5 = new NodeDeque();
         int var6 = var1.method3214(var3);
@@ -58,13 +40,10 @@ public class Frames extends DualNode {
 
     }
 
-    @ObfuscatedName("w")
-    @Export("method2387")
     public boolean method2387(int var1) {
         return this.frames[var1].hasAlphaTransform;
     }
 
-    @ObfuscatedName("bk")
     static final void method2392(int var0) {
         if (var0 >= 0) {
             int var1 = Client.menuArguments1[var0];

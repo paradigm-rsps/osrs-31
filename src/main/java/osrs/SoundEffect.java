@@ -1,29 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bu")
-@Implements("SoundEffect")
 public class SoundEffect {
-    @ObfuscatedName("w")
-    @Export("instruments")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass53;"
-    )
     Instrument[] instruments = new Instrument[10];
-    @ObfuscatedName("f")
-    @Export("start")
     int start;
-    @ObfuscatedName("e")
-    @Export("end")
     int end;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     SoundEffect(Buffer var1) {
         for (int var2 = 0; var2 < 10; ++var2) {
             int var3 = var1.readUnsignedByte();
@@ -38,18 +19,11 @@ public class SoundEffect {
         this.end = var1.readUnsignedShort();
     }
 
-    @ObfuscatedName("w")
-    @Export("method1343")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass62;"
-    )
     public RawSound method1343() {
         byte[] var1 = this.method1354();
         return new RawSound(22050, var1, this.start * 22050 / 1000, this.end * 22050 / 1000);
     }
 
-    @ObfuscatedName("f")
-    @Export("method1344")
     public final int method1344() {
         int var1 = 9999999;
 
@@ -82,8 +56,6 @@ public class SoundEffect {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method1354")
     final byte[] method1354() {
         int var1 = 0;
 
@@ -121,11 +93,6 @@ public class SoundEffect {
         }
     }
 
-    @ObfuscatedName("i")
-    @Export("method1352")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;II)Lclass56;"
-    )
     public static SoundEffect method1352(AbstractArchive var0, int var1, int var2) {
         byte[] var3 = var0.method3204(var1, var2);
         return var3 == null ? null : new SoundEffect(new Buffer(var3));

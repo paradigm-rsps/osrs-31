@@ -1,43 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.File;
 import java.io.RandomAccessFile;
 
-@ObfuscatedName("ac")
 public class class40 extends DualNode {
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive field1035;
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     static EvictingDualNodeHashTable field1037 = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("ad")
-    @Export("archive6")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive6;
-    @ObfuscatedName("cw")
-    @Export("fontBold12")
-    @ObfuscatedSignature(
-            descriptor = "Lclass182;"
-    )
     static Font fontBold12;
-    @ObfuscatedName("f")
     public int field1032 = 0;
 
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void method917(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -49,10 +21,6 @@ public class class40 extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method906(Buffer var1, int var2) {
         if (var2 == 2) {
             this.field1032 = var1.readUnsignedShort();
@@ -60,8 +28,6 @@ public class class40 extends DualNode {
 
     }
 
-    @ObfuscatedName("i")
-    @Export("method918")
     public static byte method918(char var0) {
         byte var1;
         if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
@@ -127,8 +93,6 @@ public class class40 extends DualNode {
         return var1;
     }
 
-    @ObfuscatedName("i")
-    @Export("method915")
     static File method915(String var0) {
         if (!FileSystem.FileSystem_hasPermissions) {
             throw new RuntimeException("");
@@ -169,13 +133,10 @@ public class class40 extends DualNode {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method905")
     public static int method905(int var0) {
         return var0 >> 11 & 63;
     }
 
-    @ObfuscatedName("ae")
     static int method913(byte[] var0, int var1, int var2) {
         int var3 = -1;
 
@@ -187,11 +148,6 @@ public class class40 extends DualNode {
         return var3;
     }
 
-    @ObfuscatedName("cq")
-    @Export("method916")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;)Z"
-    )
     static final boolean method916(Widget var0) {
         if (var0.cs1Comparisons == null) {
             return false;
@@ -220,11 +176,6 @@ public class class40 extends DualNode {
         }
     }
 
-    @ObfuscatedName("cc")
-    @Export("method904")
-    @ObfuscatedSignature(
-            descriptor = "([Lclass157;IIIIIII)V"
-    )
     static final void drawInterface(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
         for (int var8 = 0; var8 < var0.length; ++var8) {
             Widget var9 = var0[var8];
@@ -335,7 +286,7 @@ public class class40 extends DualNode {
                                     Client.field536.method3528(var24);
                                 }
 
-                                if (Client.clickedWidget != null || SequenceDefinition.field887 != null || Client.isMenuOpen) {
+                                if (Client.clickedWidget != null || AnimationDefinition.field887 != null || Client.isMenuOpen) {
                                     var28 = false;
                                     var27 = false;
                                     var26 = false;
@@ -547,7 +498,7 @@ public class class40 extends DualNode {
                         }
 
                         if (!var9.isIf3) {
-                            if (Client.clickedWidget != null || SequenceDefinition.field887 != null || Client.isMenuOpen) {
+                            if (Client.clickedWidget != null || AnimationDefinition.field887 != null || Client.isMenuOpen) {
                                 return;
                             }
 

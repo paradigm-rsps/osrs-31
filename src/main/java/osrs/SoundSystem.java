@@ -1,37 +1,16 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
 import java.awt.event.ActionEvent;
 
-@ObfuscatedName("bn")
-@Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-    @ObfuscatedName("pv")
-    @Export("canvasWidth")
     protected static int canvasWidth;
-    @ObfuscatedName("mk")
     static int field1188;
-    @ObfuscatedName("bw")
-    @Export("worldHost")
     static String worldHost;
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "Lclass73;"
-    )
     TaskHandler field1181;
-    @ObfuscatedName("w")
-    @Export("players")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass51;"
-    )
     volatile PcmPlayer[] players = new PcmPlayer[2];
-    @ObfuscatedName("f")
     volatile boolean field1183 = false;
-    @ObfuscatedName("e")
     volatile boolean field1182 = false;
 
     public void run() {
@@ -47,12 +26,12 @@ public class SoundSystem implements Runnable {
                     }
                 }
 
-                SequenceDefinition.sleepWeird(10L);
+                AnimationDefinition.sleepWeird(10L);
                 TaskHandler var5 = this.field1181;
                 var2 = null;
                 if (var5.thread != null) {
                     for (int var3 = 0; var3 < 50 && var5.thread.peekEvent() != null; ++var3) {
-                        SequenceDefinition.sleepWeird(1L);
+                        AnimationDefinition.sleepWeird(1L);
                     }
 
                     if (var2 != null) {
@@ -68,20 +47,12 @@ public class SoundSystem implements Runnable {
 
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;I)Lclass139;"
-    )
     static MusicPatch method1327(AbstractArchive var0, int var1) {
         byte[] var2 = var0.method3209(var1);
         return var2 == null ? null : new MusicPatch(var2);
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(IIILclass31;I)V"
-    )
-    static void method1324(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+    static void method1324(int var0, int var1, int var2, ObjectDefinition var3, int var4) {
         ObjectSound var5 = new ObjectSound();
         var5.field79 = var0;
         var5.field80 = var1 * 128;
@@ -112,7 +83,6 @@ public class SoundSystem implements Runnable {
 
     }
 
-    @ObfuscatedName("bg")
     static final void method1329() {
         for (PendingSpawn var0 = (PendingSpawn) Client.pendingSpawns.method3533(); var0 != null; var0 = (PendingSpawn) Client.pendingSpawns.method3535()) {
             if (var0.hitpoints > 0) {
@@ -122,12 +92,12 @@ public class SoundSystem implements Runnable {
             boolean var1;
             int var2;
             int var3;
-            ObjectComposition var4;
+            ObjectDefinition var4;
             if (var0.hitpoints == 0) {
                 if (var0.objectId >= 0) {
                     var2 = var0.objectId;
                     var3 = var0.field359;
-                    var4 = GameBuild.getObjectComposition(var2);
+                    var4 = Definitions.getObject(var2);
                     if (var3 == 11) {
                         var3 = 10;
                     }
@@ -153,7 +123,7 @@ public class SoundSystem implements Runnable {
                     if (var0.id >= 0) {
                         var2 = var0.id;
                         var3 = var0.field362;
-                        var4 = GameBuild.getObjectComposition(var2);
+                        var4 = Definitions.getObject(var2);
                         if (var3 == 11) {
                             var3 = 10;
                         }
@@ -181,11 +151,6 @@ public class SoundSystem implements Runnable {
 
     }
 
-    @ObfuscatedName("de")
-    @Export("method1326")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;)I"
-    )
     static int method1326(Widget var0) {
         IntegerNode var1 = (IntegerNode) Client.widgetFlags.method3512(((long) var0.id << 32) + (long) var0.childIndex);
         return var1 != null ? var1.integer : var0.field2644;

@@ -1,701 +1,277 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.classic.Applet;
 
 import java.awt.*;
-import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.net.Socket;
 
-@Implements("Client")
-@ObfuscatedName("client")
 public final class Client extends GameEngine {
-    @ObfuscatedName("md")
     static boolean field562;
-    @ObfuscatedName("na")
-    @Export("pcmPlayer0")
-    @ObfuscatedSignature(
-            descriptor = "Lclass51;"
-    )
     static PcmPlayer pcmPlayer0;
-    @ObfuscatedName("hl")
-    @Export("isMenuOpen")
     static boolean isMenuOpen;
-    @ObfuscatedName("jl")
     static int rootInterface;
-    @ObfuscatedName("ie")
-    @Export("menuActions")
     static String[] menuActions;
-    @ObfuscatedName("ik")
-    @Export("menuTargets")
     static String[] menuTargets;
-    @ObfuscatedName("in")
-    @Export("menuOpcodes")
     static int[] menuOpcodes;
-    @ObfuscatedName("ib")
-    @Export("menuOptionsCount")
     static int menuOptionsCount;
-    @ObfuscatedName("kh")
-    @Export("rootWidgetCount")
     static int rootWidgetCount;
-    @ObfuscatedName("ku")
     static boolean[] field686;
-    @ObfuscatedName("kg")
     static int field685;
-    @ObfuscatedName("iw")
     static int field633;
-    @ObfuscatedName("lc")
     static boolean[] field687;
-    @ObfuscatedName("lg")
     static boolean[] field688;
-    @ObfuscatedName("iy")
     static int field634;
-    @ObfuscatedName("kn")
     static int field654;
-    @ObfuscatedName("jq")
     static boolean field652;
-    @ObfuscatedName("ld")
-    @Export("rootWidgetXs")
     static int[] rootWidgetXs;
-    @ObfuscatedName("lz")
     static int field693;
-    @ObfuscatedName("lb")
-    @Export("rootWidgetWidths")
     static int[] rootWidgetWidths;
-    @ObfuscatedName("jv")
-    @Export("interfaceParents")
-    @ObfuscatedSignature(
-            descriptor = "Lclass174;"
-    )
     static NodeHashTable interfaceParents;
-    @ObfuscatedName("ip")
-    @Export("isItemSelected")
     static int isItemSelected;
-    @ObfuscatedName("io")
-    @Export("isSpellSelected")
     static boolean isSpellSelected;
-    @ObfuscatedName("hx")
     static int[] field621;
-    @ObfuscatedName("hv")
-    @Export("levels")
     static int[] levels;
-    @ObfuscatedName("lk")
-    @Export("rootWidgetHeights")
     static int[] rootWidgetHeights;
-    @ObfuscatedName("iq")
     static String field641;
-    @ObfuscatedName("it")
-    @Export("selectedItemName")
     static String selectedItemName;
-    @ObfuscatedName("la")
-    @Export("rootWidgetYs")
     static int[] rootWidgetYs;
-    @ObfuscatedName("hw")
     static int[] field529;
-    @ObfuscatedName("is")
     static String field594;
-    @ObfuscatedName("jm")
-    @Export("clickedWidget")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget clickedWidget;
-    @ObfuscatedName("mq")
     static int field538;
-    @ObfuscatedName("ih")
-    @Export("menuArguments1")
     static int[] menuArguments1;
-    @ObfuscatedName("jj")
     static int field648;
-    @ObfuscatedName("jk")
     static int field558;
-    @ObfuscatedName("id")
-    @Export("menuArguments2")
     static int[] menuArguments2;
-    @ObfuscatedName("oh")
     static int field743;
-    @ObfuscatedName("im")
-    @Export("menuIdentifiers")
     static int[] menuIdentifiers;
-    @ObfuscatedName("ot")
-    @Export("playerAppearance")
-    @ObfuscatedSignature(
-            descriptor = "Lclass162;"
-    )
     static PlayerComposition playerAppearance;
-    @ObfuscatedName("os")
     static int field744;
-    @ObfuscatedName("mz")
     static int field717;
-    @ObfuscatedName("jd")
-    @Export("isDraggingWidget")
     static boolean isDraggingWidget;
-    @ObfuscatedName("jn")
     static int privilegeLevel;
-    @ObfuscatedName("mv")
-    @Export("currentTrackGroupId")
     static int currentTrackGroupId;
-    @ObfuscatedName("my")
     static int field715;
-    @ObfuscatedName("js")
     static boolean field659;
-    @ObfuscatedName("gd")
-    @Export("players")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass2;"
-    )
     static Player[] players;
-    @ObfuscatedName("jy")
-    @Export("widgetClickX")
     static int widgetClickX;
-    @ObfuscatedName("jx")
     static boolean isModerator;
-    @ObfuscatedName("jo")
-    @Export("widgetClickY")
     static int widgetClickY;
-    @ObfuscatedName("jw")
     static int field624;
-    @ObfuscatedName("hp")
     static int localPlayerIndex;
-    @ObfuscatedName("hk")
     static int field623;
-    @ObfuscatedName("jh")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget field740;
-    @ObfuscatedName("hr")
-    @Export("Players_count")
     static int playersCount;
-    @ObfuscatedName("jc")
     static int field661;
-    @ObfuscatedName("nv")
     static boolean isCameraLocked;
-    @ObfuscatedName("kf")
     static int field681;
-    @ObfuscatedName("ki")
     static int field676;
-    @ObfuscatedName("hg")
     static int isMember;
-    @ObfuscatedName("hq")
     static int[] field485;
-    @ObfuscatedName("oi")
     static int field737;
-    @ObfuscatedName("ls")
     static long field707;
-    @ObfuscatedName("ju")
-    @Export("meslayerContinueWidget")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget meslayerContinueWidget;
-    @ObfuscatedName("ko")
     static int field674;
-    @ObfuscatedName("iu")
     static int field636;
-    @ObfuscatedName("iv")
     static int field635;
-    @ObfuscatedName("ov")
     static int field736;
-    @ObfuscatedName("kw")
-    @Export("widgetFlags")
-    @ObfuscatedSignature(
-            descriptor = "Lclass174;"
-    )
     static NodeHashTable widgetFlags;
-    @ObfuscatedName("oy")
     static class22[] field532;
-    @ObfuscatedName("hj")
-    @Export("Players_indices")
     static int[] playersIndex;
-    @ObfuscatedName("gc")
     static int field604;
-    @ObfuscatedName("mn")
     static int field716;
-    @ObfuscatedName("hi")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque field619;
-    @ObfuscatedName("hd")
-    @Export("groundItems")
-    @ObfuscatedSignature(
-            descriptor = "[[[Lclass176;"
-    )
     static NodeDeque[][][] groundItems;
-    @ObfuscatedName("mi")
     static int field711;
-    @ObfuscatedName("mr")
     static int[] field712;
-    @ObfuscatedName("kc")
     static int[] field578;
-    @ObfuscatedName("gn")
     static int field596;
-    @ObfuscatedName("kt")
     static int field670;
-    @ObfuscatedName("gf")
     static int[] field524;
-    @ObfuscatedName("hy")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque field620;
-    @ObfuscatedName("ha")
-    @Export("pendingSpawns")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque pendingSpawns;
-    @ObfuscatedName("mu")
     static int[] field713;
-    @ObfuscatedName("gy")
     static int field655;
-    @ObfuscatedName("nl")
     static boolean[] field731;
-    @ObfuscatedName("me")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] field714;
-    @ObfuscatedName("gv")
     static int field595;
-    @ObfuscatedName("gb")
     static int field597;
-    @ObfuscatedName("nk")
     static int[] field733;
-    @ObfuscatedName("ka")
     static int field675;
-    @ObfuscatedName("go")
     static int field598;
-    @ObfuscatedName("mj")
     static int field710;
-    @ObfuscatedName("or")
     static int field534;
-    @ObfuscatedName("oc")
     static class10[] field741;
-    @ObfuscatedName("hf")
     static int[] field642;
-    @ObfuscatedName("oj")
     static class172 field680;
-    @ObfuscatedName("gi")
     static int field639;
-    @ObfuscatedName("nt")
     static int[] field575;
-    @ObfuscatedName("jp")
     static boolean field511;
-    @ObfuscatedName("hb")
-    @Export("playerMenuActions")
     static String[] playerMenuActions;
-    @ObfuscatedName("od")
     static int[] field735;
-    @ObfuscatedName("kq")
     static int[] field667;
-    @ObfuscatedName("lm")
     static long[] field702;
-    @ObfuscatedName("ky")
     static int field668;
-    @ObfuscatedName("nj")
     static int[] field587;
-    @ObfuscatedName("hu")
-    @Export("playerOptionsPriorities")
     static boolean[] playerOptionsPriorities;
-    @ObfuscatedName("ga")
-    @Export("xPadding")
     static int xPadding;
-    @ObfuscatedName("mo")
     static int field718;
-    @ObfuscatedName("li")
     static int field684;
-    @ObfuscatedName("nb")
-    @Export("soundEffectCount")
     static int soundEffectCount;
-    @ObfuscatedName("ns")
     static int[] field727;
-    @ObfuscatedName("gh")
-    @Export("viewportTempY")
     static int viewportTempY;
-    @ObfuscatedName("gp")
-    @Export("mouseCrossX")
     static int mouseCrossX;
-    @ObfuscatedName("np")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass56;"
-    )
     static SoundEffect[] field729;
-    @ObfuscatedName("gs")
-    @Export("mouseCrossY")
     static int mouseCrossY;
-    @ObfuscatedName("ht")
-    @Export("leftClickOpensMenu")
     static int leftClickOpensMenu;
-    @ObfuscatedName("mm")
     static int field721;
-    @ObfuscatedName("gz")
-    @Export("mouseCrossState")
     static int mouseCrossState;
-    @ObfuscatedName("ne")
     static int[] field742;
-    @ObfuscatedName("jg")
-    @Export("chatEffects")
     static int chatEffects;
-    @ObfuscatedName("gu")
-    @Export("mouseCrossColor")
     static int mouseCrossColor;
-    @ObfuscatedName("nq")
     static int[] field589;
-    @ObfuscatedName("gg")
     static int field533;
-    @ObfuscatedName("lo")
     static int[] field694;
-    @ObfuscatedName("lr")
     static String[] field695;
-    @ObfuscatedName("nd")
     static int[] field726;
-    @ObfuscatedName("lp")
     static int field580;
-    @ObfuscatedName("lv")
     static String[] field697;
-    @ObfuscatedName("gl")
     static boolean field600;
-    @ObfuscatedName("lj")
     static String[] field696;
-    @ObfuscatedName("jf")
     static int field646;
-    @ObfuscatedName("km")
     static int field482;
-    @ObfuscatedName("kz")
     static int[] field671;
-    @ObfuscatedName("kx")
     static int[] field677;
-    @ObfuscatedName("kb")
     static int field672;
-    @ObfuscatedName("ji")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget field658;
-    @ObfuscatedName("hn")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass126;"
-    )
     static Buffer[] appearanceCache;
-    @ObfuscatedName("ks")
     static String[] field678;
-    @ObfuscatedName("lt")
     static int[] field699;
-    @ObfuscatedName("jr")
     static boolean field703;
-    @ObfuscatedName("ly")
     static int field704;
-    @ObfuscatedName("lu")
     static int field700;
-    @ObfuscatedName("lf")
     static String field660;
-    @ObfuscatedName("lw")
     static int[] field612;
-    @ObfuscatedName("hs")
-    @Export("playerMenuOpcodes")
     static final int[] playerMenuOpcodes;
-    @ObfuscatedName("le")
     static int[] field705;
-    @ObfuscatedName("lx")
     static int field748;
-    @ObfuscatedName("ke")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque field745;
-    @ObfuscatedName("kr")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque field682;
-    @ObfuscatedName("mc")
     static String field720;
-    @ObfuscatedName("kk")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque field536;
-    @ObfuscatedName("jt")
     static int field708;
-    @ObfuscatedName("jb")
     static int field664;
-    @ObfuscatedName("ia")
-    @Export("selectedSpellChildIndex")
     static int selectedSpellChildIndex;
-    @ObfuscatedName("w")
-    @Export("collisionMaps")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass163;"
-    )
     static CollisionMap[] collisionMaps = new CollisionMap[4];
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "Lclient;"
-    )
     static Client instance;
-    @ObfuscatedName("e")
-    @Export("ViewportMouse_isInViewport")
     static boolean ViewportMouse_isInViewport = true;
-    @ObfuscatedName("t")
-    @Export("ViewportMouse_x")
     static int ViewportMouse_x = 1;
-    @ObfuscatedName("p")
-    @Export("ViewportMouse_y")
     static int ViewportMouse_y = 0;
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "Lclass132;"
-    )
     static StudioGame field484;
-    @ObfuscatedName("l")
-    @Export("isMembersWorld")
     static boolean isMembersWorld = false;
-    @ObfuscatedName("a")
-    @Export("isLowDetail")
     static boolean isLowDetail = false;
-    @ObfuscatedName("z")
     static int field487 = 0;
-    @ObfuscatedName("m")
-    @Export("gameState")
     static int gameState = 0;
-    @ObfuscatedName("u")
     static boolean field489 = true;
-    @ObfuscatedName("g")
-    @Export("cycle")
     static int cycle = 0;
-    @ObfuscatedName("o")
     static long field545 = -1L;
-    @ObfuscatedName("j")
     static int field492 = -1;
-    @ObfuscatedName("n")
     static int field493 = -1;
-    @ObfuscatedName("q")
     static int field494 = -1;
-    @ObfuscatedName("c")
     static boolean field613 = true;
-    @ObfuscatedName("h")
     static boolean field496 = false;
-    @ObfuscatedName("b")
     static int field585 = 0;
-    @ObfuscatedName("ao")
-    @Export("hintArrowType")
     static int hintArrowType = 0;
-    @ObfuscatedName("ae")
     static int field499 = 0;
-    @ObfuscatedName("aa")
     static int field500 = 0;
-    @ObfuscatedName("ah")
-    @Export("hintArrowX")
     static int hintArrowX = 0;
-    @ObfuscatedName("aw")
-    @Export("hintArrowY")
     static int hintArrowY = 0;
-    @ObfuscatedName("an")
     static int field479 = 0;
-    @ObfuscatedName("av")
     static int field504 = 0;
-    @ObfuscatedName("ak")
     static int field505 = 0;
-    @ObfuscatedName("ax")
-    @ObfuscatedSignature(
-            descriptor = "Lclass126;"
-    )
     static Buffer field535 = new Buffer(new byte[5000]);
-    @ObfuscatedName("ai")
-    @Export("titleLoadingStage")
     static int titleLoadingStage = 0;
-    @ObfuscatedName("ac")
-    @Export("js5ConnectState")
     static int js5ConnectState = 0;
-    @ObfuscatedName("al")
     static int field544 = 0;
-    @ObfuscatedName("bg")
-    @Export("js5Errors")
     static int js5Errors = 0;
-    @ObfuscatedName("bp")
     static int loginStep = 0;
-    @ObfuscatedName("bb")
     static int socketIdleCycles = 0;
-    @ObfuscatedName("bc")
     static int connectedState = 0;
-    @ObfuscatedName("by")
     static int field514 = 0;
-    @ObfuscatedName("bz")
     static int somePortIncrement;
-    @ObfuscatedName("bs")
-    @Export("npcs")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass24;"
-    )
     static NPC[] npcs = new NPC['耀'];
-    @ObfuscatedName("bx")
-    @Export("npcCount")
     static int npcCount = 0;
-    @ObfuscatedName("bl")
-    @Export("npcIndices")
     static int[] npcIndices = new int['耀'];
-    @ObfuscatedName("cd")
-    @ObfuscatedSignature(
-            descriptor = "Lclass115;"
-    )
     static PacketBuffer rsaBuf = new PacketBuffer(5000);
-    @ObfuscatedName("ca")
-    @ObfuscatedSignature(
-            descriptor = "Lclass115;"
-    )
     static PacketBuffer loginBuf = new PacketBuffer(5000);
-    @ObfuscatedName("ck")
-    @ObfuscatedSignature(
-            descriptor = "Lclass115;"
-    )
     static PacketBuffer serverPacketBuf = new PacketBuffer(5000);
-    @ObfuscatedName("cq")
     static int serverPacketLength = 0;
-    @ObfuscatedName("cg")
     static int serverPacketOpcode = 0;
-    @ObfuscatedName("ct")
     static int field565 = 0;
-    @ObfuscatedName("cc")
     static int field669 = 0;
-    @ObfuscatedName("cx")
-    @Export("logoutTimer")
     static int logoutTimer = 0;
-    @ObfuscatedName("cu")
     static int field527 = 0;
-    @ObfuscatedName("cj")
     static int field728 = 0;
-    @ObfuscatedName("cp")
     static int field488 = 0;
-    @ObfuscatedName("cm")
     static boolean field530 = false;
-    @ObfuscatedName("ci")
     static int renderPlane = 0;
-    @ObfuscatedName("cb")
     static int chunkX;
-    @ObfuscatedName("cl")
     static int chunkY;
-    @ObfuscatedName("co")
     static int field509 = 0;
-    @ObfuscatedName("cn")
     static int field560 = 1;
-    @ObfuscatedName("ce")
     static int field510 = 0;
-    @ObfuscatedName("cv")
     static int field491 = 1;
-    @ObfuscatedName("df")
     static int field537 = 0;
-    @ObfuscatedName("dx")
-    @Export("tapToDrop")
     static boolean isInInstance = false;
-    @ObfuscatedName("dc")
     static int[][][] instanceChunkTemplates = new int[4][13][13];
-    @ObfuscatedName("dv")
     static final int[] field541 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-    @ObfuscatedName("ds")
     static int field738 = 0;
-    @ObfuscatedName("da")
     static int[][] field543 = new int[104][104];
-    @ObfuscatedName("dq")
     static int[][] field501 = new int[104][104];
-    @ObfuscatedName("dh")
     static int[] field666 = new int[4000];
-    @ObfuscatedName("dp")
     static int[] field546 = new int[4000];
-    @ObfuscatedName("du")
     static int field734 = 0;
-    @ObfuscatedName("dm")
     static int field548 = 2;
-    @ObfuscatedName("di")
     static int field549 = 0;
-    @ObfuscatedName("dr")
     static int field550 = 2;
-    @ObfuscatedName("dz")
     static int field551 = 0;
-    @ObfuscatedName("dn")
     static int field552 = 1;
-    @ObfuscatedName("dw")
     static int field553 = 0;
-    @ObfuscatedName("dg")
     static int field554 = 0;
-    @ObfuscatedName("ec")
     static int field673 = 2;
-    @ObfuscatedName("eb")
     static int field556 = 0;
-    @ObfuscatedName("ei")
     static int field557 = 1;
-    @ObfuscatedName("ex")
     static int field542 = 0;
-    @ObfuscatedName("eo")
     static int field525 = 0;
-    @ObfuscatedName("er")
-    @Export("scrollBarSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] scrollBarSprites;
-    @ObfuscatedName("en")
     static int[] field561;
-    @ObfuscatedName("ez")
     static int field662 = 2301979;
-    @ObfuscatedName("eu")
     static int field698 = 5063219;
-    @ObfuscatedName("ee")
     static int field564 = 3353893;
-    @ObfuscatedName("fc")
     static int field605 = 7759444;
-    @ObfuscatedName("fr")
     static boolean field691 = false;
-    @ObfuscatedName("fv")
-    @Export("alternativeScrollbarWidth")
     static int alternativeScrollbarWidth = 0;
-    @ObfuscatedName("fj")
     static int field516 = 128;
-    @ObfuscatedName("fo")
     static int field569 = 0;
-    @ObfuscatedName("fn")
     static int field570 = 0;
-    @ObfuscatedName("fb")
     static int field651 = 0;
-    @ObfuscatedName("fm")
     static int field572;
-    @ObfuscatedName("fp")
     static int field573 = 0;
-    @ObfuscatedName("fg")
     static boolean field599 = false;
-    @ObfuscatedName("fu")
     static int field568 = 0;
-    @ObfuscatedName("fw")
     static int field576 = 0;
-    @ObfuscatedName("fh")
     static int field577 = 50;
-    @ObfuscatedName("fs")
     static int[] field625;
-    @ObfuscatedName("fy")
     static int[] field722;
-    @ObfuscatedName("fl")
     static int[] field528;
-    @ObfuscatedName("ft")
     static int[] field581;
-    @ObfuscatedName("fx")
     static int[] field582;
-    @ObfuscatedName("fi")
     static int[] field583;
-    @ObfuscatedName("fd")
     static int[] field584;
-    @ObfuscatedName("gj")
     static String[] field522;
-    @ObfuscatedName("gt")
     static int[][] field586;
-    @ObfuscatedName("ge")
     static int field724;
-    @ObfuscatedName("gq")
-    @Export("viewportTempX")
     static int viewportTempX;
 
     static {
@@ -867,11 +443,9 @@ public final class Client extends GameEngine {
         field744 = -1;
     }
 
-    @ObfuscatedName("e")
     protected final void vmethod1534() {
     }
 
-    @ObfuscatedName("p")
     protected final void vmethod1529() {
         MouseRecorder.OSRS_PORT = ViewportMouse_y == 0 ? 'ꩊ' : ViewportMouse_x + '鱀';
         somePortIncrement = ViewportMouse_y == 0 ? 443 : ViewportMouse_x + '썐';
@@ -931,8 +505,6 @@ public final class Client extends GameEngine {
 
     }
 
-    @ObfuscatedName("k")
-    @Export("cycle")
     protected final void cycle() {
         ++cycle;
         this.method521();
@@ -946,7 +518,7 @@ public final class Client extends GameEngine {
 
             if (var1 == null) {
                 class5.method38();
-                SequenceDefinition.method759();
+                AnimationDefinition.method759();
                 NetCache.method3288();
                 MouseHandler var34 = MouseHandler.MouseHandler_instance;
                 synchronized (MouseHandler.MouseHandler_instance) {
@@ -1051,11 +623,11 @@ public final class Client extends GameEngine {
                                 class27.method570("Loading - please wait." + "<br>" + " (" + 100 + "%" + ")", true);
                             }
 
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             Interpreter.method274();
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             Interpreter.scene.method2138();
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             System.gc();
 
                             for (var25 = 0; var25 < 4; ++var25) {
@@ -1071,7 +643,7 @@ public final class Client extends GameEngine {
                                 }
                             }
 
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             VertexNormal.method2024();
                             var25 = Buffer.regionLandArchives.length;
 
@@ -1101,7 +673,7 @@ public final class Client extends GameEngine {
                                     var5 = (class149.regions[var27] & 255) * 64 - Frames.baseY;
                                     var6 = Buffer.regionLandArchives[var27];
                                     if (var6 != null) {
-                                        SequenceDefinition.method759();
+                                        AnimationDefinition.method759();
                                         Renderable.method2039(var6, var26, var5, chunkX * 8 - 48, chunkY * 8 - 48, collisionMaps);
                                     }
                                 }
@@ -1111,7 +683,7 @@ public final class Client extends GameEngine {
                                     var5 = (class149.regions[var27] & 255) * 64 - Frames.baseY;
                                     var6 = Buffer.regionLandArchives[var27];
                                     if (var6 == null && chunkY < 800) {
-                                        SequenceDefinition.method759();
+                                        AnimationDefinition.method759();
                                         IterableNodeHashTableIterator.method1485(var26, var5, 64, 64);
                                     }
                                 }
@@ -1123,7 +695,7 @@ public final class Client extends GameEngine {
                                     if (var4 != null) {
                                         var5 = (class149.regions[var27] >> 8) * 64 - FaceNormal.baseX;
                                         var28 = (class149.regions[var27] & 255) * 64 - Frames.baseY;
-                                        SequenceDefinition.method759();
+                                        AnimationDefinition.method759();
                                         Scene var7 = Interpreter.scene;
                                         CollisionMap[] var8 = collisionMaps;
                                         Buffer var9 = new Buffer(var4);
@@ -1198,7 +770,7 @@ public final class Client extends GameEngine {
                                                 break label435;
                                             }
 
-                                            SequenceDefinition.method759();
+                                            AnimationDefinition.method759();
 
                                             for (var26 = 0; var26 < 13; ++var26) {
                                                 for (var5 = 0; var5 < 13; ++var5) {
@@ -1224,7 +796,7 @@ public final class Client extends GameEngine {
                                         }
                                     }
 
-                                    SequenceDefinition.method759();
+                                    AnimationDefinition.method759();
 
                                     for (var26 = 0; var26 < 13; ++var26) {
                                         for (var5 = 0; var5 < 13; ++var5) {
@@ -1258,7 +830,7 @@ public final class Client extends GameEngine {
 
                             class65.method1454(true);
                             Interpreter.method274();
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             TileItem.method182(Interpreter.scene, collisionMaps);
                             class65.method1454(true);
                             var27 = Tiles.Tiles_minPlane;
@@ -1282,9 +854,9 @@ public final class Client extends GameEngine {
                                 }
                             }
 
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             class7.method54();
-                            ObjectComposition.ObjectDefinition_cachedModelData.method3482();
+                            ObjectDefinition.ObjectDefinition_cachedModelData.method3482();
                             if (ObjectSound.field87 != null) {
                                 rsaBuf.writeByteOpcode(93);
                                 rsaBuf.writeInt(1057001181);
@@ -1307,7 +879,7 @@ public final class Client extends GameEngine {
                             }
 
                             NPC.updateGameState(30);
-                            SequenceDefinition.method759();
+                            AnimationDefinition.method759();
                             Tiles.Tiles_underlays = null;
                             VarpDefinition.Tiles_overlays = null;
                             Tiles.Tiles_shapes = null;
@@ -1349,7 +921,6 @@ public final class Client extends GameEngine {
         }
     }
 
-    @ObfuscatedName("r")
     protected final void vmethod1586() {
         boolean var1 = class112.method2502();
         if (var1 && field562 && pcmPlayer0 != null) {
@@ -1384,13 +955,13 @@ public final class Client extends GameEngine {
                 Graphics var5 = Tiles.field131.getGraphics();
                 if (World.field206 == null) {
                     World.field206 = new java.awt.Font("Helvetica", 1, 13);
-                    ItemLayer.field1659 = Tiles.field131.getFontMetrics(World.field206);
+                    Loot.field1659 = Tiles.field131.getFontMetrics(World.field206);
                 }
 
                 if (GameEngine.field1318) {
                     GameEngine.field1318 = false;
                     var5.setColor(Color.black);
-                    var5.fillRect(0, 0, SoundSystem.canvasWidth, ItemLayer.canvasHeight);
+                    var5.fillRect(0, 0, SoundSystem.canvasWidth, Loot.canvasHeight);
                 }
 
                 if (var4 == null) {
@@ -1411,11 +982,11 @@ public final class Client extends GameEngine {
                     var6.fillRect(var9 * 3 + 2, 2, 300 - var9 * 3, 30);
                     var6.setFont(World.field206);
                     var6.setColor(Color.white);
-                    var6.drawString(var3, (304 - ItemLayer.field1659.stringWidth(var3)) / 2, 22);
-                    var5.drawImage(NPCComposition.field801, SoundSystem.canvasWidth / 2 - 152, ItemLayer.canvasHeight / 2 - 18, null);
+                    var6.drawString(var3, (304 - Loot.field1659.stringWidth(var3)) / 2, 22);
+                    var5.drawImage(NPCComposition.field801, SoundSystem.canvasWidth / 2 - 152, Loot.canvasHeight / 2 - 18, null);
                 } catch (Exception var11) {
                     int var7 = SoundSystem.canvasWidth / 2 - 152;
-                    int var8 = ItemLayer.canvasHeight / 2 - 18;
+                    int var8 = Loot.canvasHeight / 2 - 18;
                     var5.setColor(var4);
                     var5.drawRect(var7, var8, 303, 33);
                     var5.fillRect(var7 + 2, var8 + 2, var9 * 3, 30);
@@ -1424,7 +995,7 @@ public final class Client extends GameEngine {
                     var5.fillRect(var7 + var9 * 3 + 2, var8 + 2, 300 - var9 * 3, 30);
                     var5.setFont(World.field206);
                     var5.setColor(Color.white);
-                    var5.drawString(var3, var7 + (304 - ItemLayer.field1659.stringWidth(var3)) / 2, var8 + 22);
+                    var5.drawString(var3, var7 + (304 - Loot.field1659.stringWidth(var3)) / 2, var8 + 22);
                 }
             } catch (Exception var12) {
                 Tiles.field131.repaint();
@@ -1490,7 +1061,6 @@ public final class Client extends GameEngine {
 
     }
 
-    @ObfuscatedName("l")
     protected final void vmethod1532() {
         if (BoundaryObject.field1625 != null) {
             BoundaryObject.field1625.isRunning = false;
@@ -1521,8 +1091,6 @@ public final class Client extends GameEngine {
         MusicPatchNode.method3122();
     }
 
-    @ObfuscatedName("z")
-    @Export("method521")
     void method521() {
         if (gameState != 1000) {
             long var2 = ClientPreferences.method148();
@@ -1740,8 +1308,6 @@ public final class Client extends GameEngine {
         }
     }
 
-    @ObfuscatedName("s")
-    @Export("method307")
     void method307() {
         if (NetCache.NetCache_crcMismatches >= 4) {
             this.method1533("js5crc");
@@ -1818,8 +1384,6 @@ public final class Client extends GameEngine {
         }
     }
 
-    @ObfuscatedName("m")
-    @Export("method308")
     void method308(int var1) {
         Canvas.js5SocketTask = null;
         Decimator.js5Socket = null;
@@ -1853,7 +1417,6 @@ public final class Client extends GameEngine {
 
     }
 
-    @Export("kill0")
     public final void init() {
         System.out.println("OSRS Classic: Revision 31");
         try {
@@ -1893,7 +1456,7 @@ public final class Client extends GameEngine {
                                 NPC.field400 = var19;
                                 break;
                             case 2:
-                                StudioGame[] var12 = ObjectComposition.method672();
+                                StudioGame[] var12 = ObjectDefinition.method672();
                                 int var13 = Integer.parseInt(var5);
                                 StudioGame[] var9 = var12;
                                 var10 = 0;
@@ -1937,7 +1500,7 @@ public final class Client extends GameEngine {
                                 }
                                 break;
                             case 9:
-                               isMembersWorld = var5.equalsIgnoreCase("true");
+                                isMembersWorld = var5.equalsIgnoreCase("true");
                         }
                     }
                 }
@@ -1962,15 +1525,12 @@ public final class Client extends GameEngine {
         }
     }
 
-    @ObfuscatedName("i")
     public static void method559(Component var0) {
         var0.setFocusTraversalKeysEnabled(false);
         var0.addKeyListener(KeyHandler.KeyHandler_instance);
         var0.addFocusListener(KeyHandler.KeyHandler_instance);
     }
 
-    @ObfuscatedName("e")
-    @Export("method530")
     public static final boolean method530() {
         KeyHandler var0 = KeyHandler.KeyHandler_instance;
         synchronized (KeyHandler.KeyHandler_instance) {
@@ -1985,10 +1545,6 @@ public final class Client extends GameEngine {
         }
     }
 
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     public static void method567(Buffer var0, int var1) {
         if (JagexCache.JagexCache_randomDat != null) {
             try {
@@ -2000,10 +1556,6 @@ public final class Client extends GameEngine {
 
     }
 
-    @ObfuscatedName("bf")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass21;)V"
-    )
     static final void method354(PendingSpawn var0) {
         int var1 = 0;
         int var2 = -1;
@@ -2037,7 +1589,6 @@ public final class Client extends GameEngine {
         var0.field361 = var4;
     }
 
-    @ObfuscatedName("ch")
     static void method568() {
         for (InterfaceParent var0 = (InterfaceParent) interfaceParents.method3515(); var0 != null; var0 = (InterfaceParent) interfaceParents.method3516()) {
             int var1 = var0.group;
@@ -2065,10 +1616,6 @@ public final class Client extends GameEngine {
 
     }
 
-    @ObfuscatedName("cf")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;)Z"
-    )
     static final boolean method538(Widget var0) {
         int var1 = var0.contentType;
         if (var1 == 205) {

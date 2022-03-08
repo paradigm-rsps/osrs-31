@@ -1,37 +1,18 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("cz")
-@Implements("FaceNormal")
 public class FaceNormal {
-    @ObfuscatedName("ii")
     static int field1523;
-    @ObfuscatedName("nc")
     static int field1519;
-    @ObfuscatedName("s")
     static String field1522;
-    @ObfuscatedName("cs")
-    @Export("baseX")
     static int baseX;
-    @ObfuscatedName("i")
-    @Export("x")
     int x;
-    @ObfuscatedName("w")
-    @Export("y")
     int y;
-    @ObfuscatedName("f")
-    @Export("z")
     int z;
 
-    @ObfuscatedName("i")
     public static boolean method2029(int var0) {
         return (var0 & 1) != 0;
     }
 
-    @ObfuscatedName("e")
     public static int method2027(CharSequence var0, int var1, boolean var2) {
         if (var1 >= 2 && var1 <= 36) {
             boolean var3 = false;
@@ -92,7 +73,6 @@ public class FaceNormal {
         }
     }
 
-    @ObfuscatedName("o")
     static final int method2028(int var0, int var1, int var2) {
         if (var2 > 179) {
             var1 /= 2;

@@ -1,39 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-@ObfuscatedName("a")
 public class class10 {
-    @ObfuscatedName("m")
-    @Export("JagexCache_idxFiles")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass29;"
-    )
     public static BufferedFile[] JagexCache_idxFiles;
-    @ObfuscatedName("bh")
-    @Export("archive9")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive9;
-    @ObfuscatedName("i")
     String field177;
-    @ObfuscatedName("w")
     String field178;
 
-    @ObfuscatedName("i")
     public static void method135() {
         class181.reflectionChecks = new NodeDeque();
     }
 
-    @ObfuscatedName("w")
     static void method132(File var0, File var1) {
         try {
             AccessFile var2 = new AccessFile(class183.JagexCache_locationFile, "rw", 10000L);
@@ -53,7 +35,6 @@ public class class10 {
 
     }
 
-    @ObfuscatedName("f")
     static boolean method133(File var0, boolean var1) {
         try {
             RandomAccessFile var2 = new RandomAccessFile(var0, "rw");
@@ -72,7 +53,6 @@ public class class10 {
         }
     }
 
-    @ObfuscatedName("t")
     static void method129(int var0, int var1) {
         long var2 = (var0 << 16) + var1;
         NetFileRequest var4 = (NetFileRequest) NetCache.NetCache_pendingWrites.method3512(var2);
@@ -81,10 +61,6 @@ public class class10 {
         }
     }
 
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "([BIIIIIIILclass94;[Lclass163;)V"
-    )
     static final void method131(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
         Buffer var10 = new Buffer(var0);
         int var11 = -1;
@@ -112,7 +88,7 @@ public class class10 {
                 int var19 = var18 >> 2;
                 int var20 = var18 & 3;
                 if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) {
-                    ObjectComposition var21 = GameBuild.getObjectComposition(var11);
+                    ObjectDefinition var21 = Definitions.getObject(var11);
                     int var24 = var16 & 7;
                     int var25 = var15 & 7;
                     int var27 = var21.sizeX;
@@ -179,10 +155,6 @@ public class class10 {
         }
     }
 
-    @ObfuscatedName("av")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass26;)V"
-    )
     static final void method134(Actor var0) {
         if (var0.field465 == Client.cycle || var0.animation == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > Definitions.getAnimation(var0.animation).frameLengths[var0.sequenceFrame]) {
             int var1 = var0.field465 - var0.field456;
@@ -215,7 +187,6 @@ public class class10 {
         var0.field432 = var0.orientation;
     }
 
-    @ObfuscatedName("bc")
     static final void method130() {
         Client.field623 = 0;
         Client.playersCount = 0;

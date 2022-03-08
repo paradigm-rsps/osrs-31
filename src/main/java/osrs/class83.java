@@ -1,37 +1,13 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ct")
 public class class83 {
-    @ObfuscatedName("i")
-    @Export("SpriteBuffer_spriteCount")
     static int SpriteBuffer_spriteCount;
-    @ObfuscatedName("w")
-    @Export("SpriteBuffer_spriteWidth")
     static int SpriteBuffer_spriteWidth;
-    @ObfuscatedName("f")
-    @Export("SpriteBuffer_spriteHeight")
     static int SpriteBuffer_spriteHeight;
-    @ObfuscatedName("e")
-    @Export("SpriteBuffer_xOffsets")
     static int[] SpriteBuffer_xOffsets;
-    @ObfuscatedName("p")
-    @Export("SpriteBuffer_spriteHeights")
     static int[] SpriteBuffer_spriteHeights;
-    @ObfuscatedName("aj")
-    @Export("archive4")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive4;
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass32;"
-    )
     public static FloorUnderlayDefinition method1798(int var0) {
         FloorUnderlayDefinition var1 = (FloorUnderlayDefinition) FloorUnderlayDefinition.HitSplatDefinition_cachedFonts.method3474(var0);
         if (var1 != null) {
@@ -49,7 +25,6 @@ public class class83 {
         }
     }
 
-    @ObfuscatedName("by")
     static final void updatePlayers() {
         for (int var0 = 0; var0 < Client.playersCount; ++var0) {
             int playerIndex = Client.playersIndex[var0];

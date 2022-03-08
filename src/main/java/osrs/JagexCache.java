@@ -1,50 +1,19 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-@ObfuscatedName("cq")
-@Implements("JagexCache")
 public class JagexCache {
-    @ObfuscatedName("t")
-    @Export("cacheDir")
     static File cacheDir;
-    @ObfuscatedName("d")
-    @Export("Widget_fontsArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     public static AbstractArchive Widget_fontsArchive;
-    @ObfuscatedName("a")
-    @Export("JagexCache_randomDat")
-    @ObfuscatedSignature(
-            descriptor = "Lclass29;"
-    )
     public static BufferedFile JagexCache_randomDat = null;
-    @ObfuscatedName("z")
-    @Export("JagexCache_dat2File")
-    @ObfuscatedSignature(
-            descriptor = "Lclass29;"
-    )
     public static BufferedFile JagexCache_dat2File = null;
-    @ObfuscatedName("s")
-    @Export("fontNameVerdana15")
-    @ObfuscatedSignature(
-            descriptor = "Lclass29;"
-    )
     public static BufferedFile fontNameVerdana15 = null;
-    @ObfuscatedName("u")
-    @Export("cacheGamebuild")
     static int cacheGamebuild;
 
-    @ObfuscatedName("w")
     public static void method1722(Component var0) {
         var0.removeMouseListener(MouseHandler.MouseHandler_instance);
         var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
@@ -52,11 +21,6 @@ public class JagexCache {
         MouseHandler.MouseHandler_currentButtonVolatile = 0;
     }
 
-    @ObfuscatedName("l")
-    @Export("method1720")
-    @ObfuscatedSignature(
-            descriptor = "([Lclass12;II[I[I)V"
-    )
     static void method1720(World[] var0, int var1, int var2, int[] var3, int[] var4) {
         if (var1 < var2) {
             int var5 = var1 - 1;
@@ -163,8 +127,6 @@ public class JagexCache {
 
     }
 
-    @ObfuscatedName("bj")
-    @Export("method1723")
     static final boolean handleServerPacket() {
         if (GraphicsObject.gameSocket == null) {
             return false;
@@ -225,6 +187,10 @@ public class JagexCache {
                 int var19;
                 int var62;
                 boolean var65;
+                if (Client.serverPacketOpcode == 255) {
+                    Client.serverPacketOpcode = -1;
+                    return true;
+                }
                 if (Client.serverPacketOpcode == 197) {
                     Client.field623 = 0;
                     Client.playersCount = 0;
@@ -782,7 +748,7 @@ public class JagexCache {
                     var28 = Client.serverPacketBuf.readChatString();
                     var2 = Client.serverPacketBuf.readUnsignedShort();
                     byte var66 = Client.serverPacketBuf.readByte();
-                   var74 = var66 == -128;
+                    var74 = var66 == -128;
 
                     if (var74) {
                         if (SoundSystem.field1188 == 0) {
@@ -1332,7 +1298,7 @@ public class JagexCache {
                 }
 
                 if (Client.serverPacketOpcode == 173) {
-                    SequenceDefinition.method762(Client.serverPacketBuf, Client.serverPacketLength);
+                    AnimationDefinition.method762(Client.serverPacketBuf, Client.serverPacketLength);
                     Client.serverPacketOpcode = -1;
                     return true;
                 }
@@ -1516,21 +1482,21 @@ public class JagexCache {
                     boolean var54;
                     if (var28.endsWith(":tradereq:")) {
                         var78 = var28.substring(0, var28.indexOf(":"));
-                       var54 = ObjectSound.method45(var78);
+                        var54 = ObjectSound.method45(var78);
 
                         if (!var54 && Client.xPadding == 0) {
                             Login.setOverheadText(4, var78, "wishes to trade with you.");
                         }
                     } else if (var28.endsWith(":duelreq:")) {
                         var78 = var28.substring(0, var28.indexOf(":"));
-                       var54 = ObjectSound.method45(var78);
+                        var54 = ObjectSound.method45(var78);
 
                         if (!var54 && Client.xPadding == 0) {
                             Login.setOverheadText(8, var78, "wishes to duel with you.");
                         }
                     } else if (var28.endsWith(":chalreq:")) {
                         var78 = var28.substring(0, var28.indexOf(":"));
-                       var54 = ObjectSound.method45(var78);
+                        var54 = ObjectSound.method45(var78);
 
                         if (!var54 && Client.xPadding == 0) {
                             var55 = var28.substring(var28.indexOf(":") + 1, var28.length() - 9);
@@ -1538,7 +1504,7 @@ public class JagexCache {
                         }
                     } else if (var28.endsWith(":assistreq:")) {
                         var78 = var28.substring(0, var28.indexOf(":"));
-                       var54 = ObjectSound.method45(var78);
+                        var54 = ObjectSound.method45(var78);
 
                         if (!var54 && Client.xPadding == 0) {
                             Login.setOverheadText(10, var78, "");
@@ -1742,7 +1708,7 @@ public class JagexCache {
 
                 if (Client.serverPacketOpcode == 61) {
                     for (var1 = 0; var1 < VarpDefinition.field1039; ++var1) {
-                        VarpDefinition var24 = GameBuild.method2854(var1);
+                        VarpDefinition var24 = Definitions.getVarp(var1);
                         if (var24 != null && var24.type == 0) {
                             Varps.Varps_temp[var1] = 0;
                             Varps.Varps_main[var1] = 0;

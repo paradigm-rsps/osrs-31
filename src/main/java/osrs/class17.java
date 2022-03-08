@@ -1,38 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("v")
 public class class17 {
-    @ObfuscatedName("kj")
     static class65 field284;
-    @ObfuscatedName("y")
-    @Export("BZip2Decompressor_block")
     static int[] BZip2Decompressor_block;
-    @ObfuscatedName("bu")
-    @Export("archive13")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive13;
-    @ObfuscatedName("ff")
-    @Export("cameraZ")
     static int cameraZ;
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "Lclass4;"
-    )
     Script field279;
-    @ObfuscatedName("w")
     int field282 = -1;
-    @ObfuscatedName("f")
     int[] field280;
-    @ObfuscatedName("e")
     String[] field281;
 
-    @ObfuscatedName("w")
     public static void method184() {
         if (KeyHandler.KeyHandler_instance != null) {
             KeyHandler var0 = KeyHandler.KeyHandler_instance;
@@ -43,8 +20,6 @@ public class class17 {
 
     }
 
-    @ObfuscatedName("e")
-    @Export("method185")
     static void method185() {
         AccessFile var0 = null;
 

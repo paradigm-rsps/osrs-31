@@ -1,93 +1,32 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.Reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-@ObfuscatedName("ak")
-@Implements("SequenceDefinition")
-public class SequenceDefinition extends DualNode {
-    @ObfuscatedName("gm")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
+public class AnimationDefinition extends DualNode {
     static Widget field887;
-    @ObfuscatedName("i")
-    @Export("SequenceDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     public static AbstractArchive SequenceDefinition_archive;
-    @ObfuscatedName("w")
-    @Export("SequenceDefinition_animationsArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive SequenceDefinition_animationsArchive;
-    @ObfuscatedName("f")
-    @Export("SequenceDefinition_skeletonsArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive SequenceDefinition_skeletonsArchive;
-    @ObfuscatedName("e")
-    @Export("SequenceDefinition_cached")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable SequenceDefinition_cached = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("t")
-    @Export("SequenceDefinition_cachedFrames")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     static EvictingDualNodeHashTable SequenceDefinition_cachedFrames = new EvictingDualNodeHashTable(100);
-    @ObfuscatedName("d")
-    @Export("frameIds")
     public int[] frameIds;
-    @ObfuscatedName("p")
-    @Export("chatFrameIds")
     int[] chatFrameIds;
-    @ObfuscatedName("k")
-    @Export("frameLengths")
     public int[] frameLengths;
-    @ObfuscatedName("r")
-    @Export("soundEffects")
     public int[] soundEffects;
-    @ObfuscatedName("l")
-    @Export("frameCount")
     public int frameCount = -1;
-    @ObfuscatedName("a")
     int[] field883;
-    @ObfuscatedName("z")
     public boolean field902 = false;
-    @ObfuscatedName("s")
     public int field895 = 5;
-    @ObfuscatedName("m")
-    @Export("shield")
     public int shield = -1;
-    @ObfuscatedName("u")
-    @Export("weapon")
     public int weapon = -1;
-    @ObfuscatedName("g")
     public int field898 = 99;
-    @ObfuscatedName("o")
     public int field899 = -1;
-    @ObfuscatedName("v")
     public int field900 = -1;
-    @ObfuscatedName("j")
     public int field901 = 2;
 
-    @ObfuscatedName("f")
-    @Export("method752")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     public void method752(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -99,11 +38,6 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method724")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method724(Buffer var1, int var2) {
         int var3;
         int var4;
@@ -173,8 +107,6 @@ public class SequenceDefinition extends DualNode {
 
     }
 
-    @ObfuscatedName("t")
-    @Export("method742")
     public void method742() {
         if (this.field899 == -1) {
             if (this.field883 != null) {
@@ -194,11 +126,6 @@ public class SequenceDefinition extends DualNode {
 
     }
 
-    @ObfuscatedName("d")
-    @Export("method735")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass111;I)Lclass111;"
-    )
     public Model method735(Model var1, int var2) {
         var2 = this.frameIds[var2];
         Frames var3 = MilliClock.method1438(var2 >> 16);
@@ -212,11 +139,6 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("p")
-    @Export("method726")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass111;II)Lclass111;"
-    )
     Model method726(Model var1, int var2, int var3) {
         var2 = this.frameIds[var2];
         Frames var4 = MilliClock.method1438(var2 >> 16);
@@ -247,11 +169,6 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("k")
-    @Export("method727")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass111;I)Lclass111;"
-    )
     Model method727(Model var1, int var2) {
         var2 = this.frameIds[var2];
         Frames var3 = MilliClock.method1438(var2 >> 16);
@@ -265,12 +182,7 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("r")
-    @Export("method728")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass111;ILclass33;I)Lclass111;"
-    )
-    public Model method728(Model var1, int var2, SequenceDefinition var3, int var4) {
+    public Model method728(Model var1, int var2, AnimationDefinition var3, int var4) {
         var2 = this.frameIds[var2];
         Frames var5 = MilliClock.method1438(var2 >> 16);
         var2 &= 65535;
@@ -293,11 +205,6 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("l")
-    @Export("method729")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass111;I)Lclass111;"
-    )
     public Model method729(Model var1, int var2) {
         int var3 = this.frameIds[var2];
         Frames var4 = MilliClock.method1438(var3 >> 16);
@@ -327,7 +234,6 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("i")
     public static final void sleepWeird(long var0) {
         if (var0 > 0L) {
             if (0L == var0 % 10L) {
@@ -340,7 +246,6 @@ public class SequenceDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("w")
     public static int method760(int var0) {
         var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
         var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
@@ -350,11 +255,6 @@ public class SequenceDefinition extends DualNode {
         return var0 & 255;
     }
 
-    @ObfuscatedName("f")
-    @Export("method762")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     public static void method762(Buffer var0, int var1) {
         ReflectionCheck var2 = new ReflectionCheck();
         var2.size = var0.readUnsignedByte();
@@ -431,8 +331,6 @@ public class SequenceDefinition extends DualNode {
         class181.reflectionChecks.method3528(var2);
     }
 
-    @ObfuscatedName("b")
-    @Export("method759")
     static final void method759() {
         if (class27.pcmPlayer1 != null) {
             class27.pcmPlayer1.method1227();

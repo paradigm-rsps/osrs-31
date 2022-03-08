@@ -24,7 +24,6 @@
  */
 package net.runelite.rs;
 
-import net.runelite.mapping.ObfuscatedGetter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -62,27 +61,11 @@ public class Reflection {
       }
     }
 
-    ObfuscatedGetter og = field.getAnnotation(ObfuscatedGetter.class);
-    if (og != null) {
-      int getter = og.intValue();
-      int setter = modInverse(getter);
-
-      // encrypt
-      i *= setter;
-    }
     return i;
   }
 
   public static void setInt(Field field, Object obj, int value)
       throws IllegalArgumentException, IllegalAccessException {
-
-    ObfuscatedGetter og = field.getAnnotation(ObfuscatedGetter.class);
-    if (og != null) {
-      int getter = og.intValue();
-
-      // decrypt
-      value *= getter;
-    }
 
     boolean unset = false;
     if ((field.getModifiers() & Modifier.PRIVATE) == 0) {

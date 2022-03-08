@@ -1,46 +1,18 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("cm")
-@Implements("Texture")
 public class Texture extends Node {
-    @ObfuscatedName("u")
-    @Export("Texture_animatedPixels")
     static int[] Texture_animatedPixels;
-    @ObfuscatedName("t")
-    @Export("averageRGB")
     int averageRGB;
-    @ObfuscatedName("d")
     boolean field1494;
-    @ObfuscatedName("p")
-    @Export("fileIds")
     int[] fileIds;
-    @ObfuscatedName("k")
     int[] field1496;
-    @ObfuscatedName("r")
     int[] field1497;
-    @ObfuscatedName("l")
     int[] field1498;
-    @ObfuscatedName("a")
-    @Export("animationDirection")
     int animationDirection;
-    @ObfuscatedName("z")
-    @Export("animationSpeed")
     int animationSpeed;
-    @ObfuscatedName("s")
-    @Export("pixels")
     int[] pixels;
-    @ObfuscatedName("m")
-    @Export("isLoaded")
     boolean isLoaded = false;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     Texture(Buffer var1) {
         this.averageRGB = var1.readUnsignedShort();
         this.field1494 = var1.readUnsignedByte() == 1;
@@ -83,11 +55,6 @@ public class Texture extends Node {
         }
     }
 
-    @ObfuscatedName("i")
-    @Export("method2018")
-    @ObfuscatedSignature(
-            descriptor = "(DILclass151;)Z"
-    )
     boolean method2018(double var1, int var3, AbstractArchive var4) {
         int var5;
         for (var5 = 0; var5 < this.fileIds.length; ++var5) {
@@ -182,14 +149,10 @@ public class Texture extends Node {
         return true;
     }
 
-    @ObfuscatedName("w")
-    @Export("method2022")
     void method2022() {
         this.pixels = null;
     }
 
-    @ObfuscatedName("f")
-    @Export("method2017")
     void method2017(int var1) {
         if (this.pixels != null) {
             short var2;

@@ -1,136 +1,48 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("aw")
-@Implements("NPCComposition")
 public class NPCComposition extends DualNode {
-    @ObfuscatedName("pw")
     protected static Image field801;
-    @ObfuscatedName("i")
-    @Export("NpcDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive NpcDefinition_archive;
-    @ObfuscatedName("w")
-    @Export("NpcDefinition_modelArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive NpcDefinition_modelArchive;
-    @ObfuscatedName("f")
-    @Export("NpcDefinition_cached")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable NpcDefinition_cached = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("e")
-    @Export("NpcDefinition_cachedModels")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable NpcDefinition_cachedModels = new EvictingDualNodeHashTable(50);
-    @ObfuscatedName("t")
-    @Export("id")
     public int id;
-    @ObfuscatedName("d")
-    @Export("name")
     public String name = "null";
-    @ObfuscatedName("p")
-    @Export("size")
     public int size = 1;
-    @ObfuscatedName("k")
-    @Export("models")
     int[] models;
-    @ObfuscatedName("r")
     int[] field791;
-    @ObfuscatedName("l")
     public int field789 = -1;
-    @ObfuscatedName("a")
-    @Export("textSize")
     public int textSize = -1;
-    @ObfuscatedName("z")
-    @Export("turnRightSequence")
     public int turnRightSequence = -1;
-    @ObfuscatedName("s")
-    @Export("walkSequence")
     public int walkSequence = -1;
-    @ObfuscatedName("m")
-    @Export("walkBackSequence")
     public int walkBackSequence = -1;
-    @ObfuscatedName("u")
-    @Export("walkLeftSequence")
     public int walkLeftSequence = -1;
-    @ObfuscatedName("g")
-    @Export("walkRightSequence")
     public int walkRightSequence = -1;
-    @ObfuscatedName("o")
-    @Export("recolorFrom")
     short[] recolorFrom;
-    @ObfuscatedName("v")
-    @Export("recolorTo")
     short[] recolorTo;
-    @ObfuscatedName("j")
-    @Export("retextureFrom")
     short[] retextureFrom;
-    @ObfuscatedName("n")
-    @Export("retextureTo")
     short[] retextureTo;
-    @ObfuscatedName("q")
-    @Export("actions")
     public String[] actions = new String[5];
-    @ObfuscatedName("c")
     public boolean field804 = true;
-    @ObfuscatedName("h")
-    @Export("category")
     public int category = -1;
-    @ObfuscatedName("b")
-    @Export("widthScale")
     int widthScale = 128;
-    @ObfuscatedName("y")
-    @Export("heightScale")
     int heightScale = 128;
-    @ObfuscatedName("x")
     public boolean field808 = false;
-    @ObfuscatedName("ao")
     int field809 = 0;
-    @ObfuscatedName("ae")
     int field810 = 0;
-    @ObfuscatedName("aa")
     public int field811 = -1;
-    @ObfuscatedName("ah")
     public int field800 = 32;
-    @ObfuscatedName("aw")
-    @Export("transforms")
     public int[] transforms;
-    @ObfuscatedName("an")
-    @Export("transformVarbit")
     int transformVarbit = -1;
-    @ObfuscatedName("av")
-    @Export("transformVarp")
     int transformVarp = -1;
-    @ObfuscatedName("ak")
-    @Export("isInteractable")
     public boolean isInteractable = true;
-    @ObfuscatedName("ax")
     public boolean field803 = true;
 
-    @ObfuscatedName("f")
-    @Export("method628")
     void method628() {
     }
 
-    @ObfuscatedName("e")
-    @Export("method629")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void method629(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -142,11 +54,6 @@ public class NPCComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("t")
-    @Export("method630")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method630(Buffer var1, int var2) {
         int var3;
         int var4;
@@ -250,12 +157,7 @@ public class NPCComposition extends DualNode {
 
     }
 
-    @ObfuscatedName("d")
-    @Export("method643")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass33;ILclass33;I)Lclass111;"
-    )
-    public final Model method643(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4) {
+    public final Model method643(AnimationDefinition var1, int var2, AnimationDefinition var3, int var4) {
         if (this.transforms != null) {
             NPCComposition var12 = this.method657();
             return var12 == null ? null : var12.method643(var1, var2, var3, var4);
@@ -323,11 +225,6 @@ public class NPCComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("p")
-    @Export("method632")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass100;"
-    )
     public final ModelData method632() {
         if (this.transforms != null) {
             NPCComposition var7 = this.method657();
@@ -377,11 +274,6 @@ public class NPCComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("k")
-    @Export("method657")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass30;"
-    )
     public final NPCComposition method657() {
         int var1 = -1;
         if (this.transformVarbit != -1) {
@@ -393,8 +285,6 @@ public class NPCComposition extends DualNode {
         return var1 >= 0 && var1 < this.transforms.length && this.transforms[var1] != -1 ? class22.method247(this.transforms[var1]) : null;
     }
 
-    @ObfuscatedName("r")
-    @Export("method634")
     public boolean method634() {
         if (this.transforms == null) {
             return true;
@@ -410,11 +300,6 @@ public class NPCComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method656")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass34;"
-    )
     public static SpotAnimationDefinition method656(int var0) {
         SpotAnimationDefinition var1 = (SpotAnimationDefinition) SpotAnimationDefinition.SpotAnimationDefinition_cached.method3474(var0);
         if (var1 != null) {
@@ -432,8 +317,6 @@ public class NPCComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("cd")
-    @Export("method653")
     static final String method653(int var0) {
         String var1 = Integer.toString(var0);
 

@@ -1,13 +1,6 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ex")
 public class class133 {
-    @ObfuscatedName("i")
-    @Export("method2863")
     public static int method2863(int var0) {
         VarbitComposition var2 = (VarbitComposition) VarbitComposition.VarbitDefinition_cached.method3474(var0);
         VarbitComposition var1;
@@ -31,10 +24,6 @@ public class class133 {
         return Varps.Varps_main[var7] >> var4 & var6;
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;)V"
-    )
     public static void method2862(AbstractArchive var0) {
         EnumComposition.field977 = var0;
     }

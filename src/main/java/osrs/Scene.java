@@ -1,189 +1,63 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
-@ObfuscatedName("cy")
-@Implements("Scene")
 public class Scene {
-    @ObfuscatedName("i")
-    @Export("Scene_isLowDetail")
     public static boolean Scene_isLowDetail = true;
-    @ObfuscatedName("g")
-    @Export("tileUpdateCount")
     static int tileUpdateCount = 0;
-    @ObfuscatedName("o")
-    @Export("Scene_plane")
     static int Scene_plane = 0;
-    @ObfuscatedName("v")
-    @Export("Scene_drawnCount")
     static int Scene_drawnCount;
-    @ObfuscatedName("j")
-    @Export("Scene_cameraXTileMin")
     static int Scene_cameraXTileMin;
-    @ObfuscatedName("n")
-    @Export("Scene_cameraXTileMax")
     static int Scene_cameraXTileMax;
-    @ObfuscatedName("q")
-    @Export("Scene_cameraYTileMin")
     static int Scene_cameraYTileMin;
-    @ObfuscatedName("c")
-    @Export("Scene_cameraYTileMax")
     static int Scene_cameraYTileMax;
-    @ObfuscatedName("h")
-    @Export("Scene_cameraXTile")
     static int Scene_cameraXTile;
-    @ObfuscatedName("b")
-    @Export("Scene_cameraYTile")
     static int Scene_cameraYTile;
-    @ObfuscatedName("y")
-    @Export("Scene_cameraX")
     static int Scene_cameraX;
-    @ObfuscatedName("x")
-    @Export("Scene_cameraY")
     static int Scene_cameraY;
-    @ObfuscatedName("ao")
-    @Export("Scene_cameraZ")
     static int Scene_cameraZ;
-    @ObfuscatedName("ae")
-    @Export("Scene_cameraPitchSine")
     static int Scene_cameraPitchSine;
-    @ObfuscatedName("aa")
-    @Export("Scene_cameraPitchCosine")
     static int Scene_cameraPitchCosine;
-    @ObfuscatedName("ah")
-    @Export("Scene_cameraYawSine")
     static int Scene_cameraYawSine;
-    @ObfuscatedName("aw")
-    @Export("Scene_cameraYawCosine")
     static int Scene_cameraYawCosine;
-    @ObfuscatedName("an")
-    @Export("gameObjects")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass97;"
-    )
     static GameObject[] gameObjects = new GameObject[100];
-    @ObfuscatedName("av")
-    @Export("checkClick")
     static boolean checkClick = false;
-    @ObfuscatedName("ak")
-    @Export("Scene_selectedPlane")
     static int Scene_selectedPlane = 0;
-    @ObfuscatedName("ax")
-    @Export("Scene_selectedScreenX")
     static int Scene_selectedScreenX = 0;
-    @ObfuscatedName("ab")
-    @Export("Scene_selectedScreenY")
     static int Scene_selectedScreenY = 0;
-    @ObfuscatedName("af")
-    @Export("Scene_selectedX")
     public static int Scene_selectedX = -1;
-    @ObfuscatedName("ai")
-    @Export("Scene_selectedY")
     public static int Scene_selectedY = -1;
-    @ObfuscatedName("ac")
-    @Export("Scene_planesCount")
     static int Scene_planesCount = 4;
-    @ObfuscatedName("al")
-    @Export("Scene_planeOccluderCounts")
     static int[] Scene_planeOccluderCounts;
-    @ObfuscatedName("ag")
-    @Export("Scene_planeOccluders")
-    @ObfuscatedSignature(
-            descriptor = "[[Lclass110;"
-    )
     static Occluder[][] Scene_planeOccluders;
-    @ObfuscatedName("ap")
-    @Export("Scene_currentOccludersCount")
     static int Scene_currentOccludersCount;
-    @ObfuscatedName("am")
-    @Export("Scene_currentOccluders")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass110;"
-    )
     static Occluder[] Scene_currentOccluders;
-    @ObfuscatedName("as")
-    @Export("Scene_tilesDeque")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque Scene_tilesDeque;
-    @ObfuscatedName("aj")
     static final int[] field1595;
-    @ObfuscatedName("ar")
     static final int[] field1596;
-    @ObfuscatedName("au")
     static final int[] field1583;
-    @ObfuscatedName("ad")
     static final int[] field1598;
-    @ObfuscatedName("az")
     static final int[] field1599;
-    @ObfuscatedName("ay")
     static final int[] field1600;
-    @ObfuscatedName("bh")
     static final int[] field1601;
-    @ObfuscatedName("bj")
     static boolean[][][][] field1569;
-    @ObfuscatedName("bu")
-    @Export("visibleTiles")
     static boolean[][] visibleTiles;
-    @ObfuscatedName("br")
-    @Export("Scene_viewportXCenter")
     static int Scene_viewportXCenter;
-    @ObfuscatedName("bd")
-    @Export("Scene_viewportYCenter")
     static int Scene_viewportYCenter;
-    @ObfuscatedName("bf")
-    @Export("Scene_viewportXMin")
     static int Scene_viewportXMin;
-    @ObfuscatedName("bg")
-    @Export("Scene_viewportYMin")
     static int Scene_viewportYMin;
-    @ObfuscatedName("bp")
-    @Export("Scene_viewportXMax")
     static int Scene_viewportXMax;
-    @ObfuscatedName("bb")
-    @Export("Scene_viewportYMax")
     static int Scene_viewportYMax;
-    @ObfuscatedName("w")
-    @Export("planes")
     int planes;
-    @ObfuscatedName("f")
-    @Export("xSize")
     int xSize;
-    @ObfuscatedName("e")
-    @Export("ySize")
     int ySize;
-    @ObfuscatedName("t")
-    @Export("tileHeights")
     int[][][] tileHeights;
-    @ObfuscatedName("d")
-    @Export("tiles")
-    @ObfuscatedSignature(
-            descriptor = "[[[Lclass101;"
-    )
     Tile[][][] tiles;
-    @ObfuscatedName("p")
-    @Export("minPlane")
     int minPlane = 0;
-    @ObfuscatedName("k")
-    @Export("tempGameObjectsCount")
     int tempGameObjectsCount = 0;
-    @ObfuscatedName("r")
-    @Export("tempGameObjects")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass97;"
-    )
     GameObject[] tempGameObjects = new GameObject[5000];
-    @ObfuscatedName("l")
     int[][][] field1558;
-    @ObfuscatedName("ba")
-    @Export("tileShape2D")
     int[][] tileShape2D = new int[][]{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
-    @ObfuscatedName("bn")
-    @Export("tileRotation2D")
     int[][] tileRotation2D = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
 
     static {
@@ -212,8 +86,236 @@ public class Scene {
         this.method2138();
     }
 
-    @ObfuscatedName("i")
-    @Export("method2138")
+    static void loadObject(int var0, int plane, int x, int y, int id, int orientation, int type, Scene scene, CollisionMap collisionMap) {
+        ObjectDefinition definition = Definitions.getObject(id);
+        int var10;
+        int var11;
+        if (orientation != 1 && orientation != 3) {
+            var10 = definition.sizeX;
+            var11 = definition.sizeY;
+        } else {
+            var10 = definition.sizeY;
+            var11 = definition.sizeX;
+        }
+
+        int var12;
+        int var13;
+        if (var10 + x <= 104) {
+            var12 = (var10 >> 1) + x;
+            var13 = x + (var10 + 1 >> 1);
+        } else {
+            var12 = x;
+            var13 = x + 1;
+        }
+
+        int var14;
+        int var15;
+        if (y + var11 <= 104) {
+            var14 = y + (var11 >> 1);
+            var15 = y + (var11 + 1 >> 1);
+        } else {
+            var14 = y;
+            var15 = y + 1;
+        }
+
+        int[][] var16 = Tiles.tileHeights[plane];
+        int calculatedType = var16[var12][var15] + var16[var13][var14] + var16[var12][var14] + var16[var13][var15] >> 2;
+        int var18 = (x << 7) + (var10 << 6);
+        int var19 = (y << 7) + (var11 << 6);
+        int var20 = (y << 7) + x + (id << 14) + 1073741824;
+        if (definition.int1 == 0) {
+            var20 -= Integer.MIN_VALUE;
+        }
+
+        int var21 = (orientation << 6) + type;
+        if (definition.int3 == 1) {
+            var21 += 256;
+        }
+
+
+        Renderable floorDecorationModel;
+        Renderable boundaryObjectModel;
+        Renderable gameObjectModel;
+        Renderable wallDecorationModel;
+        if (type == 22) {
+            if (definition.animationId == -1 && definition.transforms == null) {
+                floorDecorationModel = definition.getModel(22, orientation, var16, var18, calculatedType, var19);
+            } else {
+                floorDecorationModel = new DynamicObject(id, 22, orientation, plane, x, y, definition.animationId, true, null);
+            }
+
+            scene.setFloorDecoration(var0, x, y, calculatedType, floorDecorationModel, var20, var21);
+            if (definition.interactType == 1) {
+                collisionMap.method3430(x, y);
+            }
+
+        } else if (type != 10 && type != 11) {
+
+            if (type >= 12) {
+                if (definition.animationId == -1 && definition.transforms == null) {
+                    gameObjectModel = definition.getModel(type, orientation, var16, var18, calculatedType, var19);
+                } else {
+                    gameObjectModel = new DynamicObject(id, type, orientation, plane, x, y, definition.animationId, true, null);
+                }
+
+                scene.addGameObject(var0, x, y, calculatedType, 1, 1, gameObjectModel, 0, var20, var21);
+                if (definition.interactType != 0) {
+                    collisionMap.method3428(x, y, var10, var11, definition.boolean1);
+                }
+            } else if (type == 0) {
+
+                if (definition.animationId == -1 && definition.transforms == null) {
+                    boundaryObjectModel = definition.getModel(0, orientation, var16, var18, calculatedType, var19);
+                } else {
+                    boundaryObjectModel = new DynamicObject(id, 0, orientation, plane, x, y, definition.animationId, true, null);
+                }
+
+                scene.setBoundaryObject(var0, x, y, calculatedType, boundaryObjectModel, null, Tiles.field124[orientation], 0, var20, var21);
+                if (definition.interactType != 0) {
+                    collisionMap.method3427(x, y, type, orientation, definition.boolean1);
+                }
+
+            } else if (type == 1) {
+                if (definition.animationId == -1 && definition.transforms == null) {
+                    boundaryObjectModel = definition.getModel(1, orientation, var16, var18, calculatedType, var19);
+                } else {
+                    boundaryObjectModel = new DynamicObject(id, 1, orientation, plane, x, y, definition.animationId, true, null);
+                }
+
+                scene.setBoundaryObject(var0, x, y, calculatedType, boundaryObjectModel, null, Tiles.field125[orientation], 0, var20, var21);
+                if (definition.interactType != 0) {
+                    collisionMap.method3427(x, y, type, orientation, definition.boolean1);
+                }
+
+            } else {
+                int var22;
+                Renderable renderable;
+                if (type == 2) {
+                    var22 = orientation + 1 & 3;
+                    Renderable renderable1;
+                    if (definition.animationId == -1 && definition.transforms == null) {
+                        renderable1 = definition.getModel(2, orientation + 4, var16, var18, calculatedType, var19);
+                        renderable = definition.getModel(2, var22, var16, var18, calculatedType, var19);
+                    } else {
+                        renderable1 = new DynamicObject(id, 2, orientation + 4, plane, x, y, definition.animationId, true, null);
+                        renderable = new DynamicObject(id, 2, var22, plane, x, y, definition.animationId, true, null);
+                    }
+
+                    scene.setBoundaryObject(var0, x, y, calculatedType, renderable1, renderable, Tiles.field124[orientation], Tiles.field124[var22], var20, var21);
+                    if (definition.interactType != 0) {
+                        collisionMap.method3427(x, y, type, orientation, definition.boolean1);
+                    }
+
+                } else if (type == 3) {
+                    if (definition.animationId == -1 && definition.transforms == null) {
+                        boundaryObjectModel = definition.getModel(3, orientation, var16, var18, calculatedType, var19);
+                    } else {
+                        boundaryObjectModel = new DynamicObject(id, 3, orientation, plane, x, y, definition.animationId, true, null);
+                    }
+
+                    scene.setBoundaryObject(var0, x, y, calculatedType, boundaryObjectModel, null, Tiles.field125[orientation], 0, var20, var21);
+                    if (definition.interactType != 0) {
+                        collisionMap.method3427(x, y, type, orientation, definition.boolean1);
+                    }
+
+                } else if (type == 9) {
+                    if (definition.animationId == -1 && definition.transforms == null) {
+                        gameObjectModel = definition.getModel(type, orientation, var16, var18, calculatedType, var19);
+                    } else {
+                        gameObjectModel = new DynamicObject(id, type, orientation, plane, x, y, definition.animationId, true, null);
+                    }
+
+                    scene.addGameObject(var0, x, y, calculatedType, 1, 1, gameObjectModel, 0, var20, var21);
+                    if (definition.interactType != 0) {
+                        collisionMap.method3428(x, y, var10, var11, definition.boolean1);
+                    }
+
+                } else if (type == 4) {
+                    if (definition.animationId == -1 && definition.transforms == null) {
+                        wallDecorationModel = definition.getModel(4, orientation, var16, var18, calculatedType, var19);
+                    } else {
+                        wallDecorationModel = new DynamicObject(id, 4, orientation, plane, x, y, definition.animationId, true, null);
+                    }
+
+                    scene.setWallDecoration(var0, x, y, calculatedType, wallDecorationModel, null, Tiles.field124[orientation], 0, 0, 0, var20, var21);
+                } else {
+                    int var23;
+                    if (type == 5) {
+                        var22 = 16;
+                        int packedId = scene.method2057(var0, x, y);
+                        if (packedId != 0) {
+                            var22 = Definitions.getObject(packedId >> 14 & 32767).int2;
+                        }
+
+                        if (definition.animationId == -1 && definition.transforms == null) {
+                            wallDecorationModel = definition.getModel(4, orientation, var16, var18, calculatedType, var19);
+                        } else {
+                            wallDecorationModel = new DynamicObject(id, 4, orientation, plane, x, y, definition.animationId, true, null);
+                        }
+
+                        scene.setWallDecoration(var0, x, y, calculatedType, wallDecorationModel, null, Tiles.field124[orientation], 0, var22 * Tiles.field115[orientation], var22 * Tiles.field127[orientation], var20, var21);
+                    } else if (type == 6) {
+                        var22 = 8;
+                        int packedId = scene.method2057(var0, x, y);
+                        if (packedId != 0) {
+                            var22 = Definitions.getObject(packedId >> 14 & 32767).int2 / 2;
+                        }
+
+                        if (definition.animationId == -1 && definition.transforms == null) {
+                            wallDecorationModel = definition.getModel(4, orientation + 4, var16, var18, calculatedType, var19);
+                        } else {
+                            wallDecorationModel = new DynamicObject(id, 4, orientation + 4, plane, x, y, definition.animationId, true, null);
+                        }
+
+                        scene.setWallDecoration(var0, x, y, calculatedType, wallDecorationModel, null, 256, orientation, var22 * Tiles.field128[orientation], var22 * Tiles.field134[orientation], var20, var21);
+                    } else if (type == 7) {
+                        var23 = orientation + 2 & 3;
+                        if (definition.animationId == -1 && definition.transforms == null) {
+                            wallDecorationModel = definition.getModel(4, var23 + 4, var16, var18, calculatedType, var19);
+                        } else {
+                            wallDecorationModel = new DynamicObject(id, 4, var23 + 4, plane, x, y, definition.animationId, true, null);
+                        }
+
+                        scene.setWallDecoration(var0, x, y, calculatedType, wallDecorationModel, null, 256, var23, 0, 0, var20, var21);
+                    } else if (type == 8) {
+                        var22 = 8;
+                        int packedId = scene.method2057(var0, x, y);
+                        if (packedId != 0) {
+                            var22 = Definitions.getObject(packedId >> 14 & 32767).int2 / 2;
+                        }
+
+                        int var26 = orientation + 2 & 3;
+                        Renderable wallDecorationModel1;
+                        if (definition.animationId == -1 && definition.transforms == null) {
+                            wallDecorationModel = definition.getModel(4, orientation + 4, var16, var18, calculatedType, var19);
+                            wallDecorationModel1 = definition.getModel(4, var26 + 4, var16, var18, calculatedType, var19);
+                        } else {
+                            wallDecorationModel = new DynamicObject(id, 4, orientation + 4, plane, x, y, definition.animationId, true, null);
+                            wallDecorationModel1 = new DynamicObject(id, 4, var26 + 4, plane, x, y, definition.animationId, true, null);
+                        }
+
+                        scene.setWallDecoration(var0, x, y, calculatedType, wallDecorationModel, wallDecorationModel1, 256, orientation, var22 * Tiles.field128[orientation], var22 * Tiles.field134[orientation], var20, var21);
+                    }
+                }
+            }
+        } else {
+            if (definition.animationId == -1 && definition.transforms == null) {
+                gameObjectModel = definition.getModel(10, orientation, var16, var18, calculatedType, var19);
+            } else {
+                gameObjectModel = new DynamicObject(id, 10, orientation, plane, x, y, definition.animationId, true, null);
+            }
+
+            if (gameObjectModel != null) {
+                scene.addGameObject(var0, x, y, calculatedType, var10, var11, gameObjectModel, type == 11 ? 256 : 0, var20, var21);
+            }
+
+            if (definition.interactType != 0) {
+                collisionMap.method3428(x, y, var10, var11, definition.boolean1);
+            }
+
+        }
+    }
+
     public void method2138() {
         int var1;
         int var2;
@@ -245,8 +347,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("w")
-    @Export("method2126")
     public void method2126(int var1) {
         this.minPlane = var1;
 
@@ -260,8 +360,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("f")
-    @Export("method2044")
     public void method2044(int var1, int var2) {
         Tile var3 = this.tiles[0][var1][var2];
 
@@ -272,7 +370,7 @@ public class Scene {
 
                 for (int var6 = 0; var6 < var5.gameObjectsCount; ++var6) {
                     GameObject var7 = var5.gameObjects[var6];
-                    if ((var7.field1656 >> 29 & 3) == 2 && var7.startX == var1 && var2 == var7.startY) {
+                    if ((var7.packedId >> 29 & 3) == 2 && var7.startX == var1 && var2 == var7.startY) {
                         --var7.plane;
                     }
                 }
@@ -287,8 +385,6 @@ public class Scene {
         this.tiles[3][var1][var2] = null;
     }
 
-    @ObfuscatedName("t")
-    @Export("method2046")
     public void method2046(int var1, int var2, int var3, int var4) {
         Tile var5 = this.tiles[var1][var2][var3];
         if (var5 != null) {
@@ -296,8 +392,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("d")
-    @Export("method2047")
     public void method2047(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20) {
         SceneTilePaint var21;
         int var22;
@@ -334,72 +428,58 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("p")
-    @Export("method2048")
-    @ObfuscatedSignature(
-            descriptor = "(IIIILclass93;II)V"
-    )
-    public void method2048(int var1, int var2, int var3, int var4, Renderable var5, int var6, int var7) {
-        if (var5 != null) {
-            FloorDecoration var8 = new FloorDecoration();
-            var8.renderable = var5;
-            var8.x = var2 * 128 + 64;
-            var8.y = var3 * 128 + 64;
-            var8.tileHeight = var4;
-            var8.field1807 = var6;
-            var8.field1794 = var7;
-            if (this.tiles[var1][var2][var3] == null) {
-                this.tiles[var1][var2][var3] = new Tile(var1, var2, var3);
+    public void setFloorDecoration(int plane, int sceneX, int sceneY, int tileHeight, Renderable renderable, int var6, int var7) {
+        if (renderable != null) {
+            FloorDecoration floorDecoration = new FloorDecoration();
+            floorDecoration.renderable = renderable;
+            floorDecoration.x = sceneX * 128 + 64;
+            floorDecoration.y = sceneY * 128 + 64;
+            floorDecoration.tileHeight = tileHeight;
+            floorDecoration.packedId = var6;
+            floorDecoration.flags = var7;
+            if (this.tiles[plane][sceneX][sceneY] == null) {
+                this.tiles[plane][sceneX][sceneY] = new Tile(plane, sceneX, sceneY);
             }
 
-            this.tiles[var1][var2][var3].floorDecoration = var8;
+            this.tiles[plane][sceneX][sceneY].floorDecoration = floorDecoration;
         }
     }
 
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "(IIIILclass93;ILclass93;Lclass93;)V"
-    )
-    public void method2169(int var1, int var2, int var3, int var4, Renderable var5, int var6, Renderable var7, Renderable var8) {
-        ItemLayer var9 = new ItemLayer();
-        var9.first = var5;
-        var9.x = var2 * 128 + 64;
-        var9.y = var3 * 128 + 64;
-        var9.tileHeight = var4;
-        var9.field1664 = var6;
-        var9.second = var7;
-        var9.third = var8;
-        int var10 = 0;
-        Tile var11 = this.tiles[var1][var2][var3];
-        if (var11 != null) {
-            for (int var12 = 0; var12 < var11.gameObjectsCount; ++var12) {
-                if ((var11.gameObjects[var12].field1653 & 256) == 256 && var11.gameObjects[var12].renderable instanceof Model) {
-                    Model var13 = (Model) var11.gameObjects[var12].renderable;
-                    var13.method2427();
-                    if (var13.height > var10) {
-                        var10 = var13.height;
+    public void addLoot(int plane, int sceneX, int sceneY, int tileHeight, Renderable drawnLayer1, int var6, Renderable drawnLayer2, Renderable drawnLayer3) {
+        Loot loot = new Loot();
+        loot.drawnLayer1 = drawnLayer1;
+        loot.drawnLayer2 = drawnLayer2;
+        loot.drawnLayer3 = drawnLayer3;
+        loot.x = sceneX * 128 + 64;
+        loot.y = sceneY * 128 + 64;
+        loot.tileHeight = tileHeight;
+        loot.field1664 = var6;
+        int modelHeight = 0;
+        Tile tile = this.tiles[plane][sceneX][sceneY];
+        if (tile != null) {
+            for (int var12 = 0; var12 < tile.gameObjectsCount; ++var12) {
+                if ((tile.gameObjects[var12].flags & 256) == 256 && tile.gameObjects[var12].renderable instanceof Model model) {
+                    model.method2427();
+                    if (model.height > modelHeight) {
+                        modelHeight = model.height;
                     }
                 }
             }
         }
 
-        var9.height = var10;
-        if (this.tiles[var1][var2][var3] == null) {
-            this.tiles[var1][var2][var3] = new Tile(var1, var2, var3);
+        loot.height = modelHeight;
+        if (this.tiles[plane][sceneX][sceneY] == null) {
+            this.tiles[plane][sceneX][sceneY] = new Tile(plane, sceneX, sceneY);
         }
 
-        this.tiles[var1][var2][var3].itemLayer = var9;
+        this.tiles[plane][sceneX][sceneY].loot = loot;
     }
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "(IIIILclass93;Lclass93;IIII)V"
-    )
-    public void method2049(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10) {
+    public void setBoundaryObject(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10) {
         if (var5 != null || var6 != null) {
             BoundaryObject var11 = new BoundaryObject();
             var11.packedId = var9;
-            var11.field1615 = var10;
+            var11.flags = var10;
             var11.x = var2 * 128 + 64;
             var11.y = var3 * 128 + 64;
             var11.tileHeight = var4;
@@ -418,15 +498,11 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(
-            descriptor = "(IIIILclass93;Lclass93;IIIIII)V"
-    )
-    public void method2041(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10, int var11, int var12) {
+    public void setWallDecoration(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10, int var11, int var12) {
         if (var5 != null) {
             WallDecoration var13 = new WallDecoration();
             var13.packedId = var11;
-            var13.field1809 = var12;
+            var13.flags = var12;
             var13.x = var2 * 128 + 64;
             var13.y = var3 * 128 + 64;
             var13.tileHeight = var4;
@@ -447,11 +523,7 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("a")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIIILclass93;III)Z"
-    )
-    public boolean method2042(int var1, int var2, int var3, int var4, int var5, int var6, Renderable var7, int var8, int var9, int var10) {
+    public boolean addGameObject(int var1, int var2, int var3, int var4, int var5, int var6, Renderable var7, int var8, int var9, int var10) {
         if (var7 == null) {
             return true;
         } else {
@@ -461,10 +533,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("z")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIILclass93;IIZ)Z"
-    )
     public boolean method2094(int var1, int var2, int var3, int var4, int var5, Renderable var6, int var7, int var8, boolean var9) {
         if (var6 == null) {
             return true;
@@ -499,18 +567,10 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIILclass93;IIIIII)Z"
-    )
     public boolean method2053(int var1, int var2, int var3, int var4, int var5, Renderable var6, int var7, int var8, int var9, int var10, int var11, int var12) {
         return var6 == null || this.method2054(var1, var9, var10, var11 - var9 + 1, var12 - var10 + 1, var2, var3, var4, var6, var7, true, var8, 0);
     }
 
-    @ObfuscatedName("m")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIIIIILclass93;IZII)Z"
-    )
     boolean method2054(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, Renderable var9, int var10, boolean var11, int var12, int var13) {
         int var15;
         for (int var14 = var2; var14 < var2 + var4; ++var14) {
@@ -519,26 +579,26 @@ public class Scene {
                     return false;
                 }
 
-                Tile var22 = this.tiles[var1][var14][var15];
-                if (var22 != null && var22.gameObjectsCount >= 5) {
+                Tile tile = this.tiles[var1][var14][var15];
+                if (tile != null && tile.gameObjectsCount >= 5) {
                     return false;
                 }
             }
         }
 
-        GameObject var20 = new GameObject();
-        var20.field1656 = var12;
-        var20.field1653 = var13;
-        var20.plane = var1;
-        var20.centerX = var6;
-        var20.centerY = var7;
-        var20.height = var8;
-        var20.renderable = var9;
-        var20.field1645 = var10;
-        var20.startX = var2;
-        var20.startY = var3;
-        var20.endX = var2 + var4 - 1;
-        var20.endY = var3 + var5 - 1;
+        GameObject gameObject = new GameObject();
+        gameObject.packedId = var12;
+        gameObject.flags = var13;
+        gameObject.plane = var1;
+        gameObject.centerX = var6;
+        gameObject.centerY = var7;
+        gameObject.height = var8;
+        gameObject.renderable = var9;
+        gameObject.field1645 = var10;
+        gameObject.startX = var2;
+        gameObject.startY = var3;
+        gameObject.endX = var2 + var4 - 1;
+        gameObject.endY = var3 + var5 - 1;
 
         for (var15 = var2; var15 < var2 + var4; ++var15) {
             for (int var16 = var3; var16 < var3 + var5; ++var16) {
@@ -566,7 +626,7 @@ public class Scene {
                 }
 
                 Tile var21 = this.tiles[var1][var15][var16];
-                var21.gameObjects[var21.gameObjectsCount] = var20;
+                var21.gameObjects[var21.gameObjectsCount] = gameObject;
                 var21.gameObjectEdgeMasks[var21.gameObjectsCount] = var17;
                 var21.gameObjectsEdgeMask |= var17;
                 ++var21.gameObjectsCount;
@@ -574,14 +634,12 @@ public class Scene {
         }
 
         if (var11) {
-            this.tempGameObjects[this.tempGameObjectsCount++] = var20;
+            this.tempGameObjects[this.tempGameObjectsCount++] = gameObject;
         }
 
         return true;
     }
 
-    @ObfuscatedName("u")
-    @Export("method2055")
     public void method2055() {
         for (int var1 = 0; var1 < this.tempGameObjectsCount; ++var1) {
             GameObject var2 = this.tempGameObjects[var1];
@@ -592,11 +650,6 @@ public class Scene {
         this.tempGameObjectsCount = 0;
     }
 
-    @ObfuscatedName("g")
-    @Export("method2056")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass97;)V"
-    )
     void method2056(GameObject var1) {
         for (int var2 = var1.startX; var2 <= var1.endX; ++var2) {
             for (int var3 = var1.startY; var3 <= var1.endY; ++var3) {
@@ -628,7 +681,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("o")
     public void method2161(int var1, int var2, int var3, int var4) {
         Tile var5 = this.tiles[var1][var2][var3];
         if (var5 != null) {
@@ -640,7 +692,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("v")
     public void method2058(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 != null) {
@@ -648,7 +699,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("j")
     public void method2059(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 != null) {
@@ -656,14 +706,12 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("n")
-    @Export("method2043")
     public void method2043(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 != null) {
             for (int var5 = 0; var5 < var4.gameObjectsCount; ++var5) {
                 GameObject var6 = var4.gameObjects[var5];
-                if ((var6.field1656 >> 29 & 3) == 2 && var2 == var6.startX && var3 == var6.startY) {
+                if ((var6.packedId >> 29 & 3) == 2 && var2 == var6.startX && var3 == var6.startY) {
                     this.method2056(var6);
                     return;
                 }
@@ -672,7 +720,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("q")
     public void method2184(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 != null) {
@@ -680,38 +727,23 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("c")
-    @Export("method2062")
     public void method2062(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 != null) {
-            var4.itemLayer = null;
+            var4.loot = null;
         }
     }
 
-    @ObfuscatedName("h")
-    @ObfuscatedSignature(
-            descriptor = "(III)Lclass95;"
-    )
     public BoundaryObject getBoundaryObject(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         return var4 == null ? null : var4.boundaryObject;
     }
 
-    @ObfuscatedName("b")
-    @ObfuscatedSignature(
-            descriptor = "(III)Lclass107;"
-    )
     public WallDecoration getWallDecoration(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         return var4 == null ? null : var4.wallDecoration;
     }
 
-    @ObfuscatedName("y")
-    @Export("method2196")
-    @ObfuscatedSignature(
-            descriptor = "(III)Lclass97;"
-    )
     public GameObject getGameObject(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 == null) {
@@ -719,7 +751,7 @@ public class Scene {
         } else {
             for (int var5 = 0; var5 < var4.gameObjectsCount; ++var5) {
                 GameObject var6 = var4.gameObjects[var5];
-                if ((var6.field1656 >> 29 & 3) == 2 && var2 == var6.startX && var3 == var6.startY) {
+                if ((var6.packedId >> 29 & 3) == 2 && var2 == var6.startX && var3 == var6.startY) {
                     return var6;
                 }
             }
@@ -728,29 +760,21 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("x")
-    @Export("method2066")
-    @ObfuscatedSignature(
-            descriptor = "(III)Lclass106;"
-    )
     public FloorDecoration method2066(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         return var4 != null && var4.floorDecoration != null ? var4.floorDecoration : null;
     }
 
-    @ObfuscatedName("ao")
     public int method2057(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         return var4 != null && var4.boundaryObject != null ? var4.boundaryObject.packedId : 0;
     }
 
-    @ObfuscatedName("ae")
     public int method2061(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         return var4 != null && var4.wallDecoration != null ? var4.wallDecoration.packedId : 0;
     }
 
-    @ObfuscatedName("aa")
     public int method2069(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
         if (var4 == null) {
@@ -758,8 +782,8 @@ public class Scene {
         } else {
             for (int var5 = 0; var5 < var4.gameObjectsCount; ++var5) {
                 GameObject var6 = var4.gameObjects[var5];
-                if ((var6.field1656 >> 29 & 3) == 2 && var2 == var6.startX && var3 == var6.startY) {
-                    return var6.field1656;
+                if ((var6.packedId >> 29 & 3) == 2 && var2 == var6.startX && var3 == var6.startY) {
+                    return var6.packedId;
                 }
             }
 
@@ -767,27 +791,25 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("ah")
     public int method2070(int var1, int var2, int var3) {
         Tile var4 = this.tiles[var1][var2][var3];
-        return var4 != null && var4.floorDecoration != null ? var4.floorDecoration.field1807 : 0;
+        return var4 != null && var4.floorDecoration != null ? var4.floorDecoration.packedId : 0;
     }
 
-    @ObfuscatedName("aw")
-    public int method2071(int var1, int var2, int var3, int var4) {
-        Tile var5 = this.tiles[var1][var2][var3];
-        if (var5 == null) {
+    public int method2071(int var1, int var2, int var3, int packedId) {
+        Tile tile = this.tiles[var1][var2][var3];
+        if (tile == null) {
             return -1;
-        } else if (var5.boundaryObject != null && var5.boundaryObject.packedId == var4) {
-            return var5.boundaryObject.field1615 & 255;
-        } else if (var5.wallDecoration != null && var5.wallDecoration.packedId == var4) {
-            return var5.wallDecoration.field1809 & 255;
-        } else if (var5.floorDecoration != null && var5.floorDecoration.field1807 == var4) {
-            return var5.floorDecoration.field1794 & 255;
+        } else if (tile.boundaryObject != null && tile.boundaryObject.packedId == packedId) {
+            return tile.boundaryObject.flags & 255;
+        } else if (tile.wallDecoration != null && tile.wallDecoration.packedId == packedId) {
+            return tile.wallDecoration.flags & 255;
+        } else if (tile.floorDecoration != null && tile.floorDecoration.packedId == packedId) {
+            return tile.floorDecoration.flags & 255;
         } else {
-            for (int var6 = 0; var6 < var5.gameObjectsCount; ++var6) {
-                if (var4 == var5.gameObjects[var6].field1656) {
-                    return var5.gameObjects[var6].field1653 & 255;
+            for (int var6 = 0; var6 < tile.gameObjectsCount; ++var6) {
+                if (packedId == tile.gameObjects[var6].packedId) {
+                    return tile.gameObjects[var6].flags & 255;
                 }
             }
 
@@ -795,7 +817,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("an")
     public void method2072(int var1, int var2, int var3) {
         for (int var4 = 0; var4 < this.planes; ++var4) {
             for (int var5 = 0; var5 < this.xSize; ++var5) {
@@ -839,10 +860,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("av")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass100;III)V"
-    )
     void method2151(ModelData var1, int var2, int var3, int var4) {
         Tile var5;
         ModelData var6;
@@ -880,10 +897,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("ak")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass100;IIIII)V"
-    )
     void method2074(ModelData var1, int var2, int var3, int var4, int var5, int var6) {
         boolean var7 = true;
         int var8 = var3;
@@ -936,8 +949,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("ax")
-    @Export("method2075")
     public void method2075(int[] var1, int var2, int var3, int var4, int var5, int var6) {
         Tile var7 = this.tiles[var4][var5][var6];
         if (var7 != null) {
@@ -1001,7 +1012,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("ai")
     public void method2078(int var1, int var2, int var3) {
         checkClick = true;
         Scene_selectedPlane = var1;
@@ -1011,7 +1021,6 @@ public class Scene {
         Scene_selectedY = -1;
     }
 
-    @ObfuscatedName("at")
     public void method2171(int var1, int var2, int var3, int var4, int var5, int var6) {
         if (var1 < 0) {
             var1 = 0;
@@ -1197,10 +1206,6 @@ public class Scene {
         checkClick = false;
     }
 
-    @ObfuscatedName("aq")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass101;Z)V"
-    )
     void method2080(Tile var1, boolean var2) {
         Scene_tilesDeque.method3528(var1);
 
@@ -1307,7 +1312,7 @@ public class Scene {
                                                 for (var11 = 0; var11 < var9.gameObjectsCount; ++var11) {
                                                     var12 = var9.gameObjects[var11];
                                                     if (var12 != null) {
-                                                        var12.renderable.vmethod2441(var12.field1645, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var12.centerX - Scene_cameraX, var12.height - Scene_cameraY, var12.centerY - Scene_cameraZ, var12.field1656);
+                                                        var12.renderable.vmethod2441(var12.field1645, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var12.centerX - Scene_cameraX, var12.height - Scene_cameraY, var12.centerY - Scene_cameraZ, var12.packedId);
                                                     }
                                                 }
                                             }
@@ -1410,21 +1415,21 @@ public class Scene {
                                             if (var20) {
                                                 FloorDecoration var22 = var3.floorDecoration;
                                                 if (var22 != null) {
-                                                    var22.renderable.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var22.x - Scene_cameraX, var22.tileHeight - Scene_cameraY, var22.y - Scene_cameraZ, var22.field1807);
+                                                    var22.renderable.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var22.x - Scene_cameraX, var22.tileHeight - Scene_cameraY, var22.y - Scene_cameraZ, var22.packedId);
                                                 }
 
-                                                ItemLayer var23 = var3.itemLayer;
+                                                Loot var23 = var3.loot;
                                                 if (var23 != null && var23.height == 0) {
-                                                    if (var23.second != null) {
-                                                        var23.second.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var23.x - Scene_cameraX, var23.tileHeight - Scene_cameraY, var23.y - Scene_cameraZ, var23.field1664);
+                                                    if (var23.drawnLayer2 != null) {
+                                                        var23.drawnLayer2.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var23.x - Scene_cameraX, var23.tileHeight - Scene_cameraY, var23.y - Scene_cameraZ, var23.field1664);
                                                     }
 
-                                                    if (var23.third != null) {
-                                                        var23.third.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var23.x - Scene_cameraX, var23.tileHeight - Scene_cameraY, var23.y - Scene_cameraZ, var23.field1664);
+                                                    if (var23.drawnLayer3 != null) {
+                                                        var23.drawnLayer3.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var23.x - Scene_cameraX, var23.tileHeight - Scene_cameraY, var23.y - Scene_cameraZ, var23.field1664);
                                                     }
 
-                                                    if (var23.first != null) {
-                                                        var23.first.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var23.x - Scene_cameraX, var23.tileHeight - Scene_cameraY, var23.y - Scene_cameraZ, var23.field1664);
+                                                    if (var23.drawnLayer1 != null) {
+                                                        var23.drawnLayer1.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var23.x - Scene_cameraX, var23.tileHeight - Scene_cameraY, var23.y - Scene_cameraZ, var23.field1664);
                                                     }
                                                 }
                                             }
@@ -1575,7 +1580,7 @@ public class Scene {
                                                 GameObject var33 = gameObjects[var25];
                                                 var33.lastDrawn = Scene_drawnCount;
                                                 if (!this.method2089(var7, var33.startX, var33.endX, var33.startY, var33.endY, var33.renderable.height)) {
-                                                    var33.renderable.vmethod2441(var33.field1645, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var33.centerX - Scene_cameraX, var33.height - Scene_cameraY, var33.centerY - Scene_cameraZ, var33.field1656);
+                                                    var33.renderable.vmethod2441(var33.field1645, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var33.centerX - Scene_cameraX, var33.height - Scene_cameraY, var33.centerY - Scene_cameraZ, var33.packedId);
                                                 }
 
                                                 for (var14 = var33.startX; var14 <= var33.endX; ++var14) {
@@ -1631,18 +1636,18 @@ public class Scene {
 
             var3.drawSecondary = false;
             --tileUpdateCount;
-            ItemLayer var32 = var3.itemLayer;
+            Loot var32 = var3.loot;
             if (var32 != null && var32.height != 0) {
-                if (var32.second != null) {
-                    var32.second.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var32.x - Scene_cameraX, var32.tileHeight - Scene_cameraY - var32.height, var32.y - Scene_cameraZ, var32.field1664);
+                if (var32.drawnLayer2 != null) {
+                    var32.drawnLayer2.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var32.x - Scene_cameraX, var32.tileHeight - Scene_cameraY - var32.height, var32.y - Scene_cameraZ, var32.field1664);
                 }
 
-                if (var32.third != null) {
-                    var32.third.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var32.x - Scene_cameraX, var32.tileHeight - Scene_cameraY - var32.height, var32.y - Scene_cameraZ, var32.field1664);
+                if (var32.drawnLayer3 != null) {
+                    var32.drawnLayer3.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var32.x - Scene_cameraX, var32.tileHeight - Scene_cameraY - var32.height, var32.y - Scene_cameraZ, var32.field1664);
                 }
 
-                if (var32.first != null) {
-                    var32.first.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var32.x - Scene_cameraX, var32.tileHeight - Scene_cameraY - var32.height, var32.y - Scene_cameraZ, var32.field1664);
+                if (var32.drawnLayer1 != null) {
+                    var32.drawnLayer1.vmethod2441(0, Scene_cameraPitchSine, Scene_cameraPitchCosine, Scene_cameraYawSine, Scene_cameraYawCosine, var32.x - Scene_cameraX, var32.tileHeight - Scene_cameraY - var32.height, var32.y - Scene_cameraZ, var32.field1664);
                 }
             }
 
@@ -1726,11 +1731,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("ac")
-    @Export("method2081")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass99;IIIIIII)V"
-    )
     void method2081(SceneTilePaint var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         int var9;
         int var10 = var9 = (var7 << 7) - Scene_cameraX;
@@ -1831,11 +1831,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("al")
-    @Export("method2172")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass92;IIIIII)V"
-    )
     void method2172(SceneTileModel var1, int var2, int var3, int var4, int var5, int var6, int var7) {
         int var8 = var1.vertexX.length;
 
@@ -1907,7 +1902,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("ap")
     boolean method2084(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         if (var2 < var3 && var2 < var4 && var2 < var5) {
             return false;
@@ -1925,8 +1919,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("am")
-    @Export("method2079")
     void method2079() {
         int var1 = Scene_planeOccluderCounts[Scene_plane];
         Occluder[] var2 = Scene_planeOccluders[Scene_plane];
@@ -2074,7 +2066,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("as")
     boolean method2086(int var1, int var2, int var3) {
         int var4 = this.field1558[var1][var2][var3];
         if (var4 == -Scene_drawnCount) {
@@ -2094,7 +2085,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("aj")
     boolean method2087(int var1, int var2, int var3, int var4) {
         if (!this.method2086(var1, var2, var3)) {
             return false;
@@ -2235,7 +2225,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("ar")
     boolean method2088(int var1, int var2, int var3, int var4) {
         if (!this.method2086(var1, var2, var3)) {
             return false;
@@ -2246,7 +2235,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("au")
     boolean method2089(int var1, int var2, int var3, int var4, int var5, int var6) {
         int var7;
         int var8;
@@ -2286,7 +2274,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("ad")
     boolean method2153(int var1, int var2, int var3) {
         for (int var4 = 0; var4 < Scene_currentOccludersCount; ++var4) {
             Occluder var5 = Scene_currentOccluders[var4];
@@ -2356,8 +2343,6 @@ public class Scene {
         return false;
     }
 
-    @ObfuscatedName("e")
-    @Export("method2045")
     public static void method2045(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
         Occluder var8 = new Occluder();
         var8.minTileX = var2 / 128;
@@ -2374,8 +2359,6 @@ public class Scene {
         Scene_planeOccluders[var0][Scene_planeOccluderCounts[var0]++] = var8;
     }
 
-    @ObfuscatedName("ab")
-    @Export("method2076")
     public static void method2076(int[] var0, int var1, int var2, int var3, int var4) {
         Scene_viewportXMin = 0;
         Scene_viewportYMin = 0;
@@ -2458,7 +2441,6 @@ public class Scene {
 
     }
 
-    @ObfuscatedName("af")
     static boolean method2112(int var0, int var1, int var2) {
         int var3 = var0 * Scene_cameraYawCosine + var2 * Scene_cameraYawSine >> 16;
         int var4 = var2 * Scene_cameraYawCosine - var0 * Scene_cameraYawSine >> 16;
@@ -2473,7 +2455,6 @@ public class Scene {
         }
     }
 
-    @ObfuscatedName("ag")
     static final int method2113(int var0, int var1) {
         var1 = (var0 & 127) * var1 >> 7;
         if (var1 < 2) {

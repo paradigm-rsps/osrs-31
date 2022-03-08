@@ -1,49 +1,27 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bc")
-@Implements("AudioFilter")
 public class AudioFilter {
-    @ObfuscatedName("d")
     static float[][] field1247 = new float[2][8];
-    @ObfuscatedName("p")
-    @Export("coefficients")
     static int[][] coefficients = new int[2][8];
-    @ObfuscatedName("k")
     static float field1244;
-    @ObfuscatedName("r")
-    @Export("forwardMultiplier")
     static int forwardMultiplier;
-    @ObfuscatedName("i")
-    @Export("pairs")
     int[] pairs = new int[2];
-    @ObfuscatedName("f")
     int[][][] field1248 = new int[2][2][4];
-    @ObfuscatedName("e")
     int[][][] field1245 = new int[2][2][4];
-    @ObfuscatedName("t")
     int[] field1246 = new int[2];
 
-    @ObfuscatedName("i")
     float method1417(int var1, int var2, float var3) {
         float var4 = (float) this.field1245[var1][0][var2] + var3 * (float) (this.field1245[var1][1][var2] - this.field1245[var1][0][var2]);
         var4 *= 0.0015258789F;
         return 1.0F - (float) Math.pow(10.0D, -var4 / 20.0F);
     }
 
-    @ObfuscatedName("f")
     float method1424(int var1, int var2, float var3) {
         float var4 = (float) this.field1248[var1][0][var2] + var3 * (float) (this.field1248[var1][1][var2] - this.field1248[var1][0][var2]);
         var4 *= 1.2207031E-4F;
         return method1418(var4);
     }
 
-    @ObfuscatedName("e")
-    @Export("method1419")
     int method1419(int var1, float var2) {
         float var3;
         if (var1 == 0) {
@@ -90,10 +68,6 @@ public class AudioFilter {
         }
     }
 
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;Lclass55;)V"
-    )
     final void method1420(Buffer var1, SoundEnvelope var2) {
         int var3 = var1.readUnsignedByte();
         this.pairs[0] = var3 >> 4;
@@ -135,8 +109,6 @@ public class AudioFilter {
 
     }
 
-    @ObfuscatedName("w")
-    @Export("method1418")
     static float method1418(float var0) {
         float var1 = 32.703197F * (float) Math.pow(2.0D, var0);
         return var1 * 3.1415927F / 11025.0F;

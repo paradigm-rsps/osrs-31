@@ -1,15 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.ObfuscatedName;
-
 import java.io.IOException;
 
-@ObfuscatedName("el")
 public class class149 {
-    @ObfuscatedName("dt")
     static int[] regions;
 
-    @ObfuscatedName("i")
     public static void method3176(boolean var0) {
         if (NetCache.NetCache_socket != null) {
             try {

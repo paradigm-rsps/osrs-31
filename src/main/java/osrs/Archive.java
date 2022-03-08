@@ -1,52 +1,19 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.util.zip.CRC32;
 
-@ObfuscatedName("ez")
-@Implements("Archive")
 public class Archive extends AbstractArchive {
-    @ObfuscatedName("x")
-    @Export("Archive_crc")
     static CRC32 Archive_crc = new CRC32();
-    @ObfuscatedName("n")
-    @Export("archiveDisk")
-    @ObfuscatedSignature(
-            descriptor = "Lclass70;"
-    )
     ArchiveDisk archiveDisk;
-    @ObfuscatedName("q")
-    @Export("masterDisk")
-    @ObfuscatedSignature(
-            descriptor = "Lclass70;"
-    )
     ArchiveDisk masterDisk;
-    @ObfuscatedName("c")
-    @Export("index")
     int index;
-    @ObfuscatedName("h")
     volatile boolean field2543 = false;
-    @ObfuscatedName("b")
     boolean field2544 = false;
-    @ObfuscatedName("y")
-    @Export("validGroups")
     volatile boolean[] validGroups;
-    @ObfuscatedName("ao")
-    @Export("indexCrc")
     int indexCrc;
-    @ObfuscatedName("ae")
-    @Export("indexVersion")
     int indexVersion;
-    @ObfuscatedName("aa")
     int field2545 = -1;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass70;Lclass70;IZZZ)V"
-    )
     public Archive(ArchiveDisk var1, ArchiveDisk var2, int var3, boolean var4, boolean var5, boolean var6) {
         super(var4, var5);
         this.archiveDisk = var1;
@@ -56,14 +23,10 @@ public class Archive extends AbstractArchive {
         EnumComposition.method851(this, this.index);
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod3297")
     void vmethod3297(int var1) {
         class10.method129(this.index, var1);
     }
 
-    @ObfuscatedName("a")
-    @Export("vmethod3298")
     void vmethod3298(int var1) {
         if (this.archiveDisk != null && this.validGroups != null && this.validGroups[var1]) {
             ArchiveDisk var2 = this.archiveDisk;
@@ -90,8 +53,6 @@ public class Archive extends AbstractArchive {
 
     }
 
-    @ObfuscatedName("ca")
-    @Export("method3296")
     public int method3296() {
         if (this.field2543) {
             return 100;
@@ -116,8 +77,6 @@ public class Archive extends AbstractArchive {
         }
     }
 
-    @ObfuscatedName("ck")
-    @Export("method3299")
     public void method3299(int var1, int var2) {
         this.indexCrc = var1;
         this.indexVersion = var2;
@@ -147,8 +106,6 @@ public class Archive extends AbstractArchive {
 
     }
 
-    @ObfuscatedName("cq")
-    @Export("method3300")
     public void method3300(int var1, byte[] var2, boolean var3, boolean var4) {
         if (var3) {
             if (this.field2543) {
@@ -214,11 +171,6 @@ public class Archive extends AbstractArchive {
 
     }
 
-    @ObfuscatedName("cg")
-    @Export("method3317")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass70;I[BZ)V"
-    )
     public void method3317(ArchiveDisk var1, int var2, byte[] var3, boolean var4) {
         int var5;
         if (var1 == this.masterDisk) {
@@ -287,8 +239,6 @@ public class Archive extends AbstractArchive {
 
     }
 
-    @ObfuscatedName("ct")
-    @Export("method3305")
     void method3305() {
         this.validGroups = new boolean[super.groups.length];
 
@@ -316,8 +266,6 @@ public class Archive extends AbstractArchive {
         }
     }
 
-    @ObfuscatedName("cc")
-    @Export("method3302")
     int method3302(int var1) {
         if (super.groups[var1] != null) {
             return 100;
@@ -326,8 +274,6 @@ public class Archive extends AbstractArchive {
         }
     }
 
-    @ObfuscatedName("cx")
-    @Export("method3301")
     public int method3301() {
         int var1 = 0;
         int var2 = 0;
@@ -348,10 +294,6 @@ public class Archive extends AbstractArchive {
         }
     }
 
-    @ObfuscatedName("do")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;)Z"
-    )
     static boolean method3322(Widget var0) {
         if (Client.field652) {
             if (SoundSystem.method1326(var0) != 0) {

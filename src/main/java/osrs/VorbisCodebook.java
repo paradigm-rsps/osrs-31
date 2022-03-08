@@ -1,27 +1,11 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("bf")
-@Implements("VorbisCodebook")
 public class VorbisCodebook {
-    @ObfuscatedName("i")
-    @Export("dimensions")
     int dimensions;
-    @ObfuscatedName("w")
-    @Export("entries")
     int entries;
-    @ObfuscatedName("f")
-    @Export("lengthMap")
     int[] lengthMap;
-    @ObfuscatedName("e")
     int[] field1222;
-    @ObfuscatedName("t")
     float[][] field1223;
-    @ObfuscatedName("d")
-    @Export("keys")
     int[] keys;
 
     VorbisCodebook() {
@@ -116,7 +100,6 @@ public class VorbisCodebook {
 
     }
 
-    @ObfuscatedName("w")
     void method1384() {
         int[] var1 = new int[this.entries];
         int[] var2 = new int[33];
@@ -210,7 +193,6 @@ public class VorbisCodebook {
 
     }
 
-    @ObfuscatedName("f")
     int method1381() {
         int var1;
         for (var1 = 0; this.keys[var1] >= 0; var1 = VorbisSample.method1307() != 0 ? this.keys[var1] : var1 + 1) {
@@ -219,13 +201,10 @@ public class VorbisCodebook {
         return ~this.keys[var1];
     }
 
-    @ObfuscatedName("e")
     float[] method1382() {
         return this.field1223[this.method1381()];
     }
 
-    @ObfuscatedName("i")
-    @Export("method1380")
     static int method1380(int var0, int var1) {
         int var2;
         for (var2 = (int) Math.pow(var0, 1.0D / (double) var1) + 1; IsaacCipher.method2548(var2, var1) > var0; --var2) {

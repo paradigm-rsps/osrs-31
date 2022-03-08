@@ -1,45 +1,16 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bj")
-@Implements("SoundEnvelope")
 public class SoundEnvelope {
-    @ObfuscatedName("i")
-    @Export("segments")
     int segments = 2;
-    @ObfuscatedName("w")
-    @Export("durations")
     int[] durations = new int[2];
-    @ObfuscatedName("f")
-    @Export("phases")
     int[] phases = new int[2];
-    @ObfuscatedName("e")
-    @Export("start")
     int start;
-    @ObfuscatedName("t")
-    @Export("end")
     int end;
-    @ObfuscatedName("d")
-    @Export("form")
     int form;
-    @ObfuscatedName("p")
-    @Export("ticks")
     int ticks;
-    @ObfuscatedName("k")
-    @Export("phaseIndex")
     int phaseIndex;
-    @ObfuscatedName("r")
-    @Export("step")
     int step;
-    @ObfuscatedName("l")
-    @Export("amplitude")
     int amplitude;
-    @ObfuscatedName("a")
-    @Export("max")
     int max;
 
     SoundEnvelope() {
@@ -49,11 +20,6 @@ public class SoundEnvelope {
         this.phases[1] = 65535;
     }
 
-    @ObfuscatedName("i")
-    @Export("method1331")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     final void method1331(Buffer var1) {
         this.form = var1.readUnsignedByte();
         this.start = var1.readInt();
@@ -61,11 +27,6 @@ public class SoundEnvelope {
         this.method1341(var1);
     }
 
-    @ObfuscatedName("w")
-    @Export("method1341")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     final void method1341(Buffer var1) {
         this.segments = var1.readUnsignedByte();
         this.durations = new int[this.segments];
@@ -78,8 +39,6 @@ public class SoundEnvelope {
 
     }
 
-    @ObfuscatedName("f")
-    @Export("method1333")
     final void method1333() {
         this.ticks = 0;
         this.phaseIndex = 0;
@@ -88,8 +47,6 @@ public class SoundEnvelope {
         this.max = 0;
     }
 
-    @ObfuscatedName("e")
-    @Export("method1330")
     final int method1330(int var1) {
         if (this.max >= this.ticks) {
             this.amplitude = this.phases[this.phaseIndex++] << 15;

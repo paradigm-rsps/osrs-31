@@ -1,65 +1,27 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 
-@ObfuscatedName("bs")
-@Implements("GameEngine")
 public abstract class GameEngine extends Applet implements Runnable, FocusListener, WindowListener {
-    @ObfuscatedName("pq")
-    @Export("volatileFocus")
     static volatile boolean volatileFocus = true;
-    @ObfuscatedName("op")
-    @Export("gameEngine")
-    @ObfuscatedSignature(
-            descriptor = "Lclass72;"
-    )
     static GameEngine gameEngine = null;
-    @ObfuscatedName("ox")
-    @Export("isKilled")
     static boolean isKilled = false;
-    @ObfuscatedName("om")
-    @Export("GameEngine_redundantStartThreadCount")
     static int GameEngine_redundantStartThreadCount = 0;
-    @ObfuscatedName("px")
     protected static volatile boolean field1318 = true;
-    @ObfuscatedName("pb")
     protected static volatile boolean field1313 = false;
-    @ObfuscatedName("of")
-    @Export("stopTimeMs")
     static long stopTimeMs = 0L;
-    @ObfuscatedName("on")
-    @Export("cycleDurationMillis")
     static int cycleDurationMillis = 20;
-    @ObfuscatedName("pi")
-    @Export("clientTickTimes")
     protected static long[] clientTickTimes = new long[32];
-    @ObfuscatedName("pn")
-    @Export("graphicsTickTimes")
     protected static long[] graphicsTickTimes = new long[32];
-    @ObfuscatedName("oz")
-    @Export("fiveOrOne")
     static int fiveOrOne = 1;
-    @ObfuscatedName("og")
-    @Export("fps")
     protected static int fps = 0;
-    @ObfuscatedName("pz")
     static volatile long field1321 = 0L;
-    @ObfuscatedName("ps")
     static int field1319 = 500;
-    @ObfuscatedName("oa")
-    @Export("hasErrored")
     boolean hasErrored = false;
 
-    @ObfuscatedName("ny")
-    @Export("method1537")
     protected final boolean method1537() {
         String var1 = this.getDocumentBase().getHost().toLowerCase();
         if (!var1.equals("jagex.com") && !var1.endsWith(".jagex.com")) {
@@ -90,8 +52,6 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         }
     }
 
-    @ObfuscatedName("nm")
-    @Export("method1533")
     protected void method1533(String var1) {
         if (!this.hasErrored) {
             this.hasErrored = true;
@@ -105,8 +65,6 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         }
     }
 
-    @ObfuscatedName("no")
-    @Export("method1571")
     protected final synchronized void method1571() {
         Object var1;
         if (ObjectSound.field87 != null) {
@@ -122,7 +80,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
         Tiles.field131 = new Canvas(this);
         ((Container) var1).add(Tiles.field131);
-        Tiles.field131.setSize(SoundSystem.canvasWidth, ItemLayer.canvasHeight);
+        Tiles.field131.setSize(SoundSystem.canvasWidth, Loot.canvasHeight);
         Tiles.field131.setVisible(true);
         if (ObjectSound.field87 != null) {
             Insets var2 = ObjectSound.field87.getInsets();
@@ -138,8 +96,6 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         field1321 = ClientPreferences.method148();
     }
 
-    @ObfuscatedName("nz")
-    @Export("method1524")
     final synchronized void method1524() {
         if (!isKilled) {
             isKilled = true;
@@ -172,8 +128,6 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         }
     }
 
-    @ObfuscatedName("nv")
-    @Export("method1519")
     protected final void method1519(int var1, int var2, int var3) {
         try {
             if (gameEngine != null) {
@@ -189,7 +143,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
             gameEngine = this;
             SoundSystem.canvasWidth = var1;
-            ItemLayer.canvasHeight = var2;
+            Loot.canvasHeight = var2;
             class125.RunException_revision = var3;
             RunException.RunException_applet = this;
             if (ItemContainer.taskHandler == null) {
@@ -204,8 +158,6 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
     }
 
-    @ObfuscatedName("nh")
-    @Export("method1593")
     void method1593() {
         long var1 = ClientPreferences.method148();
         long var3 = clientTickTimes[VarpDefinition.field1040];
@@ -221,7 +173,6 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         this.cycle();
     }
 
-    @ObfuscatedName("ni")
     void method1523() {
         long var1 = ClientPreferences.method148();
         long var3 = graphicsTickTimes[World.field203];
@@ -235,7 +186,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         if (++field1319 - 1 > 50) {
             field1319 -= 50;
             field1318 = true;
-            Tiles.field131.setSize(SoundSystem.canvasWidth, ItemLayer.canvasHeight);
+            Tiles.field131.setSize(SoundSystem.canvasWidth, Loot.canvasHeight);
             Tiles.field131.setVisible(true);
             if (ObjectSound.field87 != null) {
                 Insets var6 = ObjectSound.field87.getInsets();
@@ -248,27 +199,20 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
         this.vmethod1586();
     }
 
-    @ObfuscatedName("e")
     protected abstract void vmethod1534();
 
-    @ObfuscatedName("p")
     protected abstract void vmethod1529();
 
-    @ObfuscatedName("k")
-    @Export("vmethod1530")
     protected abstract void cycle();
 
-    @ObfuscatedName("r")
     protected abstract void vmethod1586();
 
-    @ObfuscatedName("l")
-    @Export("vmethod1532")
     protected abstract void vmethod1532();
 
     public void destroy() {
         if (this == gameEngine && !isKilled) {
             stopTimeMs = ClientPreferences.method148();
-            SequenceDefinition.sleepWeird(5000L);
+            AnimationDefinition.sleepWeird(5000L);
             this.method1524();
         }
     }
@@ -278,7 +222,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
             field1318 = true;
             if (TaskHandler.javaVersion != null && TaskHandler.javaVersion.startsWith("1.5") && ClientPreferences.method148() - field1321 > 1000L) {
                 Rectangle var2 = var1.getClipBounds();
-                if (var2 == null || var2.width >= SoundSystem.canvasWidth && var2.height >= ItemLayer.canvasHeight) {
+                if (var2 == null || var2.width >= SoundSystem.canvasWidth && var2.height >= Loot.canvasHeight) {
                     field1313 = true;
                 }
             }
@@ -323,7 +267,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
             this.setFocusCycleRoot(true);
             this.method1571();
-            MouseRecorder.field262 = BoundaryObject.method2204(SoundSystem.canvasWidth, ItemLayer.canvasHeight, Tiles.field131);
+            MouseRecorder.field262 = BoundaryObject.method2204(SoundSystem.canvasWidth, Loot.canvasHeight, Tiles.field131);
             this.vmethod1529();
             class22.field376 = BufferedFile.method617();
 
@@ -348,7 +292,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
                 } while (var9.thread == null);
 
                 for (var3 = 0; var3 < 50 && var9.thread.peekEvent() != null; ++var3) {
-                    SequenceDefinition.sleepWeird(1L);
+                    AnimationDefinition.sleepWeird(1L);
                 }
 
                 if (var10 != null) {

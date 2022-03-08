@@ -1,54 +1,30 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
 import java.awt.*;
 
-@ObfuscatedName("cc")
-@Implements("AbstractRasterProvider")
 public abstract class AbstractRasterProvider {
-    @ObfuscatedName("f")
-    @Export("pixels")
     public int[] pixels;
-    @ObfuscatedName("e")
-    @Export("width")
     int width;
-    @ObfuscatedName("t")
-    @Export("height")
     int height;
-    @ObfuscatedName("d")
     Image field1458;
 
-    @ObfuscatedName("i")
     abstract void vmethod1940(int var1, int var2, Component var3);
 
-    @ObfuscatedName("w")
     public abstract void vmethod1945(Graphics var1, int var2, int var3);
 
-    @ObfuscatedName("f")
     public abstract void vmethod1941(Graphics var1, int var2, int var3, int var4, int var5);
 
-    @ObfuscatedName("av")
-    @Export("method1822")
     public final void method1822() {
         Rasterizer2D.method1951(this.pixels, this.width, this.height);
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;)V"
-    )
     public static void method1799(AbstractArchive var0, AbstractArchive var1) {
         NPCComposition.NpcDefinition_archive = var0;
         NPCComposition.NpcDefinition_modelArchive = var1;
     }
 
-    @ObfuscatedName("f")
-    @Export("method1820")
     public static int method1820(int var0) {
         int var1 = 0;
         if (var0 < 0 || var0 >= 65536) {
@@ -79,240 +55,6 @@ public abstract class AbstractRasterProvider {
         return var0 + var1;
     }
 
-    @ObfuscatedName("v")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIIIILclass94;Lclass163;)V"
-    )
-    static final void method1819(int var0, int var1, int var2, int var3, int var4, int var5, int var6, Scene var7, CollisionMap var8) {
-        ObjectComposition var9 = GameBuild.getObjectComposition(var4);
-        int var10;
-        int var11;
-        if (var5 != 1 && var5 != 3) {
-            var10 = var9.sizeX;
-            var11 = var9.sizeY;
-        } else {
-            var10 = var9.sizeY;
-            var11 = var9.sizeX;
-        }
-
-        int var12;
-        int var13;
-        if (var10 + var2 <= 104) {
-            var12 = (var10 >> 1) + var2;
-            var13 = var2 + (var10 + 1 >> 1);
-        } else {
-            var12 = var2;
-            var13 = var2 + 1;
-        }
-
-        int var14;
-        int var15;
-        if (var3 + var11 <= 104) {
-            var14 = var3 + (var11 >> 1);
-            var15 = var3 + (var11 + 1 >> 1);
-        } else {
-            var14 = var3;
-            var15 = var3 + 1;
-        }
-
-        int[][] var16 = Tiles.Tiles_heights[var1];
-        int var17 = var16[var12][var15] + var16[var13][var14] + var16[var12][var14] + var16[var13][var15] >> 2;
-        int var18 = (var2 << 7) + (var10 << 6);
-        int var19 = (var3 << 7) + (var11 << 6);
-        int var20 = (var3 << 7) + var2 + (var4 << 14) + 1073741824;
-        if (var9.int1 == 0) {
-            var20 -= Integer.MIN_VALUE;
-        }
-
-        int var21 = (var5 << 6) + var6;
-        if (var9.int3 == 1) {
-            var21 += 256;
-        }
-
-        Object var27;
-        if (var6 == 22) {
-            if (var9.animationId == -1 && var9.transforms == null) {
-                var27 = var9.method664(22, var5, var16, var18, var17, var19);
-            } else {
-                var27 = new DynamicObject(var4, 22, var5, var1, var2, var3, var9.animationId, true, null);
-            }
-
-            var7.method2048(var0, var2, var3, var17, (Renderable) var27, var20, var21);
-            if (var9.interactType == 1) {
-                var8.method3430(var2, var3);
-            }
-
-        } else if (var6 != 10 && var6 != 11) {
-            if (var6 >= 12) {
-                if (var9.animationId == -1 && var9.transforms == null) {
-                    var27 = var9.method664(var6, var5, var16, var18, var17, var19);
-                } else {
-                    var27 = new DynamicObject(var4, var6, var5, var1, var2, var3, var9.animationId, true, null);
-                }
-
-                var7.method2042(var0, var2, var3, var17, 1, 1, (Renderable) var27, 0, var20, var21);
-                if (var9.interactType != 0) {
-                    var8.method3428(var2, var3, var10, var11, var9.boolean1);
-                }
-
-            } else if (var6 == 0) {
-                if (var9.animationId == -1 && var9.transforms == null) {
-                    var27 = var9.method664(0, var5, var16, var18, var17, var19);
-                } else {
-                    var27 = new DynamicObject(var4, 0, var5, var1, var2, var3, var9.animationId, true, null);
-                }
-
-                var7.method2049(var0, var2, var3, var17, (Renderable) var27, null, Tiles.field124[var5], 0, var20, var21);
-                if (var9.interactType != 0) {
-                    var8.method3427(var2, var3, var6, var5, var9.boolean1);
-                }
-
-            } else if (var6 == 1) {
-                if (var9.animationId == -1 && var9.transforms == null) {
-                    var27 = var9.method664(1, var5, var16, var18, var17, var19);
-                } else {
-                    var27 = new DynamicObject(var4, 1, var5, var1, var2, var3, var9.animationId, true, null);
-                }
-
-                var7.method2049(var0, var2, var3, var17, (Renderable) var27, null, Tiles.field125[var5], 0, var20, var21);
-                if (var9.interactType != 0) {
-                    var8.method3427(var2, var3, var6, var5, var9.boolean1);
-                }
-
-            } else {
-                int var22;
-                Object var24;
-                if (var6 == 2) {
-                    var22 = var5 + 1 & 3;
-                    Object var28;
-                    if (var9.animationId == -1 && var9.transforms == null) {
-                        var28 = var9.method664(2, var5 + 4, var16, var18, var17, var19);
-                        var24 = var9.method664(2, var22, var16, var18, var17, var19);
-                    } else {
-                        var28 = new DynamicObject(var4, 2, var5 + 4, var1, var2, var3, var9.animationId, true, null);
-                        var24 = new DynamicObject(var4, 2, var22, var1, var2, var3, var9.animationId, true, null);
-                    }
-
-                    var7.method2049(var0, var2, var3, var17, (Renderable) var28, (Renderable) var24, Tiles.field124[var5], Tiles.field124[var22], var20, var21);
-                    if (var9.interactType != 0) {
-                        var8.method3427(var2, var3, var6, var5, var9.boolean1);
-                    }
-
-                } else if (var6 == 3) {
-                    if (var9.animationId == -1 && var9.transforms == null) {
-                        var27 = var9.method664(3, var5, var16, var18, var17, var19);
-                    } else {
-                        var27 = new DynamicObject(var4, 3, var5, var1, var2, var3, var9.animationId, true, null);
-                    }
-
-                    var7.method2049(var0, var2, var3, var17, (Renderable) var27, null, Tiles.field125[var5], 0, var20, var21);
-                    if (var9.interactType != 0) {
-                        var8.method3427(var2, var3, var6, var5, var9.boolean1);
-                    }
-
-                } else if (var6 == 9) {
-                    if (var9.animationId == -1 && var9.transforms == null) {
-                        var27 = var9.method664(var6, var5, var16, var18, var17, var19);
-                    } else {
-                        var27 = new DynamicObject(var4, var6, var5, var1, var2, var3, var9.animationId, true, null);
-                    }
-
-                    var7.method2042(var0, var2, var3, var17, 1, 1, (Renderable) var27, 0, var20, var21);
-                    if (var9.interactType != 0) {
-                        var8.method3428(var2, var3, var10, var11, var9.boolean1);
-                    }
-
-                } else if (var6 == 4) {
-                    if (var9.animationId == -1 && var9.transforms == null) {
-                        var27 = var9.method664(4, var5, var16, var18, var17, var19);
-                    } else {
-                        var27 = new DynamicObject(var4, 4, var5, var1, var2, var3, var9.animationId, true, null);
-                    }
-
-                    var7.method2041(var0, var2, var3, var17, (Renderable) var27, null, Tiles.field124[var5], 0, 0, 0, var20, var21);
-                } else {
-                    int var23;
-                    if (var6 == 5) {
-                        var22 = 16;
-                        var23 = var7.method2057(var0, var2, var3);
-                        if (var23 != 0) {
-                            var22 = GameBuild.getObjectComposition(var23 >> 14 & 32767).int2;
-                        }
-
-                        if (var9.animationId == -1 && var9.transforms == null) {
-                            var24 = var9.method664(4, var5, var16, var18, var17, var19);
-                        } else {
-                            var24 = new DynamicObject(var4, 4, var5, var1, var2, var3, var9.animationId, true, null);
-                        }
-
-                        var7.method2041(var0, var2, var3, var17, (Renderable) var24, null, Tiles.field124[var5], 0, var22 * Tiles.field115[var5], var22 * Tiles.field127[var5], var20, var21);
-                    } else if (var6 == 6) {
-                        var22 = 8;
-                        var23 = var7.method2057(var0, var2, var3);
-                        if (var23 != 0) {
-                            var22 = GameBuild.getObjectComposition(var23 >> 14 & 32767).int2 / 2;
-                        }
-
-                        if (var9.animationId == -1 && var9.transforms == null) {
-                            var24 = var9.method664(4, var5 + 4, var16, var18, var17, var19);
-                        } else {
-                            var24 = new DynamicObject(var4, 4, var5 + 4, var1, var2, var3, var9.animationId, true, null);
-                        }
-
-                        var7.method2041(var0, var2, var3, var17, (Renderable) var24, null, 256, var5, var22 * Tiles.field128[var5], var22 * Tiles.field134[var5], var20, var21);
-                    } else if (var6 == 7) {
-                        var23 = var5 + 2 & 3;
-                        if (var9.animationId == -1 && var9.transforms == null) {
-                            var27 = var9.method664(4, var23 + 4, var16, var18, var17, var19);
-                        } else {
-                            var27 = new DynamicObject(var4, 4, var23 + 4, var1, var2, var3, var9.animationId, true, null);
-                        }
-
-                        var7.method2041(var0, var2, var3, var17, (Renderable) var27, null, 256, var23, 0, 0, var20, var21);
-                    } else if (var6 == 8) {
-                        var22 = 8;
-                        var23 = var7.method2057(var0, var2, var3);
-                        if (var23 != 0) {
-                            var22 = GameBuild.getObjectComposition(var23 >> 14 & 32767).int2 / 2;
-                        }
-
-                        int var26 = var5 + 2 & 3;
-                        Object var25;
-                        if (var9.animationId == -1 && var9.transforms == null) {
-                            var24 = var9.method664(4, var5 + 4, var16, var18, var17, var19);
-                            var25 = var9.method664(4, var26 + 4, var16, var18, var17, var19);
-                        } else {
-                            var24 = new DynamicObject(var4, 4, var5 + 4, var1, var2, var3, var9.animationId, true, null);
-                            var25 = new DynamicObject(var4, 4, var26 + 4, var1, var2, var3, var9.animationId, true, null);
-                        }
-
-                        var7.method2041(var0, var2, var3, var17, (Renderable) var24, (Renderable) var25, 256, var5, var22 * Tiles.field128[var5], var22 * Tiles.field134[var5], var20, var21);
-                    }
-                }
-            }
-        } else {
-            if (var9.animationId == -1 && var9.transforms == null) {
-                var27 = var9.method664(10, var5, var16, var18, var17, var19);
-            } else {
-                var27 = new DynamicObject(var4, 10, var5, var1, var2, var3, var9.animationId, true, null);
-            }
-
-            if (var27 != null) {
-                var7.method2042(var0, var2, var3, var17, var10, var11, (Renderable) var27, var6 == 11 ? 256 : 0, var20, var21);
-            }
-
-            if (var9.interactType != 0) {
-                var8.method3428(var2, var3, var10, var11, var9.boolean1);
-            }
-
-        }
-    }
-
-    @ObfuscatedName("bi")
-    @Export("method1816")
-    @ObfuscatedSignature(
-            descriptor = "([Lclass157;IIIIIIII)V"
-    )
     static final void method1816(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         Rasterizer2D.method1953(var2, var3, var4, var5);
         Rasterizer3D.method2352();
@@ -795,7 +537,7 @@ public abstract class AbstractRasterProvider {
                                                 boolean var50 = false;
                                                 boolean var51 = false;
                                                 var43 = var10.itemIds[var21] - 1;
-                                                if (var24 + 32 > var2 && var24 < var4 && var40 + 32 > var3 && var40 < var5 || var10 == SequenceDefinition.field887 && var21 == Client.field596) {
+                                                if (var24 + 32 > var2 && var24 < var4 && var40 + 32 > var3 && var40 < var5 || var10 == AnimationDefinition.field887 && var21 == Client.field596) {
                                                     SpritePixels var61;
                                                     if (Client.isItemSelected == 1 && var21 == class82.selectedItemSlot && var10.id == PcmPlayer.selectedItemWidget) {
                                                         var61 = KeyHandler.method1647(var43, var10.itemQuantities[var21], 2, 0, false);
@@ -804,7 +546,7 @@ public abstract class AbstractRasterProvider {
                                                     }
 
                                                     if (var61 != null) {
-                                                        if (var10 == SequenceDefinition.field887 && var21 == Client.field596) {
+                                                        if (var10 == AnimationDefinition.field887 && var21 == Client.field596) {
                                                             var26 = MouseHandler.MouseHandler_x - Client.field597;
                                                             var27 = MouseHandler.MouseHandler_y - Client.field598;
                                                             if (var26 < 5 && var26 > -5) {
@@ -1032,7 +774,7 @@ public abstract class AbstractRasterProvider {
                                                     class82.invalidateWidget(var10);
                                                 }
                                             } else {
-                                                SequenceDefinition var48 = Definitions.getAnimation(var22);
+                                                AnimationDefinition var48 = Definitions.getAnimation(var22);
                                                 var56 = var10.method3351(var48, var10.modelFrame, var46, Tiles.localPlayer.appearance);
                                                 if (var56 == null && Widget.field2574) {
                                                     class82.invalidateWidget(var10);

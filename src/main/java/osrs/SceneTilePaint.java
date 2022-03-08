@@ -1,34 +1,13 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("cl")
-@Implements("SceneTilePaint")
 public final class SceneTilePaint {
-    @ObfuscatedName("ng")
     static int field1681;
-    @ObfuscatedName("i")
-    @Export("swColor")
     int swColor;
-    @ObfuscatedName("w")
-    @Export("seColor")
     int seColor;
-    @ObfuscatedName("f")
-    @Export("neColor")
     int neColor;
-    @ObfuscatedName("e")
-    @Export("nwColor")
     int nwColor;
-    @ObfuscatedName("t")
-    @Export("texture")
     int texture;
-    @ObfuscatedName("d")
-    @Export("isFlat")
     boolean isFlat = true;
-    @ObfuscatedName("p")
-    @Export("rgb")
     int rgb;
 
     SceneTilePaint(int var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
@@ -41,7 +20,6 @@ public final class SceneTilePaint {
         this.isFlat = var7;
     }
 
-    @ObfuscatedName("t")
     public static void method2209() {
         Object var0 = ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock;
         synchronized (ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
@@ -57,7 +35,6 @@ public final class SceneTilePaint {
         }
     }
 
-    @ObfuscatedName("au")
     static final void method2210(int var0, int var1, int var2, int var3, int var4, int var5) {
         int var6 = 2048 - var3 & 2047;
         int var7 = 2048 - var4 & 2047;
@@ -90,8 +67,6 @@ public final class SceneTilePaint {
         MouseRecorder.cameraYaw = var4;
     }
 
-    @ObfuscatedName("cx")
-    @Export("method2208")
     static final void method2208(int var0, int var1) {
         if (EnumComposition.method852(var0)) {
             NPC.method254(Widget.Widget_interfaceComponents[var0], var1);

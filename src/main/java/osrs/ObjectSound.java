@@ -1,86 +1,32 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("p")
-@Implements("ObjectSound")
 public final class ObjectSound extends Node {
-    @ObfuscatedName("pj")
     protected static Frame field87;
-    @ObfuscatedName("ou")
-    @Export("masterDisk")
-    @ObfuscatedSignature(
-            descriptor = "Lclass70;"
-    )
     static ArchiveDisk masterDisk;
-    @ObfuscatedName("ni")
     static int field78;
-    @ObfuscatedName("i")
-    @Export("objectSounds")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     static NodeDeque objectSounds = new NodeDeque();
-    @ObfuscatedName("dd")
     static int[] regionMapArchiveIds;
-    @ObfuscatedName("ev")
-    @Export("headIconHintSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] headIconHintSprites;
-    @ObfuscatedName("w")
     int field79;
-    @ObfuscatedName("f")
     int field80;
-    @ObfuscatedName("e")
     int field81;
-    @ObfuscatedName("t")
     int field82;
-    @ObfuscatedName("d")
     int field95;
-    @ObfuscatedName("p")
     int field84;
-    @ObfuscatedName("k")
-    @Export("soundEffectId")
     int soundEffectId;
-    @ObfuscatedName("r")
-    @Export("obj")
-    @ObfuscatedSignature(
-            descriptor = "Lclass31;"
-    )
-    ObjectComposition obj;
-    @ObfuscatedName("l")
-    @Export("stream1")
-    @ObfuscatedSignature(
-            descriptor = "Lclass44;"
-    )
+    ObjectDefinition obj;
     RawPcmStream stream1;
-    @ObfuscatedName("a")
     int field96;
-    @ObfuscatedName("z")
     int field88;
-    @ObfuscatedName("s")
-    @Export("soundEffectIds")
     int[] soundEffectIds;
-    @ObfuscatedName("m")
     int field97;
-    @ObfuscatedName("u")
-    @ObfuscatedSignature(
-            descriptor = "Lclass44;"
-    )
     RawPcmStream field91;
 
-    @ObfuscatedName("i")
-    @Export("method44")
     void method44() {
         int var1 = this.soundEffectId;
-        ObjectComposition var2 = this.obj.method673();
+        ObjectDefinition var2 = this.obj.method673();
         if (var2 != null) {
             this.soundEffectId = var2.ambientSoundId;
             this.field84 = var2.field841 * 128;
@@ -102,10 +48,6 @@ public final class ObjectSound extends Node {
 
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)[Lclass86;"
-    )
     public static IndexedSprite[] method52(AbstractArchive var0, String var1, String var2) {
         int var3 = var0.getGroupId(var1);
         int var4 = var0.method3238(var3, var2);
@@ -119,10 +61,6 @@ public final class ObjectSound extends Node {
         return var5;
     }
 
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "(ILclass151;IIIZ)V"
-    )
     public static void method43(int var0, AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
         class137.musicPlayerStatus = 1;
         class137.musicTrackArchive = var1;
@@ -133,10 +71,6 @@ public final class ObjectSound extends Node {
         class65.pcmSampleLength = var0;
     }
 
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass182;Lclass182;)V"
-    )
     static void method53(Font var0, Font var1) {
         if (class1.worldSelectBackSprites == null) {
             class1.worldSelectBackSprites = Clock.method1467(MouseRecorder.archive8, "sl_back", "");
@@ -335,7 +269,6 @@ public final class ObjectSound extends Node {
 
     }
 
-    @ObfuscatedName("cv")
     static boolean method45(String var0) {
         if (var0 == null) {
             return false;

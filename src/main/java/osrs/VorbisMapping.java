@@ -1,23 +1,9 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("ad")
-@Implements("VorbisMapping")
 public class VorbisMapping {
-    @ObfuscatedName("i")
-    @Export("submaps")
     int submaps;
-    @ObfuscatedName("w")
-    @Export("mappingMux")
     int mappingMux;
-    @ObfuscatedName("f")
-    @Export("submapFloor")
     int[] submapFloor;
-    @ObfuscatedName("e")
-    @Export("submapResidue")
     int[] submapResidue;
 
     VorbisMapping() {

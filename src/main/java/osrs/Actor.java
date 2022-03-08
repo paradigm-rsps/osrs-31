@@ -1,166 +1,71 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
-@ObfuscatedName("ao")
-@Implements("Actor")
 public abstract class Actor extends Renderable {
-    @ObfuscatedName("dj")
     static int field478;
-    @ObfuscatedName("n")
-    @Export("x")
     int x;
-    @ObfuscatedName("q")
-    @Export("y")
     int y;
-    @ObfuscatedName("c")
     int field432;
-    @ObfuscatedName("h")
-    @Export("isWalking")
     boolean isWalking = false;
-    @ObfuscatedName("b")
     int size = 1;
-    @ObfuscatedName("y")
-    @Export("idleSequence")
     int idleSequence = -1;
-    @ObfuscatedName("x")
-    @Export("turnLeftSequence")
     int turnLeftSequence = -1;
-    @ObfuscatedName("ao")
-    @Export("turnRightSequence")
     int turnRightSequence = -1;
-    @ObfuscatedName("ae")
-    @Export("walkSequence")
     int walkSequence = -1;
-    @ObfuscatedName("aa")
-    @Export("walkBackSequence")
     int walkBackSequence = -1;
-    @ObfuscatedName("ah")
-    @Export("walkLeftSequence")
     int walkLeftSequence = -1;
-    @ObfuscatedName("aw")
-    @Export("walkRightSequence")
     int walkRightSequence = -1;
-    @ObfuscatedName("an")
-    @Export("runSequence")
     int runSequence = -1;
-    @ObfuscatedName("av")
     String overheadText = null;
-    @ObfuscatedName("ak")
     int field435 = 100;
-    @ObfuscatedName("ax")
     int field436 = 0;
-    @ObfuscatedName("ab")
     int field445 = 0;
-    @ObfuscatedName("ai")
-    @Export("hitSplatTypes")
     int[] hitSplatTypes = new int[4];
-    @ObfuscatedName("at")
-    @Export("hitSplatValues")
     int[] hitSplatValues = new int[4];
-    @ObfuscatedName("aq")
-    @Export("hitSplatCycles")
     int[] hitSplatCycles = new int[4];
-    @ObfuscatedName("ac")
     int field441 = -1000;
-    @ObfuscatedName("al")
     int field431;
-    @ObfuscatedName("ag")
     int field425;
-    @ObfuscatedName("ap")
     int field444 = -1;
-    @ObfuscatedName("am")
     int field475 = 0;
-    @ObfuscatedName("as")
     int field446 = 0;
-    @ObfuscatedName("aj")
-    @Export("movementSequence")
     int movementSequence = -1;
-    @ObfuscatedName("ar")
-    @Export("movementFrame")
     int movementFrame = 0;
-    @ObfuscatedName("au")
     int field449 = 0;
-    @ObfuscatedName("ad")
-    @Export("sequence")
     int animation = -1;
-    @ObfuscatedName("az")
-    @Export("sequenceFrame")
     int sequenceFrame = 0;
-    @ObfuscatedName("ay")
-    @Export("sequenceFrameCycle")
     int sequenceFrameCycle = 0;
-    @ObfuscatedName("bh")
-    @Export("sequenceDelay")
     int sequenceDelay = 0;
-    @ObfuscatedName("ba")
     int field421 = 0;
-    @ObfuscatedName("bn")
-    @Export("spotAnimation")
     int spotAnimation = -1;
-    @ObfuscatedName("bj")
-    @Export("spotAnimationFrame")
     int spotAnimationFrame = 0;
-    @ObfuscatedName("bu")
-    @Export("spotAnimationFrameCycle")
     int spotAnimationFrameCycle = 0;
-    @ObfuscatedName("br")
     int field458;
-    @ObfuscatedName("bd")
     int field430;
-    @ObfuscatedName("bf")
     int field460;
-    @ObfuscatedName("bg")
     int field439;
-    @ObfuscatedName("bp")
     int field462;
-    @ObfuscatedName("bb")
     int field463;
-    @ObfuscatedName("bc")
     int field456;
-    @ObfuscatedName("by")
     int field465;
-    @ObfuscatedName("bw")
     int field466;
-    @ObfuscatedName("bm")
     int field467 = 0;
-    @ObfuscatedName("bz")
-    @Export("defaultHeight")
     int defaultHeight = 200;
-    @ObfuscatedName("bv")
-    @Export("orientation")
     int orientation;
-    @ObfuscatedName("bq")
     int field470 = 0;
-    @ObfuscatedName("bk")
     int field471 = 32;
-    @ObfuscatedName("bo")
-    @Export("pathLength")
     int pathLength = 0;
-    @ObfuscatedName("bs")
-    @Export("hitSplatTypes2")
     int[] pathX = new int[10];
-    @ObfuscatedName("bx")
-    @Export("hitSplatValues2")
     int[] pathY = new int[10];
-    @ObfuscatedName("bl")
     boolean[] field459 = new boolean[10];
-    @ObfuscatedName("be")
     int delaySteps = 0;
-    @ObfuscatedName("bi")
     int remainingSteps = 0;
 
-    @ObfuscatedName("f")
-    @Export("vmethod281")
     boolean vmethod281() {
         return false;
     }
 
-    @ObfuscatedName("a")
     final void setPosition(int x, int y, boolean isTeleport) {
         if (this.animation != -1 && Definitions.getAnimation(this.animation).field900 == 1) {
             this.animation = -1;
@@ -196,7 +101,6 @@ public abstract class Actor extends Renderable {
         this.y = this.pathY[0] * 128 + this.size * 64;
     }
 
-    @ObfuscatedName("z")
     final void method279(int var1, boolean var2) {
         int var3 = this.pathX[0];
         int var4 = this.pathY[0];
@@ -255,14 +159,11 @@ public abstract class Actor extends Renderable {
         this.field459[0] = var2;
     }
 
-    @ObfuscatedName("s")
-    @Export("method280")
     final void method280() {
         this.pathLength = 0;
         this.remainingSteps = 0;
     }
 
-    @ObfuscatedName("m")
     final void method277(int var1, int var2, int var3) {
         for (int var4 = 0; var4 < 4; ++var4) {
             if (this.hitSplatCycles[var4] <= var3) {
@@ -275,10 +176,6 @@ public abstract class Actor extends Renderable {
 
     }
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIIILclass94;Lclass163;)V"
-    )
     static final void method295(int var0, int var1, int var2, int var3, int var4, int var5, Scene var6, CollisionMap var7) {
         if (Client.isLowDetail && (Tiles.Tiles_renderFlags[0][var1][var2] & 2) == 0) {
             if ((Tiles.Tiles_renderFlags[var0][var1][var2] & 16) != 0) {
@@ -303,7 +200,7 @@ public abstract class Actor extends Renderable {
             Tiles.Tiles_minPlane = var0;
         }
 
-        ObjectComposition var26 = GameBuild.getObjectComposition(var3);
+        ObjectDefinition var26 = Definitions.getObject(var3);
         int var9;
         int var10;
         if (var4 != 1 && var4 != 3) {
@@ -334,7 +231,7 @@ public abstract class Actor extends Renderable {
             var14 = var2 + 1;
         }
 
-        int[][] var15 = Tiles.Tiles_heights[var0];
+        int[][] var15 = Tiles.tileHeights[var0];
         int var16 = var15[var11][var13] + var15[var12][var13] + var15[var11][var14] + var15[var12][var14] >> 2;
         int var17 = (var1 << 7) + (var9 << 6);
         int var18 = (var2 << 7) + (var10 << 6);
@@ -361,7 +258,7 @@ public abstract class Actor extends Renderable {
                     var27 = new DynamicObject(var3, 22, var4, var0, var1, var2, var26.animationId, true, null);
                 }
 
-                var6.method2048(var0, var1, var2, var16, (Renderable) var27, var19, var20);
+                var6.setFloorDecoration(var0, var1, var2, var16, (Renderable) var27, var19, var20);
                 if (var26.interactType == 1 && var7 != null) {
                     var7.method3430(var1, var2);
                 }
@@ -377,7 +274,7 @@ public abstract class Actor extends Renderable {
                         var27 = new DynamicObject(var3, var5, var4, var0, var1, var2, var26.animationId, true, null);
                     }
 
-                    var6.method2042(var0, var1, var2, var16, 1, 1, (Renderable) var27, 0, var19, var20);
+                    var6.addGameObject(var0, var1, var2, var16, 1, 1, (Renderable) var27, 0, var19, var20);
                     if (var5 >= 12 && var5 <= 17 && var5 != 13 && var0 > 0) {
                         VertexNormal.field1510[var0][var1][var2] |= 2340;
                     }
@@ -393,7 +290,7 @@ public abstract class Actor extends Renderable {
                         var27 = new DynamicObject(var3, 0, var4, var0, var1, var2, var26.animationId, true, null);
                     }
 
-                    var6.method2049(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field124[var4], 0, var19, var20);
+                    var6.setBoundaryObject(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field124[var4], 0, var19, var20);
                     if (var4 == 0) {
                         if (var26.clipped) {
                             Tiles.field132[var0][var1][var2] = 50;
@@ -447,7 +344,7 @@ public abstract class Actor extends Renderable {
                         var27 = new DynamicObject(var3, 1, var4, var0, var1, var2, var26.animationId, true, null);
                     }
 
-                    var6.method2049(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field125[var4], 0, var19, var20);
+                    var6.setBoundaryObject(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field125[var4], 0, var19, var20);
                     if (var26.clipped) {
                         if (var4 == 0) {
                             Tiles.field132[var0][var1][var2 + 1] = 50;
@@ -478,7 +375,7 @@ public abstract class Actor extends Renderable {
                             var23 = new DynamicObject(var3, 2, var21, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2049(var0, var1, var2, var16, (Renderable) var28, (Renderable) var23, Tiles.field124[var4], Tiles.field124[var21], var19, var20);
+                        var6.setBoundaryObject(var0, var1, var2, var16, (Renderable) var28, (Renderable) var23, Tiles.field124[var4], Tiles.field124[var21], var19, var20);
                         if (var26.modelClipped) {
                             if (var4 == 0) {
                                 VertexNormal.field1510[var0][var1][var2] |= 585;
@@ -510,7 +407,7 @@ public abstract class Actor extends Renderable {
                             var27 = new DynamicObject(var3, 3, var4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2049(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field125[var4], 0, var19, var20);
+                        var6.setBoundaryObject(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field125[var4], 0, var19, var20);
                         if (var26.clipped) {
                             if (var4 == 0) {
                                 Tiles.field132[var0][var1][var2 + 1] = 50;
@@ -534,7 +431,7 @@ public abstract class Actor extends Renderable {
                             var27 = new DynamicObject(var3, var5, var4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2042(var0, var1, var2, var16, 1, 1, (Renderable) var27, 0, var19, var20);
+                        var6.addGameObject(var0, var1, var2, var16, 1, 1, (Renderable) var27, 0, var19, var20);
                         if (var26.interactType != 0 && var7 != null) {
                             var7.method3428(var1, var2, var9, var10, var26.boolean1);
                         }
@@ -550,12 +447,12 @@ public abstract class Actor extends Renderable {
                             var27 = new DynamicObject(var3, 4, var4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2041(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field124[var4], 0, 0, 0, var19, var20);
+                        var6.setWallDecoration(var0, var1, var2, var16, (Renderable) var27, null, Tiles.field124[var4], 0, 0, 0, var19, var20);
                     } else if (var5 == 5) {
                         var21 = 16;
                         var22 = var6.method2057(var0, var1, var2);
                         if (var22 != 0) {
-                            var21 = GameBuild.getObjectComposition(var22 >> 14 & 32767).int2;
+                            var21 = Definitions.getObject(var22 >> 14 & 32767).int2;
                         }
 
                         if (var26.animationId == -1 && var26.transforms == null) {
@@ -564,12 +461,12 @@ public abstract class Actor extends Renderable {
                             var23 = new DynamicObject(var3, 4, var4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2041(var0, var1, var2, var16, (Renderable) var23, null, Tiles.field124[var4], 0, var21 * Tiles.field115[var4], var21 * Tiles.field127[var4], var19, var20);
+                        var6.setWallDecoration(var0, var1, var2, var16, (Renderable) var23, null, Tiles.field124[var4], 0, var21 * Tiles.field115[var4], var21 * Tiles.field127[var4], var19, var20);
                     } else if (var5 == 6) {
                         var21 = 8;
                         var22 = var6.method2057(var0, var1, var2);
                         if (var22 != 0) {
-                            var21 = GameBuild.getObjectComposition(var22 >> 14 & 32767).int2 / 2;
+                            var21 = Definitions.getObject(var22 >> 14 & 32767).int2 / 2;
                         }
 
                         if (var26.animationId == -1 && var26.transforms == null) {
@@ -578,7 +475,7 @@ public abstract class Actor extends Renderable {
                             var23 = new DynamicObject(var3, 4, var4 + 4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2041(var0, var1, var2, var16, (Renderable) var23, null, 256, var4, var21 * Tiles.field128[var4], var21 * Tiles.field134[var4], var19, var20);
+                        var6.setWallDecoration(var0, var1, var2, var16, (Renderable) var23, null, 256, var4, var21 * Tiles.field128[var4], var21 * Tiles.field134[var4], var19, var20);
                     } else if (var5 == 7) {
                         var22 = var4 + 2 & 3;
                         if (var26.animationId == -1 && var26.transforms == null) {
@@ -587,12 +484,12 @@ public abstract class Actor extends Renderable {
                             var27 = new DynamicObject(var3, 4, var22 + 4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2041(var0, var1, var2, var16, (Renderable) var27, null, 256, var22, 0, 0, var19, var20);
+                        var6.setWallDecoration(var0, var1, var2, var16, (Renderable) var27, null, 256, var22, 0, 0, var19, var20);
                     } else if (var5 == 8) {
                         var21 = 8;
                         var22 = var6.method2057(var0, var1, var2);
                         if (var22 != 0) {
-                            var21 = GameBuild.getObjectComposition(var22 >> 14 & 32767).int2 / 2;
+                            var21 = Definitions.getObject(var22 >> 14 & 32767).int2 / 2;
                         }
 
                         int var25 = var4 + 2 & 3;
@@ -605,7 +502,7 @@ public abstract class Actor extends Renderable {
                             var24 = new DynamicObject(var3, 4, var25 + 4, var0, var1, var2, var26.animationId, true, null);
                         }
 
-                        var6.method2041(var0, var1, var2, var16, (Renderable) var23, (Renderable) var24, 256, var4, var21 * Tiles.field128[var4], var21 * Tiles.field134[var4], var19, var20);
+                        var6.setWallDecoration(var0, var1, var2, var16, (Renderable) var23, (Renderable) var24, 256, var4, var21 * Tiles.field128[var4], var21 * Tiles.field134[var4], var19, var20);
                     }
                 }
             } else {
@@ -615,7 +512,7 @@ public abstract class Actor extends Renderable {
                     var27 = new DynamicObject(var3, 10, var4, var0, var1, var2, var26.animationId, true, null);
                 }
 
-                if (var27 != null && var6.method2042(var0, var1, var2, var16, var9, var10, (Renderable) var27, var5 == 11 ? 256 : 0, var19, var20) && var26.clipped) {
+                if (var27 != null && var6.addGameObject(var0, var1, var2, var16, var9, var10, (Renderable) var27, var5 == 11 ? 256 : 0, var19, var20) && var26.clipped) {
                     var22 = 15;
                     if (var27 instanceof Model) {
                         var22 = ((Model) var27).method2474() / 4;
@@ -641,11 +538,6 @@ public abstract class Actor extends Renderable {
         }
     }
 
-    @ObfuscatedName("be")
-    @Export("method297")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass2;III)V"
-    )
     static final void method297(Player var0, int var1, int var2, int var3) {
         if (Tiles.localPlayer != var0) {
             if (Client.menuOptionsCount < 400) {

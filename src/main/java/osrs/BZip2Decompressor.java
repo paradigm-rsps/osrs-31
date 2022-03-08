@@ -1,22 +1,8 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("du")
-@Implements("BZip2Decompressor")
 public final class BZip2Decompressor {
-    @ObfuscatedName("k")
-    @Export("BZip2Decompressor_state")
-    @ObfuscatedSignature(
-            descriptor = "Lclass114;"
-    )
     static BZip2State BZip2Decompressor_state = new BZip2State();
 
-    @ObfuscatedName("i")
-    @Export("method2587")
     public static int method2587(byte[] var0, int var1, byte[] var2, int var3, int var4) {
         BZip2State var5 = BZip2Decompressor_state;
         synchronized (BZip2Decompressor_state) {
@@ -37,10 +23,6 @@ public final class BZip2Decompressor {
         }
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass114;)V"
-    )
     static void method2586(BZip2State var0) {
         byte var2 = var0.out_char;
         int var3 = var0.su_rNToGo;
@@ -168,11 +150,6 @@ public final class BZip2Decompressor {
         var0.outputLength = var10;
     }
 
-    @ObfuscatedName("f")
-    @Export("method2590")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass114;)V"
-    )
     static void method2590(BZip2State var0) {
         boolean var4 = false;
         boolean var5 = false;
@@ -535,29 +512,14 @@ public final class BZip2Decompressor {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method2600")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass114;)B"
-    )
     static byte method2600(BZip2State var0) {
         return (byte) method2603(8, var0);
     }
 
-    @ObfuscatedName("t")
-    @Export("method2589")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass114;)B"
-    )
     static byte method2589(BZip2State var0) {
         return (byte) method2603(1, var0);
     }
 
-    @ObfuscatedName("d")
-    @Export("method2603")
-    @ObfuscatedSignature(
-            descriptor = "(ILclass114;)I"
-    )
     static int method2603(int var0, BZip2State var1) {
         while (var1.bsLive < var0) {
             var1.bsBuff = var1.bsBuff << 8 | var1.inputArray[var1.nextByte] & 255;
@@ -573,11 +535,6 @@ public final class BZip2Decompressor {
         return var3;
     }
 
-    @ObfuscatedName("p")
-    @Export("method2591")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass114;)V"
-    )
     static void method2591(BZip2State var0) {
         var0.nInUse = 0;
 
@@ -590,8 +547,6 @@ public final class BZip2Decompressor {
 
     }
 
-    @ObfuscatedName("k")
-    @Export("method2592")
     static void method2592(int[] var0, int[] var1, int[] var2, byte[] var3, int var4, int var5, int var6) {
         int var7 = 0;
 

@@ -21,8 +21,8 @@ class RebuildRegionNormal(val player: Player, var login: Boolean = false) : Pack
             buf.writeShortLE(packet.player.scene.currentChunk.y)
             val xteaKeys = packet.player.scene.getRegionXteaKeys()
             xteaKeys.flatMap { it.toList() }.forEach { key -> buf.writeInt(key) }
-            buf.writeShortLE(10) // SceneX - Lumby
-            buf.writeShort(10) // SceneY - Lumby
+            buf.writeShortLE(50) // SceneX - Tut Bank
+            buf.writeShort(50) // SceneY - Tut Bank
             buf.writeShortAdd(packet.player.scene.currentChunk.x)
         }
     }

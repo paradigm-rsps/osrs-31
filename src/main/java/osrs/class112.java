@@ -1,23 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-
 import java.util.HashMap;
 
-@ObfuscatedName("dx")
 public class class112 {
-    @ObfuscatedName("d")
-    @Export("SpriteBuffer_spriteWidths")
     static int[] SpriteBuffer_spriteWidths;
-    @ObfuscatedName("eg")
     static int[] field1931;
 
     static {
         new HashMap();
     }
 
-    @ObfuscatedName("k")
     public static boolean method2502() {
         try {
             if (class137.musicPlayerStatus == 2) {

@@ -1,103 +1,35 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
-@ObfuscatedName("l")
-@Implements("Projectile")
 public final class Projectile extends Renderable {
-    @ObfuscatedName("oo")
-    @Export("clientPreferences")
-    @ObfuscatedSignature(
-            descriptor = "Lclass11;"
-    )
     static ClientPreferences clientPreferences;
-    @ObfuscatedName("gk")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget field161;
-    @ObfuscatedName("ac")
     static class23 field171;
-    @ObfuscatedName("i")
-    @Export("id")
     int id;
-    @ObfuscatedName("w")
-    @Export("plane")
     int plane;
-    @ObfuscatedName("f")
-    @Export("sourceX")
     int sourceX;
-    @ObfuscatedName("e")
-    @Export("sourceY")
     int sourceY;
-    @ObfuscatedName("t")
-    @Export("sourceZ")
     int sourceZ;
-    @ObfuscatedName("d")
-    @Export("endHeight")
     int endHeight;
-    @ObfuscatedName("p")
-    @Export("cycleStart")
     int cycleStart;
-    @ObfuscatedName("k")
-    @Export("cycleEnd")
     int cycleEnd;
-    @ObfuscatedName("r")
-    @Export("slope")
     int slope;
-    @ObfuscatedName("l")
-    @Export("startHeight")
     int startHeight;
-    @ObfuscatedName("a")
-    @Export("targetIndex")
     int targetIndex;
-    @ObfuscatedName("z")
-    @Export("isMoving")
     boolean isMoving = false;
-    @ObfuscatedName("s")
-    @Export("x")
     double x;
-    @ObfuscatedName("m")
-    @Export("y")
     double y;
-    @ObfuscatedName("u")
-    @Export("z")
     double z;
-    @ObfuscatedName("g")
-    @Export("speedX")
     double speedX;
-    @ObfuscatedName("o")
-    @Export("speedY")
     double speedY;
-    @ObfuscatedName("v")
-    @Export("speed")
     double speed;
-    @ObfuscatedName("j")
-    @Export("speedZ")
     double speedZ;
-    @ObfuscatedName("n")
-    @Export("accelerationZ")
     double accelerationZ;
-    @ObfuscatedName("q")
-    @Export("yaw")
     int yaw;
-    @ObfuscatedName("c")
-    @Export("pitch")
     int pitch;
-    @ObfuscatedName("h")
-    @Export("sequenceDefinition")
-    @ObfuscatedSignature(
-            descriptor = "Lclass33;"
-    )
-    SequenceDefinition sequenceDefinition;
-    @ObfuscatedName("b")
-    @Export("frame")
+    AnimationDefinition animationDefinition;
     int frame = 0;
-    @ObfuscatedName("y")
     int field172 = 0;
 
     Projectile(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
@@ -115,15 +47,13 @@ public final class Projectile extends Renderable {
         this.isMoving = false;
         int var12 = NPCComposition.method656(this.id).sequence;
         if (var12 != -1) {
-            this.sequenceDefinition = Definitions.getAnimation(var12);
+            this.animationDefinition = Definitions.getAnimation(var12);
         } else {
-            this.sequenceDefinition = null;
+            this.animationDefinition = null;
         }
 
     }
 
-    @ObfuscatedName("i")
-    @Export("method114")
     final void method114(int var1, int var2, int var3, int var4) {
         double var5;
         if (!this.isMoving) {
@@ -146,11 +76,6 @@ public final class Projectile extends Renderable {
         this.accelerationZ = 2.0D * ((double) var3 - this.z - this.speedZ * var5) / (var5 * var5);
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod2030")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass111;"
-    )
     protected final Model vmethod2030() {
         SpotAnimationDefinition var1 = NPCComposition.method656(this.id);
         Model var2 = var1.method766(this.frame);
@@ -162,8 +87,6 @@ public final class Projectile extends Renderable {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method115")
     final void method115(int var1) {
         this.isMoving = true;
         this.x += (double) var1 * this.speedX;
@@ -172,32 +95,28 @@ public final class Projectile extends Renderable {
         this.speedZ += (double) var1 * this.accelerationZ;
         this.yaw = (int) (Math.atan2(this.speedX, this.speedY) * 325.949D) + 1024 & 2047;
         this.pitch = (int) (Math.atan2(this.speedZ, this.speed) * 325.949D) & 2047;
-        if (this.sequenceDefinition != null) {
+        if (this.animationDefinition != null) {
             this.field172 += var1;
 
             while (true) {
                 do {
                     do {
-                        if (this.field172 <= this.sequenceDefinition.frameLengths[this.frame]) {
+                        if (this.field172 <= this.animationDefinition.frameLengths[this.frame]) {
                             return;
                         }
 
-                        this.field172 -= this.sequenceDefinition.frameLengths[this.frame];
+                        this.field172 -= this.animationDefinition.frameLengths[this.frame];
                         ++this.frame;
-                    } while (this.frame < this.sequenceDefinition.frameIds.length);
+                    } while (this.frame < this.animationDefinition.frameIds.length);
 
-                    this.frame -= this.sequenceDefinition.frameCount;
-                } while (this.frame >= 0 && this.frame < this.sequenceDefinition.frameIds.length);
+                    this.frame -= this.animationDefinition.frameCount;
+                } while (this.frame >= 0 && this.frame < this.animationDefinition.frameIds.length);
 
                 this.frame = 0;
             }
         }
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/lang/CharSequence;Lclass185;)Ljava/lang/String;"
-    )
     public static String method125(CharSequence var0, LoginType var1) {
         if (var0 == null) {
             return null;
@@ -373,17 +292,12 @@ public final class Projectile extends Renderable {
         }
     }
 
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;Ljava/lang/String;Ljava/lang/String;)Lclass182;"
-    )
     public static Font method127(AbstractArchive var0, AbstractArchive var1, String var2, String var3) {
         int var4 = var0.getGroupId(var2);
         int var5 = var0.method3238(var4, var3);
         return class82.method1757(var0, var1, var4, var5);
     }
 
-    @ObfuscatedName("o")
     static void method128() {
         class148.field2460 = new int[33];
         Client.field561 = new int[33];
@@ -434,8 +348,6 @@ public final class Projectile extends Renderable {
 
     }
 
-    @ObfuscatedName("ao")
-    @Export("method126")
     static void method126(int var0) {
         if (var0 == -1 && !Client.field562) {
             class137.midiPcmStream.method2951();
@@ -448,7 +360,6 @@ public final class Projectile extends Renderable {
         Client.currentTrackGroupId = var0;
     }
 
-    @ObfuscatedName("cp")
     static final void method123() {
         class82.invalidateWidget(Client.clickedWidget);
         ++ClientPreferences.field191;
@@ -554,10 +465,6 @@ public final class Projectile extends Renderable {
         }
     }
 
-    @ObfuscatedName("cb")
-    @ObfuscatedSignature(
-            descriptor = "(IIIILclass85;)V"
-    )
     static final void method124(int var0, int var1, int var2, int var3, SpritePixels var4) {
         int var5 = var3 * var3 + var2 * var2;
         if (var5 > 4225 && var5 < 90000) {

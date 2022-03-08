@@ -1,57 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-@ObfuscatedName("j")
-@Implements("ItemContainer")
 public class ItemContainer extends Node {
-    @ObfuscatedName("oq")
-    @Export("taskHandler")
-    @ObfuscatedSignature(
-            descriptor = "Lclass73;"
-    )
     public static TaskHandler taskHandler;
-    @ObfuscatedName("mt")
-    @Export("pcmStreamMixer")
-    @ObfuscatedSignature(
-            descriptor = "Lclass45;"
-    )
     static PcmStreamMixer pcmStreamMixer;
-    @ObfuscatedName("hz")
-    @Export("menuX")
     static int menuX;
-    @ObfuscatedName("i")
-    @Export("itemContainers")
-    @ObfuscatedSignature(
-            descriptor = "Lclass174;"
-    )
     static NodeHashTable itemContainers = new NodeHashTable(32);
-    @ObfuscatedName("l")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget field286;
-    @ObfuscatedName("ag")
     static long field289;
-    @ObfuscatedName("w")
-    @Export("ids")
     int[] ids = new int[]{-1};
-    @ObfuscatedName("f")
-    @Export("quantities")
     int[] quantities = new int[]{0};
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass72;)V"
-    )
     static void method188(GameEngine var0) {
         if (Login.worldSelectOpen) {
             class23.method248(var0);
@@ -216,7 +180,6 @@ public class ItemContainer extends Node {
         }
     }
 
-    @ObfuscatedName("w")
     static final void sleep(long var0) {
         try {
             Thread.sleep(var0);
@@ -225,7 +188,6 @@ public class ItemContainer extends Node {
 
     }
 
-    @ObfuscatedName("t")
     static void method186() {
         try {
             File var0 = new File(TextureProvider.userHomeDirectory, "random.dat");
@@ -259,13 +221,9 @@ public class ItemContainer extends Node {
 
     }
 
-    @ObfuscatedName("ax")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass26;)V"
-    )
     static final void method205(Actor var0) {
         var0.isWalking = false;
-        SequenceDefinition var1;
+        AnimationDefinition var1;
         if (var0.movementSequence != -1) {
             var1 = Definitions.getAnimation(var0.movementSequence);
             if (var1 != null && var1.frameIds != null) {
@@ -293,7 +251,7 @@ public class ItemContainer extends Node {
 
             int var3 = NPCComposition.method656(var0.spotAnimation).sequence;
             if (var3 != -1) {
-                SequenceDefinition var2 = Definitions.getAnimation(var3);
+                AnimationDefinition var2 = Definitions.getAnimation(var3);
                 if (var2 != null && var2.frameIds != null) {
                     ++var0.spotAnimationFrameCycle;
                     if (var0.spotAnimationFrame < var2.frameIds.length && var0.spotAnimationFrameCycle > var2.frameLengths[var0.spotAnimationFrame]) {
@@ -355,10 +313,6 @@ public class ItemContainer extends Node {
 
     }
 
-    @ObfuscatedName("cg")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;I)I"
-    )
     static final int method200(Widget var0, int var1) {
         if (var0.cs1Instructions != null && var1 < var0.cs1Instructions.length) {
             try {
@@ -517,7 +471,6 @@ public class ItemContainer extends Node {
         }
     }
 
-    @ObfuscatedName("ce")
     static boolean method203(String var0) {
         if (var0 == null) {
             return false;
@@ -530,7 +483,7 @@ public class ItemContainer extends Node {
                 }
             }
 
-           return var0.equalsIgnoreCase(Projectile.method125(Tiles.localPlayer.field35, class5.field75));
+            return var0.equalsIgnoreCase(Projectile.method125(Tiles.localPlayer.field35, class5.field75));
         }
     }
 }

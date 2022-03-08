@@ -1,65 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
-@ObfuscatedName("ab")
-@Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-    @ObfuscatedName("i")
-    @Export("KitDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive KitDefinition_archive;
-    @ObfuscatedName("w")
-    @Export("KitDefinition_modelsArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive KitDefinition_modelsArchive;
-    @ObfuscatedName("f")
-    @Export("KitDefinition_fileCount")
     public static int KitDefinition_fileCount;
-    @ObfuscatedName("e")
-    @Export("KitDefinition_cached")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     static EvictingDualNodeHashTable KitDefinition_cached = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("t")
-    @Export("bodypartID")
     public int bodypartID = -1;
-    @ObfuscatedName("d")
-    @Export("models2")
     int[] models2;
-    @ObfuscatedName("p")
-    @Export("recolorFrom")
     short[] recolorFrom;
-    @ObfuscatedName("k")
-    @Export("recolorTo")
     short[] recolorTo;
-    @ObfuscatedName("r")
-    @Export("retextureFrom")
     short[] retextureFrom;
-    @ObfuscatedName("l")
-    @Export("retextureTo")
     short[] retextureTo;
-    @ObfuscatedName("a")
-    @Export("models")
     int[] models = new int[]{-1, -1, -1, -1, -1};
-    @ObfuscatedName("z")
-    @Export("nonSelectable")
     public boolean nonSelectable = false;
 
-    @ObfuscatedName("f")
-    @Export("method777")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void method777(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -71,11 +27,6 @@ public class KitDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method778")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method778(Buffer var1, int var2) {
         if (var2 == 1) {
             this.bodypartID = var1.readUnsignedByte();
@@ -116,8 +67,6 @@ public class KitDefinition extends DualNode {
 
     }
 
-    @ObfuscatedName("t")
-    @Export("method779")
     public boolean method779() {
         if (this.models2 == null) {
             return true;
@@ -134,11 +83,6 @@ public class KitDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("d")
-    @Export("method787")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass100;"
-    )
     public ModelData method787() {
         if (this.models2 == null) {
             return null;
@@ -173,7 +117,6 @@ public class KitDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("p")
     public boolean method784() {
         boolean var1 = true;
 
@@ -186,11 +129,6 @@ public class KitDefinition extends DualNode {
         return var1;
     }
 
-    @ObfuscatedName("k")
-    @Export("method780")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass100;"
-    )
     public ModelData method780() {
         ModelData[] var1 = new ModelData[5];
         int var2 = 0;
@@ -218,8 +156,6 @@ public class KitDefinition extends DualNode {
         return var5;
     }
 
-    @ObfuscatedName("f")
-    @Export("method806")
     static void method806(int var0, int var1, int var2, int var3) {
         ItemContainer var4 = (ItemContainer) ItemContainer.itemContainers.method3512(var0);
         if (var4 == null) {
@@ -250,7 +186,6 @@ public class KitDefinition extends DualNode {
         var4.quantities[var1] = var3;
     }
 
-    @ObfuscatedName("e")
     public static int method805(int var0, int var1) {
         int var2;
         for (var2 = 0; var1 > 0; --var1) {
@@ -261,10 +196,6 @@ public class KitDefinition extends DualNode {
         return var2;
     }
 
-    @ObfuscatedName("a")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;II)Z"
-    )
     public static boolean method796(AbstractArchive var0, int var1, int var2) {
         byte[] var3 = var0.method3204(var1, var2);
         if (var3 == null) {
@@ -275,17 +206,13 @@ public class KitDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("ak")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass26;)V"
-    )
     static final void method803(Actor var0) {
         var0.movementSequence = var0.idleSequence;
         if (var0.pathLength == 0) {
             var0.delaySteps = 0;
         } else {
             if (var0.animation != -1 && var0.sequenceDelay == 0) {
-                SequenceDefinition var1 = Definitions.getAnimation(var0.animation);
+                AnimationDefinition var1 = Definitions.getAnimation(var0.animation);
                 if (var0.remainingSteps > 0 && var1.field899 == 0) {
                     ++var0.delaySteps;
                     return;

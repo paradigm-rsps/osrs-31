@@ -1,46 +1,17 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fk")
-@Implements("PlayerComposition")
 public class PlayerComposition {
-    @ObfuscatedName("p")
     public static short[] field2718;
-    @ObfuscatedName("r")
     public static short[] field2716;
-    @ObfuscatedName("a")
-    @Export("equipmentIndices")
     static final int[] equipmentIndices = new int[]{8, 11, 4, 6, 9, 7, 10};
-    @ObfuscatedName("z")
-    @Export("Widget_cachedSprites")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable Widget_cachedSprites = new EvictingDualNodeHashTable(260);
-    @ObfuscatedName("i")
-    @Export("equipment")
     int[] styles;
-    @ObfuscatedName("w")
-    @Export("bodyColors")
     int[] colors;
-    @ObfuscatedName("f")
-    @Export("isFemale")
     public boolean isFemale;
-    @ObfuscatedName("e")
-    @Export("npcTransformId")
     int npcTransformId;
-    @ObfuscatedName("t")
-    @Export("hash")
     long hash;
-    @ObfuscatedName("d")
     long field2712;
 
-    @ObfuscatedName("i")
-    @Export("method3424")
     public void setPlayerAppearance(int[] styles, int[] colors, boolean isMale, int transmodNpcId) {
         if (styles == null) {
             styles = new int[12];
@@ -63,8 +34,6 @@ public class PlayerComposition {
         this.method3406();
     }
 
-    @ObfuscatedName("w")
-    @Export("method3421")
     public void method3421(int var1, boolean var2) {
         if (var1 != 1 || !this.isFemale) {
             int var3 = this.styles[equipmentIndices[var1]];
@@ -94,7 +63,6 @@ public class PlayerComposition {
         }
     }
 
-    @ObfuscatedName("f")
     public void method3403(int var1, boolean var2) {
         int var3 = this.colors[var1];
         if (!var2) {
@@ -113,19 +81,12 @@ public class PlayerComposition {
         this.method3406();
     }
 
-    @ObfuscatedName("e")
-    @Export("method3404")
     public void method3404(boolean isMale) {
         if (this.isFemale != isMale) {
             this.setPlayerAppearance(null, this.colors, isMale, -1);
         }
     }
 
-    @ObfuscatedName("t")
-    @Export("method3405")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     public void method3405(Buffer var1) {
         var1.writeByte(this.isFemale ? 1 : 0);
 
@@ -145,8 +106,6 @@ public class PlayerComposition {
 
     }
 
-    @ObfuscatedName("d")
-    @Export("method3406")
     void method3406() {
         long var1 = this.hash;
         int var3 = this.styles[5];
@@ -186,12 +145,7 @@ public class PlayerComposition {
 
     }
 
-    @ObfuscatedName("p")
-    @Export("method3407")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass33;ILclass33;I)Lclass111;"
-    )
-    public Model method3407(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4) {
+    public Model method3407(AnimationDefinition var1, int var2, AnimationDefinition var3, int var4) {
         if (this.npcTransformId != -1) {
             return class22.method247(this.npcTransformId).method643(var1, var2, var3, var4);
         } else {
@@ -299,11 +253,6 @@ public class PlayerComposition {
         }
     }
 
-    @ObfuscatedName("k")
-    @Export("method3408")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass100;"
-    )
     ModelData method3408() {
         if (this.npcTransformId != -1) {
             return class22.method247(this.npcTransformId).method632();
@@ -364,8 +313,6 @@ public class PlayerComposition {
         }
     }
 
-    @ObfuscatedName("r")
-    @Export("method3401")
     public int method3401() {
         return this.npcTransformId == -1 ? (this.styles[0] << 15) + this.styles[1] + (this.styles[11] << 5) + (this.styles[8] << 10) + (this.colors[0] << 25) + (this.colors[4] << 20) : 305419896 + class22.method247(this.npcTransformId).id;
     }

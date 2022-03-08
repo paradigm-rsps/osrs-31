@@ -1,71 +1,22 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("eg")
-@Implements("AbstractArchive")
 public abstract class AbstractArchive {
-    @ObfuscatedName("s")
-    @Export("gzipDecompressor")
-    @ObfuscatedSignature(
-            descriptor = "Lclass121;"
-    )
     static GZipDecompressor gzipDecompressor = new GZipDecompressor();
-    @ObfuscatedName("o")
     static int field2507 = 0;
-    @ObfuscatedName("i")
-    @Export("groupCount")
     int groupCount;
-    @ObfuscatedName("w")
-    @Export("groupIds")
     int[] groupIds;
-    @ObfuscatedName("f")
-    @Export("groupNameHashes")
     int[] groupNameHashes;
-    @ObfuscatedName("e")
-    @Export("groupNameHashTable")
-    @ObfuscatedSignature(
-            descriptor = "Lclass168;"
-    )
     IntHashTable groupNameHashTable;
-    @ObfuscatedName("t")
-    @Export("groupCrcs")
     int[] groupCrcs;
-    @ObfuscatedName("d")
-    @Export("groupVersions")
     int[] groupVersions;
-    @ObfuscatedName("p")
-    @Export("fileCounts")
     int[] fileCounts;
-    @ObfuscatedName("k")
-    @Export("fileIds")
     int[][] fileIds;
-    @ObfuscatedName("r")
-    @Export("fileNameHashes")
     int[][] fileNameHashes;
-    @ObfuscatedName("l")
-    @Export("fileNameHashTables")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass168;"
-    )
     IntHashTable[] fileNameHashTables;
-    @ObfuscatedName("a")
-    @Export("groups")
     Object[] groups;
-    @ObfuscatedName("z")
-    @Export("files")
     Object[][] files;
-    @ObfuscatedName("m")
-    @Export("hash")
     public int hash;
-    @ObfuscatedName("u")
-    @Export("releaseGroups")
     boolean releaseGroups;
-    @ObfuscatedName("g")
-    @Export("shallowFiles")
     boolean shallowFiles;
 
     AbstractArchive(boolean var1, boolean var2) {
@@ -73,8 +24,6 @@ public abstract class AbstractArchive {
         this.shallowFiles = var2;
     }
 
-    @ObfuscatedName("i")
-    @Export("method3202")
     void method3202(byte[] var1) {
         this.hash = FileSystem.method1516(var1, var1.length);
         Buffer var2 = new Buffer(class120.method2582(var1));
@@ -202,19 +151,13 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod3297")
     void vmethod3297(int var1) {
     }
 
-    @ObfuscatedName("f")
-    @Export("method3204")
     public byte[] method3204(int var1, int var2) {
         return this.method3205(var1, var2, null);
     }
 
-    @ObfuscatedName("e")
-    @Export("method3205")
     public byte[] method3205(int var1, int var2, int[] var3) {
         if (var1 >= 0 && var1 < this.files.length && this.files[var1] != null && var2 >= 0 && var2 < this.files[var1].length) {
             if (this.files[var1][var2] == null) {
@@ -239,8 +182,6 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("t")
-    @Export("method3206")
     public boolean method3206(int var1, int var2) {
         if (var1 >= 0 && var1 < this.files.length && this.files[var1] != null && var2 >= 0 && var2 < this.files[var1].length) {
             if (this.files[var1][var2] != null) {
@@ -256,8 +197,6 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("d")
-    @Export("method3207")
     public boolean method3207(int var1) {
         if (this.groups[var1] != null) {
             return true;
@@ -267,8 +206,6 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("p")
-    @Export("method3208")
     public boolean method3208() {
         boolean var1 = true;
 
@@ -285,8 +222,6 @@ public abstract class AbstractArchive {
         return var1;
     }
 
-    @ObfuscatedName("k")
-    @Export("method3209")
     public byte[] method3209(int var1) {
         if (this.files.length == 1) {
             return this.method3204(0, var1);
@@ -297,8 +232,6 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("r")
-    @Export("method3210")
     public byte[] method3210(int var1, int var2) {
         if (var1 >= 0 && var1 < this.files.length && this.files[var1] != null && var2 >= 0 && var2 < this.files[var1].length) {
             if (this.files[var1][var2] == null) {
@@ -319,8 +252,6 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("l")
-    @Export("method3233")
     public byte[] method3233(int var1) {
         if (this.files.length == 1) {
             return this.method3210(0, var1);
@@ -331,31 +262,21 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("a")
-    @Export("vmethod3298")
     void vmethod3298(int var1) {
     }
 
-    @ObfuscatedName("z")
-    @Export("method3248")
     public int[] method3248(int var1) {
         return this.fileIds[var1];
     }
 
-    @ObfuscatedName("s")
-    @Export("method3214")
     public int method3214(int var1) {
         return this.files[var1].length;
     }
 
-    @ObfuscatedName("m")
-    @Export("method3264")
     public int method3264() {
         return this.files.length;
     }
 
-    @ObfuscatedName("u")
-    @Export("method3216")
     public void method3216(int var1) {
         for (int var2 = 0; var2 < this.files[var1].length; ++var2) {
             this.files[var1][var2] = null;
@@ -363,8 +284,6 @@ public abstract class AbstractArchive {
 
     }
 
-    @ObfuscatedName("g")
-    @Export("method3217")
     public void method3217() {
         for (int var1 = 0; var1 < this.files.length; ++var1) {
             if (this.files[var1] != null) {
@@ -376,8 +295,6 @@ public abstract class AbstractArchive {
 
     }
 
-    @ObfuscatedName("o")
-    @Export("method3218")
     boolean method3218(int var1, int[] var2) {
         if (this.groups[var1] == null) {
             return false;
@@ -470,22 +387,16 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("v")
-    @Export("method3219")
     public int getGroupId(String var1) {
         var1 = var1.toLowerCase();
         return this.groupNameHashTable.method3471(class65.method1456(var1));
     }
 
-    @ObfuscatedName("j")
-    @Export("method3238")
     public int method3238(int var1, String var2) {
         var2 = var2.toLowerCase();
         return this.fileNameHashTables[var1].method3471(class65.method1456(var2));
     }
 
-    @ObfuscatedName("n")
-    @Export("method3263")
     public byte[] method3263(String var1, String var2) {
         var1 = var1.toLowerCase();
         var2 = var2.toLowerCase();
@@ -494,8 +405,6 @@ public abstract class AbstractArchive {
         return this.method3204(var3, var4);
     }
 
-    @ObfuscatedName("q")
-    @Export("method3222")
     public boolean method3222(String var1, String var2) {
         var1 = var1.toLowerCase();
         var2 = var2.toLowerCase();
@@ -504,7 +413,6 @@ public abstract class AbstractArchive {
         return this.method3206(var3, var4);
     }
 
-    @ObfuscatedName("c")
     public void method3231(String var1) {
         var1 = var1.toLowerCase();
         int var2 = this.groupNameHashTable.method3471(class65.method1456(var1));
@@ -513,11 +421,6 @@ public abstract class AbstractArchive {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method3230")
-    @ObfuscatedSignature(
-            descriptor = "(II)Lclass157;"
-    )
     public static Widget method3230(int var0, int var1) {
         Widget var2 = class130.getWidget(var0);
         if (var1 == -1) {

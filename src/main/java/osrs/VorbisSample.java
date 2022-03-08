@@ -1,116 +1,45 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bh")
-@Implements("VorbisSample")
 public class VorbisSample extends Node {
-    @ObfuscatedName("p")
-    @Export("VorbisSample_bytes")
     static byte[] VorbisSample_bytes;
-    @ObfuscatedName("k")
-    @Export("VorbisSample_byteOffset")
     static int VorbisSample_byteOffset;
-    @ObfuscatedName("r")
-    @Export("VorbisSample_bitOffset")
     static int VorbisSample_bitOffset;
-    @ObfuscatedName("l")
-    @Export("VorbisSample_blockSize0")
     static int VorbisSample_blockSize0;
-    @ObfuscatedName("a")
-    @Export("VorbisSample_blockSize1")
     static int VorbisSample_blockSize1;
-    @ObfuscatedName("z")
-    @Export("VorbisSample_codebooks")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass59;"
-    )
     static VorbisCodebook[] VorbisSample_codebooks;
-    @ObfuscatedName("s")
-    @Export("VorbisSample_floors")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass48;"
-    )
     static VorbisFloor[] VorbisSample_floors;
-    @ObfuscatedName("m")
-    @Export("VorbisSample_residues")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass58;"
-    )
     static VorbisResidue[] VorbisSample_residues;
-    @ObfuscatedName("u")
-    @Export("VorbisSample_mappings")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass49;"
-    )
     static VorbisMapping[] VorbisSample_mappings;
-    @ObfuscatedName("g")
-    @Export("VorbisSample_blockFlags")
     static boolean[] VorbisSample_blockFlags;
-    @ObfuscatedName("o")
-    @Export("VorbisSample_mapping")
     static int[] VorbisSample_mapping;
-    @ObfuscatedName("v")
     static boolean field1142 = false;
-    @ObfuscatedName("h")
     static float[] field1143;
-    @ObfuscatedName("b")
     static float[] field1126;
-    @ObfuscatedName("y")
     static float[] field1145;
-    @ObfuscatedName("x")
     static float[] field1146;
-    @ObfuscatedName("ao")
     static float[] field1147;
-    @ObfuscatedName("ae")
     static float[] field1148;
-    @ObfuscatedName("aa")
     static float[] field1149;
-    @ObfuscatedName("ah")
     static int[] field1150;
-    @ObfuscatedName("aw")
     static int[] field1138;
-    @ObfuscatedName("i")
     byte[][] field1152;
-    @ObfuscatedName("w")
-    @Export("sampleRate")
     int sampleRate;
-    @ObfuscatedName("f")
-    @Export("sampleCount")
     int sampleCount;
-    @ObfuscatedName("e")
-    @Export("start")
     int start;
-    @ObfuscatedName("t")
-    @Export("end")
     int end;
-    @ObfuscatedName("d")
     boolean field1151;
-    @ObfuscatedName("j")
     float[] field1139;
-    @ObfuscatedName("n")
     int field1128;
-    @ObfuscatedName("q")
     int field1141;
-    @ObfuscatedName("c")
     boolean field1121;
-    @ObfuscatedName("an")
-    @Export("samples")
     byte[] samples;
-    @ObfuscatedName("av")
     int field1144;
-    @ObfuscatedName("ak")
     int field1140;
 
     VorbisSample(byte[] var1) {
         this.method1288(var1);
     }
 
-    @ObfuscatedName("t")
-    @Export("method1288")
     void method1288(byte[] var1) {
         Buffer var2 = new Buffer(var1);
         this.sampleRate = var2.readInt();
@@ -141,7 +70,6 @@ public class VorbisSample extends Node {
 
     }
 
-    @ObfuscatedName("p")
     float[] method1283(int var1) {
         method1278(this.field1152[var1], 0);
         method1307();
@@ -392,11 +320,6 @@ public class VorbisSample extends Node {
         return var41;
     }
 
-    @ObfuscatedName("l")
-    @Export("method1286")
-    @ObfuscatedSignature(
-            descriptor = "([I)Lclass62;"
-    )
     RawSound method1286(int[] var1) {
         if (var1 != null && var1[0] <= 0) {
             return null;
@@ -446,8 +369,6 @@ public class VorbisSample extends Node {
         }
     }
 
-    @ObfuscatedName("i")
-    @Export("method1300")
     static float method1300(int var0) {
         int var1 = var0 & 2097151;
         int var2 = var0 & Integer.MIN_VALUE;
@@ -459,16 +380,12 @@ public class VorbisSample extends Node {
         return (float) ((double) var1 * Math.pow(2.0D, var3 - 788));
     }
 
-    @ObfuscatedName("w")
-    @Export("method1278")
     static void method1278(byte[] var0, int var1) {
         VorbisSample_bytes = var0;
         VorbisSample_byteOffset = var1;
         VorbisSample_bitOffset = 0;
     }
 
-    @ObfuscatedName("f")
-    @Export("method1307")
     static int method1307() {
         int var0 = VorbisSample_bytes[VorbisSample_byteOffset] >> VorbisSample_bitOffset & 1;
         ++VorbisSample_bitOffset;
@@ -477,8 +394,6 @@ public class VorbisSample extends Node {
         return var0;
     }
 
-    @ObfuscatedName("e")
-    @Export("method1280")
     static int method1280(int var0) {
         int var1 = 0;
 
@@ -502,7 +417,6 @@ public class VorbisSample extends Node {
         return var1;
     }
 
-    @ObfuscatedName("d")
     static void method1282(byte[] var0) {
         method1278(var0, 0);
         VorbisSample_blockSize0 = 1 << method1280(4);
@@ -607,10 +521,6 @@ public class VorbisSample extends Node {
 
     }
 
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;)Z"
-    )
     static boolean method1281(AbstractArchive var0) {
         if (!field1142) {
             byte[] var1 = var0.method3204(0, 0);
@@ -625,11 +535,6 @@ public class VorbisSample extends Node {
         return true;
     }
 
-    @ObfuscatedName("r")
-    @Export("method1293")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;II)Lclass52;"
-    )
     static VorbisSample method1293(AbstractArchive var0, int var1, int var2) {
         if (!method1281(var0)) {
             var0.method3206(var1, var2);

@@ -1,34 +1,16 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-@ObfuscatedName("aa")
-@Implements("AccessFile")
 public final class AccessFile {
-    @ObfuscatedName("nm")
     static int field757;
-    @ObfuscatedName("ch")
-    @ObfuscatedSignature(
-            descriptor = "Lclass182;"
-    )
     static Font field762;
-    @ObfuscatedName("i")
-    @Export("file")
     RandomAccessFile file;
-    @ObfuscatedName("w")
-    @Export("maxSize")
     long maxSize;
-    @ObfuscatedName("f")
-    @Export("offset")
     long offset;
 
     public AccessFile(File var1, String var2, long var3) throws IOException {
@@ -52,15 +34,11 @@ public final class AccessFile {
         this.file.seek(0L);
     }
 
-    @ObfuscatedName("i")
-    @Export("method575")
     final void method575(long var1) throws IOException {
         this.file.seek(var1);
         this.offset = var1;
     }
 
-    @ObfuscatedName("w")
-    @Export("method574")
     public final void method574(byte[] var1, int var2, int var3) throws IOException {
         if (this.offset + (long) var3 > this.maxSize) {
             this.file.seek(1L + this.maxSize);
@@ -72,8 +50,6 @@ public final class AccessFile {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method586")
     public final void method586() throws IOException {
         if (this.file != null) {
             this.file.close();
@@ -82,14 +58,10 @@ public final class AccessFile {
 
     }
 
-    @ObfuscatedName("e")
-    @Export("method578")
     public final long method578() throws IOException {
         return this.file.length();
     }
 
-    @ObfuscatedName("t")
-    @Export("method584")
     public final int method584(byte[] var1, int var2, int var3) throws IOException {
         int var4 = this.file.read(var1, var2, var3);
         if (var4 > 0) {
@@ -107,17 +79,11 @@ public final class AccessFile {
 
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;)V"
-    )
     public static void method576(AbstractArchive var0, AbstractArchive var1) {
         SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
         SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
     }
 
-    @ObfuscatedName("r")
-    @Export("method573")
     static void method573(int var0, int var1) {
         int[] var2 = new int[4];
         int[] var3 = new int[4];
@@ -138,10 +104,6 @@ public final class AccessFile {
         JagexCache.method1720(Skills.field2058, 0, Skills.field2058.length - 1, Login.World_sortOption1, Login.World_sortOption2);
     }
 
-    @ObfuscatedName("q")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass73;Ljava/awt/Component;II)Lclass51;"
-    )
     public static final PcmPlayer method577(TaskHandler var0, Component var1, int var2, int var3) {
         if (PcmPlayer.field1099 == 0) {
             throw new IllegalStateException();

@@ -1,23 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dh")
 public class class120 {
-    @ObfuscatedName("i")
     static long field2016;
-    @ObfuscatedName("w")
     static long field2013;
-    @ObfuscatedName("as")
-    @ObfuscatedSignature(
-            descriptor = "Lclass86;"
-    )
     static IndexedSprite field2015;
 
-    @ObfuscatedName("r")
-    @Export("method2581")
     public static boolean method2581(char var0) {
         if (var0 >= ' ' && var0 <= '~') {
             return true;
@@ -28,8 +15,6 @@ public class class120 {
         }
     }
 
-    @ObfuscatedName("h")
-    @Export("method2582")
     static final byte[] method2582(byte[] var0) {
         Buffer var1 = new Buffer(var0);
         int var2 = var1.readUnsignedByte();

@@ -1,38 +1,14 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("eq")
-@Implements("MidiFileReader")
 public class MidiFileReader {
-    @ObfuscatedName("l")
     static final byte[] field2411 = new byte[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    @ObfuscatedName("i")
-    @Export("buffer")
-    @ObfuscatedSignature(
-            descriptor = "Lclass126;"
-    )
     Buffer buffer = new Buffer(null);
-    @ObfuscatedName("w")
-    @Export("division")
     int division;
-    @ObfuscatedName("f")
-    @Export("trackStarts")
     int[] trackStarts;
-    @ObfuscatedName("e")
-    @Export("trackPositions")
     int[] trackPositions;
-    @ObfuscatedName("t")
-    @Export("trackLengths")
     int[] trackLengths;
-    @ObfuscatedName("d")
     int[] field2417;
-    @ObfuscatedName("p")
     int field2414;
-    @ObfuscatedName("r")
     long field2421;
 
     MidiFileReader(byte[] var1) {
@@ -42,8 +18,6 @@ public class MidiFileReader {
     MidiFileReader() {
     }
 
-    @ObfuscatedName("i")
-    @Export("method3111")
     void method3111(byte[] var1) {
         this.buffer.array = var1;
         this.buffer.offset = 10;
@@ -74,8 +48,6 @@ public class MidiFileReader {
         this.field2417 = new int[var2];
     }
 
-    @ObfuscatedName("w")
-    @Export("method3067")
     void method3067() {
         this.buffer.array = null;
         this.trackStarts = null;
@@ -84,52 +56,36 @@ public class MidiFileReader {
         this.field2417 = null;
     }
 
-    @ObfuscatedName("f")
-    @Export("method3066")
     boolean method3066() {
         return this.buffer.array != null;
     }
 
-    @ObfuscatedName("e")
-    @Export("method3068")
     int method3068() {
         return this.trackPositions.length;
     }
 
-    @ObfuscatedName("t")
-    @Export("method3070")
     void method3070(int var1) {
         this.buffer.offset = this.trackPositions[var1];
     }
 
-    @ObfuscatedName("d")
-    @Export("method3071")
     void method3071(int var1) {
         this.trackPositions[var1] = this.buffer.offset;
     }
 
-    @ObfuscatedName("p")
-    @Export("method3083")
     void method3083() {
         this.buffer.offset = -1;
     }
 
-    @ObfuscatedName("k")
-    @Export("method3073")
     void method3073(int var1) {
         int var2 = this.buffer.method2660();
         this.trackLengths[var1] += var2;
     }
 
-    @ObfuscatedName("r")
-    @Export("method3074")
     int method3074(int var1) {
         int var2 = this.method3075(var1);
         return var2;
     }
 
-    @ObfuscatedName("l")
-    @Export("method3075")
     int method3075(int var1) {
         byte var2 = this.buffer.array[this.buffer.offset];
         int var5;
@@ -159,7 +115,6 @@ public class MidiFileReader {
         }
     }
 
-    @ObfuscatedName("a")
     int method3076(int var1, int var2) {
         int var4;
         if (var2 == 255) {
@@ -195,13 +150,10 @@ public class MidiFileReader {
         }
     }
 
-    @ObfuscatedName("z")
     long method3077(int var1) {
         return this.field2421 + (long) var1 * (long) this.field2414;
     }
 
-    @ObfuscatedName("s")
-    @Export("method3087")
     int method3087() {
         int var1 = this.trackPositions.length;
         int var2 = -1;
@@ -217,8 +169,6 @@ public class MidiFileReader {
         return var2;
     }
 
-    @ObfuscatedName("m")
-    @Export("method3079")
     boolean method3079() {
         int var1 = this.trackPositions.length;
 
@@ -231,8 +181,6 @@ public class MidiFileReader {
         return true;
     }
 
-    @ObfuscatedName("u")
-    @Export("method3080")
     void method3080(long var1) {
         this.field2421 = var1;
         int var3 = this.trackPositions.length;

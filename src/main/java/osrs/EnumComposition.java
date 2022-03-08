@@ -1,62 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.net.URL;
 
-@ObfuscatedName("at")
-@Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive field977;
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     static EvictingDualNodeHashTable field968 = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("z")
-    @Export("Tiles_lightness")
     static int[] Tiles_lightness;
-    @ObfuscatedName("bt")
-    @ObfuscatedSignature(
-            descriptor = "Lclass69;"
-    )
     static IterableNodeHashTableIterator field978;
-    @ObfuscatedName("f")
     public int field979;
-    @ObfuscatedName("e")
-    @Export("outputType")
     public char outputType;
-    @ObfuscatedName("t")
-    @Export("defaultStr")
     public String defaultStr = "null";
-    @ObfuscatedName("d")
-    @Export("defaultInt")
     public int defaultInt;
-    @ObfuscatedName("p")
-    @Export("outputCount")
     public int outputCount = 0;
-    @ObfuscatedName("k")
-    @Export("keys")
     public int[] keys;
-    @ObfuscatedName("r")
-    @Export("intVals")
     public int[] intVals;
-    @ObfuscatedName("l")
-    @Export("strVals")
     public String[] strVals;
 
-    @ObfuscatedName("f")
-    @Export("method839")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void method839(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -68,11 +27,6 @@ public class EnumComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method841")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method841(Buffer var1, int var2) {
         if (var2 == 1) {
             this.field979 = var1.readUnsignedByte();
@@ -107,10 +61,6 @@ public class EnumComposition extends DualNode {
 
     }
 
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass153;I)V"
-    )
     static void method851(Archive var0, int var1) {
         if (WallDecoration.NetCache_reference != null) {
             WallDecoration.NetCache_reference.offset = var1 * 8 + 5;
@@ -123,8 +73,6 @@ public class EnumComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method852")
     public static boolean method852(int var0) {
         if (Widget.Widget_loadedInterfaces[var0]) {
             return true;
@@ -161,12 +109,10 @@ public class EnumComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
     public static boolean method843(int var0) {
         return (var0 >> 20 & 1) != 0;
     }
 
-    @ObfuscatedName("k")
     static void method850() {
         try {
             if (Projectile.field171 == null) {
@@ -203,8 +149,6 @@ public class EnumComposition extends DualNode {
 
     }
 
-    @ObfuscatedName("ac")
-    @Export("method848")
     static final void method848(boolean var0) {
         for (int var1 = 0; var1 < Client.npcCount; ++var1) {
             NPC var2 = Client.npcs[Client.npcIndices[var1]];

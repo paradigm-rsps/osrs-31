@@ -1,33 +1,14 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.File;
 import java.util.Hashtable;
 
-@ObfuscatedName("bo")
-@Implements("FileSystem")
 public class FileSystem {
-    @ObfuscatedName("i")
-    @Export("FileSystem_hasPermissions")
     static boolean FileSystem_hasPermissions = false;
-    @ObfuscatedName("w")
-    @Export("FileSystem_cacheDir")
     static File FileSystem_cacheDir;
-    @ObfuscatedName("f")
-    @Export("FileSystem_cacheFiles")
     static Hashtable FileSystem_cacheFiles = new Hashtable(16);
-    @ObfuscatedName("ap")
-    @Export("worldSelectArrows")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass86;"
-    )
     static IndexedSprite[] worldSelectArrows;
 
-    @ObfuscatedName("w")
     static int method1514(int var0, int var1) {
         ItemContainer var2 = (ItemContainer) ItemContainer.itemContainers.method3512(var0);
         if (var2 == null) {
@@ -47,7 +28,6 @@ public class FileSystem {
         }
     }
 
-    @ObfuscatedName("m")
     static void method1515() {
         class83.SpriteBuffer_xOffsets = null;
         class165.SpriteBuffer_yOffsets = null;
@@ -57,12 +37,10 @@ public class FileSystem {
         class145.SpriteBuffer_pixels = null;
     }
 
-    @ObfuscatedName("aa")
     public static int method1516(byte[] var0, int var1) {
         return class40.method913(var0, 0, var1);
     }
 
-    @ObfuscatedName("bn")
     static final boolean method1517(int var0, int var1, int var2, int var3, boolean var4, int var5, int var6, int var7, int var8, int var9, int var10) {
         int var13;
         int var14;

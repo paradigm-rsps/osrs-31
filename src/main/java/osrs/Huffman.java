@@ -1,20 +1,8 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("dq")
-@Implements("Huffman")
 public class Huffman {
-    @ObfuscatedName("i")
-    @Export("masks")
     int[] masks;
-    @ObfuscatedName("w")
-    @Export("bits")
     byte[] bits;
-    @ObfuscatedName("f")
-    @Export("keys")
     int[] keys;
 
     public Huffman(byte[] var1) {
@@ -100,8 +88,6 @@ public class Huffman {
 
     }
 
-    @ObfuscatedName("i")
-    @Export("method2571")
     public int method2571(byte[] var1, int var2, int var3, byte[] var4, int var5) {
         int var6 = 0;
         int var7 = var5 << 3;
@@ -147,8 +133,6 @@ public class Huffman {
         return (var7 + 7 >> 3) - var5;
     }
 
-    @ObfuscatedName("w")
-    @Export("method2572")
     public int method2572(byte[] var1, int var2, byte[] var3, int var4, int var5) {
         if (var5 == 0) {
             return 0;

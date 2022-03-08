@@ -1,56 +1,28 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.URL;
 
-@ObfuscatedName("b")
 public class class23 {
-    @ObfuscatedName("pf")
-    @Export("hasFocus")
     protected static boolean hasFocus;
-    @ObfuscatedName("s")
-    @Export("soundCache")
-    @ObfuscatedSignature(
-            descriptor = "Lclass57;"
-    )
     static SoundCache soundCache;
-    @ObfuscatedName("o")
     static String[] field382;
-    @ObfuscatedName("i")
     byte[] field392 = new byte[4];
-    @ObfuscatedName("w")
     int field387;
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "Lclass78;"
-    )
     Task field383;
-    @ObfuscatedName("e")
     DataInputStream field384;
-    @ObfuscatedName("t")
     int field386;
-    @ObfuscatedName("d")
     byte[] field388;
-    @ObfuscatedName("p")
     int field385;
-    @ObfuscatedName("k")
     long field393;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass73;Ljava/net/URL;)V"
-    )
     class23(TaskHandler var1, URL var2) {
         this.field383 = var1.method1601(var2);
         this.field387 = 0;
         this.field393 = ClientPreferences.method148() + 30000L;
     }
 
-    @ObfuscatedName("i")
     byte[] method249() throws IOException {
         if (ClientPreferences.method148() > this.field393) {
             throw new IOException();
@@ -101,10 +73,6 @@ public class class23 {
         }
     }
 
-    @ObfuscatedName("p")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass72;)V"
-    )
     static void method248(GameEngine var0) {
         if (MouseHandler.PacketBufferNode_packetBufferNodeCount == 1) {
             short var1 = 280;
@@ -181,7 +149,6 @@ public class class23 {
 
     }
 
-    @ObfuscatedName("z")
     static final int method253(int var0, int var1, int var2) {
         int var3 = var0 / var2;
         int var4 = var0 & var2 - 1;
@@ -200,7 +167,6 @@ public class class23 {
         return var15;
     }
 
-    @ObfuscatedName("dk")
     static final void method251() {
         Client.rsaBuf.writeByteOpcode(8);
         Client.rsaBuf.writeByte(0);

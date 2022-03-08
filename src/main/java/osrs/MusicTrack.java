@@ -1,26 +1,9 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("et")
-@Implements("MusicTrack")
 public class MusicTrack extends Node {
-    @ObfuscatedName("i")
-    @Export("table")
-    @ObfuscatedSignature(
-            descriptor = "Lclass174;"
-    )
     NodeHashTable table;
-    @ObfuscatedName("w")
-    @Export("midi")
     byte[] midi;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     MusicTrack(Buffer var1) {
         var1.offset = var1.array.length - 3;
         int var2 = var1.readUnsignedByte();
@@ -337,7 +320,6 @@ public class MusicTrack extends Node {
 
     }
 
-    @ObfuscatedName("w")
     void method2895() {
         if (this.table == null) {
             this.table = new NodeHashTable(16);
@@ -418,17 +400,10 @@ public class MusicTrack extends Node {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method2893")
     void method2893() {
         this.table = null;
     }
 
-    @ObfuscatedName("i")
-    @Export("method2905")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;II)Lclass138;"
-    )
     static MusicTrack method2905(AbstractArchive var0, int var1, int var2) {
         byte[] var3 = var0.method3204(var1, var2);
         return var3 == null ? null : new MusicTrack(new Buffer(var3));

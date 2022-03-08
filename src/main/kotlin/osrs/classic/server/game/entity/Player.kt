@@ -188,9 +188,9 @@ class Player(val client: Client) : LivingEntity() {
     }
 
     internal fun synchronize() {
-        varpManager.synchronize()
+        //varpManager.synchronize()
         scene.synchronize()
-        players.synchronize()
+        //players.synchronize()
         //gpi.synchronize()
         //npcs.synchronize()
         client.flush()
@@ -199,13 +199,15 @@ class Player(val client: Client) : LivingEntity() {
     override fun postProcess() {
         super.postProcess()
         EventBus.dispatch(PlayerCycleEvent(this))
-        varpManager.synchronize()
+        //varpManager.synchronize()
         scene.postProcess()
     }
 
     override fun scheduleMoveEvent(type: MovementType) = EventBus.dispatch(PlayerMoveEvent(this, type))
 
-    override fun addAppearanceUpdateFlag() { updateFlags.add(PlayerUpdateFlag.APPEARANCE) }
+    override fun addAppearanceUpdateFlag() {
+        //updateFlags.add(PlayerUpdateFlag.APPEARANCE)
+    }
     override fun addForceChatUpdateFlag() { updateFlags.add(PlayerUpdateFlag.FORCE_CHAT) }
     override fun addMovementUpdateFlag() { updateFlags.add(PlayerUpdateFlag.MOVEMENT) }
     override fun addMovementModeUpdateFlag() { updateFlags.add(PlayerUpdateFlag.MOVEMENT_MODE) }

@@ -1,37 +1,14 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("k")
 public class class7 extends Node {
-    @ObfuscatedName("gx")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget field113;
-    @ObfuscatedName("am")
-    @Export("archive3")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive3;
-    @ObfuscatedName("ar")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive field102;
-    @ObfuscatedName("i")
     String field112;
-    @ObfuscatedName("w")
     String field103;
-    @ObfuscatedName("f")
     int field109;
-    @ObfuscatedName("e")
     byte field105;
 
-    @ObfuscatedName("i")
     public static int method57(int var0, int var1, int var2) {
         var2 &= 3;
         if (var2 == 0) {
@@ -43,7 +20,6 @@ public class class7 extends Node {
         }
     }
 
-    @ObfuscatedName("w")
     public static byte[] method56(Object var0, boolean var1) {
         if (var0 == null) {
             return null;
@@ -58,13 +34,11 @@ public class class7 extends Node {
         }
     }
 
-    @ObfuscatedName("d")
     static final void method55() {
         Scene.Scene_isLowDetail = false;
         Client.isLowDetail = false;
     }
 
-    @ObfuscatedName("bd")
     static final void method54() {
         for (PendingSpawn var0 = (PendingSpawn) Client.pendingSpawns.method3533(); var0 != null; var0 = (PendingSpawn) Client.pendingSpawns.method3535()) {
             if (var0.hitpoints == -1) {
@@ -77,10 +51,6 @@ public class class7 extends Node {
 
     }
 
-    @ObfuscatedName("db")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;I)Ljava/lang/String;"
-    )
     static String method58(Widget var0, int var1) {
         int var3 = SoundSystem.method1326(var0);
         boolean var2 = (var3 >> var1 + 1 & 1) != 0;

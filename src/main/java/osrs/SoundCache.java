@@ -1,53 +1,17 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("br")
-@Implements("SoundCache")
 public class SoundCache {
-    @ObfuscatedName("nz")
     static int field1206;
-    @ObfuscatedName("i")
-    @Export("soundEffectIndex")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     AbstractArchive soundEffectIndex;
-    @ObfuscatedName("w")
-    @Export("musicSampleIndex")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     AbstractArchive musicSampleIndex;
-    @ObfuscatedName("f")
-    @Export("musicSamples")
-    @ObfuscatedSignature(
-            descriptor = "Lclass174;"
-    )
     NodeHashTable musicSamples = new NodeHashTable(256);
-    @ObfuscatedName("e")
-    @Export("rawSounds")
-    @ObfuscatedSignature(
-            descriptor = "Lclass174;"
-    )
     NodeHashTable rawSounds = new NodeHashTable(256);
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;)V"
-    )
     public SoundCache(AbstractArchive var1, AbstractArchive var2) {
         this.soundEffectIndex = var1;
         this.musicSampleIndex = var2;
     }
 
-    @ObfuscatedName("i")
-    @Export("method1359")
-    @ObfuscatedSignature(
-            descriptor = "(II[I)Lclass62;"
-    )
     RawSound method1359(int var1, int var2, int[] var3) {
         int var4 = var2 ^ (var1 << 4 & '\uffff' | var1 >>> 12);
         var4 |= var1 << 16;
@@ -73,11 +37,6 @@ public class SoundCache {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method1355")
-    @ObfuscatedSignature(
-            descriptor = "(II[I)Lclass62;"
-    )
     RawSound method1355(int var1, int var2, int[] var3) {
         int var4 = var2 ^ (var1 << 4 & '\uffff' | var1 >>> 12);
         var4 |= var1 << 16;
@@ -109,11 +68,6 @@ public class SoundCache {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method1370")
-    @ObfuscatedSignature(
-            descriptor = "(I[I)Lclass62;"
-    )
     public RawSound method1370(int var1, int[] var2) {
         if (this.soundEffectIndex.method3264() == 1) {
             return this.method1359(0, var1, var2);
@@ -124,11 +78,6 @@ public class SoundCache {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method1358")
-    @ObfuscatedSignature(
-            descriptor = "(I[I)Lclass62;"
-    )
     public RawSound method1358(int var1, int[] var2) {
         if (this.musicSampleIndex.method3264() == 1) {
             return this.method1355(0, var1, var2);
@@ -139,7 +88,6 @@ public class SoundCache {
         }
     }
 
-    @ObfuscatedName("f")
     public static String method1371(CharSequence var0) {
         String var1 = Interpreter.method276(class14.method163(var0));
         if (var1 == null) {
@@ -149,16 +97,10 @@ public class SoundCache {
         return var1;
     }
 
-    @ObfuscatedName("p")
     public static boolean method1356(int var0) {
         return (var0 >> 31 & 1) != 0;
     }
 
-    @ObfuscatedName("g")
-    @Export("method1366")
-    @ObfuscatedSignature(
-            descriptor = "(IZZZ)Lclass153;"
-    )
     static Archive method1366(int var0, boolean var1, boolean var2, boolean var3) {
         ArchiveDisk var4 = null;
         if (JagexCache.JagexCache_dat2File != null) {

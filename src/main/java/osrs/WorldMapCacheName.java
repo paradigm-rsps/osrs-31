@@ -1,67 +1,25 @@
 package osrs;
 
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
 import java.io.IOException;
 
-@ObfuscatedName("fn")
-@Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2783 = new WorldMapCacheName("7", "7");
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2776 = new WorldMapCacheName("3", "3");
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2777 = new WorldMapCacheName("1", "1");
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2778 = new WorldMapCacheName("2", "2");
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2779 = new WorldMapCacheName("5", "5");
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2780 = new WorldMapCacheName("6", "6");
-    @ObfuscatedName("p")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2775 = new WorldMapCacheName("9", "9");
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2782 = new WorldMapCacheName("8", "8");
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "Lclass166;"
-    )
     public static final WorldMapCacheName field2781 = new WorldMapCacheName("4", "4");
-    @ObfuscatedName("l")
     public final String field2784;
 
     WorldMapCacheName(String var1, String var2) {
         this.field2784 = var2;
     }
 
-    @ObfuscatedName("h")
     static final void method3469() {
         if (Client.field585 > 1) {
             --Client.field585;
@@ -80,7 +38,7 @@ public class WorldMapCacheName {
             }
 
             if (Client.gameState == 30) {
-                MilliClock.method1433(Client.rsaBuf, 87);
+                MilliClock.handleReflectionCheck(Client.rsaBuf, 87);
                 Object var16 = BoundaryObject.field1625.lock;
                 int var1;
                 int var2;
@@ -293,7 +251,7 @@ public class WorldMapCacheName {
                             var7 = Interpreter.scene.method2070(class22.scenePlane, var5, var6);
                             if (var7 != 0) {
                                 var7 = var7 >> 14 & 32767;
-                                var8 = GameBuild.getObjectComposition(var7).field848;
+                                var8 = Definitions.getObject(var7).field848;
                                 if (var8 >= 0) {
                                     var24 = var5;
                                     var10 = var6;
@@ -492,8 +450,8 @@ public class WorldMapCacheName {
                         }
 
                         Widget var38;
-                        if (SequenceDefinition.field887 != null) {
-                            class82.invalidateWidget(SequenceDefinition.field887);
+                        if (AnimationDefinition.field887 != null) {
+                            class82.invalidateWidget(AnimationDefinition.field887);
                             ++Client.field639;
                             if (MouseHandler.MouseHandler_x > Client.field597 + 5 || MouseHandler.MouseHandler_x < Client.field597 - 5 || MouseHandler.MouseHandler_y > Client.field598 + 5 || MouseHandler.MouseHandler_y < Client.field598 - 5) {
                                 Client.field600 = true;
@@ -501,8 +459,8 @@ public class WorldMapCacheName {
 
                             if (MouseHandler.MouseHandler_currentButton == 0) {
                                 if (Client.field600 && Client.field639 >= 5) {
-                                    if (SequenceDefinition.field887 == class7.field113 && Client.field596 != Client.field655) {
-                                        var38 = SequenceDefinition.field887;
+                                    if (AnimationDefinition.field887 == class7.field113 && Client.field596 != Client.field655) {
+                                        var38 = AnimationDefinition.field887;
                                         byte var33 = 0;
                                         if (Client.field646 == 1 && var38.contentType == 206) {
                                             var33 = 1;
@@ -539,7 +497,7 @@ public class WorldMapCacheName {
                                         }
 
                                         Client.rsaBuf.writeByteOpcode(42);
-                                        Client.rsaBuf.writeIntLE(SequenceDefinition.field887.id);
+                                        Client.rsaBuf.writeIntLE(AnimationDefinition.field887.id);
                                         Client.rsaBuf.writeShortAdd(Client.field596);
                                         Client.rsaBuf.writeByte(var33);
                                         Client.rsaBuf.writeShortAddLE(Client.field655);
@@ -552,7 +510,7 @@ public class WorldMapCacheName {
 
                                 Client.field533 = 10;
                                 MouseHandler.PacketBufferNode_packetBufferNodeCount = 0;
-                                SequenceDefinition.field887 = null;
+                                AnimationDefinition.field887 = null;
                             }
                         }
 
@@ -604,7 +562,7 @@ public class WorldMapCacheName {
                                                                 }
                                                             }
 
-                                                            if (SequenceDefinition.field887 == null && Client.clickedWidget == null) {
+                                                            if (AnimationDefinition.field887 == null && Client.clickedWidget == null) {
                                                                 var2 = MouseHandler.PacketBufferNode_packetBufferNodeCount;
                                                                 if (Client.isMenuOpen) {
                                                                     if (var2 != 1) {
@@ -677,15 +635,15 @@ public class WorldMapCacheName {
 
                                                                         Client.field600 = false;
                                                                         Client.field639 = 0;
-                                                                        if (SequenceDefinition.field887 != null) {
-                                                                            class82.invalidateWidget(SequenceDefinition.field887);
+                                                                        if (AnimationDefinition.field887 != null) {
+                                                                            class82.invalidateWidget(AnimationDefinition.field887);
                                                                         }
 
-                                                                        SequenceDefinition.field887 = class130.getWidget(var5);
+                                                                        AnimationDefinition.field887 = class130.getWidget(var5);
                                                                         Client.field596 = var4;
                                                                         Client.field597 = MouseHandler.MouseHandler_lastPressedX;
                                                                         Client.field598 = MouseHandler.MouseHandler_lastPressedY;
-                                                                        class82.invalidateWidget(SequenceDefinition.field887);
+                                                                        class82.invalidateWidget(AnimationDefinition.field887);
                                                                     }
                                                                 }
                                                             }

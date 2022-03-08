@@ -1,41 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.EOFException;
 import java.io.IOException;
 
-@ObfuscatedName("bk")
-@Implements("ArchiveDisk")
 public final class ArchiveDisk {
-    @ObfuscatedName("w")
-    @Export("ArchiveDisk_buffer")
     static byte[] ArchiveDisk_buffer = new byte[520];
-    @ObfuscatedName("i")
-    @Export("archive")
     int archive;
-    @ObfuscatedName("f")
-    @Export("datFile")
-    @ObfuscatedSignature(
-            descriptor = "Lclass29;"
-    )
     BufferedFile datFile = null;
-    @ObfuscatedName("e")
-    @Export("idxFile")
-    @ObfuscatedSignature(
-            descriptor = "Lclass29;"
-    )
     BufferedFile idxFile = null;
-    @ObfuscatedName("t")
-    @Export("maxEntrySize")
     int maxEntrySize = 65000;
 
-    @ObfuscatedSignature(
-            descriptor = "(ILclass29;Lclass29;I)V"
-    )
     public ArchiveDisk(int var1, BufferedFile var2, BufferedFile var3, int var4) {
         this.archive = var1;
         this.datFile = var2;
@@ -43,8 +17,6 @@ public final class ArchiveDisk {
         this.maxEntrySize = var4;
     }
 
-    @ObfuscatedName("i")
-    @Export("method1500")
     public byte[] method1500(int var1) {
         BufferedFile var2 = this.datFile;
         synchronized (this.datFile) {
@@ -112,8 +84,6 @@ public final class ArchiveDisk {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method1501")
     public boolean method1501(int var1, byte[] var2, int var3) {
         BufferedFile var4 = this.datFile;
         synchronized (this.datFile) {
@@ -130,8 +100,6 @@ public final class ArchiveDisk {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method1502")
     boolean method1502(int var1, byte[] var2, int var3, boolean var4) {
         BufferedFile var5 = this.datFile;
         synchronized (this.datFile) {
@@ -247,10 +215,6 @@ public final class ArchiveDisk {
         }
     }
 
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "()[Lclass86;"
-    )
     static IndexedSprite[] method1512() {
         IndexedSprite[] var0 = new IndexedSprite[class83.SpriteBuffer_spriteCount];
 
@@ -270,10 +234,6 @@ public final class ArchiveDisk {
         return var0;
     }
 
-    @ObfuscatedName("z")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;I)Z"
-    )
     static boolean method1504(AbstractArchive var0, int var1) {
         byte[] var2 = var0.method3209(var1);
         if (var2 == null) {
@@ -284,8 +244,6 @@ public final class ArchiveDisk {
         }
     }
 
-    @ObfuscatedName("bs")
-    @Export("method1503")
     static final void method1503(String var0, String var1, int var2, int var3, int var4, int var5) {
         if (!Client.isMenuOpen) {
             if (Client.menuOptionsCount < 500) {

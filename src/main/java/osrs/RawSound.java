@@ -1,26 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bb")
-@Implements("RawSound")
 public class RawSound extends AbstractSound {
-    @ObfuscatedName("w")
-    @Export("sampleRate")
     public int sampleRate;
-    @ObfuscatedName("f")
-    @Export("samples")
     public byte[] samples;
-    @ObfuscatedName("e")
-    @Export("start")
     public int start;
-    @ObfuscatedName("t")
-    @Export("end")
     int end;
-    @ObfuscatedName("d")
     public boolean field1241;
 
     RawSound(int var1, byte[] var2, int var3, int var4) {
@@ -38,11 +22,6 @@ public class RawSound extends AbstractSound {
         this.field1241 = var5;
     }
 
-    @ObfuscatedName("i")
-    @Export("method1413")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass61;)Lclass62;"
-    )
     public RawSound method1413(Decimator var1) {
         this.samples = var1.method1402(this.samples);
         this.sampleRate = var1.method1404(this.sampleRate);

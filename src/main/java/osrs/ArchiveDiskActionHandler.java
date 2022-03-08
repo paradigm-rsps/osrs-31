@@ -1,29 +1,9 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fc")
-@Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-    @ObfuscatedName("i")
-    @Export("ArchiveDiskActionHandler_requestQueue")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     public static NodeDeque ArchiveDiskActionHandler_requestQueue = new NodeDeque();
-    @ObfuscatedName("w")
-    @Export("ArchiveDiskActionHandler_responseQueue")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     public static NodeDeque ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-    @ObfuscatedName("f")
     static int field2565 = 0;
-    @ObfuscatedName("e")
-    @Export("ArchiveDiskActionHandler_lock")
     static Object ArchiveDiskActionHandler_lock = new Object();
 
     public void run() {
@@ -62,7 +42,7 @@ public class ArchiveDiskActionHandler implements Runnable {
                         field2565 = 600;
                     }
                 } else {
-                    SequenceDefinition.sleepWeird(100L);
+                    AnimationDefinition.sleepWeird(100L);
                     var14 = ArchiveDiskActionHandler_lock;
                     synchronized (ArchiveDiskActionHandler_lock) {
                         if (field2565 <= 1) {
@@ -80,7 +60,6 @@ public class ArchiveDiskActionHandler implements Runnable {
         }
     }
 
-    @ObfuscatedName("r")
     public static void method3323() {
         KitDefinition.KitDefinition_cached.method3482();
     }

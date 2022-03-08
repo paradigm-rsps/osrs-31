@@ -1,119 +1,32 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.util.Random;
 
-@ObfuscatedName("ba")
-@Implements("Instrument")
 public class Instrument {
-    @ObfuscatedName("v")
-    @Export("Instrument_samples")
     static int[] Instrument_samples;
-    @ObfuscatedName("j")
-    @Export("Instrument_noise")
     static int[] Instrument_noise = new int['耀'];
-    @ObfuscatedName("n")
-    @Export("Instrument_sine")
     static int[] Instrument_sine;
-    @ObfuscatedName("c")
-    @Export("Instrument_phases")
     static int[] Instrument_phases;
-    @ObfuscatedName("h")
-    @Export("Instrument_delays")
     static int[] Instrument_delays;
-    @ObfuscatedName("b")
-    @Export("Instrument_volumeSteps")
     static int[] Instrument_volumeSteps;
-    @ObfuscatedName("y")
-    @Export("Instrument_pitchSteps")
     static int[] Instrument_pitchSteps;
-    @ObfuscatedName("x")
-    @Export("Instrument_pitchBaseSteps")
     static int[] Instrument_pitchBaseSteps;
-    @ObfuscatedName("i")
-    @Export("pitch")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope pitch;
-    @ObfuscatedName("w")
-    @Export("volume")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope volume;
-    @ObfuscatedName("f")
-    @Export("pitchModifier")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope pitchModifier;
-    @ObfuscatedName("e")
-    @Export("pitchModifierAmplitude")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope pitchModifierAmplitude;
-    @ObfuscatedName("t")
-    @Export("volumeMultiplier")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope volumeMultiplier;
-    @ObfuscatedName("d")
-    @Export("volumeMultiplierAmplitude")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope volumeMultiplierAmplitude;
-    @ObfuscatedName("p")
-    @Export("release")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope release;
-    @ObfuscatedName("k")
-    @Export("attack")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope attack;
-    @ObfuscatedName("r")
-    @Export("oscillatorVolume")
     int[] oscillatorVolume = new int[]{0, 0, 0, 0, 0};
-    @ObfuscatedName("l")
-    @Export("oscillatorPitch")
     int[] oscillatorPitch = new int[]{0, 0, 0, 0, 0};
-    @ObfuscatedName("a")
-    @Export("oscillatorDelays")
     int[] oscillatorDelays = new int[]{0, 0, 0, 0, 0};
-    @ObfuscatedName("z")
-    @Export("delayTime")
     int delayTime = 0;
-    @ObfuscatedName("s")
-    @Export("delayDecay")
     int delayDecay = 100;
-    @ObfuscatedName("m")
-    @Export("filter")
-    @ObfuscatedSignature(
-            descriptor = "Lclass63;"
-    )
     AudioFilter filter;
-    @ObfuscatedName("u")
-    @Export("filterEnvelope")
-    @ObfuscatedSignature(
-            descriptor = "Lclass55;"
-    )
     SoundEnvelope filterEnvelope;
-    @ObfuscatedName("g")
-    @Export("duration")
     int duration = 500;
-    @ObfuscatedName("o")
-    @Export("offset")
     int offset = 0;
 
     static {
@@ -138,8 +51,6 @@ public class Instrument {
         Instrument_pitchBaseSteps = new int[5];
     }
 
-    @ObfuscatedName("i")
-    @Export("method1317")
     final int[] method1317(int var1, int var2) {
         class127.method2846(Instrument_samples, 0, var1);
         if (var2 < 10) {
@@ -341,8 +252,6 @@ public class Instrument {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method1316")
     final int method1316(int var1, int var2, int var3) {
         if (var3 == 1) {
             return (var1 & 32767) < 16384 ? var2 : -var2;
@@ -355,11 +264,6 @@ public class Instrument {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method1319")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     final void method1319(Buffer var1) {
         this.pitch = new SoundEnvelope();
         this.pitch.method1331(var1);

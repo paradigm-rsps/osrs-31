@@ -1,96 +1,43 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
 import java.io.File;
 import java.io.IOException;
 
-@ObfuscatedName("r")
-@Implements("Tiles")
 public final class Tiles {
-    @ObfuscatedName("pa")
     public static java.awt.Canvas field131;
-    @ObfuscatedName("if")
-    @Export("mousedOverWidgetIf1")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget mousedOverWidgetIf1;
-    @ObfuscatedName("hm")
-    @Export("localPlayer")
-    @ObfuscatedSignature(
-            descriptor = "Lclass2;"
-    )
     static Player localPlayer;
-    @ObfuscatedName("i")
-    @Export("Tiles_heights")
-    static int[][][] Tiles_heights = new int[4][105][105];
-    @ObfuscatedName("w")
-    @Export("Tiles_renderFlags")
+    static int[][][] tileHeights = new int[4][105][105];
     static byte[][][] Tiles_renderFlags = new byte[4][104][104];
-    @ObfuscatedName("f")
-    @Export("Tiles_minPlane")
     static int Tiles_minPlane = 99;
-    @ObfuscatedName("e")
-    @Export("Tiles_underlays")
     static byte[][][] Tiles_underlays;
-    @ObfuscatedName("d")
-    @Export("Tiles_shapes")
     static byte[][][] Tiles_shapes;
-    @ObfuscatedName("k")
     static byte[][][] field132;
-    @ObfuscatedName("r")
     static int[][] field120;
-    @ObfuscatedName("l")
-    @Export("Tiles_hue")
     static int[] Tiles_hue;
-    @ObfuscatedName("g")
     static int[] field129;
-    @ObfuscatedName("j")
     static final int[] field124 = new int[]{1, 2, 4, 8};
-    @ObfuscatedName("n")
     static final int[] field125 = new int[]{16, 32, 64, 128};
-    @ObfuscatedName("q")
     static final int[] field115 = new int[]{1, 0, -1, 0};
-    @ObfuscatedName("c")
     static final int[] field127 = new int[]{0, -1, 0, 1};
-    @ObfuscatedName("h")
     static final int[] field128 = new int[]{1, -1, -1, 1};
-    @ObfuscatedName("b")
     static final int[] field134 = new int[]{-1, -1, 1, 1};
-    @ObfuscatedName("y")
-    @Export("rndHue")
     static int rndHue = (int) (Math.random() * 17.0D) - 8;
-    @ObfuscatedName("x")
-    @Export("rndLightness")
     static int rndLightness = (int) (Math.random() * 33.0D) - 16;
-    @ObfuscatedName("bd")
-    @Export("archive15")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive15;
 
-    @ObfuscatedName("i")
-    @Export("method112")
     public static boolean method112(CharSequence var0) {
         return InterfaceParent.method30(var0, 10, true);
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;Lclass151;)V"
-    )
     public static void method106(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
-        SequenceDefinition.SequenceDefinition_archive = var0;
-        SequenceDefinition.SequenceDefinition_animationsArchive = var1;
-        SequenceDefinition.SequenceDefinition_skeletonsArchive = var2;
+        AnimationDefinition.SequenceDefinition_archive = var0;
+        AnimationDefinition.SequenceDefinition_animationsArchive = var1;
+        AnimationDefinition.SequenceDefinition_skeletonsArchive = var2;
     }
 
-    @ObfuscatedName("i")
     static int method95(int var0, int var1) {
         ItemContainer var2 = (ItemContainer) ItemContainer.itemContainers.method3512(var0);
         if (var2 == null) {
@@ -100,11 +47,6 @@ public final class Tiles {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method107")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lclass79;"
-    )
     public static RunException method107(Throwable var0, String var1) {
         RunException var2;
         if (var0 instanceof RunException) {
@@ -117,11 +59,6 @@ public final class Tiles {
         return var2;
     }
 
-    @ObfuscatedName("e")
-    @Export("method110")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/lang/String;Ljava/lang/String;Z)Lclass28;"
-    )
     public static AccessFile method110(String var0, String var1, boolean var2) {
         File var3 = new File(JagexCache.cacheDir, "preferences" + var0 + ".dat");
         if (var3.exists()) {
@@ -157,7 +94,6 @@ public final class Tiles {
         }
     }
 
-    @ObfuscatedName("bh")
     static final void method59(int var0, int var1, int var2, int var3, int var4) {
         int var5 = Interpreter.scene.method2057(var0, var1, var2);
         int var6;
@@ -178,7 +114,7 @@ public final class Tiles {
             int[] var10 = MouseRecorder.sceneMinimapSprite.pixels;
             var11 = var1 * 4 + (103 - var2) * 2048 + 24624;
             var12 = var5 >> 14 & 32767;
-            ObjectComposition var13 = GameBuild.getObjectComposition(var12);
+            ObjectDefinition var13 = Definitions.getObject(var12);
             if (var13.mapSceneId != -1) {
                 IndexedSprite var14 = Decimator.mapSceneSprites[var13.mapSceneId];
                 if (var14 != null) {
@@ -255,7 +191,7 @@ public final class Tiles {
             var7 = var6 >> 6 & 3;
             var8 = var6 & 31;
             var9 = var5 >> 14 & 32767;
-            ObjectComposition var23 = GameBuild.getObjectComposition(var9);
+            ObjectDefinition var23 = Definitions.getObject(var9);
             int var18;
             if (var23.mapSceneId != -1) {
                 IndexedSprite var19 = Decimator.mapSceneSprites[var23.mapSceneId];
@@ -289,7 +225,7 @@ public final class Tiles {
         var5 = Interpreter.scene.method2070(var0, var1, var2);
         if (var5 != 0) {
             var6 = var5 >> 14 & 32767;
-            ObjectComposition var20 = GameBuild.getObjectComposition(var6);
+            ObjectDefinition var20 = Definitions.getObject(var6);
             if (var20.mapSceneId != -1) {
                 IndexedSprite var21 = Decimator.mapSceneSprites[var20.mapSceneId];
                 if (var21 != null) {
@@ -302,13 +238,10 @@ public final class Tiles {
 
     }
 
-    @ObfuscatedName("bx")
     static boolean method93(int var0) {
         return var0 == 57 || var0 == 58 || var0 == 1007 || var0 == 25 || var0 == 30;
     }
 
-    @ObfuscatedName("cw")
-    @Export("method99")
     static final void method99(int var0) {
         if (EnumComposition.method852(var0)) {
             Widget[] var1 = Widget.Widget_interfaceComponents[var0];
@@ -324,11 +257,6 @@ public final class Tiles {
         }
     }
 
-    @ObfuscatedName("cs")
-    @Export("method60")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass3;Z)V"
-    )
     static final void method60(InterfaceParent var0, boolean var1) {
         int var2 = var0.group;
         int var3 = (int) var0.key;

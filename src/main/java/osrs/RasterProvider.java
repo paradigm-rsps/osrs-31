@@ -1,20 +1,12 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
 import java.awt.*;
 import java.awt.image.*;
 import java.util.Hashtable;
 
-@ObfuscatedName("cj")
-@Implements("RasterProvider")
 public final class RasterProvider extends AbstractRasterProvider {
-    @ObfuscatedName("i")
     Component field1481;
 
-    @ObfuscatedName("i")
     final void vmethod1940(int var1, int var2, Component var3) {
         super.width = var1;
         super.height = var2;
@@ -27,14 +19,10 @@ public final class RasterProvider extends AbstractRasterProvider {
         this.method1822();
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod1945")
     public final void vmethod1945(Graphics var1, int var2, int var3) {
         var1.drawImage(super.field1458, var2, var3, this.field1481);
     }
 
-    @ObfuscatedName("f")
-    @Export("vmethod1941")
     public final void vmethod1941(Graphics var1, int var2, int var3, int var4, int var5) {
         Shape var6 = var1.getClip();
         var1.clipRect(var2, var3, var4, var5);

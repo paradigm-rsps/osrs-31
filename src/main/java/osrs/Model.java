@@ -1,173 +1,67 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("db")
-@Implements("Model")
 public class Model extends Renderable {
-    @ObfuscatedName("i")
-    @Export("Model_sharedSequenceModel")
-    @ObfuscatedSignature(
-            descriptor = "Lclass111;"
-    )
     static Model Model_sharedSequenceModel = new Model();
-    @ObfuscatedName("w")
-    @Export("Model_sharedSequenceModelFaceAlphas")
     static byte[] Model_sharedSequenceModelFaceAlphas = new byte[1];
-    @ObfuscatedName("f")
-    @Export("Model_sharedSpotAnimationModel")
-    @ObfuscatedSignature(
-            descriptor = "Lclass111;"
-    )
     static Model Model_sharedSpotAnimationModel = new Model();
-    @ObfuscatedName("e")
-    @Export("Model_sharedSpotAnimationModelFaceAlphas")
     static byte[] Model_sharedSpotAnimationModelFaceAlphas = new byte[1];
-    @ObfuscatedName("ak")
     static boolean[] field1896 = new boolean[4096];
-    @ObfuscatedName("ax")
     static boolean[] field1882 = new boolean[4096];
-    @ObfuscatedName("ab")
-    @Export("modelViewportXs")
     static int[] modelViewportXs = new int[4096];
-    @ObfuscatedName("af")
-    @Export("modelViewportYs")
     static int[] modelViewportYs = new int[4096];
-    @ObfuscatedName("ai")
     static int[] field1923 = new int[4096];
-    @ObfuscatedName("at")
     static int[] field1900 = new int[4096];
-    @ObfuscatedName("aq")
     static int[] field1901 = new int[4096];
-    @ObfuscatedName("ac")
     static int[] field1902 = new int[4096];
-    @ObfuscatedName("ag")
     static int[] field1904 = new int[1600];
-    @ObfuscatedName("ap")
     static int[][] field1905 = new int[1600][512];
-    @ObfuscatedName("am")
     static int[] field1906 = new int[12];
-    @ObfuscatedName("as")
     static int[][] field1907 = new int[12][2000];
-    @ObfuscatedName("aj")
     static int[] field1916 = new int[2000];
-    @ObfuscatedName("ar")
     static int[] field1909 = new int[2000];
-    @ObfuscatedName("au")
     static int[] field1910 = new int[12];
-    @ObfuscatedName("ad")
     static int[] field1911 = new int[10];
-    @ObfuscatedName("az")
     static int[] field1912 = new int[10];
-    @ObfuscatedName("ay")
     static int[] field1895 = new int[10];
-    @ObfuscatedName("bh")
-    @Export("Model_transformTempX")
     static int Model_transformTempX;
-    @ObfuscatedName("ba")
-    @Export("Model_transformTempY")
     static int Model_transformTempY;
-    @ObfuscatedName("bn")
-    @Export("Model_transformTempZ")
     static int Model_transformTempZ;
-    @ObfuscatedName("bj")
     public static boolean field1917 = false;
-    @ObfuscatedName("bu")
     public static int field1877 = 0;
-    @ObfuscatedName("br")
     public static int field1919 = 0;
-    @ObfuscatedName("bd")
     public static int field1920 = 0;
-    @ObfuscatedName("bf")
     public static int[] field1921 = new int[1000];
-    @ObfuscatedName("bg")
     static int[] field1866;
-    @ObfuscatedName("bp")
     static int[] field1897;
-    @ObfuscatedName("bb")
     static int[] field1924;
-    @ObfuscatedName("bc")
     static int[] field1925;
-    @ObfuscatedName("t")
-    @Export("verticesCount")
     int verticesCount = 0;
-    @ObfuscatedName("d")
-    @Export("verticesX")
     int[] verticesX;
-    @ObfuscatedName("p")
-    @Export("verticesY")
     int[] verticesY;
-    @ObfuscatedName("k")
-    @Export("verticesZ")
     int[] verticesZ;
-    @ObfuscatedName("r")
-    @Export("indicesCount")
     int indicesCount = 0;
-    @ObfuscatedName("l")
-    @Export("indices1")
     int[] indices1;
-    @ObfuscatedName("a")
-    @Export("indices2")
     int[] indices2;
-    @ObfuscatedName("z")
-    @Export("indices3")
     int[] indices3;
-    @ObfuscatedName("s")
-    @Export("faceColors1")
     int[] faceColors1;
-    @ObfuscatedName("m")
-    @Export("faceColors2")
     int[] faceColors2;
-    @ObfuscatedName("u")
-    @Export("faceColors3")
     int[] faceColors3;
-    @ObfuscatedName("g")
-    @Export("faceRenderPriorities")
     byte[] faceRenderPriorities;
-    @ObfuscatedName("o")
-    @Export("faceAlphas")
     byte[] faceAlphas;
-    @ObfuscatedName("v")
     byte[] field1879;
-    @ObfuscatedName("j")
-    @Export("faceTextures")
     short[] faceTextures;
-    @ObfuscatedName("n")
     byte field1918 = 0;
-    @ObfuscatedName("q")
     int field1914 = 0;
-    @ObfuscatedName("c")
     int[] field1892;
-    @ObfuscatedName("h")
     int[] field1884;
-    @ObfuscatedName("b")
     int[] field1885;
-    @ObfuscatedName("y")
-    @Export("vertexLabels")
     int[][] vertexLabels;
-    @ObfuscatedName("x")
-    @Export("faceLabelsAlpha")
     int[][] faceLabelsAlpha;
-    @ObfuscatedName("ao")
-    @Export("isSingleTile")
     public boolean isSingleTile = false;
-    @ObfuscatedName("ae")
-    @Export("boundsType")
     int boundsType;
-    @ObfuscatedName("aa")
-    @Export("bottomY")
     int bottomY;
-    @ObfuscatedName("ah")
-    @Export("xzRadius")
     int xzRadius;
-    @ObfuscatedName("aw")
-    @Export("diameter")
     int diameter;
-    @ObfuscatedName("an")
-    @Export("radius")
     int radius;
 
     static {
@@ -180,9 +74,6 @@ public class Model extends Renderable {
     Model() {
     }
 
-    @ObfuscatedSignature(
-            descriptor = "([Lclass111;I)V"
-    )
     public Model(Model[] var1, int var2) {
         boolean var3 = false;
         boolean var4 = false;
@@ -314,11 +205,6 @@ public class Model extends Renderable {
 
     }
 
-    @ObfuscatedName("i")
-    @Export("method2423")
-    @ObfuscatedSignature(
-            descriptor = "([[IIIIZI)Lclass111;"
-    )
     public Model method2423(int[][] var1, int var2, int var3, int var4, boolean var5, int var6) {
         this.method2427();
         int var7 = var2 - this.xzRadius;
@@ -412,11 +298,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method2424")
-    @ObfuscatedSignature(
-            descriptor = "(Z)Lclass111;"
-    )
     public Model method2424(boolean var1) {
         if (!var1 && Model_sharedSequenceModelFaceAlphas.length < this.indicesCount) {
             Model_sharedSequenceModelFaceAlphas = new byte[this.indicesCount + 100];
@@ -425,11 +306,6 @@ public class Model extends Renderable {
         return this.method2426(var1, Model_sharedSequenceModel, Model_sharedSequenceModelFaceAlphas);
     }
 
-    @ObfuscatedName("e")
-    @Export("method2495")
-    @ObfuscatedSignature(
-            descriptor = "(Z)Lclass111;"
-    )
     public Model method2495(boolean var1) {
         if (!var1 && Model_sharedSpotAnimationModelFaceAlphas.length < this.indicesCount) {
             Model_sharedSpotAnimationModelFaceAlphas = new byte[this.indicesCount + 100];
@@ -438,11 +314,6 @@ public class Model extends Renderable {
         return this.method2426(var1, Model_sharedSpotAnimationModel, Model_sharedSpotAnimationModelFaceAlphas);
     }
 
-    @ObfuscatedName("t")
-    @Export("method2426")
-    @ObfuscatedSignature(
-            descriptor = "(ZLclass111;[B)Lclass111;"
-    )
     Model method2426(boolean var1, Model var2, byte[] var3) {
         var2.verticesCount = this.verticesCount;
         var2.indicesCount = this.indicesCount;
@@ -495,8 +366,6 @@ public class Model extends Renderable {
         return var2;
     }
 
-    @ObfuscatedName("d")
-    @Export("method2427")
     public void method2427() {
         if (this.boundsType != 1) {
             this.boundsType = 1;
@@ -528,7 +397,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("l")
     void method2428() {
         if (this.boundsType != 2) {
             this.boundsType = 2;
@@ -550,17 +418,11 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("a")
     public int method2474() {
         this.method2427();
         return this.xzRadius;
     }
 
-    @ObfuscatedName("z")
-    @Export("method2430")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass108;I)V"
-    )
     public void method2430(Frames var1, int var2) {
         if (this.vertexLabels != null) {
             if (var2 != -1) {
@@ -580,11 +442,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("s")
-    @Export("method2431")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass108;ILclass108;I[I)V"
-    )
     public void method2431(Frames var1, int var2, Frames var3, int var4, int[] var5) {
         if (var2 != -1) {
             if (var5 != null && var4 != -1) {
@@ -632,8 +489,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("m")
-    @Export("method2425")
     void method2425(int var1, int[] var2, int var3, int var4, int var5) {
         int var6 = var2.length;
         int var7;
@@ -784,8 +639,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("u")
-    @Export("method2488")
     public void method2488() {
         for (int var1 = 0; var1 < this.verticesCount; ++var1) {
             int var2 = this.verticesX[var1];
@@ -796,7 +649,6 @@ public class Model extends Renderable {
         this.boundsType = 0;
     }
 
-    @ObfuscatedName("g")
     public void method2444() {
         for (int var1 = 0; var1 < this.verticesCount; ++var1) {
             this.verticesX[var1] = -this.verticesX[var1];
@@ -806,7 +658,6 @@ public class Model extends Renderable {
         this.boundsType = 0;
     }
 
-    @ObfuscatedName("o")
     public void method2435() {
         for (int var1 = 0; var1 < this.verticesCount; ++var1) {
             int var2 = this.verticesZ[var1];
@@ -817,8 +668,6 @@ public class Model extends Renderable {
         this.boundsType = 0;
     }
 
-    @ObfuscatedName("v")
-    @Export("method2436")
     public void method2436(int var1) {
         int var2 = field1866[var1];
         int var3 = field1897[var1];
@@ -832,8 +681,6 @@ public class Model extends Renderable {
         this.boundsType = 0;
     }
 
-    @ObfuscatedName("j")
-    @Export("method2451")
     public void method2451(int var1, int var2, int var3) {
         for (int var4 = 0; var4 < this.verticesCount; ++var4) {
             this.verticesX[var4] += var1;
@@ -844,8 +691,6 @@ public class Model extends Renderable {
         this.boundsType = 0;
     }
 
-    @ObfuscatedName("n")
-    @Export("method2438")
     public void method2438(int var1, int var2, int var3) {
         for (int var4 = 0; var4 < this.verticesCount; ++var4) {
             this.verticesX[var4] = this.verticesX[var4] * var1 / 128;
@@ -856,7 +701,6 @@ public class Model extends Renderable {
         this.boundsType = 0;
     }
 
-    @ObfuscatedName("q")
     public final void method2439(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
         field1904[0] = -1;
         if (this.boundsType != 2 && this.boundsType != 1) {
@@ -920,7 +764,6 @@ public class Model extends Renderable {
 
     }
 
-    @ObfuscatedName("c")
     public final void method2440(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         field1904[0] = -1;
         if (this.boundsType != 2 && this.boundsType != 1) {
@@ -984,7 +827,6 @@ public class Model extends Renderable {
 
     }
 
-    @ObfuscatedName("h")
     final void method2482(boolean var1, boolean var2, int var3) {
         if (this.diameter < 1600) {
             int var4;
@@ -1200,8 +1042,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("b")
-    @Export("method2472")
     final void method2472(int var1) {
         if (field1882[var1]) {
             this.method2433(var1);
@@ -1245,7 +1085,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("y")
     final void method2433(int var1) {
         int var2 = Rasterizer3D.Rasterizer3D_clipMidX;
         int var3 = Rasterizer3D.Rasterizer3D_clipMidY;
@@ -1412,7 +1251,6 @@ public class Model extends Renderable {
 
     }
 
-    @ObfuscatedName("x")
     final boolean method2487(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         if (var2 < var3 && var2 < var4 && var2 < var5) {
             return false;
@@ -1425,7 +1263,6 @@ public class Model extends Renderable {
         }
     }
 
-    @ObfuscatedName("ae")
     void vmethod2441(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
         field1904[0] = -1;
         if (this.boundsType != 1) {

@@ -1,56 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ci")
-@Implements("GameObject")
 public final class GameObject {
-    @ObfuscatedName("i")
-    @Export("plane")
     int plane;
-    @ObfuscatedName("w")
-    @Export("height")
     int height;
-    @ObfuscatedName("f")
-    @Export("centerX")
     int centerX;
-    @ObfuscatedName("e")
-    @Export("centerY")
     int centerY;
-    @ObfuscatedName("t")
-    @Export("renderable")
-    @ObfuscatedSignature(
-            descriptor = "Lclass93;"
-    )
     public Renderable renderable;
-    @ObfuscatedName("d")
     int field1645;
-    @ObfuscatedName("p")
-    @Export("startX")
     int startX;
-    @ObfuscatedName("k")
-    @Export("endX")
     int endX;
-    @ObfuscatedName("r")
-    @Export("startY")
     int startY;
-    @ObfuscatedName("l")
-    @Export("endY")
     int endY;
-    @ObfuscatedName("a")
     int field1650;
-    @ObfuscatedName("z")
-    @Export("lastDrawn")
     int lastDrawn;
-    @ObfuscatedName("s")
-    public int field1656 = 0;
-    @ObfuscatedName("m")
-    int field1653 = 0;
+    public int packedId = 0;
+    int flags = 0;
 
-    @ObfuscatedName("f")
     static void method2206(int var0, int var1, int var2, int var3) {
         for (ObjectSound var4 = (ObjectSound) ObjectSound.objectSounds.method3533(); var4 != null; var4 = (ObjectSound) ObjectSound.objectSounds.method3535()) {
             if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
@@ -124,7 +89,6 @@ public final class GameObject {
 
     }
 
-    @ObfuscatedName("f")
     public static void method2207(int var0) {
         if (class137.musicPlayerStatus != 0) {
             class147.musicTrackVolume = var0;
@@ -134,8 +98,6 @@ public final class GameObject {
 
     }
 
-    @ObfuscatedName("bb")
-    @Export("method2205")
     static final void method2205(int var0, int var1) {
         NodeDeque var2 = Client.groundItems[class22.scenePlane][var0][var1];
         if (var2 == null) {
@@ -178,7 +140,7 @@ public final class GameObject {
                 }
 
                 int var9 = var0 + (var1 << 7) + 1610612736;
-                Interpreter.scene.method2169(class22.scenePlane, var0, var1, BufferedFile.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class22.scenePlane), var5, var9, var12, var8);
+                Interpreter.scene.addLoot(class22.scenePlane, var0, var1, BufferedFile.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class22.scenePlane), var5, var9, var12, var8);
             }
         }
     }

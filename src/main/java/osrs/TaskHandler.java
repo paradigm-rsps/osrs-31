@@ -1,57 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 import java.io.DataInputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 
-@ObfuscatedName("bx")
-@Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-    @ObfuscatedName("i")
-    @Export("javaVendor")
     public static String javaVendor;
-    @ObfuscatedName("w")
-    @Export("javaVersion")
     static String javaVersion;
-    @ObfuscatedName("es")
-    @Export("compass")
-    @ObfuscatedSignature(
-            descriptor = "Lclass85;"
-    )
     static SpritePixels compass;
-    @ObfuscatedName("ej")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass86;"
-    )
     static IndexedSprite[] field1338;
-    @ObfuscatedName("f")
     class42 field1326;
-    @ObfuscatedName("e")
-    @Export("current")
-    @ObfuscatedSignature(
-            descriptor = "Lclass78;"
-    )
     Task current = null;
-    @ObfuscatedName("t")
-    @Export("task")
-    @ObfuscatedSignature(
-            descriptor = "Lclass78;"
-    )
     Task task = null;
-    @ObfuscatedName("d")
     Thread field1329;
-    @ObfuscatedName("p")
-    @Export("isClosed")
     boolean isClosed = false;
-    @ObfuscatedName("k")
-    @Export("thread")
     public EventQueue thread;
 
     TaskHandler() {
@@ -76,8 +40,6 @@ public class TaskHandler implements Runnable {
         this.field1329.start();
     }
 
-    @ObfuscatedName("e")
-    @Export("method1624")
     final void method1624() {
         synchronized (this) {
             this.isClosed = true;
@@ -91,11 +53,6 @@ public class TaskHandler implements Runnable {
 
     }
 
-    @ObfuscatedName("t")
-    @Export("method1610")
-    @ObfuscatedSignature(
-            descriptor = "(IIILjava/lang/Object;)Lclass78;"
-    )
     final Task method1610(int var1, int var2, int var3, Object var4) {
         Task var5 = new Task();
         var5.type = var1;
@@ -114,41 +71,22 @@ public class TaskHandler implements Runnable {
         }
     }
 
-    @ObfuscatedName("d")
-    @Export("method1612")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/lang/String;I)Lclass78;"
-    )
     public final Task createSocket(String var1, int var2) {
         return this.method1610(1, var2, 0, var1);
     }
 
-    @ObfuscatedName("p")
-    @Export("method1599")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/lang/Runnable;I)Lclass78;"
-    )
     public final Task method1599(Runnable var1, int var2) {
         return this.method1610(2, var2, 0, var1);
     }
 
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass78;"
-    )
     public final Task method1605(int var1) {
         return this.method1610(3, var1, 0, null);
     }
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/net/URL;)Lclass78;"
-    )
     public final Task method1601(URL var1) {
         return this.method1610(4, 0, 0, var1);
     }
 
-    @ObfuscatedName("l")
     public final class42 method1602() {
         return this.field1326;
     }
@@ -204,8 +142,6 @@ public class TaskHandler implements Runnable {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method1625")
     public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
         int var5 = var2 - var1;
 
@@ -275,11 +211,6 @@ public class TaskHandler implements Runnable {
         return var5;
     }
 
-    @ObfuscatedName("f")
-    @Export("method1598")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)Lclass86;"
-    )
     public static IndexedSprite method1598(AbstractArchive var0, String var1, String var2) {
         int var3 = var0.getGroupId(var1);
         int var4 = var0.method3238(var3, var2);
@@ -303,7 +234,6 @@ public class TaskHandler implements Runnable {
         return var5;
     }
 
-    @ObfuscatedName("d")
     public static String method1595(String var0) {
         int var1 = var0.length();
         char[] var2 = new char[var1];
@@ -344,9 +274,8 @@ public class TaskHandler implements Runnable {
         return new String(var2);
     }
 
-    @ObfuscatedName("z")
     public static void method1623() {
-        SequenceDefinition.SequenceDefinition_cached.method3482();
-        SequenceDefinition.SequenceDefinition_cachedFrames.method3482();
+        AnimationDefinition.SequenceDefinition_cached.method3482();
+        AnimationDefinition.SequenceDefinition_cachedFrames.method3482();
     }
 }

@@ -1,54 +1,23 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
 import java.util.Calendar;
 
-@ObfuscatedName("x")
-@Implements("Interpreter")
 public class Interpreter {
-    @ObfuscatedName("ny")
     static int field416;
-    @ObfuscatedName("w")
     static int[] field406;
-    @ObfuscatedName("f")
     static String[] field407;
-    @ObfuscatedName("e")
-    @Export("Interpreter_arrayLengths")
     static int[] Interpreter_arrayLengths = new int[5];
-    @ObfuscatedName("t")
-    @Export("Interpreter_arrays")
     static int[][] Interpreter_arrays = new int[5][5000];
-    @ObfuscatedName("d")
-    @Export("Interpreter_intStack")
     static int[] Interpreter_intStack = new int[1000];
-    @ObfuscatedName("p")
-    @Export("Interpreter_stringStack")
     static String[] Interpreter_stringStack = new String[1000];
-    @ObfuscatedName("k")
-    @Export("Interpreter_frameDepth")
     static int Interpreter_frameDepth = 0;
-    @ObfuscatedName("r")
-    @Export("Interpreter_frames")
     static class17[] Interpreter_frames = new class17[50];
-    @ObfuscatedName("z")
-    @Export("Interpreter_calendar")
     static Calendar Interpreter_calendar = Calendar.getInstance();
-    @ObfuscatedName("s")
-    @Export("Interpreter_MONTHS")
     static final String[] Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    @ObfuscatedName("db")
-    @Export("scene")
-    @ObfuscatedSignature(
-            descriptor = "Lclass94;"
-    )
     static Scene scene;
 
-    @ObfuscatedName("w")
-    @Export("method276")
     public static String method276(long var0) {
         if (var0 > 0L && var0 < 6582952005840035281L) {
             if (0L == var0 % 37L) {
@@ -82,7 +51,6 @@ public class Interpreter {
         }
     }
 
-    @ObfuscatedName("d")
     public static void method270(int var0) {
         class137.musicPlayerStatus = 1;
         class137.musicTrackArchive = null;
@@ -93,15 +61,14 @@ public class Interpreter {
         class65.pcmSampleLength = var0;
     }
 
-    @ObfuscatedName("q")
     static final void method274() {
         class159.method3380();
         Occluder.method2419();
         ArchiveDiskActionHandler.method3323();
-        ObjectComposition.ObjectDefinition_cached.method3482();
-        ObjectComposition.ObjectDefinition_cachedModelData.method3482();
-        ObjectComposition.ObjectDefinition_cachedEntities.method3482();
-        ObjectComposition.ObjectDefinition_cachedModels.method3482();
+        ObjectDefinition.ObjectDefinition_cached.method3482();
+        ObjectDefinition.ObjectDefinition_cachedModelData.method3482();
+        ObjectDefinition.ObjectDefinition_cachedEntities.method3482();
+        ObjectDefinition.ObjectDefinition_cachedModels.method3482();
         NPCComposition.NpcDefinition_cached.method3482();
         NPCComposition.NpcDefinition_cachedModels.method3482();
         ItemComposition.ItemDefinition_cached.method3482();
@@ -132,7 +99,6 @@ public class Interpreter {
         AbstractByteArrayCopier.archive12.method3217();
     }
 
-    @ObfuscatedName("at")
     static final void method275(int var0, int var1, int var2, int var3) {
         Rasterizer2D.method1953(var0, var1, var0 + var2, var3 + var1);
         Rasterizer3D.method2352();
@@ -264,11 +230,11 @@ public class Interpreter {
             Model.field1920 = 0;
         }
 
-        SequenceDefinition.method759();
+        AnimationDefinition.method759();
         Rasterizer2D.method1962(var0, var1, var2, var3, 0);
-        SequenceDefinition.method759();
+        AnimationDefinition.method759();
         scene.method2171(Login.cameraX, class22.cameraY, class17.cameraZ, NPC.cameraPitch, MouseRecorder.cameraYaw, var25);
-        SequenceDefinition.method759();
+        AnimationDefinition.method759();
         scene.method2055();
         Client.field576 = 0;
 
@@ -576,7 +542,7 @@ public class Interpreter {
                 if (var26 != var12) {
                     var12 = var26;
                     if (var37 == 2 && scene.method2071(class22.scenePlane, var15, var16, var26) >= 0) {
-                        ObjectComposition var19 = GameBuild.getObjectComposition(var18);
+                        ObjectDefinition var19 = Definitions.getObject(var18);
                         if (var19.transforms != null) {
                             var19 = var19.method673();
                         }
@@ -731,7 +697,6 @@ public class Interpreter {
 
     }
 
-    @ObfuscatedName("am")
     static final void method272() {
         Client.xPadding = 0;
         int var0 = (Tiles.localPlayer.x >> 7) + FaceNormal.baseX;

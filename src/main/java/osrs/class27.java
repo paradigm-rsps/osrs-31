@@ -1,24 +1,11 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("ae")
 public class class27 extends class177 {
-    @ObfuscatedName("nu")
-    @Export("pcmPlayer1")
-    @ObfuscatedSignature(
-            descriptor = "Lclass51;"
-    )
     static PcmPlayer pcmPlayer1;
-    @ObfuscatedName("i")
     int field756 = (int) (ClientPreferences.method148() / 1000L);
-    @ObfuscatedName("w")
     String field749;
-    @ObfuscatedName("f")
     short field751;
 
     class27(String var1, int var2) {
@@ -26,11 +13,6 @@ public class class27 extends class177 {
         this.field751 = (short) var2;
     }
 
-    @ObfuscatedName("i")
-    @Export("method571")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass39;"
-    )
     public static ItemComposition method571(int var0) {
         ItemComposition var1 = (ItemComposition) ItemComposition.ItemDefinition_cached.method3474(var0);
         if (var1 != null) {
@@ -60,7 +42,6 @@ public class class27 extends class177 {
         }
     }
 
-    @ObfuscatedName("ai")
     static final void method570(String var0, boolean var1) {
         byte var2 = 4;
         int var3 = var2 + 6;

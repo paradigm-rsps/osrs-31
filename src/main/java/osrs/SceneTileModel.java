@@ -1,70 +1,27 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("cw")
-@Implements("SceneTileModel")
 public final class SceneTileModel {
-    @ObfuscatedName("g")
     static int[] field1540 = new int[6];
-    @ObfuscatedName("o")
     static int[] field1535 = new int[6];
-    @ObfuscatedName("v")
     static int[] field1541 = new int[6];
-    @ObfuscatedName("j")
     static int[] field1536 = new int[6];
-    @ObfuscatedName("n")
     static int[] field1543 = new int[6];
-    @ObfuscatedName("q")
     static final int[][] field1544 = new int[][]{{1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 2, 6}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 13, 14}};
-    @ObfuscatedName("c")
     static final int[][] field1545 = new int[][]{{0, 1, 2, 3, 0, 0, 1, 3}, {1, 1, 2, 3, 1, 0, 1, 3}, {0, 1, 2, 3, 1, 0, 1, 3}, {0, 0, 1, 2, 0, 0, 2, 4, 1, 0, 4, 3}, {0, 0, 1, 4, 0, 0, 4, 3, 1, 1, 2, 4}, {0, 0, 4, 3, 1, 0, 1, 2, 1, 0, 2, 4}, {0, 1, 2, 4, 1, 0, 1, 4, 1, 0, 4, 3}, {0, 4, 1, 2, 0, 4, 2, 5, 1, 0, 4, 5, 1, 0, 5, 3}, {0, 4, 1, 2, 0, 4, 2, 3, 0, 4, 3, 5, 1, 0, 4, 5}, {0, 0, 4, 5, 1, 4, 1, 2, 1, 4, 2, 3, 1, 4, 3, 5}, {0, 0, 1, 5, 0, 1, 4, 5, 0, 1, 2, 4, 1, 0, 5, 3, 1, 5, 4, 3, 1, 4, 2, 3}, {1, 0, 1, 5, 1, 1, 4, 5, 1, 1, 2, 4, 0, 0, 5, 3, 0, 5, 4, 3, 0, 4, 2, 3}, {1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5}};
-    @ObfuscatedName("i")
-    @Export("vertexX")
     int[] vertexX;
-    @ObfuscatedName("w")
-    @Export("vertexY")
     int[] vertexY;
-    @ObfuscatedName("f")
-    @Export("vertexZ")
     int[] vertexZ;
-    @ObfuscatedName("e")
-    @Export("triangleColorA")
     int[] triangleColorA;
-    @ObfuscatedName("t")
-    @Export("triangleColorB")
     int[] triangleColorB;
-    @ObfuscatedName("d")
-    @Export("triangleColorC")
     int[] triangleColorC;
-    @ObfuscatedName("p")
-    @Export("faceX")
     int[] faceX;
-    @ObfuscatedName("k")
-    @Export("faceY")
     int[] faceY;
-    @ObfuscatedName("r")
-    @Export("faceZ")
     int[] faceZ;
-    @ObfuscatedName("l")
-    @Export("triangleTextureId")
     int[] triangleTextureId;
-    @ObfuscatedName("a")
-    @Export("isFlat")
     boolean isFlat = true;
-    @ObfuscatedName("z")
-    @Export("shape")
     int shape;
-    @ObfuscatedName("s")
-    @Export("rotation")
     int rotation;
-    @ObfuscatedName("m")
-    @Export("underlayRgb")
     int underlayRgb;
-    @ObfuscatedName("u")
-    @Export("overlayRgb")
     int overlayRgb;
 
     SceneTileModel(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19) {

@@ -1,39 +1,16 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("ed")
-@Implements("MusicPatch")
 public class MusicPatch extends Node {
-    @ObfuscatedName("mh")
     static byte field2354;
-    @ObfuscatedName("i")
     int field2351;
-    @ObfuscatedName("w")
-    @Export("rawSounds")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass62;"
-    )
     RawSound[] rawSounds = new RawSound[128];
-    @ObfuscatedName("f")
     short[] field2352 = new short[128];
-    @ObfuscatedName("e")
     byte[] field2353 = new byte[128];
-    @ObfuscatedName("t")
     byte[] field2360 = new byte[128];
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass141;"
-    )
     MusicPatchNode2[] field2355 = new MusicPatchNode2[128];
-    @ObfuscatedName("p")
     byte[] field2356 = new byte[128];
-    @ObfuscatedName("k")
     int[] field2357 = new int[128];
 
     MusicPatch(byte[] var1) {
@@ -470,10 +447,6 @@ public class MusicPatch extends Node {
 
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass57;[B[I)Z"
-    )
     boolean method2907(SoundCache var1, byte[] var2, int[] var3) {
         boolean var4 = true;
         int var5 = 0;
@@ -507,13 +480,10 @@ public class MusicPatch extends Node {
         return var4;
     }
 
-    @ObfuscatedName("f")
-    @Export("method2908")
     void method2908() {
         this.field2357 = null;
     }
 
-    @ObfuscatedName("i")
     public static void method2911(Component var0) {
         var0.addMouseListener(MouseHandler.MouseHandler_instance);
         var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);

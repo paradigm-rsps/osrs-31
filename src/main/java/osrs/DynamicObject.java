@@ -1,94 +1,52 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
-@ObfuscatedName("m")
-@Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-    @ObfuscatedName("iz")
-    @Export("selectedItemId")
     static int selectedItemId;
-    @ObfuscatedName("ba")
-    @Export("archive10")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive10;
-    @ObfuscatedName("i")
-    @Export("id")
     int id;
-    @ObfuscatedName("w")
-    @Export("type")
     int type;
-    @ObfuscatedName("f")
-    @Export("orientation")
     int orientation;
-    @ObfuscatedName("e")
-    @Export("plane")
     int plane;
-    @ObfuscatedName("t")
-    @Export("x")
     int x;
-    @ObfuscatedName("d")
-    @Export("y")
     int y;
-    @ObfuscatedName("p")
-    @Export("sequenceDefinition")
-    @ObfuscatedSignature(
-            descriptor = "Lclass33;"
-    )
-    SequenceDefinition sequenceDefinition;
-    @ObfuscatedName("k")
-    @Export("frame")
+    AnimationDefinition animationDefinition;
     int frame;
-    @ObfuscatedName("r")
-    @Export("cycleStart")
     int cycleStart;
 
-    @ObfuscatedSignature(
-            descriptor = "(IIIIIIIZLclass93;)V"
-    )
-    DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
-        this.id = var1;
-        this.type = var2;
-        this.orientation = var3;
-        this.plane = var4;
-        this.x = var5;
-        this.y = var6;
-        if (var7 != -1) {
-            this.sequenceDefinition = Definitions.getAnimation(var7);
+    DynamicObject(int id, int type, int orientation, int plane, int x, int y, int animation, boolean var8, Renderable renderable) {
+        this.id = id;
+        this.type = type;
+        this.orientation = orientation;
+        this.plane = plane;
+        this.x = x;
+        this.y = y;
+        if (animation != -1) {
+            this.animationDefinition = Definitions.getAnimation(animation);
             this.frame = 0;
             this.cycleStart = Client.cycle - 1;
-            if (this.sequenceDefinition.field901 == 0 && var9 != null && var9 instanceof DynamicObject) {
-                DynamicObject var10 = (DynamicObject) var9;
-                if (this.sequenceDefinition == var10.sequenceDefinition) {
-                    this.frame = var10.frame;
-                    this.cycleStart = var10.cycleStart;
+            if (this.animationDefinition.field901 == 0 && renderable instanceof DynamicObject) {
+                DynamicObject dynamicObject = (DynamicObject) renderable;
+                if (this.animationDefinition == dynamicObject.animationDefinition) {
+                    this.frame = dynamicObject.frame;
+                    this.cycleStart = dynamicObject.cycleStart;
                     return;
                 }
             }
 
-            if (var8 && this.sequenceDefinition.frameCount != -1) {
-                this.frame = (int) (Math.random() * (double) this.sequenceDefinition.frameIds.length);
-                this.cycleStart -= (int) (Math.random() * (double) this.sequenceDefinition.frameLengths[this.frame]);
+            if (var8 && this.animationDefinition.frameCount != -1) {
+                this.frame = (int) (Math.random() * (double) this.animationDefinition.frameIds.length);
+                this.cycleStart -= (int) (Math.random() * (double) this.animationDefinition.frameLengths[this.frame]);
             }
         }
 
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod2030")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass111;"
-    )
     protected final Model vmethod2030() {
-        if (this.sequenceDefinition != null) {
+        if (this.animationDefinition != null) {
             int var1 = Client.cycle - this.cycleStart;
-            if (var1 > 100 && this.sequenceDefinition.frameCount > 0) {
+            if (var1 > 100 && this.animationDefinition.frameCount > 0) {
                 var1 = 100;
             }
 
@@ -96,24 +54,24 @@ public class DynamicObject extends Renderable {
             {
                 do {
                     do {
-                        if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
+                        if (var1 <= this.animationDefinition.frameLengths[this.frame]) {
                             break label56;
                         }
 
-                        var1 -= this.sequenceDefinition.frameLengths[this.frame];
+                        var1 -= this.animationDefinition.frameLengths[this.frame];
                         ++this.frame;
-                    } while (this.frame < this.sequenceDefinition.frameIds.length);
+                    } while (this.frame < this.animationDefinition.frameIds.length);
 
-                    this.frame -= this.sequenceDefinition.frameCount;
-                } while (this.frame >= 0 && this.frame < this.sequenceDefinition.frameIds.length);
+                    this.frame -= this.animationDefinition.frameCount;
+                } while (this.frame >= 0 && this.frame < this.animationDefinition.frameIds.length);
 
-                this.sequenceDefinition = null;
+                this.animationDefinition = null;
             }
 
             this.cycleStart = Client.cycle - var1;
         }
 
-        ObjectComposition var12 = GameBuild.getObjectComposition(this.id);
+        ObjectDefinition var12 = Definitions.getObject(this.id);
         if (var12.transforms != null) {
             var12 = var12.method673();
         }
@@ -135,18 +93,14 @@ public class DynamicObject extends Renderable {
             int var5 = (var2 + 1 >> 1) + this.x;
             int var6 = (var3 >> 1) + this.y;
             int var7 = (var3 + 1 >> 1) + this.y;
-            int[][] var8 = Tiles.Tiles_heights[this.plane];
+            int[][] var8 = Tiles.tileHeights[this.plane];
             int var9 = var8[var5][var7] + var8[var4][var7] + var8[var5][var6] + var8[var4][var6] >> 2;
             int var10 = (this.x << 7) + (var2 << 6);
             int var11 = (this.y << 7) + (var3 << 6);
-            return var12.method667(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
+            return var12.method667(this.type, this.orientation, var8, var10, var9, var11, this.animationDefinition, this.frame);
         }
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass38;"
-    )
     public static EnumComposition method162(int var0) {
         EnumComposition var1 = (EnumComposition) EnumComposition.field968.method3474(var0);
         if (var1 != null) {
@@ -163,7 +117,6 @@ public class DynamicObject extends Renderable {
         }
     }
 
-    @ObfuscatedName("aa")
     static final void method160(int var0, int var1) {
         if (Client.field717 == 0 || Client.field717 == 3) {
             if (MouseHandler.PacketBufferNode_packetBufferNodeCount == 1) {

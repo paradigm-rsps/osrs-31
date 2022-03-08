@@ -1,50 +1,22 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("am")
-@Implements("RawPcmStream")
 public class RawPcmStream extends PcmStream {
-    @ObfuscatedName("i")
     int field1061;
-    @ObfuscatedName("f")
     int field1058;
-    @ObfuscatedName("e")
     int field1055;
-    @ObfuscatedName("t")
     int field1056;
-    @ObfuscatedName("d")
     int field1057;
-    @ObfuscatedName("p")
     int field1067;
-    @ObfuscatedName("k")
     int field1059;
-    @ObfuscatedName("r")
-    @Export("numLoops")
     int numLoops;
-    @ObfuscatedName("l")
-    @Export("start")
     int start;
-    @ObfuscatedName("a")
-    @Export("end")
     int end;
-    @ObfuscatedName("z")
     boolean field1063;
-    @ObfuscatedName("s")
     int field1064;
-    @ObfuscatedName("m")
     int field1054;
-    @ObfuscatedName("u")
     int field1066;
-    @ObfuscatedName("g")
     int field1065;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass62;III)V"
-    )
     RawPcmStream(RawSound var1, int var2, int var3, int var4) {
         super.sound = var1;
         this.start = var1.start;
@@ -57,9 +29,6 @@ public class RawPcmStream extends PcmStream {
         this.method980();
     }
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass62;II)V"
-    )
     RawPcmStream(RawSound var1, int var2, int var3) {
         super.sound = var1;
         this.start = var1.start;
@@ -72,7 +41,6 @@ public class RawPcmStream extends PcmStream {
         this.method980();
     }
 
-    @ObfuscatedName("f")
     int vmethod1184() {
         int var1 = this.field1057 * 3 >> 6;
         var1 = (var1 ^ var1 >> 31) + (var1 >>> 31);
@@ -85,30 +53,24 @@ public class RawPcmStream extends PcmStream {
         return var1 > 255 ? 255 : var1;
     }
 
-    @ObfuscatedName("d")
     void method980() {
         this.field1057 = this.field1055;
         this.field1067 = method1112(this.field1055, this.field1056);
         this.field1059 = method1059(this.field1055, this.field1056);
     }
 
-    @ObfuscatedName("p")
-    @Export("method1055")
     public synchronized void method1055(int var1) {
         this.numLoops = var1;
     }
 
-    @ObfuscatedName("k")
     public synchronized void method982(int var1) {
         this.method1070(var1 << 6, this.method986());
     }
 
-    @ObfuscatedName("r")
     synchronized void method983(int var1) {
         this.method1070(var1, this.method986());
     }
 
-    @ObfuscatedName("l")
     synchronized void method1070(int var1, int var2) {
         this.field1055 = var1;
         this.field1056 = var2;
@@ -116,17 +78,14 @@ public class RawPcmStream extends PcmStream {
         this.method980();
     }
 
-    @ObfuscatedName("a")
     public synchronized int method1043() {
         return this.field1055 == Integer.MIN_VALUE ? 0 : this.field1055;
     }
 
-    @ObfuscatedName("z")
     public synchronized int method986() {
         return this.field1056 < 0 ? -1 : this.field1056;
     }
 
-    @ObfuscatedName("s")
     public synchronized void method987(int var1) {
         int var2 = ((RawSound) super.sound).samples.length << 8;
         if (var1 < -1) {
@@ -140,13 +99,11 @@ public class RawPcmStream extends PcmStream {
         this.field1061 = var1;
     }
 
-    @ObfuscatedName("m")
     public synchronized void method988() {
         this.field1058 = (this.field1058 ^ this.field1058 >> 31) + (this.field1058 >>> 31);
         this.field1058 = -this.field1058;
     }
 
-    @ObfuscatedName("u")
     void method989() {
         if (this.field1064 != 0) {
             if (this.field1055 == Integer.MIN_VALUE) {
@@ -159,12 +116,10 @@ public class RawPcmStream extends PcmStream {
 
     }
 
-    @ObfuscatedName("g")
     public synchronized void method990(int var1, int var2) {
         this.method1061(var1, var2, this.method986());
     }
 
-    @ObfuscatedName("o")
     public synchronized void method1061(int var1, int var2, int var3) {
         if (var1 == 0) {
             this.method1070(var2, var3);
@@ -209,7 +164,6 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("v")
     public synchronized void method992(int var1) {
         if (var1 == 0) {
             this.method983(0);
@@ -253,7 +207,6 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("j")
     public synchronized void method993(int var1) {
         if (this.field1058 < 0) {
             this.field1058 = -var1;
@@ -263,44 +216,30 @@ public class RawPcmStream extends PcmStream {
 
     }
 
-    @ObfuscatedName("n")
     public synchronized int method994() {
         return this.field1058 < 0 ? -this.field1058 : this.field1058;
     }
 
-    @ObfuscatedName("q")
     public boolean method995() {
         return this.field1061 < 0 || this.field1061 >= ((RawSound) super.sound).samples.length << 8;
     }
 
-    @ObfuscatedName("c")
     public boolean method996() {
         return this.field1064 != 0;
     }
 
-    @ObfuscatedName("h")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass47;"
-    )
     protected PcmStream vmethod3061() {
         return null;
     }
 
-    @ObfuscatedName("b")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass47;"
-    )
     protected PcmStream vmethod3052() {
         return null;
     }
 
-    @ObfuscatedName("y")
     protected int vmethod3046() {
         return this.field1055 == 0 && this.field1064 == 0 ? 0 : 1;
     }
 
-    @ObfuscatedName("x")
-    @Export("vmethod3045")
     public synchronized void vmethod3045(int[] var1, int var2, int var3) {
         if (this.field1055 == 0 && this.field1064 == 0) {
             this.vmethod3048(var3);
@@ -482,8 +421,6 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("ao")
-    @Export("vmethod3048")
     public synchronized void vmethod3048(int var1) {
         if (this.field1064 > 0) {
             if (var1 >= this.field1064) {
@@ -664,7 +601,6 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("ae")
     int method1119(int[] var1, int var2, int var3, int var4, int var5) {
         while (true) {
             if (this.field1064 > 0) {
@@ -714,7 +650,6 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("aa")
     int method1003(int[] var1, int var2, int var3, int var4, int var5) {
         while (true) {
             if (this.field1064 > 0) {
@@ -764,7 +699,6 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("ah")
     boolean method1014() {
         int var1 = this.field1055;
         int var2;
@@ -833,37 +767,22 @@ public class RawPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("i")
     static int method1112(int var0, int var1) {
         return var1 < 0 ? var0 : (int) ((double) var0 * Math.sqrt((double) (16384 - var1) * 1.220703125E-4D) + 0.5D);
     }
 
-    @ObfuscatedName("w")
     static int method1059(int var0, int var1) {
         return var1 < 0 ? -var0 : (int) ((double) var0 * Math.sqrt((double) var1 * 1.220703125E-4D) + 0.5D);
     }
 
-    @ObfuscatedName("e")
-    @Export("method1091")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass62;II)Lclass44;"
-    )
     public static RawPcmStream method1091(RawSound var0, int var1, int var2) {
         return var0.samples != null && var0.samples.length != 0 ? new RawPcmStream(var0, (int) ((long) var0.sampleRate * 256L * (long) var1 / (long) (PcmPlayer.field1099 * 100)), var2 << 6) : null;
     }
 
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass62;III)Lclass44;"
-    )
     public static RawPcmStream method979(RawSound var0, int var1, int var2, int var3) {
         return var0.samples != null && var0.samples.length != 0 ? new RawPcmStream(var0, var1, var2, var3) : null;
     }
 
-    @ObfuscatedName("aw")
-    @ObfuscatedSignature(
-            descriptor = "([B[IIIIIIILclass44;)I"
-    )
     static int method1005(byte[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, RawPcmStream var8) {
         var2 >>= 8;
         var7 >>= 8;
@@ -891,10 +810,6 @@ public class RawPcmStream extends PcmStream {
         return var3;
     }
 
-    @ObfuscatedName("an")
-    @ObfuscatedSignature(
-            descriptor = "(I[B[IIIIIIIILclass44;)I"
-    )
     static int method1006(int var0, byte[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, RawPcmStream var10) {
         var3 >>= 8;
         var9 >>= 8;
@@ -942,10 +857,6 @@ public class RawPcmStream extends PcmStream {
         return var4 >> 1;
     }
 
-    @ObfuscatedName("av")
-    @ObfuscatedSignature(
-            descriptor = "([B[IIIIIIILclass44;)I"
-    )
     static int method1007(byte[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, RawPcmStream var8) {
         var2 >>= 8;
         var7 >>= 8;
@@ -973,10 +884,6 @@ public class RawPcmStream extends PcmStream {
         return var3;
     }
 
-    @ObfuscatedName("ak")
-    @ObfuscatedSignature(
-            descriptor = "(I[B[IIIIIIIILclass44;)I"
-    )
     static int method1097(int var0, byte[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, RawPcmStream var10) {
         var3 >>= 8;
         var9 >>= 8;
@@ -1024,10 +931,6 @@ public class RawPcmStream extends PcmStream {
         return var4 >> 1;
     }
 
-    @ObfuscatedName("ax")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIILclass44;II)I"
-    )
     static int method1009(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, RawPcmStream var10, int var11, int var12) {
         if (var11 == 0 || (var7 = var5 + (var11 + (var9 - var4) - 257) / var11) > var8) {
             var7 = var8;
@@ -1057,10 +960,6 @@ public class RawPcmStream extends PcmStream {
         return var5;
     }
 
-    @ObfuscatedName("ab")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIIILclass44;II)I"
-    )
     static int method1076(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, RawPcmStream var11, int var12, int var13) {
         if (var12 == 0 || (var8 = var5 + (var10 - var4 + var12 - 257) / var12) > var9) {
             var8 = var9;
@@ -1099,10 +998,6 @@ public class RawPcmStream extends PcmStream {
         return var5 >> 1;
     }
 
-    @ObfuscatedName("af")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIILclass44;II)I"
-    )
     static int method1044(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, RawPcmStream var10, int var11, int var12) {
         if (var11 == 0 || (var7 = var5 + (var11 + (var9 + 256 - var4)) / var11) > var8) {
             var7 = var8;
@@ -1132,10 +1027,6 @@ public class RawPcmStream extends PcmStream {
         return var5;
     }
 
-    @ObfuscatedName("ai")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIIILclass44;II)I"
-    )
     static int method1012(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, RawPcmStream var11, int var12, int var13) {
         if (var12 == 0 || (var8 = var5 + (var10 + 256 - var4 + var12) / var12) > var9) {
             var8 = var9;
@@ -1172,10 +1063,6 @@ public class RawPcmStream extends PcmStream {
         return var5 >> 1;
     }
 
-    @ObfuscatedName("at")
-    @ObfuscatedSignature(
-            descriptor = "([B[IIIIIIIILclass44;)I"
-    )
     static int method1022(byte[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, RawPcmStream var9) {
         var2 >>= 8;
         var8 >>= 8;
@@ -1213,10 +1100,6 @@ public class RawPcmStream extends PcmStream {
         return var3;
     }
 
-    @ObfuscatedName("aq")
-    @ObfuscatedSignature(
-            descriptor = "(I[B[IIIIIIIIIILclass44;)I"
-    )
     static int method1124(int var0, byte[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, RawPcmStream var12) {
         var3 >>= 8;
         var11 >>= 8;
@@ -1279,10 +1162,6 @@ public class RawPcmStream extends PcmStream {
         return var4 >> 1;
     }
 
-    @ObfuscatedName("ac")
-    @ObfuscatedSignature(
-            descriptor = "([B[IIIIIIIILclass44;)I"
-    )
     static int method1015(byte[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, RawPcmStream var9) {
         var2 >>= 8;
         var8 >>= 8;
@@ -1320,10 +1199,6 @@ public class RawPcmStream extends PcmStream {
         return var3;
     }
 
-    @ObfuscatedName("al")
-    @ObfuscatedSignature(
-            descriptor = "(I[B[IIIIIIIIIILclass44;)I"
-    )
     static int method1056(int var0, byte[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, RawPcmStream var12) {
         var3 >>= 8;
         var11 >>= 8;
@@ -1386,10 +1261,6 @@ public class RawPcmStream extends PcmStream {
         return var4 >> 1;
     }
 
-    @ObfuscatedName("ag")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIIILclass44;II)I"
-    )
     static int method1017(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, RawPcmStream var11, int var12, int var13) {
         var11.field1067 -= var11.field1066 * var5;
         var11.field1059 -= var11.field1065 * var5;
@@ -1426,10 +1297,6 @@ public class RawPcmStream extends PcmStream {
         return var5;
     }
 
-    @ObfuscatedName("ap")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIIIIILclass44;II)I"
-    )
     static int method976(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, RawPcmStream var13, int var14, int var15) {
         var13.field1057 -= var5 * var13.field1054;
         if (var14 == 0 || (var10 = var5 + (var12 - var4 + var14 - 257) / var14) > var11) {
@@ -1477,10 +1344,6 @@ public class RawPcmStream extends PcmStream {
         return var5;
     }
 
-    @ObfuscatedName("am")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIIILclass44;II)I"
-    )
     static int method1019(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, RawPcmStream var11, int var12, int var13) {
         var11.field1067 -= var11.field1066 * var5;
         var11.field1059 -= var11.field1065 * var5;
@@ -1517,10 +1380,6 @@ public class RawPcmStream extends PcmStream {
         return var5;
     }
 
-    @ObfuscatedName("as")
-    @ObfuscatedSignature(
-            descriptor = "(II[B[IIIIIIIIIILclass44;II)I"
-    )
     static int method1020(int var0, int var1, byte[] var2, int[] var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, RawPcmStream var13, int var14, int var15) {
         var13.field1057 -= var5 * var13.field1054;
         if (var14 == 0 || (var10 = var5 + (var12 + 256 - var4 + var14) / var14) > var11) {

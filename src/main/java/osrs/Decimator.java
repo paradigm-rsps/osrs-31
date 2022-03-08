@@ -1,36 +1,11 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bp")
-@Implements("Decimator")
 public class Decimator {
-    @ObfuscatedName("ir")
-    @Export("menuHeight")
     static int menuHeight;
-    @ObfuscatedName("aq")
-    @Export("js5Socket")
-    @ObfuscatedSignature(
-            descriptor = "Lclass69;"
-    )
     static IterableNodeHashTableIterator js5Socket;
-    @ObfuscatedName("eh")
-    @Export("mapSceneSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass86;"
-    )
     static IndexedSprite[] mapSceneSprites;
-    @ObfuscatedName("e")
-    @Export("inputRate")
     int inputRate;
-    @ObfuscatedName("t")
-    @Export("outputRate")
     int outputRate;
-    @ObfuscatedName("d")
-    @Export("table")
     int[][] table;
 
     public Decimator(int var1, int var2) {
@@ -82,8 +57,6 @@ public class Decimator {
         }
     }
 
-    @ObfuscatedName("i")
-    @Export("method1402")
     byte[] method1402(byte[] var1) {
         if (this.table != null) {
             int var2 = (int) ((long) this.outputRate * (long) var1.length / (long) this.inputRate) + 14;
@@ -124,8 +97,6 @@ public class Decimator {
         return var1;
     }
 
-    @ObfuscatedName("w")
-    @Export("method1404")
     int method1404(int var1) {
         if (this.table != null) {
             var1 = (int) ((long) var1 * (long) this.outputRate / (long) this.inputRate);
@@ -134,8 +105,6 @@ public class Decimator {
         return var1;
     }
 
-    @ObfuscatedName("f")
-    @Export("method1403")
     int method1403(int var1) {
         if (this.table != null) {
             var1 = (int) ((long) var1 * (long) this.outputRate / (long) this.inputRate) + 6;
@@ -144,13 +113,11 @@ public class Decimator {
         return var1;
     }
 
-    @ObfuscatedName("d")
     static int method1409(int var0, int var1) {
         long var2 = (var0 << 16) + var1;
         return MusicPatchPcmStream.NetCache_currentResponse != null && var2 == MusicPatchPcmStream.NetCache_currentResponse.key ? class68.NetCache_responseArchiveBuffer.offset * 99 / (class68.NetCache_responseArchiveBuffer.array.length - MusicPatchPcmStream.NetCache_currentResponse.padding) + 1 : 0;
     }
 
-    @ObfuscatedName("bm")
     static final void method1401() {
         int var0 = ItemContainer.menuX;
         int var1 = BufferedFile.menuY;

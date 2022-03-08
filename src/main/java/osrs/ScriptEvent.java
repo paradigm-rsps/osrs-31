@@ -1,47 +1,20 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.*;
 import java.net.URL;
 
-@ObfuscatedName("i")
-@Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-    @ObfuscatedName("dy")
     static int[] regionLandArchiveIds;
-    @ObfuscatedName("i")
-    @Export("args")
     Object[] args;
-    @ObfuscatedName("w")
-    @Export("widget")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     Widget widget;
-    @ObfuscatedName("f")
     int field2;
-    @ObfuscatedName("e")
     int field7;
-    @ObfuscatedName("t")
     int field3;
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     Widget field5;
-    @ObfuscatedName("p")
     int field4;
-    @ObfuscatedName("k")
     int field9;
-    @ObfuscatedName("r")
     String field8;
 
-    @ObfuscatedName("i")
-    @Export("method3")
     public static void method3(String var0, Throwable var1) {
         if (var1 != null) {
             var1.printStackTrace();
@@ -126,13 +99,10 @@ public class ScriptEvent extends Node {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method0")
     static String method0(int var0) {
         return "<col=" + Integer.toHexString(var0) + ">";
     }
 
-    @ObfuscatedName("f")
     public static void method2() {
         if (MouseHandler.MouseHandler_instance != null) {
             MouseHandler var0 = MouseHandler.MouseHandler_instance;
@@ -143,7 +113,6 @@ public class ScriptEvent extends Node {
 
     }
 
-    @ObfuscatedName("s")
     static final int method4(int var0, int var1) {
         int var2 = Script.method37(var0 - 1, var1 - 1) + Script.method37(1 + var0, var1 - 1) + Script.method37(var0 - 1, 1 + var1) + Script.method37(1 + var0, 1 + var1);
         int var3 = Script.method37(var0 - 1, var1) + Script.method37(var0 + 1, var1) + Script.method37(var0, var1 - 1) + Script.method37(var0, 1 + var1);
@@ -151,8 +120,6 @@ public class ScriptEvent extends Node {
         return var2 / 16 + var3 / 8 + var4 / 4;
     }
 
-    @ObfuscatedName("bo")
-    @Export("method1")
     static void method1() {
         if (Client.isSpellSelected) {
             Widget var0 = AbstractArchive.method3230(GraphicsObject.field308, Client.selectedSpellChildIndex);

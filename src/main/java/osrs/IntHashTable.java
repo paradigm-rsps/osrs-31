@@ -1,14 +1,6 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("fm")
-@Implements("IntHashTable")
 public class IntHashTable {
-    @ObfuscatedName("i")
-    @Export("array")
     int[] array;
 
     public IntHashTable(int[] var1) {
@@ -33,8 +25,6 @@ public class IntHashTable {
 
     }
 
-    @ObfuscatedName("i")
-    @Export("method3471")
     public int method3471(int var1) {
         int var2 = (this.array.length >> 1) - 1;
         int var3 = var1 & var2;

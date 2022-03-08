@@ -1,11 +1,5 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("gj")
-@Implements("Font")
 public final class Font extends AbstractFont {
     public Font(byte[] var1, int[] var2, int[] var3, int[] var4, int[] var5, int[] var6, byte[][] var7) {
         super(var1, var2, var3, var4, var5, var6, var7);
@@ -15,8 +9,6 @@ public final class Font extends AbstractFont {
         super(var1);
     }
 
-    @ObfuscatedName("i")
-    @Export("vmethod3669")
     final void vmethod3669(byte[] var1, int var2, int var3, int var4, int var5, int var6) {
         int var7 = var3 * Rasterizer2D.Rasterizer2D_width + var2;
         int var8 = Rasterizer2D.Rasterizer2D_width - var4;
@@ -57,8 +49,6 @@ public final class Font extends AbstractFont {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod3619")
     final void vmethod3619(byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7) {
         int var8 = var3 * Rasterizer2D.Rasterizer2D_width + var2;
         int var9 = Rasterizer2D.Rasterizer2D_width - var4;

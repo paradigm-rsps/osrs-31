@@ -1,9 +1,5 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.Reflection;
 
 import java.io.*;
@@ -11,20 +7,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-@ObfuscatedName("by")
-@Implements("MilliClock")
 public class MilliClock extends Clock {
-    @ObfuscatedName("i")
     long[] field1255 = new long[10];
-    @ObfuscatedName("w")
     int field1256 = 256;
-    @ObfuscatedName("f")
     int field1262 = 1;
-    @ObfuscatedName("e")
     long field1257 = ClientPreferences.method148();
-    @ObfuscatedName("t")
     int field1254 = 0;
-    @ObfuscatedName("d")
     int field1259;
 
     MilliClock() {
@@ -34,8 +22,6 @@ public class MilliClock extends Clock {
 
     }
 
-    @ObfuscatedName("i")
-    @Export("vmethod1698")
     public void vmethod1698() {
         for (int var1 = 0; var1 < 10; ++var1) {
             this.field1255[var1] = 0L;
@@ -43,8 +29,6 @@ public class MilliClock extends Clock {
 
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod1701")
     int vmethod1701(int var1, int var2) {
         int var3 = this.field1256;
         int var4 = this.field1262;
@@ -86,7 +70,7 @@ public class MilliClock extends Clock {
             this.field1262 = var2;
         }
 
-        SequenceDefinition.sleepWeird(this.field1262);
+        AnimationDefinition.sleepWeird(this.field1262);
 
         for (var5 = 0; this.field1254 < 256; this.field1254 += this.field1256) {
             ++var5;
@@ -96,11 +80,7 @@ public class MilliClock extends Clock {
         return var5;
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass115;I)V"
-    )
-    public static void method1433(PacketBuffer var0, int var1) {
+    public static void handleReflectionCheck(PacketBuffer var0, int var1) {
         while (true) {
             ReflectionCheck var2 = (ReflectionCheck) class181.reflectionChecks.method3533();
             if (var2 == null) {
@@ -201,19 +181,14 @@ public class MilliClock extends Clock {
         }
     }
 
-    @ObfuscatedName("a")
-    @Export("method1438")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass108;"
-    )
     static Frames method1438(int var0) {
-        Frames var1 = (Frames) SequenceDefinition.SequenceDefinition_cachedFrames.method3474(var0);
+        Frames var1 = (Frames) AnimationDefinition.SequenceDefinition_cachedFrames.method3474(var0);
         if (var1 != null) {
             return var1;
         } else {
-            var1 = FloorDecoration.method2382(SequenceDefinition.SequenceDefinition_animationsArchive, SequenceDefinition.SequenceDefinition_skeletonsArchive, var0, false);
+            var1 = FloorDecoration.method2382(AnimationDefinition.SequenceDefinition_animationsArchive, AnimationDefinition.SequenceDefinition_skeletonsArchive, var0, false);
             if (var1 != null) {
-                SequenceDefinition.SequenceDefinition_cachedFrames.method3473(var1, var0);
+                AnimationDefinition.SequenceDefinition_cachedFrames.method3473(var1, var0);
             }
 
             return var1;

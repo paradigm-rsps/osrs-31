@@ -1,36 +1,14 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dc")
-@Implements("ByteArrayPool")
 public class ByteArrayPool {
-    @ObfuscatedName("lh")
     static class136 field1945;
-    @ObfuscatedName("i")
-    @Export("ByteArrayPool_smallCount")
     static int ByteArrayPool_smallCount = 0;
-    @ObfuscatedName("w")
-    @Export("ByteArrayPool_mediumCount")
     static int ByteArrayPool_mediumCount = 0;
-    @ObfuscatedName("f")
-    @Export("ByteArrayPool_largeCount")
     static int ByteArrayPool_largeCount = 0;
-    @ObfuscatedName("e")
-    @Export("ByteArrayPool_small")
     static byte[][] ByteArrayPool_small = new byte[1000][];
-    @ObfuscatedName("t")
-    @Export("ByteArrayPool_medium")
     static byte[][] ByteArrayPool_medium = new byte[250][];
-    @ObfuscatedName("d")
-    @Export("ByteArrayPool_large")
     static byte[][] ByteArrayPool_large = new byte[50][];
 
-    @ObfuscatedName("i")
-    @Export("method2506")
     static synchronized byte[] method2506(int var0) {
         byte[] var1;
         if (var0 == 100 && ByteArrayPool_smallCount > 0) {
@@ -50,7 +28,6 @@ public class ByteArrayPool {
         }
     }
 
-    @ObfuscatedName("i")
     public static String method2508(byte[] var0, int var1, int var2) {
         char[] var3 = new char[var2];
         int var4 = 0;
@@ -104,16 +81,10 @@ public class ByteArrayPool {
         return new String(var3, 0, var4);
     }
 
-    @ObfuscatedName("k")
     public static String method2507(CharSequence var0) {
         return Tile.method2296('*', var0.length());
     }
 
-    @ObfuscatedName("cj")
-    @Export("method2503")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;II)V"
-    )
     static final void method2503(Widget var0, int var1, int var2) {
         if (Client.clickedWidget == null && !Client.isMenuOpen) {
             if (var0 != null) {

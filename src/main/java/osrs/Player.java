@@ -1,75 +1,28 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
-@ObfuscatedName("f")
-@Implements("Player")
 public final class Player extends Actor {
-    @ObfuscatedName("i")
     String field35;
-    @ObfuscatedName("w")
-    @Export("appearance")
-    @ObfuscatedSignature(
-            descriptor = "Lclass162;"
-    )
     PlayerComposition appearance;
-    @ObfuscatedName("f")
-    @Export("headIconPk")
     int headIconPk = -1;
-    @ObfuscatedName("e")
-    @Export("headIconPrayer")
     int headIconPrayer = -1;
-    @ObfuscatedName("t")
-    @Export("combatLevel")
     int combatLevel = 0;
-    @ObfuscatedName("d")
-    @Export("skillLevel")
     int skillLevel = 0;
-    @ObfuscatedName("p")
-    @Export("tileHeight")
     int tileHeight;
-    @ObfuscatedName("k")
-    @Export("animationCycleStart")
     int animationCycleStart = 0;
-    @ObfuscatedName("r")
-    @Export("animationCycleEnd")
     int animationCycleEnd = 0;
-    @ObfuscatedName("l")
     int field34;
-    @ObfuscatedName("a")
-    @Export("tileHeight2")
     int tileHeight2;
-    @ObfuscatedName("z")
     int field42;
-    @ObfuscatedName("s")
-    @Export("model0")
-    @ObfuscatedSignature(
-            descriptor = "Lclass111;"
-    )
     Model model0;
-    @ObfuscatedName("m")
     int minX;
-    @ObfuscatedName("u")
     int minY;
-    @ObfuscatedName("g")
     int maxX;
-    @ObfuscatedName("o")
     int maxY;
-    @ObfuscatedName("v")
-    @Export("isUnanimated")
     boolean isUnanimated = false;
-    @ObfuscatedName("j")
-    @Export("team")
     int team = 0;
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void updateAppearance(Buffer var1) {
         var1.offset = 0;
         int var2 = var1.readUnsignedByte();
@@ -163,17 +116,12 @@ public final class Player extends Actor {
         this.appearance.setPlayerAppearance(var4, var9, var2 == 1, var3);
     }
 
-    @ObfuscatedName("w")
-    @Export("vmethod2030")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass111;"
-    )
     protected final Model vmethod2030() {
         if (this.appearance == null) {
             return null;
         } else {
-            SequenceDefinition var1 = super.animation != -1 && super.sequenceDelay == 0 ? Definitions.getAnimation(super.animation) : null;
-            SequenceDefinition var2 = super.movementSequence == -1 || this.isUnanimated || super.movementSequence == super.idleSequence && var1 != null ? null : Definitions.getAnimation(super.movementSequence);
+            AnimationDefinition var1 = super.animation != -1 && super.sequenceDelay == 0 ? Definitions.getAnimation(super.animation) : null;
+            AnimationDefinition var2 = super.movementSequence == -1 || this.isUnanimated || super.movementSequence == super.idleSequence && var1 != null ? null : Definitions.getAnimation(super.movementSequence);
             Model var3 = this.appearance.method3407(var1, super.sequenceFrame, var2, super.movementFrame);
             if (var3 == null) {
                 return null;
@@ -233,27 +181,16 @@ public final class Player extends Actor {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("vmethod281")
     final boolean vmethod281() {
         return this.appearance != null;
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;IZ)V"
-    )
     public static void method23(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
         int var5 = var0.getGroupId(var1);
         int var6 = var0.method3238(var5, var2);
         class161.method3399(var0, var5, var6, var3, var4);
     }
 
-    @ObfuscatedName("d")
-    @Export("method26")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;IIIIII)V"
-    )
     static final void method26(Buffer var0, int var1, int var2, int var3, int var4, int var5, int var6) {
         int var7;
         if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
@@ -263,9 +200,9 @@ public final class Player extends Actor {
                 var7 = var0.readUnsignedByte();
                 if (var7 == 0) {
                     if (var1 == 0) {
-                        Tiles.Tiles_heights[0][var2][var3] = -class1.method11(var2 + 932731 + var4, var5 + var3 + 556238) * 8;
+                        Tiles.tileHeights[0][var2][var3] = -class1.method11(var2 + 932731 + var4, var5 + var3 + 556238) * 8;
                     } else {
-                        Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - 240;
+                        Tiles.tileHeights[var1][var2][var3] = Tiles.tileHeights[var1 - 1][var2][var3] - 240;
                     }
                     break;
                 }
@@ -277,9 +214,9 @@ public final class Player extends Actor {
                     }
 
                     if (var1 == 0) {
-                        Tiles.Tiles_heights[0][var2][var3] = -var8 * 8;
+                        Tiles.tileHeights[0][var2][var3] = -var8 * 8;
                     } else {
-                        Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - var8 * 8;
+                        Tiles.tileHeights[var1][var2][var3] = Tiles.tileHeights[var1 - 1][var2][var3] - var8 * 8;
                     }
                     break;
                 }

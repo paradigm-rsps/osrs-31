@@ -1,113 +1,42 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.File;
 import java.io.IOException;
 
-@ObfuscatedName("q")
-@Implements("Login")
 public class Login {
-    @ObfuscatedName("i")
     static boolean field318;
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "Lclass86;"
-    )
     static IndexedSprite field314;
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "Lclass86;"
-    )
     static IndexedSprite field315;
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass86;"
-    )
     static IndexedSprite[] field341;
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "Lclass85;"
-    )
     static SpritePixels field317;
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "Lclass85;"
-    )
     static SpritePixels field332;
-    @ObfuscatedName("p")
-    @ObfuscatedSignature(
-            descriptor = "Lclass86;"
-    )
     static IndexedSprite field319;
-    @ObfuscatedName("m")
     static int[] field323 = new int[256];
-    @ObfuscatedName("o")
     static int[] field324;
-    @ObfuscatedName("j")
     static int field325 = 0;
-    @ObfuscatedName("n")
     static int field352 = 0;
-    @ObfuscatedName("b")
     static int[] field327;
-    @ObfuscatedName("y")
     static int field328 = 0;
-    @ObfuscatedName("x")
     static int field329 = 0;
-    @ObfuscatedName("ao")
     static int field330 = 0;
-    @ObfuscatedName("ae")
     static int field331 = 0;
-    @ObfuscatedName("aa")
-    @Export("Login_loadingPercent")
     static int Login_loadingPercent = 10;
-    @ObfuscatedName("ah")
-    @Export("Login_loadingText")
     static String Login_loadingText = "";
-    @ObfuscatedName("aw")
     static int field351 = 0;
-    @ObfuscatedName("an")
-    @Export("Login_response1")
     static String Login_response1 = "";
-    @ObfuscatedName("av")
-    @Export("Login_response2")
     static String Login_response2 = "";
-    @ObfuscatedName("ak")
-    @Export("Login_response3")
     static String Login_response3 = "";
-    @ObfuscatedName("ax")
     static String field338 = "";
-    @ObfuscatedName("ab")
     static String field339 = "";
-    @ObfuscatedName("af")
     static int field340 = 0;
-    @ObfuscatedName("aq")
-    @Export("worldSelectOpen")
     static boolean worldSelectOpen = false;
-    @ObfuscatedName("ag")
-    @Export("worldSelectFlagSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass86;"
-    )
     static IndexedSprite[] worldSelectFlagSprites;
-    @ObfuscatedName("aj")
     static int field334 = 0;
-    @ObfuscatedName("bh")
-    @Export("World_sortOption1")
     static int[] World_sortOption1 = new int[]{0, 1, 2, 3};
-    @ObfuscatedName("ba")
-    @Export("World_sortOption2")
     static int[] World_sortOption2 = new int[]{1, 1, 1, 1};
-    @ObfuscatedName("bn")
     static int field348 = -1;
-    @ObfuscatedName("fq")
-    @Export("cameraX")
     static int cameraX;
 
-    @ObfuscatedName("i")
     public static void method241(String var0, String var1, int var2, int var3) throws IOException {
         NetFileRequest.field2554 = var3;
         JagexCache.cacheGamebuild = var2;
@@ -300,17 +229,11 @@ public class Login {
         }
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;)V"
-    )
     public static void method240(AbstractArchive var0) {
         VarpDefinition.VarpDefinition_archive = var0;
         VarpDefinition.field1039 = VarpDefinition.VarpDefinition_archive.method3214(16);
     }
 
-    @ObfuscatedName("ad")
-    @Export("method242")
     static final void loadRegions(boolean isInstance) {
         Client.isInInstance = isInstance;
         int plane;
@@ -436,7 +359,6 @@ public class Login {
 
     }
 
-    @ObfuscatedName("co")
     static final void setOverheadText(int var0, String var1, String text) {
         NPC.method256(var0, var1, text, null);
     }

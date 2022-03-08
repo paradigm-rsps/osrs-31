@@ -1,40 +1,18 @@
 package osrs;
 
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("t")
-@Implements("Script")
 public class Script extends DualNode {
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     static EvictingDualNodeHashTable field68 = new EvictingDualNodeHashTable(128);
-    @ObfuscatedName("l")
     public static short[][] field60;
-    @ObfuscatedName("w")
     int[] field61;
-    @ObfuscatedName("f")
     int[] field62;
-    @ObfuscatedName("e")
     String[] field69;
-    @ObfuscatedName("t")
     int field64;
-    @ObfuscatedName("d")
     int field65;
-    @ObfuscatedName("p")
     int field66;
-    @ObfuscatedName("k")
     int field70;
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass182;Lclass182;)V"
-    )
     static void method32(Font var0, Font var1) {
         if (Login.worldSelectOpen) {
             ObjectSound.method53(var0, var1);
@@ -391,17 +369,12 @@ public class Script extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "(ILclass151;Ljava/lang/String;Ljava/lang/String;IZ)V"
-    )
     public static void method34(int var0, AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
         int var6 = var1.getGroupId(var2);
         int var7 = var1.method3238(var6, var3);
         ObjectSound.method43(var0, var1, var6, var7, var4, var5);
     }
 
-    @ObfuscatedName("m")
     static final int method37(int var0, int var1) {
         int var2 = var0 + var1 * 57;
         var2 ^= var2 << 13;
@@ -409,7 +382,6 @@ public class Script extends DualNode {
         return var3 >> 19 & 255;
     }
 
-    @ObfuscatedName("af")
     static final void method36() {
         if (!Client.isMenuOpen) {
             Client.menuActions[0] = "Cancel";
@@ -422,7 +394,7 @@ public class Script extends DualNode {
         if (Client.rootInterface != -1) {
             var0 = Client.rootInterface;
             if (EnumComposition.method852(var0)) {
-                ObjectComposition.method698(Widget.Widget_interfaceComponents[var0], -1);
+                ObjectDefinition.method698(Widget.Widget_interfaceComponents[var0], -1);
             }
         }
 
@@ -536,18 +508,10 @@ public class Script extends DualNode {
         Client.field525 = 0;
     }
 
-    @ObfuscatedName("as")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass26;I)V"
-    )
     static final void method33(Actor var0, int var1) {
         class1.method8(var0.x, var0.y, var1);
     }
 
-    @ObfuscatedName("cl")
-    @ObfuscatedSignature(
-            descriptor = "(IIIILclass85;)V"
-    )
     static final void method35(int var0, int var1, int var2, int var3, SpritePixels var4) {
         if (var4 != null) {
             int var5 = Client.field554 + Client.field569 & 2047;

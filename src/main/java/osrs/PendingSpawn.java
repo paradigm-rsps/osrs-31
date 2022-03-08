@@ -1,53 +1,23 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
-@ObfuscatedName("c")
-@Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-    @ObfuscatedName("q")
     static String field358;
-    @ObfuscatedName("do")
     static byte[][] regionMapArchives;
-    @ObfuscatedName("i")
-    @Export("plane")
     int plane;
-    @ObfuscatedName("w")
-    @Export("type")
     int type;
-    @ObfuscatedName("f")
-    @Export("x")
     int x;
-    @ObfuscatedName("e")
-    @Export("y")
     int y;
-    @ObfuscatedName("t")
-    @Export("objectId")
     int objectId;
-    @ObfuscatedName("d")
     int field361;
-    @ObfuscatedName("p")
     int field359;
-    @ObfuscatedName("k")
-    @Export("id")
     int id;
-    @ObfuscatedName("r")
-    @Export("orientation")
     int orientation;
-    @ObfuscatedName("l")
     int field362;
-    @ObfuscatedName("a")
-    @Export("delay")
     int delay = 0;
-    @ObfuscatedName("z")
-    @Export("hitpoints")
     int hitpoints = -1;
 
-    @ObfuscatedName("s")
-    @Export("method245")
     static void method245(byte[] var0) {
         Buffer var1 = new Buffer(var0);
         var1.offset = var0.length - 2;
@@ -114,10 +84,6 @@ public final class PendingSpawn extends Node {
 
     }
 
-    @ObfuscatedName("bt")
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/lang/String;Lclass157;)Ljava/lang/String;"
-    )
     static String method244(String var0, Widget var1) {
         if (var0.indexOf("%") != -1) {
             int var2;
@@ -155,8 +121,6 @@ public final class PendingSpawn extends Node {
         return var0;
     }
 
-    @ObfuscatedName("cy")
-    @Export("method243")
     static final void method243(int var0) {
         Client.method568();
 
@@ -166,7 +130,7 @@ public final class PendingSpawn extends Node {
             }
         }
 
-        int var4 = GameBuild.method2854(var0).type;
+        int var4 = Definitions.getVarp(var0).type;
         if (var4 != 0) {
             int var2 = Varps.Varps_main[var0];
             if (var4 == 1) {

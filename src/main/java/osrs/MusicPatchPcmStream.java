@@ -1,49 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ev")
-@Implements("MusicPatchPcmStream")
 public class MusicPatchPcmStream extends PcmStream {
-    @ObfuscatedName("m")
-    @Export("NetCache_currentResponse")
-    @ObfuscatedSignature(
-            descriptor = "Lclass154;"
-    )
     public static NetFileRequest NetCache_currentResponse;
-    @ObfuscatedName("i")
-    @Export("superStream")
-    @ObfuscatedSignature(
-            descriptor = "Lclass140;"
-    )
     MidiPcmStream superStream;
-    @ObfuscatedName("f")
-    @Export("queue")
-    @ObfuscatedSignature(
-            descriptor = "Lclass176;"
-    )
     NodeDeque queue = new NodeDeque();
-    @ObfuscatedName("e")
-    @Export("mixer")
-    @ObfuscatedSignature(
-            descriptor = "Lclass45;"
-    )
     PcmStreamMixer mixer = new PcmStreamMixer();
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass140;)V"
-    )
     MusicPatchPcmStream(MidiPcmStream var1) {
         this.superStream = var1;
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass144;[IIII)V"
-    )
     void method3049(MusicPatchNode var1, int[] var2, int var3, int var4, int var5) {
         if ((this.superStream.field2384[var1.field2426] & 4) != 0 && var1.field2443 < 0) {
             int var6 = this.superStream.field2381[var1.field2426] / PcmPlayer.field1099;
@@ -89,10 +55,6 @@ public class MusicPatchPcmStream extends PcmStream {
         var1.stream.vmethod3045(var2, var3, var4);
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass144;I)V"
-    )
     void method3050(MusicPatchNode var1, int var2) {
         if ((this.superStream.field2384[var1.field2426] & 4) != 0 && var1.field2443 < 0) {
             int var3 = this.superStream.field2381[var1.field2426] / PcmPlayer.field1099;
@@ -117,11 +79,6 @@ public class MusicPatchPcmStream extends PcmStream {
         var1.stream.vmethod3048(var2);
     }
 
-    @ObfuscatedName("h")
-    @Export("vmethod3061")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass47;"
-    )
     protected PcmStream vmethod3061() {
         MusicPatchNode var1 = (MusicPatchNode) this.queue.method3533();
         if (var1 == null) {
@@ -131,11 +88,6 @@ public class MusicPatchPcmStream extends PcmStream {
         }
     }
 
-    @ObfuscatedName("b")
-    @Export("vmethod3052")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass47;"
-    )
     protected PcmStream vmethod3052() {
         MusicPatchNode var1;
         do {
@@ -148,13 +100,10 @@ public class MusicPatchPcmStream extends PcmStream {
         return var1.stream;
     }
 
-    @ObfuscatedName("y")
     protected int vmethod3046() {
         return 0;
     }
 
-    @ObfuscatedName("x")
-    @Export("vmethod3045")
     protected void vmethod3045(int[] var1, int var2, int var3) {
         this.mixer.vmethod3045(var1, var2, var3);
 
@@ -179,8 +128,6 @@ public class MusicPatchPcmStream extends PcmStream {
 
     }
 
-    @ObfuscatedName("ao")
-    @Export("vmethod3048")
     protected void vmethod3048(int var1) {
         this.mixer.vmethod3048(var1);
 

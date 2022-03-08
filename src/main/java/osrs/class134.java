@@ -1,23 +1,8 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("eo")
 public class class134 {
-    @ObfuscatedName("et")
-    @Export("headIconPkSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] headIconPkSprites;
 
-    @ObfuscatedName("l")
-    @Export("method2864")
-    @ObfuscatedSignature(
-            descriptor = "([B)Lclass182;"
-    )
     static Font method2864(byte[] var0) {
         if (var0 == null) {
             return null;

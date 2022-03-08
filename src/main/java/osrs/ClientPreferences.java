@@ -1,45 +1,18 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("z")
-@Implements("ClientPreferences")
 public class ClientPreferences {
-    @ObfuscatedName("ja")
     static int field191;
-    @ObfuscatedName("i")
-    @Export("ClientPreferences_optionCount")
     static int ClientPreferences_optionCount = 2;
-    @ObfuscatedName("p")
-    @ObfuscatedSignature(
-            descriptor = "Lclass182;"
-    )
     public static Font field188;
-    @ObfuscatedName("g")
     static String[] field187;
-    @ObfuscatedName("as")
-    @Export("archive2")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive2;
-    @ObfuscatedName("w")
-    @Export("roofsHidden")
     boolean roofsHidden;
-    @ObfuscatedName("f")
-    @Export("titleMusicDisabled")
     boolean titleMusicDisabled;
 
     ClientPreferences() {
         this.method136(true);
     }
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     ClientPreferences(Buffer var1) {
         if (var1 != null && var1.array != null) {
             int var2 = var1.readUnsignedByte();
@@ -60,15 +33,9 @@ public class ClientPreferences {
 
     }
 
-    @ObfuscatedName("i")
     void method136(boolean var1) {
     }
 
-    @ObfuscatedName("w")
-    @Export("method139")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass126;"
-    )
     Buffer method139() {
         Buffer var1 = new Buffer(100);
         var1.writeByte(ClientPreferences_optionCount);
@@ -77,7 +44,6 @@ public class ClientPreferences {
         return var1;
     }
 
-    @ObfuscatedName("i")
     public static synchronized long method148() {
         long var0 = System.currentTimeMillis();
         if (var0 < class120.field2016) {
@@ -88,10 +54,6 @@ public class ClientPreferences {
         return class120.field2013 + var0;
     }
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass85;"
-    )
     public static SpritePixels method152() {
         SpritePixels var0 = new SpritePixels();
         var0.width = class83.SpriteBuffer_spriteWidth;
@@ -112,7 +74,6 @@ public class ClientPreferences {
         return var0;
     }
 
-    @ObfuscatedName("x")
     static void method151(int var0, int var1, int var2) {
         if (Client.field721 != 0 && var1 != 0 && Client.soundEffectCount < 50) {
             Client.field742[Client.soundEffectCount] = var0;
@@ -125,10 +86,6 @@ public class ClientPreferences {
 
     }
 
-    @ObfuscatedName("ca")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;IIIIII)V"
-    )
     static final void method154(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
         if (Client.field691) {
             Client.alternativeScrollbarWidth = 32;

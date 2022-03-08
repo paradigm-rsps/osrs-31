@@ -1,57 +1,27 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-@ObfuscatedName("bl")
-@Implements("KeyHandler")
 public final class KeyHandler implements KeyListener, FocusListener {
-    @ObfuscatedName("i")
-    @Export("KeyHandler_instance")
-    @ObfuscatedSignature(
-            descriptor = "Lclass74;"
-    )
     public static KeyHandler KeyHandler_instance = new KeyHandler();
-    @ObfuscatedName("br")
-    @Export("archive14")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive14;
-    @ObfuscatedName("cu")
-    @Export("KeyHandler_pressedKeys")
     public static boolean[] KeyHandler_pressedKeys = new boolean[112];
-    @ObfuscatedName("cm")
     static int[] field1370 = new int[128];
-    @ObfuscatedName("ch")
     static int field1363 = 0;
-    @ObfuscatedName("cz")
     public static int field1360 = 0;
-    @ObfuscatedName("cw")
     static char[] field1361 = new char[128];
-    @ObfuscatedName("cr")
     static int[] field1362 = new int[128];
-    @ObfuscatedName("cy")
     public static int[] field1348 = new int[128];
-    @ObfuscatedName("cs")
     public static int field1364 = 0;
-    @ObfuscatedName("cf")
     static int field1365 = 0;
-    @ObfuscatedName("ci")
     static int field1356 = 0;
-    @ObfuscatedName("cb")
     static int field1343 = 0;
-    @ObfuscatedName("cl")
-    @Export("KeyHandler_idleCycles")
     public static volatile int KeyHandler_idleCycles = 0;
-    @ObfuscatedName("co")
     public static int[] field1359 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 13, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
     public final void keyTyped(KeyEvent var1) {
@@ -165,10 +135,6 @@ public final class KeyHandler implements KeyListener, FocusListener {
     public final void focusGained(FocusEvent var1) {
     }
 
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "(IIIIZ)Lclass85;"
-    )
     public static final SpritePixels method1647(int var0, int var1, int var2, int var3, boolean var4) {
         long var5 = ((long) var2 << 38) + (long) var0 + ((long) var1 << 16) + ((long) var3 << 40);
         SpritePixels var7;
@@ -271,7 +237,6 @@ public final class KeyHandler implements KeyListener, FocusListener {
         }
     }
 
-    @ObfuscatedName("ah")
     static final void method1649() {
         int var0 = World.field209 * 128 + 64;
         int var1 = Interpreter.field416 * 128 + 64;
@@ -383,8 +348,6 @@ public final class KeyHandler implements KeyListener, FocusListener {
 
     }
 
-    @ObfuscatedName("bp")
-    @Export("method1648")
     static final void method1648(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
         if (var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
             if (Client.isLowDetail && var0 != class22.scenePlane) {
@@ -411,16 +374,16 @@ public final class KeyHandler implements KeyListener, FocusListener {
                 var7 = Interpreter.scene.method2070(var0, var2, var3);
             }
 
-            int var11;
+            int plane;
             if (var7 != 0) {
-                var11 = Interpreter.scene.method2071(var0, var2, var3, var7);
+                plane = Interpreter.scene.method2071(var0, var2, var3, var7);
                 int var13 = var7 >> 14 & 32767;
-                int var14 = var11 & 31;
-                int var15 = var11 >> 6 & 3;
-                ObjectComposition var12;
+                int var14 = plane & 31;
+                int var15 = plane >> 6 & 3;
+                ObjectDefinition var12;
                 if (var1 == 0) {
                     Interpreter.scene.method2058(var0, var2, var3);
-                    var12 = GameBuild.getObjectComposition(var13);
+                    var12 = Definitions.getObject(var13);
                     if (var12.interactType != 0) {
                         Client.collisionMaps[var0].method3432(var2, var3, var14, var15, var12.boolean1);
                     }
@@ -432,7 +395,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
 
                 if (var1 == 2) {
                     Interpreter.scene.method2043(var0, var2, var3);
-                    var12 = GameBuild.getObjectComposition(var13);
+                    var12 = Definitions.getObject(var13);
                     if (var2 + var12.sizeX > 103 || var3 + var12.sizeX > 103 || var2 + var12.sizeY > 103 || var3 + var12.sizeY > 103) {
                         return;
                     }
@@ -444,7 +407,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
 
                 if (var1 == 3) {
                     Interpreter.scene.method2184(var0, var2, var3);
-                    var12 = GameBuild.getObjectComposition(var13);
+                    var12 = Definitions.getObject(var13);
                     if (var12.interactType == 1) {
                         Client.collisionMaps[var0].method3425(var2, var3);
                     }
@@ -452,12 +415,12 @@ public final class KeyHandler implements KeyListener, FocusListener {
             }
 
             if (var4 >= 0) {
-                var11 = var0;
+                plane = var0;
                 if (var0 < 3 && (Tiles.Tiles_renderFlags[1][var2][var3] & 2) == 2) {
-                    var11 = var0 + 1;
+                    plane = var0 + 1;
                 }
 
-                AbstractRasterProvider.method1819(var0, var11, var2, var3, var4, var5, var6, Interpreter.scene, Client.collisionMaps[var0]);
+                Scene.loadObject(var0, plane, var2, var3, var4, var5, var6, Interpreter.scene, Client.collisionMaps[var0]);
             }
         }
 

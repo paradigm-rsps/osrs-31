@@ -1,22 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bz")
-@Implements("Clock")
 public abstract class Clock {
-    @ObfuscatedName("i")
     public abstract void vmethod1698();
 
-    @ObfuscatedName("w")
     abstract int vmethod1701(int var1, int var2);
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)[Lclass85;"
-    )
     public static SpritePixels[] method1467(AbstractArchive var0, String var1, String var2) {
         int var3 = var0.getGroupId(var1);
         int var4 = var0.method3238(var3, var2);
@@ -50,7 +38,6 @@ public abstract class Clock {
         return var5;
     }
 
-    @ObfuscatedName("c")
     static final void method1461() {
         if (Client.logoutTimer > 0) {
             Canvas.method1655();

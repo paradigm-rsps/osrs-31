@@ -1,34 +1,18 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 import java.io.IOException;
 
-@ObfuscatedName("bw")
 public abstract class class65 {
-    @ObfuscatedName("nf")
     static int field1268;
-    @ObfuscatedName("l")
-    @Export("pcmSampleLength")
     static int pcmSampleLength;
 
-    @ObfuscatedName("i")
     public abstract void vmethod1690(Component var1);
 
-    @ObfuscatedName("w")
     public abstract void vmethod1681(Component var1);
 
-    @ObfuscatedName("f")
     public abstract int vmethod1679();
 
-    @ObfuscatedName("w")
-    @Export("method1455")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass35;"
-    )
     public static KitDefinition readAppearanceStyle(int id) {
         KitDefinition var1 = (KitDefinition) KitDefinition.KitDefinition_cached.method3474(id);
         if (var1 != null) {
@@ -45,8 +29,6 @@ public abstract class class65 {
         }
     }
 
-    @ObfuscatedName("t")
-    @Export("method1456")
     public static int method1456(CharSequence var0) {
         int var1 = var0.length();
         int var2 = 0;
@@ -58,9 +40,8 @@ public abstract class class65 {
         return var2;
     }
 
-    @ObfuscatedName("ay")
     static final void method1454(boolean var0) {
-        SequenceDefinition.method759();
+        AnimationDefinition.method759();
         ++Client.field669;
         if (Client.field669 >= 50 || var0) {
             Client.field669 = 0;

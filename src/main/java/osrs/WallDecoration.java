@@ -1,67 +1,25 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dy")
-@Implements("WallDecoration")
 public final class WallDecoration {
-    @ObfuscatedName("n")
-    @Export("NetCache_reference")
-    @ObfuscatedSignature(
-            descriptor = "Lclass126;"
-    )
     public static Buffer NetCache_reference;
-    @ObfuscatedName("i")
-    @Export("tileHeight")
     int tileHeight;
-    @ObfuscatedName("w")
-    @Export("x")
     int x;
-    @ObfuscatedName("f")
-    @Export("y")
     int y;
-    @ObfuscatedName("e")
-    @Export("orientation")
     int orientation;
-    @ObfuscatedName("t")
-    @Export("orientation2")
     int orientation2;
-    @ObfuscatedName("d")
-    @Export("xOffset")
     int xOffset;
-    @ObfuscatedName("p")
-    @Export("yOffset")
     int yOffset;
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "Lclass93;"
-    )
     public Renderable renderable1;
-    @ObfuscatedName("r")
-    @Export("renderable2")
-    @ObfuscatedSignature(
-            descriptor = "Lclass93;"
-    )
     public Renderable renderable2;
-    @ObfuscatedName("l")
     public int packedId = 0;
-    @ObfuscatedName("a")
-    int field1809 = 0;
+    int flags = 0;
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Lclass151;Z)V"
-    )
     public static void method2383(AbstractArchive var0, AbstractArchive var1, boolean var2) {
-        ObjectComposition.ObjectDefinition_archive = var0;
+        ObjectDefinition.ObjectDefinition_archive = var0;
         ModelData0.ObjectDefinition_modelsArchive = var1;
-        ObjectComposition.ObjectDefinition_isLowDetail = var2;
+        ObjectDefinition.ObjectDefinition_isLowDetail = var2;
     }
 
-    @ObfuscatedName("w")
     public static byte[] method2385(CharSequence var0) {
         int var1 = var0.length();
         byte[] var2 = new byte[var1];
@@ -132,7 +90,6 @@ public final class WallDecoration {
         return var2;
     }
 
-    @ObfuscatedName("e")
     static void method2384(int var0) {
         ItemContainer var1 = (ItemContainer) ItemContainer.itemContainers.method3512(var0);
         if (var1 != null) {

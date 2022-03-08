@@ -1,39 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("cu")
-@Implements("IndexedSprite")
 public final class IndexedSprite extends Rasterizer2D {
-    @ObfuscatedName("i")
-    @Export("pixels")
     public byte[] pixels;
-    @ObfuscatedName("w")
-    @Export("palette")
     public int[] palette;
-    @ObfuscatedName("f")
-    @Export("subWidth")
     public int subWidth;
-    @ObfuscatedName("e")
-    @Export("subHeight")
     public int subHeight;
-    @ObfuscatedName("t")
-    @Export("xOffset")
     public int xOffset;
-    @ObfuscatedName("d")
-    @Export("yOffset")
     public int yOffset;
-    @ObfuscatedName("p")
-    @Export("width")
     public int width;
-    @ObfuscatedName("k")
-    @Export("height")
     public int height;
 
-    @ObfuscatedName("i")
-    @Export("method1925")
     public void method1925() {
         if (this.subWidth != this.width || this.subHeight != this.height) {
             byte[] var1 = new byte[this.width * this.height];
@@ -53,8 +29,6 @@ public final class IndexedSprite extends Rasterizer2D {
         }
     }
 
-    @ObfuscatedName("w")
-    @Export("method1926")
     public void method1926(int var1, int var2, int var3) {
         for (int var4 = 0; var4 < this.palette.length; ++var4) {
             int var5 = this.palette[var4] >> 16 & 255;
@@ -86,8 +60,6 @@ public final class IndexedSprite extends Rasterizer2D {
 
     }
 
-    @ObfuscatedName("f")
-    @Export("method1936")
     public void method1936(int var1, int var2) {
         var1 += this.xOffset;
         var2 += this.yOffset;
@@ -132,8 +104,6 @@ public final class IndexedSprite extends Rasterizer2D {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method1927")
     static void method1927(int[] var0, byte[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         int var9 = -(var5 >> 2);
         var5 = -(var5 & 3);

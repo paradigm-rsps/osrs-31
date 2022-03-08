@@ -1,9 +1,6 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -11,42 +8,19 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-@ObfuscatedName("bq")
-@Implements("IterableNodeHashTableIterator")
 public final class IterableNodeHashTableIterator implements Runnable {
-    @ObfuscatedName("hc")
-    @Export("menuWidth")
     static int menuWidth;
-    @ObfuscatedName("i")
     OutputStream field1281;
-    @ObfuscatedName("w")
     InputStream field1292;
-    @ObfuscatedName("f")
     Socket field1282;
-    @ObfuscatedName("e")
     boolean field1291 = false;
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "Lclass73;"
-    )
     TaskHandler field1284;
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "Lclass78;"
-    )
     Task field1280;
-    @ObfuscatedName("p")
     byte[] field1286;
-    @ObfuscatedName("k")
     int field1287 = 0;
-    @ObfuscatedName("r")
     int field1288 = 0;
-    @ObfuscatedName("l")
     boolean field1289 = false;
 
-    @ObfuscatedSignature(
-            descriptor = "(Ljava/net/Socket;Lclass73;)V"
-    )
     public IterableNodeHashTableIterator(Socket var1, TaskHandler var2) throws IOException {
         this.field1284 = var2;
         this.field1282 = var1;
@@ -56,7 +30,6 @@ public final class IterableNodeHashTableIterator implements Runnable {
         this.field1281 = this.field1282.getOutputStream();
     }
 
-    @ObfuscatedName("e")
     public void method1471() {
         if (!this.field1291) {
             synchronized (this) {
@@ -66,7 +39,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
             if (this.field1280 != null) {
                 while (this.field1280.status == 0) {
-                    SequenceDefinition.sleepWeird(1L);
+                    AnimationDefinition.sleepWeird(1L);
                 }
 
                 if (this.field1280.status == 1) {
@@ -81,17 +54,14 @@ public final class IterableNodeHashTableIterator implements Runnable {
         }
     }
 
-    @ObfuscatedName("t")
     public int readByte() throws IOException {
         return this.field1291 ? 0 : this.field1292.read();
     }
 
-    @ObfuscatedName("d")
     public int available() throws IOException {
         return this.field1291 ? 0 : this.field1292.available();
     }
 
-    @ObfuscatedName("p")
     public void read(byte[] var1, int var2, int var3) throws IOException {
         if (!this.field1291) {
             while (var3 > 0) {
@@ -107,7 +77,6 @@ public final class IterableNodeHashTableIterator implements Runnable {
         }
     }
 
-    @ObfuscatedName("k")
     public void flush(byte[] var1, int var2, int var3) throws IOException {
         if (!this.field1291) {
             if (this.field1289) {
@@ -214,26 +183,25 @@ public final class IterableNodeHashTableIterator implements Runnable {
         this.method1471();
     }
 
-    @ObfuscatedName("w")
     static final void method1485(int var0, int var1, int var2, int var3) {
         for (int var4 = var1; var4 <= var3 + var1; ++var4) {
             for (int var5 = var0; var5 <= var0 + var2; ++var5) {
                 if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
                     Tiles.field132[0][var5][var4] = 127;
                     if (var0 == var5 && var5 > 0) {
-                        Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
+                        Tiles.tileHeights[0][var5][var4] = Tiles.tileHeights[0][var5 - 1][var4];
                     }
 
                     if (var0 + var2 == var5 && var5 < 103) {
-                        Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
+                        Tiles.tileHeights[0][var5][var4] = Tiles.tileHeights[0][var5 + 1][var4];
                     }
 
                     if (var4 == var1 && var4 > 0) {
-                        Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+                        Tiles.tileHeights[0][var5][var4] = Tiles.tileHeights[0][var5][var4 - 1];
                     }
 
                     if (var3 + var1 == var4 && var4 < 103) {
-                        Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
+                        Tiles.tileHeights[0][var5][var4] = Tiles.tileHeights[0][var5][var4 + 1];
                     }
                 }
             }
@@ -241,7 +209,6 @@ public final class IterableNodeHashTableIterator implements Runnable {
 
     }
 
-    @ObfuscatedName("bu")
     static final void handleServerPacket() {
         int animationCycleEnd;
         int var2;
@@ -276,7 +243,7 @@ public final class IterableNodeHashTableIterator implements Runnable {
             }
 
             if (entity != null) {
-                ObjectComposition objectDefinition = GameBuild.getObjectComposition(var13);
+                ObjectDefinition objectDefinition = Definitions.getObject(var13);
                 int sizeX;
                 int sizeY;
                 if (face == 1 || face == 3) {
@@ -291,11 +258,11 @@ public final class IterableNodeHashTableIterator implements Runnable {
                 int var20 = var3 + (sizeX + 1 >> 1);
                 int var21 = var4 + (sizeY >> 1);
                 int var22 = var4 + (sizeY + 1 >> 1);
-                int[][] tileHeights = Tiles.Tiles_heights[class22.scenePlane];
+                int[][] tileHeights = Tiles.tileHeights[class22.scenePlane];
                 int var24 = tileHeights[var20][var22] + tileHeights[var19][var22] + tileHeights[var20][var21] + tileHeights[var19][var21] >> 2;
                 int var25 = (var3 << 7) + (sizeX << 6);
                 int var26 = (var4 << 7) + (sizeY << 6);
-                Model objectModel = objectDefinition.method664(id, face, tileHeights, var25, var24, var26);
+                Model objectModel = objectDefinition.getModel(id, face, tileHeights, var25, var24, var26);
                 if (objectModel != null) {
                     class1.updatePendingSpawn(class22.scenePlane, var3, var4, var11, -1, 0, 0, animationCycleStart + 1, animationCycleEnd + 1);
                     entity.animationCycleStart = animationCycleStart + Client.cycle;
@@ -377,14 +344,14 @@ public final class IterableNodeHashTableIterator implements Runnable {
                     }
 
                     if (var42 != null) {
-                        var42.renderable = new DynamicObject(var42.field1656 >> 14 & 32767, var2, var3, class22.scenePlane, var37, playerIndex, animationCycleEnd, false, var42.renderable);
+                        var42.renderable = new DynamicObject(var42.packedId >> 14 & 32767, var2, var3, class22.scenePlane, var37, playerIndex, animationCycleEnd, false, var42.renderable);
                     }
                 }
 
                 if (var4 == 3) {
                     FloorDecoration var43 = Interpreter.scene.method2066(class22.scenePlane, var37, playerIndex);
                     if (var43 != null) {
-                        var43.renderable = new DynamicObject(var43.field1807 >> 14 & 32767, 22, var3, class22.scenePlane, var37, playerIndex, animationCycleEnd, false, var43.renderable);
+                        var43.renderable = new DynamicObject(var43.packedId >> 14 & 32767, 22, var3, class22.scenePlane, var37, playerIndex, animationCycleEnd, false, var43.renderable);
                     }
                 }
             }

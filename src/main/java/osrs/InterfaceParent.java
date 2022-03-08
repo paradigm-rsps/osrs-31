@@ -1,30 +1,12 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("e")
-@Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-    @ObfuscatedName("q")
     static int[] field58;
-    @ObfuscatedName("az")
-    @Export("archive7")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive7;
-    @ObfuscatedName("i")
-    @Export("group")
     int group;
-    @ObfuscatedName("w")
     int field56;
-    @ObfuscatedName("f")
     boolean field54 = false;
 
-    @ObfuscatedName("w")
     static boolean method30(CharSequence var0, int var1, boolean var2) {
         if (var1 >= 2 && var1 <= 36) {
             boolean var3 = false;
@@ -81,7 +63,6 @@ public class InterfaceParent extends Node {
         }
     }
 
-    @ObfuscatedName("w")
     public static int method29(char var0, int var1) {
         int var2 = var0 << 4;
         if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
@@ -92,8 +73,6 @@ public class InterfaceParent extends Node {
         return var2;
     }
 
-    @ObfuscatedName("e")
-    @Export("method27")
     public static String readString(byte[] var0, int var1, int var2) {
         char[] var3 = new char[var2];
         int var4 = 0;
@@ -117,7 +96,6 @@ public class InterfaceParent extends Node {
         return new String(var3, 0, var4);
     }
 
-    @ObfuscatedName("e")
     public static int method28() {
         return ++MouseHandler.MouseHandler_idleCycles - 1;
     }

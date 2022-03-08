@@ -1,106 +1,51 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("ay")
-@Implements("PcmPlayer")
 public class PcmPlayer {
-    @ObfuscatedName("ix")
-    @Export("selectedItemWidget")
     static int selectedItemWidget;
-    @ObfuscatedName("t")
     public static int field1099;
-    @ObfuscatedName("d")
-    @Export("PcmPlayer_stereo")
     public static boolean PcmPlayer_stereo;
-    @ObfuscatedName("a")
-    @Export("samples")
     int[] samples;
-    @ObfuscatedName("z")
-    @Export("stream")
-    @ObfuscatedSignature(
-            descriptor = "Lclass47;"
-    )
     PcmStream stream;
-    @ObfuscatedName("s")
     int field1102 = 32;
-    @ObfuscatedName("m")
-    @Export("timeMs")
     long timeMs = ClientPreferences.method148();
-    @ObfuscatedName("u")
-    @Export("capacity")
     int capacity;
-    @ObfuscatedName("g")
     int field1105;
-    @ObfuscatedName("o")
     int field1113;
-    @ObfuscatedName("v")
     long field1107 = 0L;
-    @ObfuscatedName("j")
     int field1108 = 0;
-    @ObfuscatedName("n")
     int field1104 = 0;
-    @ObfuscatedName("q")
     int field1097 = 0;
-    @ObfuscatedName("c")
     long field1111 = 0L;
-    @ObfuscatedName("h")
     boolean field1112 = true;
-    @ObfuscatedName("aa")
     int field1114 = 0;
-    @ObfuscatedName("ah")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass47;"
-    )
     PcmStream[] field1115 = new PcmStream[8];
-    @ObfuscatedName("aw")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass47;"
-    )
     PcmStream[] field1116 = new PcmStream[8];
 
-    @ObfuscatedName("i")
     void vmethod1234(Component var1) throws Exception {
     }
 
-    @ObfuscatedName("w")
     void vmethod1235(int var1) throws Exception {
     }
 
-    @ObfuscatedName("f")
-    @Export("vmethod1233")
     int vmethod1233() throws Exception {
         return this.capacity;
     }
 
-    @ObfuscatedName("e")
     void vmethod1237() throws Exception {
     }
 
-    @ObfuscatedName("t")
     void vmethod1238() {
     }
 
-    @ObfuscatedName("d")
     void vmethod1229() throws Exception {
     }
 
-    @ObfuscatedName("c")
-    @Export("method1226")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass47;)V"
-    )
     public final synchronized void method1226(PcmStream var1) {
         this.stream = var1;
     }
 
-    @ObfuscatedName("h")
-    @Export("method1227")
     public final synchronized void method1227() {
         if (this.samples != null) {
             long var1 = ClientPreferences.method148();
@@ -188,12 +133,10 @@ public class PcmPlayer {
         }
     }
 
-    @ObfuscatedName("b")
     public final void method1228() {
         this.field1112 = true;
     }
 
-    @ObfuscatedName("y")
     public final synchronized void method1274() {
         this.field1112 = true;
 
@@ -206,8 +149,6 @@ public class PcmPlayer {
 
     }
 
-    @ObfuscatedName("x")
-    @Export("method1272")
     public final synchronized void method1272() {
         if (TileItem.soundSystem != null) {
             boolean var1 = true;
@@ -226,7 +167,7 @@ public class PcmPlayer {
                 TileItem.soundSystem.field1183 = true;
 
                 while (TileItem.soundSystem.field1182) {
-                    SequenceDefinition.sleepWeird(50L);
+                    AnimationDefinition.sleepWeird(50L);
                 }
 
                 TileItem.soundSystem = null;
@@ -237,8 +178,6 @@ public class PcmPlayer {
         this.samples = null;
     }
 
-    @ObfuscatedName("ao")
-    @Export("method1231")
     final void method1231(int var1) {
         this.field1114 -= var1;
         if (this.field1114 < 0) {
@@ -251,8 +190,6 @@ public class PcmPlayer {
 
     }
 
-    @ObfuscatedName("ae")
-    @Export("method1246")
     final void method1246(int[] var1, int var2) {
         int var3 = var2;
         if (PcmPlayer_stereo) {
@@ -365,10 +302,6 @@ public class PcmPlayer {
         this.timeMs = ClientPreferences.method148();
     }
 
-    @ObfuscatedName("ah")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass47;I)V"
-    )
     final void method1230(PcmStream var1, int var2) {
         int var3 = var2 >> 5;
         PcmStream var4 = this.field1116[var3];
@@ -382,10 +315,6 @@ public class PcmPlayer {
         var1.field1074 = var2;
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass36;"
-    )
     public static FloorOverlayDefinition method1225(int var0) {
         FloorOverlayDefinition var1 = (FloorOverlayDefinition) FloorOverlayDefinition.HitSplatDefinition_cachedSprites.method3474(var0);
         if (var1 != null) {

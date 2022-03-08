@@ -1,27 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("w")
 public class class1 {
-    @ObfuscatedName("s")
-    @Export("Tiles_hueMultiplier")
     static int[] Tiles_hueMultiplier;
-    @ObfuscatedName("v")
     static int[] field22;
-    @ObfuscatedName("al")
-    @Export("worldSelectBackSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] worldSelectBackSprites;
 
-    @ObfuscatedName("t")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;Ljava/lang/String;Ljava/lang/String;)Lclass85;"
-    )
     public static SpritePixels method13(AbstractArchive var0, String var1, String var2) {
         int var3 = var0.getGroupId(var1);
         int var4 = var0.method3238(var3, var2);
@@ -35,7 +18,6 @@ public class class1 {
         return var5;
     }
 
-    @ObfuscatedName("a")
     static final int method11(int var0, int var1) {
         int var2 = class23.method253('넵' + var0, 91923 + var1, 4) - 128 + (class23.method253(10294 + var0, var1 + '鎽', 2) - 128 >> 1) + (class23.method253(var0, var1, 1) - 128 >> 2);
         var2 = (int) ((double) var2 * 0.3D) + 35;
@@ -48,8 +30,6 @@ public class class1 {
         return var2;
     }
 
-    @ObfuscatedName("aj")
-    @Export("method8")
     static final void method8(int var0, int var1, int var2) {
         if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
             int var3 = BufferedFile.getTileHeight(var0, var1, class22.scenePlane) - var2;
@@ -79,8 +59,6 @@ public class class1 {
         }
     }
 
-    @ObfuscatedName("br")
-    @Export("method14")
     static final void updatePendingSpawn(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
         PendingSpawn var9 = null;
 
@@ -108,10 +86,6 @@ public class class1 {
         var9.hitpoints = var8;
     }
 
-    @ObfuscatedName("bw")
-    @ObfuscatedSignature(
-            descriptor = "(ILclass2;I)V"
-    )
     static final void updatePlayer(int playerIndex, Player player, int flag) {
         if ((flag & 4) != 0) {
             player.field475 = Client.serverPacketBuf.readUnsignedShortLE();
@@ -261,7 +235,6 @@ public class class1 {
 
     }
 
-    @ObfuscatedName("bv")
     static final void method9() {
         int var0 = class40.fontBold12.method3601("Choose Option");
 
@@ -308,7 +281,6 @@ public class class1 {
         Decimator.menuHeight = Client.menuOptionsCount * 15 + 22;
     }
 
-    @ObfuscatedName("dd")
     static final void method5(String var0, int var1) {
         Client.rsaBuf.writeByteOpcode(173);
         PacketBuffer var2 = Client.rsaBuf;

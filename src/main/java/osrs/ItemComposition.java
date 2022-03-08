@@ -1,174 +1,57 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("aq")
-@Implements("ItemComposition")
 public class ItemComposition extends DualNode {
-    @ObfuscatedName("mb")
     static class7[] field1026;
-    @ObfuscatedName("i")
-    @Export("ItemDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     public static AbstractArchive ItemDefinition_archive;
-    @ObfuscatedName("w")
-    @Export("ItemDefinition_modelArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     public static AbstractArchive ItemDefinition_modelArchive;
-    @ObfuscatedName("f")
-    @Export("ItemDefinition_inMembersWorld")
     public static boolean ItemDefinition_inMembersWorld;
-    @ObfuscatedName("e")
-    @Export("ItemDefinition_cached")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable ItemDefinition_cached = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("t")
-    @Export("ItemDefinition_cachedModels")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable ItemDefinition_cachedModels = new EvictingDualNodeHashTable(50);
-    @ObfuscatedName("d")
-    @Export("ItemDefinition_cachedSprites")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable ItemDefinition_cachedSprites = new EvictingDualNodeHashTable(100);
-    @ObfuscatedName("k")
-    @Export("id")
     public int id;
-    @ObfuscatedName("r")
-    @Export("model")
     int model;
-    @ObfuscatedName("l")
-    @Export("name")
     public String name = "null";
-    @ObfuscatedName("a")
-    @Export("recolorFrom")
     short[] recolorFrom;
-    @ObfuscatedName("z")
-    @Export("recolorTo")
     short[] recolorTo;
-    @ObfuscatedName("s")
-    @Export("retextureFrom")
     short[] retextureFrom;
-    @ObfuscatedName("m")
-    @Export("retextureTo")
     short[] retextureTo;
-    @ObfuscatedName("u")
-    @Export("zoom2d")
     public int zoom2d = 2000;
-    @ObfuscatedName("g")
-    @Export("xan2d")
     public int xan2d = 0;
-    @ObfuscatedName("o")
-    @Export("yan2d")
     public int yan2d = 0;
-    @ObfuscatedName("v")
-    @Export("zan2d")
     public int zan2d = 0;
-    @ObfuscatedName("j")
-    @Export("offsetX2d")
     public int offsetX2d = 0;
-    @ObfuscatedName("n")
-    @Export("offsetY2d")
     public int offsetY2d = 0;
-    @ObfuscatedName("q")
-    @Export("isStackable")
     public int isStackable = 0;
-    @ObfuscatedName("c")
-    @Export("price")
     public int price = 1;
-    @ObfuscatedName("h")
-    @Export("isMembersOnly")
     public boolean isMembersOnly = false;
-    @ObfuscatedName("b")
-    @Export("groundActions")
     public String[] groundActions = new String[]{null, null, "Take", null, null};
-    @ObfuscatedName("y")
-    @Export("inventoryActions")
     public String[] inventoryActions = new String[]{null, null, null, null, "Drop"};
-    @ObfuscatedName("x")
-    @Export("maleModel")
     int maleModel = -1;
-    @ObfuscatedName("ao")
     int field991 = -1;
-    @ObfuscatedName("ae")
-    @Export("maleOffset")
     int maleOffset = 0;
-    @ObfuscatedName("aa")
-    @Export("femaleModel")
     int femaleModel = -1;
-    @ObfuscatedName("ah")
-    @Export("femaleModel1")
     int femaleModel1 = -1;
-    @ObfuscatedName("aw")
-    @Export("femaleOffset")
     int femaleOffset = 0;
-    @ObfuscatedName("an")
     int field984 = -1;
-    @ObfuscatedName("av")
-    @Export("femaleModel2")
     int femaleModel2 = -1;
-    @ObfuscatedName("ak")
-    @Export("maleHeadModel")
     int maleHeadModel = -1;
-    @ObfuscatedName("ax")
     int field1013 = -1;
-    @ObfuscatedName("ab")
-    @Export("femaleHeadModel")
     int femaleHeadModel = -1;
-    @ObfuscatedName("af")
-    @Export("femaleHeadModel2")
     int femaleHeadModel2 = -1;
-    @ObfuscatedName("ai")
-    @Export("countobj")
     int[] countobj;
-    @ObfuscatedName("at")
-    @Export("countco")
     int[] countco;
-    @ObfuscatedName("aq")
-    @Export("note")
     public int note = -1;
-    @ObfuscatedName("ac")
-    @Export("noteTemplate")
     public int noteTemplate = -1;
-    @ObfuscatedName("al")
-    @Export("resizeX")
     int resizeX = 128;
-    @ObfuscatedName("ag")
-    @Export("resizeY")
     int resizeY = 128;
-    @ObfuscatedName("ap")
-    @Export("resizeZ")
     int resizeZ = 128;
-    @ObfuscatedName("am")
     public int field1023 = 0;
-    @ObfuscatedName("as")
     public int field1001 = 0;
-    @ObfuscatedName("aj")
-    @Export("team")
     public int team = 0;
 
-    @ObfuscatedName("w")
-    @Export("method855")
     void method855() {
     }
 
-    @ObfuscatedName("f")
-    @Export("method856")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void method856(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -180,11 +63,6 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method857")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method857(Buffer var1, int var2) {
         if (var2 == 1) {
             this.model = var1.readUnsignedShort();
@@ -293,11 +171,6 @@ public class ItemComposition extends DualNode {
 
     }
 
-    @ObfuscatedName("t")
-    @Export("method892")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass39;Lclass39;)V"
-    )
     void method892(ItemComposition var1, ItemComposition var2) {
         this.model = var1.model;
         this.zoom2d = var1.zoom2d;
@@ -316,11 +189,6 @@ public class ItemComposition extends DualNode {
         this.isStackable = 1;
     }
 
-    @ObfuscatedName("d")
-    @Export("method876")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass100;"
-    )
     public final ModelData method876(int var1) {
         int var3;
         if (this.countobj != null && var1 > 1) {
@@ -361,11 +229,6 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("p")
-    @Export("method886")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass111;"
-    )
     public final Model method886(int var1) {
         if (this.countobj != null && var1 > 1) {
             int var2 = -1;
@@ -414,11 +277,6 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("k")
-    @Export("method861")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass39;"
-    )
     public ItemComposition method861(int var1) {
         if (this.countobj != null && var1 > 1) {
             int var2 = -1;
@@ -437,8 +295,6 @@ public class ItemComposition extends DualNode {
         return this;
     }
 
-    @ObfuscatedName("l")
-    @Export("method862")
     public final boolean method862(boolean var1) {
         int var2 = this.maleModel;
         int var3 = this.field991;
@@ -466,10 +322,6 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("a")
-    @ObfuscatedSignature(
-            descriptor = "(Z)Lclass100;"
-    )
     public final ModelData method860(boolean var1) {
         int var2 = this.maleModel;
         int var3 = this.field991;
@@ -521,7 +373,6 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("z")
     public final boolean method864(boolean var1) {
         int var2 = this.maleHeadModel;
         int var3 = this.field1013;
@@ -543,10 +394,6 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("s")
-    @ObfuscatedSignature(
-            descriptor = "(Z)Lclass100;"
-    )
     public final ModelData method865(boolean var1) {
         int var2 = this.maleHeadModel;
         int var3 = this.field1013;
@@ -582,19 +429,10 @@ public class ItemComposition extends DualNode {
         }
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;)V"
-    )
     public static void method901(AbstractArchive var0) {
         FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var0;
     }
 
-    @ObfuscatedName("aa")
-    @Export("method900")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass47;)V"
-    )
     static final void method900(PcmStream var0) {
         var0.active = false;
         if (var0.sound != null) {

@@ -17,6 +17,7 @@ import osrs.classic.server.game.map.Chunk
 import osrs.classic.server.game.map.Region
 import osrs.classic.server.game.map.Tile
 import osrs.classic.server.game.map.WorldChunk
+import osrs.classic.server.net.packet.server.KEEP_ALIVE
 import osrs.classic.server.util.logger.Logger
 import osrs.classic.server.task.Task
 import osrs.classic.server.task.TaskSubject
@@ -85,7 +86,10 @@ object World : EventSubject, TaskSubject {
     fun gameLogic() {
         //println("process tick")
         // Process client packets
-        players.forEach { it.client.processPackets() }
+        players.forEach {
+            it.client.processPackets()
+            it.client.session.writeAndFlush(KEEP_ALIVE())
+        }
 
         // World
         //processTasks()

@@ -1,52 +1,21 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 import osrs.classic.server.util.logger.Logger;
 
-@ObfuscatedName("y")
-@Implements("NPC")
 public final class NPC extends Actor {
-    @ObfuscatedName("ij")
-    @ObfuscatedSignature(
-            descriptor = "Lclass157;"
-    )
     static Widget field398;
-    @ObfuscatedName("d")
-    @ObfuscatedSignature(
-            descriptor = "Lclass131;"
-    )
     static GameBuild field400;
-    @ObfuscatedName("ew")
-    @Export("modIconSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] modIconSprites;
-    @ObfuscatedName("fk")
-    @Export("cameraPitch")
     static int cameraPitch;
-    @ObfuscatedName("i")
-    @Export("definition")
-    @ObfuscatedSignature(
-            descriptor = "Lclass30;"
-    )
     NPCComposition definition;
 
-    @ObfuscatedName("w")
-    @Export("vmethod2030")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass111;"
-    )
     protected final Model vmethod2030() {
         if (this.definition == null) {
             return null;
         } else {
-            SequenceDefinition var1 = super.animation != -1 && super.sequenceDelay == 0 ? Definitions.getAnimation(super.animation) : null;
-            SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : Definitions.getAnimation(super.movementSequence);
+            AnimationDefinition var1 = super.animation != -1 && super.sequenceDelay == 0 ? Definitions.getAnimation(super.animation) : null;
+            AnimationDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : Definitions.getAnimation(super.movementSequence);
             Model var3 = this.definition.method643(var1, super.sequenceFrame, var2, super.movementFrame);
             if (var3 == null) {
                 return null;
@@ -71,16 +40,10 @@ public final class NPC extends Actor {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("vmethod281")
     final boolean vmethod281() {
         return this.definition != null;
     }
 
-    @ObfuscatedName("e")
-    @ObfuscatedSignature(
-            descriptor = "([BIIIIIII[Lclass163;)V"
-    )
     static final void method268(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, CollisionMap[] var8) {
         int var10;
         for (int var9 = 0; var9 < 8; ++var9) {
@@ -121,15 +84,13 @@ public final class NPC extends Actor {
 
     }
 
-    @ObfuscatedName("a")
-    @Export("method260")
     static void updateGameState(int var0) {
         Logger.INSTANCE.debug("GameState {}", var0);
         if (var0 != Client.gameState) {
             if (Client.gameState == 0) {
                 NPCComposition.field801 = null;
                 World.field206 = null;
-                ItemLayer.field1659 = null;
+                Loot.field1659 = null;
             }
 
             if (var0 == 20 || var0 == 40) {
@@ -274,7 +235,6 @@ public final class NPC extends Actor {
         }
     }
 
-    @ObfuscatedName("aq")
     static final void method267(boolean var0) {
         if (Tiles.localPlayer.x >> 7 == Client.field715 && Tiles.localPlayer.y >> 7 == Client.field716) {
             Client.field715 = 0;
@@ -297,7 +257,7 @@ public final class NPC extends Actor {
             }
 
             if (var3 != null && var3.vmethod281()) {
-               var3.isUnanimated = (Client.isLowDetail && Client.field604 > 50 || Client.field604 > 200) && !var0 && var3.idleSequence == var3.movementSequence;
+                var3.isUnanimated = (Client.isLowDetail && Client.field604 > 50 || Client.field604 > 200) && !var0 && var3.idleSequence == var3.movementSequence;
 
                 int var5 = var3.x >> 7;
                 int var6 = var3.y >> 7;
@@ -324,7 +284,6 @@ public final class NPC extends Actor {
 
     }
 
-    @ObfuscatedName("ap")
     static final void method262(int var0, int var1) {
         if (Client.hintArrowType == 2) {
             class1.method8((Client.hintArrowX - FaceNormal.baseX << 7) + Client.field504, (Client.hintArrowY - Frames.baseY << 7) + Client.field505, Client.field479 * 2);
@@ -335,7 +294,6 @@ public final class NPC extends Actor {
         }
     }
 
-    @ObfuscatedName("bz")
     static final void method266(int var0, int var1, int var2, int var3) {
         for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
             if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
@@ -345,11 +303,6 @@ public final class NPC extends Actor {
 
     }
 
-    @ObfuscatedName("cu")
-    @Export("method254")
-    @ObfuscatedSignature(
-            descriptor = "([Lclass157;I)V"
-    )
     static final void method254(Widget[] var0, int var1) {
         for (int var2 = 0; var2 < var0.length; ++var2) {
             Widget var3 = var0[var2];
@@ -391,8 +344,6 @@ public final class NPC extends Actor {
 
     }
 
-    @ObfuscatedName("cn")
-    @Export("method256")
     static final void method256(int var0, String var1, String text, String var3) {
         for (int var4 = 99; var4 > 0; --var4) {
             Client.field694[var4] = Client.field694[var4 - 1];
@@ -409,7 +360,6 @@ public final class NPC extends Actor {
         Client.field482 = Client.field681;
     }
 
-    @ObfuscatedName("df")
     static final void method264(String var0) {
         if (var0 != null) {
             if ((Client.field736 < 200 || Client.isMember == 1) && Client.field736 < 400) {
@@ -468,7 +418,6 @@ public final class NPC extends Actor {
         }
     }
 
-    @ObfuscatedName("dt")
     static final void method265(String var0) {
         if (var0 != null) {
             String var1 = Projectile.method125(var0, class5.field75);

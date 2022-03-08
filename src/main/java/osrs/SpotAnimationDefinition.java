@@ -1,80 +1,25 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import osrs.cache.Definitions;
 
-@ObfuscatedName("ax")
-@Implements("SpotAnimationDefinition")
 public class SpotAnimationDefinition extends DualNode {
-    @ObfuscatedName("i")
-    @Export("SpotAnimationDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive SpotAnimationDefinition_archive;
-    @ObfuscatedName("w")
-    @Export("SpotAnimationDefinition_modelArchive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive SpotAnimationDefinition_modelArchive;
-    @ObfuscatedName("f")
-    @Export("SpotAnimationDefinition_cached")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable SpotAnimationDefinition_cached = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("e")
-    @Export("SpotAnimationDefinition_cachedModels")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     public static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels = new EvictingDualNodeHashTable(30);
-    @ObfuscatedName("t")
-    @Export("id")
     int id;
-    @ObfuscatedName("d")
-    @Export("archive")
     int archive;
-    @ObfuscatedName("p")
-    @Export("sequence")
     public int sequence = -1;
-    @ObfuscatedName("k")
-    @Export("recolorFrom")
     short[] recolorFrom;
-    @ObfuscatedName("r")
-    @Export("recolorTo")
     short[] recolorTo;
-    @ObfuscatedName("l")
-    @Export("retextureFrom")
     short[] retextureFrom;
-    @ObfuscatedName("a")
-    @Export("retextureTo")
     short[] retextureTo;
-    @ObfuscatedName("z")
-    @Export("widthScale")
     int widthScale = 128;
-    @ObfuscatedName("s")
-    @Export("heightScale")
     int heightScale = 128;
-    @ObfuscatedName("m")
-    @Export("orientation")
     int orientation = 0;
-    @ObfuscatedName("u")
-    @Export("ambient")
     int ambient = 0;
-    @ObfuscatedName("g")
-    @Export("contrast")
     int contrast = 0;
 
-    @ObfuscatedName("f")
-    @Export("method764")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     void method764(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
@@ -86,11 +31,6 @@ public class SpotAnimationDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method765")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method765(Buffer var1, int var2) {
         if (var2 == 1) {
             this.archive = var1.readUnsignedShort();
@@ -132,11 +72,6 @@ public class SpotAnimationDefinition extends DualNode {
 
     }
 
-    @ObfuscatedName("t")
-    @Export("method766")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass111;"
-    )
     public final Model method766(int var1) {
         Model var2 = (Model) SpotAnimationDefinition_cachedModels.method3474(this.id);
         if (var2 == null) {
@@ -193,11 +128,6 @@ public class SpotAnimationDefinition extends DualNode {
         return var5;
     }
 
-    @ObfuscatedName("ab")
-    @Export("method770")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass2;II)V"
-    )
     static void setAnimation(Player player, int id, int delay) {
         if (player.animation == id && id != -1) {
             int var3 = Definitions.getAnimation(id).field901;

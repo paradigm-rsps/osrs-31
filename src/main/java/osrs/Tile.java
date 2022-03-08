@@ -1,102 +1,30 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
-@ObfuscatedName("cn")
-@Implements("Tile")
 public final class Tile extends Node {
-    @ObfuscatedName("i")
-    @Export("plane")
     int plane;
-    @ObfuscatedName("w")
-    @Export("x")
     int x;
-    @ObfuscatedName("f")
-    @Export("y")
     int y;
-    @ObfuscatedName("e")
-    @Export("originalPlane")
     int originalPlane;
-    @ObfuscatedName("t")
-    @Export("paint")
-    @ObfuscatedSignature(
-            descriptor = "Lclass99;"
-    )
     SceneTilePaint paint;
-    @ObfuscatedName("d")
-    @Export("model")
-    @ObfuscatedSignature(
-            descriptor = "Lclass92;"
-    )
     SceneTileModel model;
-    @ObfuscatedName("p")
-    @Export("boundaryObject")
-    @ObfuscatedSignature(
-            descriptor = "Lclass95;"
-    )
     BoundaryObject boundaryObject;
-    @ObfuscatedName("k")
-    @Export("wallDecoration")
-    @ObfuscatedSignature(
-            descriptor = "Lclass107;"
-    )
     WallDecoration wallDecoration;
-    @ObfuscatedName("r")
-    @Export("floorDecoration")
-    @ObfuscatedSignature(
-            descriptor = "Lclass106;"
-    )
     FloorDecoration floorDecoration;
-    @ObfuscatedName("l")
-    @Export("itemLayer")
-    @ObfuscatedSignature(
-            descriptor = "Lclass98;"
-    )
-    ItemLayer itemLayer;
-    @ObfuscatedName("a")
-    @Export("gameObjectsCount")
+    Loot loot;
     int gameObjectsCount;
-    @ObfuscatedName("z")
-    @Export("gameObjects")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass97;"
-    )
     GameObject[] gameObjects = new GameObject[5];
-    @ObfuscatedName("s")
-    @Export("gameObjectEdgeMasks")
     int[] gameObjectEdgeMasks = new int[5];
-    @ObfuscatedName("m")
-    @Export("gameObjectsEdgeMask")
     int gameObjectsEdgeMask = 0;
-    @ObfuscatedName("u")
-    @Export("minPlane")
     int minPlane;
-    @ObfuscatedName("g")
-    @Export("drawPrimary")
     boolean drawPrimary;
-    @ObfuscatedName("o")
-    @Export("drawSecondary")
     boolean drawSecondary;
-    @ObfuscatedName("v")
-    @Export("drawGameObjects")
     boolean drawGameObjects;
-    @ObfuscatedName("j")
-    @Export("drawGameObjectEdges")
     int drawGameObjectEdges;
-    @ObfuscatedName("n")
     int field1752;
-    @ObfuscatedName("q")
     int field1753;
-    @ObfuscatedName("c")
     int field1754;
-    @ObfuscatedName("h")
-    @Export("linkedBelowTile")
-    @ObfuscatedSignature(
-            descriptor = "Lclass101;"
-    )
     Tile linkedBelowTile;
 
     Tile(int var1, int var2, int var3) {
@@ -105,11 +33,6 @@ public final class Tile extends Node {
         this.y = var3;
     }
 
-    @ObfuscatedName("i")
-    @Export("method2297")
-    @ObfuscatedSignature(
-            descriptor = "(I)Lclass4;"
-    )
     static Script method2297(int var0) {
         Script var1 = (Script) Script.field68.method3474(var0);
         if (var1 != null) {
@@ -151,7 +74,6 @@ public final class Tile extends Node {
         }
     }
 
-    @ObfuscatedName("p")
     static String method2296(char var0, int var1) {
         char[] var2 = new char[var1];
 
@@ -162,7 +84,6 @@ public final class Tile extends Node {
         return new String(var2);
     }
 
-    @ObfuscatedName("ba")
     static final boolean method2298(int var0, int var1, int var2) {
         int var3 = var2 >> 14 & 32767;
         int var4 = Interpreter.scene.method2071(class22.scenePlane, var0, var1, var2);
@@ -174,7 +95,7 @@ public final class Tile extends Node {
             if (var5 != 10 && var5 != 11 && var5 != 22) {
                 FileSystem.method1517(Tiles.localPlayer.pathX[0], Tiles.localPlayer.pathY[0], var0, var1, true, var5 + 1, var6, 0, 0, 0, 2);
             } else {
-                ObjectComposition var7 = GameBuild.getObjectComposition(var3);
+                ObjectDefinition var7 = Definitions.getObject(var3);
                 int var8;
                 int var9;
                 if (var6 != 0 && var6 != 2) {
@@ -201,11 +122,6 @@ public final class Tile extends Node {
         }
     }
 
-    @ObfuscatedName("bl")
-    @Export("method2300")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass30;III)V"
-    )
     static final void method2300(NPCComposition var0, int var1, int var2, int var3) {
         if (Client.menuOptionsCount < 400) {
             if (var0.transforms != null) {
@@ -328,7 +244,6 @@ public final class Tile extends Node {
         }
     }
 
-    @ObfuscatedName("cz")
     static final String[] method2299(String[] var0) {
         String[] var1 = new String[5];
 

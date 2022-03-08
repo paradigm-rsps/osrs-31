@@ -1,26 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("fa")
-@Implements("CollisionMap")
 public class CollisionMap {
-    @ObfuscatedName("aw")
-    @Export("xInset")
     int xInset = 0;
-    @ObfuscatedName("an")
-    @Export("yInset")
     int yInset = 0;
-    @ObfuscatedName("av")
-    @Export("xSize")
     int xSize;
-    @ObfuscatedName("ak")
-    @Export("ySize")
     int ySize;
-    @ObfuscatedName("ax")
-    @Export("flags")
     public int[][] flags;
 
     public CollisionMap(int var1, int var2) {
@@ -30,8 +14,6 @@ public class CollisionMap {
         this.method3435();
     }
 
-    @ObfuscatedName("i")
-    @Export("method3435")
     public void method3435() {
         for (int var1 = 0; var1 < this.xSize; ++var1) {
             for (int var2 = 0; var2 < this.ySize; ++var2) {
@@ -45,7 +27,6 @@ public class CollisionMap {
 
     }
 
-    @ObfuscatedName("w")
     public void method3427(int var1, int var2, int var3, int var4, boolean var5) {
         var1 -= this.xInset;
         var2 -= this.yInset;
@@ -193,8 +174,6 @@ public class CollisionMap {
 
     }
 
-    @ObfuscatedName("f")
-    @Export("method3428")
     public void method3428(int var1, int var2, int var3, int var4, boolean var5) {
         int var6 = 256;
         if (var5) {
@@ -216,27 +195,22 @@ public class CollisionMap {
 
     }
 
-    @ObfuscatedName("e")
     public void method3429(int var1, int var2) {
         var1 -= this.xInset;
         var2 -= this.yInset;
         this.flags[var1][var2] |= 2097152;
     }
 
-    @ObfuscatedName("t")
     public void method3430(int var1, int var2) {
         var1 -= this.xInset;
         var2 -= this.yInset;
         this.flags[var1][var2] |= 262144;
     }
 
-    @ObfuscatedName("d")
-    @Export("method3431")
     void method3431(int var1, int var2, int var3) {
         this.flags[var1][var2] |= var3;
     }
 
-    @ObfuscatedName("p")
     public void method3432(int var1, int var2, int var3, int var4, boolean var5) {
         var1 -= this.xInset;
         var2 -= this.yInset;
@@ -384,8 +358,6 @@ public class CollisionMap {
 
     }
 
-    @ObfuscatedName("k")
-    @Export("method3446")
     public void method3446(int var1, int var2, int var3, int var4, int var5, boolean var6) {
         int var7 = 256;
         if (var6) {
@@ -413,20 +385,16 @@ public class CollisionMap {
 
     }
 
-    @ObfuscatedName("r")
-    @Export("method3433")
     void method3433(int var1, int var2, int var3) {
         this.flags[var1][var2] &= ~var3;
     }
 
-    @ObfuscatedName("l")
     public void method3425(int var1, int var2) {
         var1 -= this.xInset;
         var2 -= this.yInset;
         this.flags[var1][var2] &= -262145;
     }
 
-    @ObfuscatedName("a")
     public boolean method3438(int var1, int var2, int var3, int var4, int var5, int var6) {
         if (var3 == var1 && var2 == var4) {
             return true;
@@ -575,7 +543,6 @@ public class CollisionMap {
         }
     }
 
-    @ObfuscatedName("z")
     public boolean method3444(int var1, int var2, int var3, int var4, int var5, int var6) {
         if (var3 == var1 && var2 == var4) {
             return true;
@@ -644,7 +611,6 @@ public class CollisionMap {
         }
     }
 
-    @ObfuscatedName("s")
     public boolean method3467(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
         int var8 = var3 + var5 - 1;
         int var9 = var4 + var6 - 1;

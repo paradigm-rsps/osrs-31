@@ -1,59 +1,20 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("g")
-@Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-    @ObfuscatedName("pd")
-    @ObfuscatedSignature(
-            descriptor = "Lclass84;"
-    )
     public static AbstractRasterProvider field262;
-    @ObfuscatedName("ms")
-    @Export("sceneMinimapSprite")
-    @ObfuscatedSignature(
-            descriptor = "Lclass85;"
-    )
     static SpritePixels sceneMinimapSprite;
-    @ObfuscatedName("ay")
-    @Export("archive8")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive8;
-    @ObfuscatedName("bm")
     static int OSRS_PORT;
-    @ObfuscatedName("ed")
-    @Export("headIconPrayerSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] headIconPrayerSprites;
-    @ObfuscatedName("fa")
-    @Export("cameraYaw")
     static int cameraYaw;
-    @ObfuscatedName("i")
-    @Export("isRunning")
     boolean isRunning = true;
-    @ObfuscatedName("w")
-    @Export("lock")
     Object lock = new Object();
-    @ObfuscatedName("f")
-    @Export("index")
     int index = 0;
-    @ObfuscatedName("e")
-    @Export("xs")
     int[] xs = new int[500];
-    @ObfuscatedName("t")
-    @Export("ys")
     int[] ys = new int[500];
 
     public void run() {
-        for (; this.isRunning; SequenceDefinition.sleepWeird(50L)) {
+        for (; this.isRunning; AnimationDefinition.sleepWeird(50L)) {
             Object var1 = this.lock;
             synchronized (this.lock) {
                 if (this.index < 500) {
@@ -66,8 +27,6 @@ public class MouseRecorder implements Runnable {
 
     }
 
-    @ObfuscatedName("w")
-    @Export("method168")
     static void method168(int var0) {
         if (var0 != -1) {
             if (EnumComposition.method852(var0)) {
@@ -87,10 +46,6 @@ public class MouseRecorder implements Runnable {
         }
     }
 
-    @ObfuscatedName("w")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;Ljava/lang/String;)I"
-    )
     public static int method167(Buffer var0, String var1) {
         int var2 = var0.offset;
         byte[] var3 = WallDecoration.method2385(var1);
@@ -99,7 +54,6 @@ public class MouseRecorder implements Runnable {
         return var0.offset - var2;
     }
 
-    @ObfuscatedName("ae")
     static void method171(int var0, int var1) {
         if (Client.field718 != 0 && var0 != -1) {
             class161.method3399(World.archive11, var0, 0, Client.field718, false);

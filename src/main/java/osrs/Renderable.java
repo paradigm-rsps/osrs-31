@@ -1,32 +1,17 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
 
 import java.util.Date;
 
-@ObfuscatedName("cr")
-@Implements("Renderable")
 public abstract class Renderable extends DualNode {
-    @ObfuscatedName("kv")
     static int field1546;
-    @ObfuscatedName("bt")
-    @Export("height")
     public int height = 1000;
 
-    @ObfuscatedName("w")
-    @Export("vmethod2030")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass111;"
-    )
     protected Model vmethod2030() {
         return null;
     }
 
-    @ObfuscatedName("ae")
     void vmethod2441(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
         Model var10 = this.vmethod2030();
         if (var10 != null) {
@@ -36,10 +21,6 @@ public abstract class Renderable extends DualNode {
 
     }
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass0;)V"
-    )
     static void method2040(ScriptEvent var0) {
         Object[] var1 = var0.args;
         int var2 = (Integer) var1[0];
@@ -2915,10 +2896,6 @@ public abstract class Renderable extends DualNode {
         }
     }
 
-    @ObfuscatedName("f")
-    @ObfuscatedSignature(
-            descriptor = "([BIIII[Lclass163;)V"
-    )
     static final void method2039(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
         int var7;
         int var8;
@@ -2944,7 +2921,6 @@ public abstract class Renderable extends DualNode {
 
     }
 
-    @ObfuscatedName("ag")
     static final int method2038() {
         if (Projectile.clientPreferences.roofsHidden) {
             return class22.scenePlane;

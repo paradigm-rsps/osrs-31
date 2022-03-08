@@ -1,39 +1,22 @@
 package osrs;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.math.BigInteger;
 
-@ObfuscatedName("d")
 public class class5 {
-    @ObfuscatedName("nh")
     static int field73;
-    @ObfuscatedName("i")
     static final BigInteger modulus = new BigInteger("10001", 16);
-    @ObfuscatedName("w")
     static final BigInteger exponent = new BigInteger("d1b7a2b187c81341fde6dbe64541f50a9ad191209faa1e17cf5b02b78dcffca3a16a0492dc2e30f940b7c30159477bc769a574d3849a5e31a2a228dd351a0334602e483471301a5165b91586267196c2eaebbfb9cb9d349f57ba22ed0407185caf02e181efa69eb5b683ff9af0c72c99f2ce12ec4221e7fdec7718abc39a53f12ca59dae94d84b2ca34efd5094d3819a2d74605c82fd533b38dc5f7312e40d559b89d405aaa6c79939ed704b4ff042c240507ddc251646c3a5aac4ba05bfa4fd86094ec2e1673f6e7b175ac3905895e2092e0434057fb1b92707fea8222e5de4443b2f4716bf037863451b0579f85ed7bdf1fbc6c1f9fa9f603d504044a6bc8b", 16);
-    @ObfuscatedName("r")
-    @ObfuscatedSignature(
-            descriptor = "Lclass185;"
-    )
     static LoginType field75;
 
-    @ObfuscatedName("i")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;)V"
-    )
     public static void method41(AbstractArchive var0) {
         FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
     }
 
-    @ObfuscatedName("t")
     static final int method39(int var0, int var1, int var2) {
         int var3 = 256 - var2;
         return ((var1 & '\uff00') * var2 + (var0 & '\uff00') * var3 & 16711680) + (var3 * (var0 & 16711935) + (var1 & 16711935) * var2 & -16711936) >> 8;
     }
 
-    @ObfuscatedName("p")
     public static void method38() {
         try {
             if (class137.musicPlayerStatus == 1) {
@@ -70,7 +53,6 @@ public class class5 {
 
     }
 
-    @ObfuscatedName("az")
     static final void updateScene(int chunkX, int chunkY, int clientPlane, int tileX, int tileY) {
         if (chunkX != Client.chunkX || Client.chunkY != chunkY || clientPlane != Client.renderPlane && Client.isLowDetail) {
             Client.chunkX = chunkX;
@@ -175,7 +157,6 @@ public class class5 {
         }
     }
 
-    @ObfuscatedName("dy")
     static final void method40(String var0) {
         if (ItemComposition.field1026 != null) {
             Client.rsaBuf.writeByteOpcode(209);

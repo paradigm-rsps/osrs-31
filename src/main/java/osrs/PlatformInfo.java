@@ -1,60 +1,29 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("en")
-@Implements("PlatformInfo")
 public class PlatformInfo extends Node {
-    @ObfuscatedName("d")
     int field2489;
-    @ObfuscatedName("p")
     boolean field2488;
-    @ObfuscatedName("q")
     int field2486;
-    @ObfuscatedName("x")
     int field2476;
-    @ObfuscatedName("ao")
     int field2479;
-    @ObfuscatedName("ae")
     int field2480;
-    @ObfuscatedName("aa")
     int field2481;
-    @ObfuscatedName("ah")
     boolean field2482;
-    @ObfuscatedName("aw")
     int field2485;
-    @ObfuscatedName("av")
     int field2484;
-    @ObfuscatedName("ax")
     int field2468;
-    @ObfuscatedName("ab")
     int field2474;
-    @ObfuscatedName("af")
     String field2487;
-    @ObfuscatedName("ai")
     String field2464;
-    @ObfuscatedName("at")
     String field2477;
-    @ObfuscatedName("aq")
     String field2490;
-    @ObfuscatedName("ac")
     int field2491;
-    @ObfuscatedName("al")
     int field2492;
-    @ObfuscatedName("ag")
     int field2493;
-    @ObfuscatedName("ap")
     int field2494;
-    @ObfuscatedName("am")
     String field2483;
-    @ObfuscatedName("as")
     String field2496;
-    @ObfuscatedName("aj")
     int[] field2497 = new int[3];
-    @ObfuscatedName("ar")
     int field2498;
 
     public PlatformInfo(boolean var1) {
@@ -223,7 +192,6 @@ public class PlatformInfo extends Node {
         this.method3180();
     }
 
-    @ObfuscatedName("i")
     void method3180() {
         if (this.field2487.length() > 40) {
             this.field2487 = this.field2487.substring(0, 40);
@@ -243,11 +211,6 @@ public class PlatformInfo extends Node {
 
     }
 
-    @ObfuscatedName("w")
-    @Export("method3181")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
     public void writePlatformInfo(Buffer var1) {
         var1.writeByte(6);
         var1.writeByte(this.field2489);
@@ -280,8 +243,6 @@ public class PlatformInfo extends Node {
         var1.writeInt(this.field2498);
     }
 
-    @ObfuscatedName("f")
-    @Export("method3182")
     public int method3182() {
         byte var1 = 38;
         int var2 = var1 + BZip2State.method2509(this.field2487);
@@ -293,13 +254,11 @@ public class PlatformInfo extends Node {
         return var2;
     }
 
-    @ObfuscatedName("t")
     public static int method3200(int var0, int var1) {
         int var2 = var0 >>> 31;
         return (var0 + var2) / var1 - var2;
     }
 
-    @ObfuscatedName("bq")
     static final boolean method3190(int var0) {
         if (var0 < 0) {
             return false;

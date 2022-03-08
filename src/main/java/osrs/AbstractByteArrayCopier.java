@@ -1,37 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("da")
-@Implements("AbstractByteArrayCopier")
 public abstract class AbstractByteArrayCopier {
-    @ObfuscatedName("je")
     static int field2008;
-    @ObfuscatedName("i")
     static boolean field2007 = false;
-    @ObfuscatedName("h")
     static int[] field2005;
-    @ObfuscatedName("bj")
-    @Export("archive12")
-    @ObfuscatedSignature(
-            descriptor = "Lclass153;"
-    )
     static Archive archive12;
 
-    @ObfuscatedName("e")
-    @Export("vmethod2620")
     abstract byte[] vmethod2620();
 
-    @ObfuscatedName("t")
     abstract void vmethod2622(byte[] var1);
 
-    @ObfuscatedName("an")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass26;I)V"
-    )
     static final void method2569(Actor var0, int var1) {
         int var2;
         int var3;

@@ -1,23 +1,9 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.awt.*;
 
-@ObfuscatedName("be")
-@Implements("Canvas")
 public final class Canvas extends java.awt.Canvas {
-    @ObfuscatedName("at")
-    @Export("js5SocketTask")
-    @ObfuscatedSignature(
-            descriptor = "Lclass78;"
-    )
     static Task js5SocketTask;
-    @ObfuscatedName("i")
-    @Export("component")
     Component component;
 
     Canvas(Component var1) {
@@ -32,7 +18,6 @@ public final class Canvas extends java.awt.Canvas {
         this.component.paint(var1);
     }
 
-    @ObfuscatedName("n")
     static final void method1655() {
         if (GraphicsObject.gameSocket != null) {
             GraphicsObject.gameSocket.method1471();

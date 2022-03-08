@@ -1,44 +1,15 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("al")
-@Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-    @ObfuscatedName("pc")
     static int field1040;
-    @ObfuscatedName("i")
-    @Export("VarpDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
-    static AbstractArchive VarpDefinition_archive;
-    @ObfuscatedName("w")
+    public static AbstractArchive VarpDefinition_archive;
     public static int field1039;
-    @ObfuscatedName("f")
-    @Export("VarpDefinition_cached")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
-    static EvictingDualNodeHashTable VarpDefinition_cached = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("t")
-    @Export("Tiles_overlays")
+    public static EvictingDualNodeHashTable VarpDefinition_cached = new EvictingDualNodeHashTable(64);
     static byte[][][] Tiles_overlays;
-    @ObfuscatedName("ea")
     static int[] field1044;
-    @ObfuscatedName("e")
-    @Export("type")
     public int type = 0;
 
-    @ObfuscatedName("f")
-    @Export("method924")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;)V"
-    )
-    void method924(Buffer var1) {
+    public void method924(Buffer var1) {
         while (true) {
             int var2 = var1.readUnsignedByte();
             if (var2 == 0) {
@@ -49,11 +20,6 @@ public class VarpDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("e")
-    @Export("method920")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method920(Buffer var1, int var2) {
         if (var2 == 5) {
             this.type = var1.readUnsignedShort();
@@ -61,7 +27,6 @@ public class VarpDefinition extends DualNode {
 
     }
 
-    @ObfuscatedName("f")
     static byte[] method934(byte[] var0) {
         int var1 = var0.length;
         byte[] var2 = new byte[var1];
@@ -69,7 +34,6 @@ public class VarpDefinition extends DualNode {
         return var2;
     }
 
-    @ObfuscatedName("al")
     static final int method936() {
         if (Projectile.clientPreferences.roofsHidden) {
             return class22.scenePlane;
@@ -169,8 +133,6 @@ public class VarpDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("ct")
-    @Export("method927")
     static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
         if (EnumComposition.method852(var0)) {
             class40.drawInterface(Widget.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);

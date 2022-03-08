@@ -1,59 +1,22 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
 import java.io.EOFException;
 import java.io.IOException;
 
-@ObfuscatedName("ah")
-@Implements("BufferedFile")
 public class BufferedFile {
-    @ObfuscatedName("hh")
-    @Export("menuY")
     static int menuY;
-    @ObfuscatedName("i")
-    @Export("accessFile")
-    @ObfuscatedSignature(
-            descriptor = "Lclass28;"
-    )
     AccessFile accessFile;
-    @ObfuscatedName("w")
-    @Export("readBuffer")
     byte[] readBuffer;
-    @ObfuscatedName("f")
-    @Export("readBufferOffset")
     long readBufferOffset = -1L;
-    @ObfuscatedName("e")
-    @Export("readBufferLength")
     int readBufferLength;
-    @ObfuscatedName("t")
-    @Export("writeBuffer")
     byte[] writeBuffer;
-    @ObfuscatedName("d")
-    @Export("writeBufferOffset")
     long writeBufferOffset = -1L;
-    @ObfuscatedName("p")
-    @Export("writeBufferLength")
     int writeBufferLength = 0;
-    @ObfuscatedName("k")
-    @Export("offset")
     long offset;
-    @ObfuscatedName("r")
-    @Export("fileLength")
     long fileLength;
-    @ObfuscatedName("l")
-    @Export("length")
     long length;
-    @ObfuscatedName("a")
-    @Export("fileOffset")
     long fileOffset;
 
-    @ObfuscatedSignature(
-            descriptor = "(Lclass28;II)V"
-    )
     public BufferedFile(AccessFile var1, int var2, int var3) throws IOException {
         this.accessFile = var1;
         this.length = this.fileLength = var1.method578();
@@ -62,15 +25,11 @@ public class BufferedFile {
         this.offset = 0L;
     }
 
-    @ObfuscatedName("i")
-    @Export("method600")
     public void method600() throws IOException {
         this.method614();
         this.accessFile.method586();
     }
 
-    @ObfuscatedName("w")
-    @Export("method601")
     public void method601(long var1) throws IOException {
         if (var1 < 0L) {
             throw new IOException("");
@@ -79,20 +38,14 @@ public class BufferedFile {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method602")
     public long method602() {
         return this.length;
     }
 
-    @ObfuscatedName("e")
-    @Export("method607")
     public void method607(byte[] var1) throws IOException {
         this.method604(var1, 0, var1.length);
     }
 
-    @ObfuscatedName("t")
-    @Export("method604")
     public void method604(byte[] var1, int var2, int var3) throws IOException {
         try {
             if (var3 + var2 > var1.length) {
@@ -193,8 +146,6 @@ public class BufferedFile {
         }
     }
 
-    @ObfuscatedName("d")
-    @Export("method605")
     void method605() throws IOException {
         this.readBufferLength = 0;
         if (this.offset != this.fileOffset) {
@@ -214,8 +165,6 @@ public class BufferedFile {
 
     }
 
-    @ObfuscatedName("p")
-    @Export("method606")
     public void method606(byte[] var1, int var2, int var3) throws IOException {
         try {
             if (this.offset + (long) var3 > this.length) {
@@ -288,8 +237,6 @@ public class BufferedFile {
         }
     }
 
-    @ObfuscatedName("k")
-    @Export("method614")
     void method614() throws IOException {
         if (-1L != this.writeBufferOffset) {
             if (this.writeBufferOffset != this.fileOffset) {
@@ -328,7 +275,6 @@ public class BufferedFile {
 
     }
 
-    @ObfuscatedName("i")
     public static final boolean method599(String var0, String var1, String var2, String var3) {
         if (var0 != null && var2 != null) {
             return !var0.startsWith("#") && !var2.startsWith("#") ? var1.equals(var3) : var0.equals(var2);
@@ -337,18 +283,12 @@ public class BufferedFile {
         }
     }
 
-    @ObfuscatedName("f")
-    @Export("method624")
     static void method624(String var0, String var1, String var2) {
         Login.Login_response1 = var0;
         Login.Login_response2 = var1;
         Login.Login_response3 = var2;
     }
 
-    @ObfuscatedName("k")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass67;"
-    )
     static Clock method617() {
         try {
             return new NanoClock();
@@ -357,8 +297,6 @@ public class BufferedFile {
         }
     }
 
-    @ObfuscatedName("ar")
-    @Export("method603")
     static final int getTileHeight(int var0, int var1, int var2) {
         int var3 = var0 >> 7;
         int var4 = var1 >> 7;
@@ -370,8 +308,8 @@ public class BufferedFile {
 
             int var6 = var0 & 127;
             int var7 = var1 & 127;
-            int var8 = (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] + Tiles.Tiles_heights[var5][var3 + 1][var4] * var6 >> 7;
-            int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
+            int var8 = (128 - var6) * Tiles.tileHeights[var5][var3][var4] + Tiles.tileHeights[var5][var3 + 1][var4] * var6 >> 7;
+            int var9 = var6 * Tiles.tileHeights[var5][var3 + 1][var4 + 1] + Tiles.tileHeights[var5][var3][var4 + 1] * (128 - var6) >> 7;
             return var7 * var9 + var8 * (128 - var7) >> 7;
         } else {
             return 0;

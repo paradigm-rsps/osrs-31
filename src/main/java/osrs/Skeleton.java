@@ -1,25 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("df")
-@Implements("Skeleton")
 public class Skeleton extends Node {
-    @ObfuscatedName("k")
     public static short[][] field1792;
-    @ObfuscatedName("i")
-    @Export("id")
     int id;
-    @ObfuscatedName("w")
-    @Export("count")
     int count;
-    @ObfuscatedName("f")
-    @Export("transformTypes")
     int[] transformTypes;
-    @ObfuscatedName("e")
-    @Export("labels")
     int[][] labels;
 
     Skeleton(int var1, byte[] var2) {
@@ -46,12 +31,10 @@ public class Skeleton extends Node {
 
     }
 
-    @ObfuscatedName("u")
-    @Export("method2367")
     static void method2367() {
         int var8;
         if (Client.titleLoadingStage == 0) {
-            Interpreter.scene = new Scene(4, 104, 104, Tiles.Tiles_heights);
+            Interpreter.scene = new Scene(4, 104, 104, Tiles.tileHeights);
 
             for (var8 = 0; var8 < 4; ++var8) {
                 Client.collisionMaps[var8] = new CollisionMap(104, 104);
@@ -366,8 +349,8 @@ public class Skeleton extends Node {
                             ++var8;
                         }
 
-                        if (ItemLayer.mapDotSprites == null) {
-                            ItemLayer.mapDotSprites = Clock.method1467(MouseRecorder.archive8, "mapmarker", "");
+                        if (Loot.mapDotSprites == null) {
+                            Loot.mapDotSprites = Clock.method1467(MouseRecorder.archive8, "mapmarker", "");
                         } else {
                             ++var8;
                         }
@@ -429,7 +412,6 @@ public class Skeleton extends Node {
         }
     }
 
-    @ObfuscatedName("aw")
     static final void method2366() {
         int var0 = Client.field734 + Tiles.localPlayer.x;
         int var1 = Client.field549 + Tiles.localPlayer.y;
@@ -485,7 +467,7 @@ public class Skeleton extends Node {
                         ++var8;
                     }
 
-                    int var9 = var4 - Tiles.Tiles_heights[var8][var6][var7];
+                    int var9 = var4 - Tiles.tileHeights[var8][var6][var7];
                     if (var9 > var5) {
                         var5 = var9;
                     }

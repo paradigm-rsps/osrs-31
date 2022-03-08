@@ -1,36 +1,10 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fh")
-@Implements("NodeHashTable")
 public final class NodeHashTable {
-    @ObfuscatedName("i")
-    @Export("size")
     int size;
-    @ObfuscatedName("w")
-    @Export("buckets")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass178;"
-    )
     Node[] buckets;
-    @ObfuscatedName("f")
-    @Export("currentGet")
-    @ObfuscatedSignature(
-            descriptor = "Lclass178;"
-    )
     Node currentGet;
-    @ObfuscatedName("e")
-    @Export("current")
-    @ObfuscatedSignature(
-            descriptor = "Lclass178;"
-    )
     Node current;
-    @ObfuscatedName("t")
-    @Export("index")
     int index = 0;
 
     public NodeHashTable(int var1) {
@@ -45,11 +19,6 @@ public final class NodeHashTable {
 
     }
 
-    @ObfuscatedName("i")
-    @Export("method3512")
-    @ObfuscatedSignature(
-            descriptor = "(J)Lclass178;"
-    )
     public Node method3512(long var1) {
         Node var3 = this.buckets[(int) (var1 & (long) (this.size - 1))];
 
@@ -65,11 +34,6 @@ public final class NodeHashTable {
         return null;
     }
 
-    @ObfuscatedName("w")
-    @Export("method3517")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass178;J)V"
-    )
     public void method3517(Node var1, long var2) {
         if (var1.next != null) {
             var1.remove();
@@ -83,8 +47,6 @@ public final class NodeHashTable {
         var1.key = var2;
     }
 
-    @ObfuscatedName("f")
-    @Export("method3514")
     void method3514() {
         for (int var1 = 0; var1 < this.size; ++var1) {
             Node var2 = this.buckets[var1];
@@ -103,21 +65,11 @@ public final class NodeHashTable {
         this.current = null;
     }
 
-    @ObfuscatedName("e")
-    @Export("method3515")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass178;"
-    )
     public Node method3515() {
         this.index = 0;
         return this.method3516();
     }
 
-    @ObfuscatedName("t")
-    @Export("method3516")
-    @ObfuscatedSignature(
-            descriptor = "()Lclass178;"
-    )
     public Node method3516() {
         Node var1;
         if (this.index > 0 && this.buckets[this.index - 1] != this.current) {

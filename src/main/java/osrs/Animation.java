@@ -1,49 +1,18 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("cf")
-@Implements("Animation")
 public class Animation {
-    @ObfuscatedName("i")
     static int[] field1631 = new int[500];
-    @ObfuscatedName("w")
     static int[] field1638 = new int[500];
-    @ObfuscatedName("f")
     static int[] field1635 = new int[500];
-    @ObfuscatedName("e")
     static int[] field1632 = new int[500];
-    @ObfuscatedName("t")
-    @Export("skeleton")
-    @ObfuscatedSignature(
-            descriptor = "Lclass104;"
-    )
     Skeleton skeleton = null;
-    @ObfuscatedName("d")
-    @Export("transformCount")
     int transformCount = -1;
-    @ObfuscatedName("p")
-    @Export("transformSkeletonLabels")
     int[] transformSkeletonLabels;
-    @ObfuscatedName("k")
-    @Export("transformXs")
     int[] transformXs;
-    @ObfuscatedName("r")
-    @Export("transformYs")
     int[] transformYs;
-    @ObfuscatedName("l")
-    @Export("transformZs")
     int[] transformZs;
-    @ObfuscatedName("a")
-    @Export("hasAlphaTransform")
     boolean hasAlphaTransform = false;
 
-    @ObfuscatedSignature(
-            descriptor = "([BLclass104;)V"
-    )
     Animation(byte[] var1, Skeleton var2) {
         this.skeleton = var2;
         Buffer var3 = new Buffer(var1);

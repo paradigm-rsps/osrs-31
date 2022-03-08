@@ -1,32 +1,12 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dl")
-@Implements("IsaacCipher")
 public final class IsaacCipher {
-    @ObfuscatedName("cj")
     public static char field2000;
-    @ObfuscatedName("e")
-    @Export("valuesRemaining")
     int valuesRemaining;
-    @ObfuscatedName("t")
-    @Export("results")
     int[] results = new int[256];
-    @ObfuscatedName("d")
-    @Export("mm")
     int[] mm = new int[256];
-    @ObfuscatedName("p")
-    @Export("aa")
     int aa;
-    @ObfuscatedName("k")
-    @Export("bb")
     int bb;
-    @ObfuscatedName("r")
-    @Export("cc")
     int cc;
 
     IsaacCipher(int[] var1) {
@@ -37,8 +17,6 @@ public final class IsaacCipher {
         this.method2538();
     }
 
-    @ObfuscatedName("i")
-    @Export("method2539")
     final int nextInt() {
         if (0 == --this.valuesRemaining + 1) {
             this.method2540();
@@ -48,8 +26,6 @@ public final class IsaacCipher {
         return this.results[this.valuesRemaining];
     }
 
-    @ObfuscatedName("w")
-    @Export("method2540")
     final void method2540() {
         this.bb += ++this.cc;
 
@@ -75,7 +51,6 @@ public final class IsaacCipher {
 
     }
 
-    @ObfuscatedName("f")
     final void method2538() {
         int var9 = -1640531527;
         int var8 = -1640531527;
@@ -204,7 +179,6 @@ public final class IsaacCipher {
         this.valuesRemaining = 256;
     }
 
-    @ObfuscatedName("i")
     public static int method2548(int var0, int var1) {
         int var2;
         for (var2 = 1; var1 > 1; var1 >>= 1) {
@@ -222,11 +196,6 @@ public final class IsaacCipher {
         }
     }
 
-    @ObfuscatedName("dx")
-    @Export("method2543")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass157;)Ljava/lang/String;"
-    )
     static String method2543(Widget var0) {
         if (class40.method905(SoundSystem.method1326(var0)) == 0) {
             return null;

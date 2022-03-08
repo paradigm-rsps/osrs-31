@@ -1,32 +1,12 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("bd")
-@Implements("VorbisResidue")
 public class VorbisResidue {
-    @ObfuscatedName("i")
-    @Export("residueType")
     int residueType = VorbisSample.method1280(16);
-    @ObfuscatedName("w")
-    @Export("begin")
     int begin = VorbisSample.method1280(24);
-    @ObfuscatedName("f")
-    @Export("end")
     int end = VorbisSample.method1280(24);
-    @ObfuscatedName("e")
-    @Export("partitionSize")
     int partitionSize = VorbisSample.method1280(24) + 1;
-    @ObfuscatedName("t")
-    @Export("classifications")
     int classifications = VorbisSample.method1280(6) + 1;
-    @ObfuscatedName("d")
-    @Export("classbook")
     int classbook = VorbisSample.method1280(8);
-    @ObfuscatedName("p")
-    @Export("cascade")
     int[] cascade;
 
     VorbisResidue() {
@@ -52,7 +32,6 @@ public class VorbisResidue {
 
     }
 
-    @ObfuscatedName("i")
     void method1376(float[] var1, int var2, boolean var3) {
         int var4;
         for (var4 = 0; var4 < var2; ++var4) {

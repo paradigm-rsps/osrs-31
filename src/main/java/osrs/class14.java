@@ -1,24 +1,11 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import osrs.cache.Definitions;
 
-@ObfuscatedName("u")
 public class class14 {
-    @ObfuscatedName("em")
-    @Export("mapMarkerSprites")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass85;"
-    )
     static SpritePixels[] mapMarkerSprites;
-    @ObfuscatedName("ek")
-    @ObfuscatedSignature(
-            descriptor = "[Lclass86;"
-    )
     static IndexedSprite[] field246;
 
-    @ObfuscatedName("i")
     static long method163(CharSequence var0) {
         long var1 = 0L;
         int var3 = var0.length();
@@ -46,10 +33,6 @@ public class class14 {
         return var1;
     }
 
-    @ObfuscatedName("p")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass151;I)Lclass86;"
-    )
     public static IndexedSprite method166(AbstractArchive var0, int var1) {
         if (!ArchiveDisk.method1504(var0, var1)) {
             return null;
@@ -68,7 +51,6 @@ public class class14 {
         }
     }
 
-    @ObfuscatedName("p")
     static final boolean method164(byte[] var0, int var1, int var2) {
         boolean var3 = true;
         Buffer var4 = new Buffer(var0);
@@ -100,7 +82,7 @@ public class class14 {
                     int var13 = var11 + var1;
                     int var14 = var10 + var2;
                     if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
-                        ObjectComposition var15 = GameBuild.getObjectComposition(var5);
+                        ObjectDefinition var15 = Definitions.getObject(var5);
                         if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
                             if (!var15.method662()) {
                                 ++Client.field510;
@@ -122,11 +104,7 @@ public class class14 {
         }
     }
 
-    @ObfuscatedName("y")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass33;III)V"
-    )
-    static void method165(SequenceDefinition var0, int var1, int var2, int var3) {
+    static void method165(AnimationDefinition var0, int var1, int var2, int var3) {
         if (Client.soundEffectCount < 50 && Client.field538 != 0) {
             if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
                 int var4 = var0.soundEffects[var1];

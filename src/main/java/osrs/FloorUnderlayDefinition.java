@@ -1,57 +1,20 @@
 package osrs;
 
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("av")
-@Implements("FloorUnderlayDefinition")
 public class FloorUnderlayDefinition extends DualNode {
-    @ObfuscatedName("mp")
     static byte field882;
-    @ObfuscatedName("i")
-    @Export("FloorUnderlayDefinition_archive")
-    @ObfuscatedSignature(
-            descriptor = "Lclass151;"
-    )
     static AbstractArchive FloorUnderlayDefinition_archive;
-    @ObfuscatedName("w")
-    @Export("HitSplatDefinition_cachedFonts")
-    @ObfuscatedSignature(
-            descriptor = "Lclass169;"
-    )
     static EvictingDualNodeHashTable HitSplatDefinition_cachedFonts = new EvictingDualNodeHashTable(64);
-    @ObfuscatedName("k")
-    @Export("SpriteBuffer_spritePalette")
     static int[] SpriteBuffer_spritePalette;
-    @ObfuscatedName("f")
-    @Export("rgb")
     int rgb = 0;
-    @ObfuscatedName("e")
-    @Export("hue")
     public int hue;
-    @ObfuscatedName("t")
-    @Export("saturation")
     public int saturation;
-    @ObfuscatedName("d")
-    @Export("lightness")
     public int lightness;
-    @ObfuscatedName("p")
-    @Export("hueMultiplier")
     public int hueMultiplier;
 
-    @ObfuscatedName("f")
-    @Export("method700")
     void method700() {
         this.method703(this.rgb);
     }
 
-    @ObfuscatedName("e")
-    @Export("method701")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;I)V"
-    )
     void method701(Buffer var1, int var2) {
         while (true) {
             int var3 = var1.readUnsignedByte();
@@ -63,11 +26,6 @@ public class FloorUnderlayDefinition extends DualNode {
         }
     }
 
-    @ObfuscatedName("t")
-    @Export("method699")
-    @ObfuscatedSignature(
-            descriptor = "(Lclass126;II)V"
-    )
     void method699(Buffer var1, int var2, int var3) {
         if (var2 == 1) {
             this.rgb = var1.readMedium();
@@ -75,8 +33,6 @@ public class FloorUnderlayDefinition extends DualNode {
 
     }
 
-    @ObfuscatedName("d")
-    @Export("method703")
     void method703(int var1) {
         double var2 = (double) (var1 >> 16 & 255) / 256.0D;
         double var4 = (double) (var1 >> 8 & 255) / 256.0D;
@@ -148,7 +104,6 @@ public class FloorUnderlayDefinition extends DualNode {
         this.hue = (int) (var12 * (double) this.hueMultiplier);
     }
 
-    @ObfuscatedName("t")
     public static void method718() {
         VarpDefinition.VarpDefinition_cached.method3482();
     }
